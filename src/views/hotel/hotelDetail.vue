@@ -95,7 +95,7 @@
                </div>
              </div>
 
-                <div class="map" id='maps'>
+                <div class="map" id='maps' ref='tab1'>
                  <div class="map01">
                    <img src="../../assets/images/map01.jpg" alt="">
                    <h3>周围及交通服务</h3>
@@ -204,14 +204,27 @@ export default{
  },
     beforeRouteEnter (to, from, next) {
       let id=to.params.id
+      let status=to.params.status
+      console.log(status)
+    
       interfaces.getdetailhouse(id).then(function (res) {
       next(vm=>
          {
          vm.projectdetail=res
          vm.detailId=res.id
+          var div = vm.$refs.tab1
+          console.log(div)
+          if (div) {
+            setTimeout(function () {
+              console.log($(div).offset().top);
+              // $('html,body').scrollTop($(div).offset().top - 43);
+              $('html, body').animate({scrollTop: $(div).offset().top - 43}, 500)
+            }, 500);
+           }
         })
     })
   },
+
   methods: {
     toAppraise(){
       this.$router.push({name:'appraise',params:{id:this.idss}})
@@ -286,7 +299,46 @@ export default{
 
     },
 
-     mounted:function(){
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ mounted:function(){
+      //  let id=this.$route.params.status
+        // var hash = window.location.hash;
+        // console.log(hash)
+        // var index = hash.lastIndexOf("#");
+        // if (index != -1) {
+        //   var id = hash.substring(index + 1, hash.length + 1);
+        //   console.log(id)
+        //   var div = document.getElementById(id);
+        //   console.log(div)
+        //   if (div) {
+        //     setTimeout(function () {
+        //       console.log($(div).offset().top);
+        //       // $('html,body').scrollTop($(div).offset().top - 43);
+        //       $('html, body').animate({scrollTop: $(div).offset().top - 43}, 500)
+        //     }, 500);
+        //    }
+        //   }
+
        window.addEventListener('scroll', this.handleScroll);
        window.addEventListener('scroll',this.btn_pos);
           let height= window.getComputedStyle(this.$refs.heightShow).height
@@ -305,10 +357,10 @@ export default{
        },
         	//第四步：当再次进入（前进或者后退）时，只触发activated（注：只有在keep-alive加载时调用）
    	activated(){
-	    if(this.scroll > 0){
-	        // window.scrollTo(0, this.scroll);
-	        window.addEventListener('scroll', this.handleScroll);
-	     }
+	    // if(this.scroll > 0){
+	    //     // window.scrollTo(0, this.scroll);
+	    //     window.addEventListener('scroll', this.handleScroll);
+	    //  }
    	},
    	//第五步：deactivated 页面退出时关闭事件 防止其他页面出现问题
   	deactivated(){
