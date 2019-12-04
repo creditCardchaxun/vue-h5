@@ -147,7 +147,9 @@ export default {
       var _this = this
       _this.markerend = new AMap.Marker({
         map: _this.mapCase,
-        position: _this.positionpoint
+        position: _this.positionpoint,
+        icon: require('../assets/images/mark.png'), //你需要更改成红色的图标
+        size: new AMap.Size(19,33),  //图标大小
       });
       //鼠标点击marker弹出自定义的信息窗体
       _this.mapCase.add(_this.markerend);
