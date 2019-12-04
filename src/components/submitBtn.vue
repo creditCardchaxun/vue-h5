@@ -1,7 +1,7 @@
 <template>
       <!-- 预约弹框 v-show='hideModel'-->
         <div class="model-diag" >
-           <selectcountry placeholder='请选择国家区号' v-if='showregion'></selectcountry>
+           <selectcountry placeholder='请选择国家区号' v-if='showregion' @select='selectedCountry'></selectcountry>
             <div class="model_main">
                  <div class="mains" :class="{'is-invalid':errors2}">
                    <div class="left">{{$t('m.s1')}}</div>
@@ -93,6 +93,10 @@ export default {
     this.mobile=localStorage.getItem('mobile')
   },
   methods:{
+    selectedCountry(res){
+       console.log(res)
+        this.showregion=false
+     },
      toshowRegion(){
        console.log(123123)
         this.showregion=true
