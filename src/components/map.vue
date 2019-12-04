@@ -13,17 +13,11 @@
         </div>
         <div id="secondfirst">
           <div class="secondfirst-wrap">
-            <div class="back" @click="backindex"></div>
+            <div class="back" @click="changeFullScreen"></div>
             <div class="input-box">
               <div class="flex-row">
                 <div class="red-ball"></div>
-                <input
-                  type="text"
-                  readonly="readonly"
-                  class="text border-b"
-                  id="secondtxt"
-                  placeholder="请输入起点"
-                />
+                <input type="text" class="text border-b" id="secondtxt" placeholder="请输入起点" />
               </div>
               <div class="flex-row">
                 <div class="green-ball"></div>
@@ -38,8 +32,8 @@
             </div>
           </div>
           <div class="tab-box">
-            <span class="span" id="bus" @click="route(2)">公交</span>
             <span @click="route(1)" class="span cus" id="car">自驾</span>
+            <span class="span" id="bus" @click="route(2)">公交</span>
             <span @click="route(3)" class="span" id="foot">步行</span>
           </div>
         </div>
@@ -55,31 +49,31 @@
       </div>
     </div>
   </div>
-
-
 </template>
 
 <script>
-import interfaces from "../utils/api.js";
 import $ from 'jquery';
+import { WXsdk } from '../utils/wxShare';
 export default {
-  props:{
-  },
   data() {
     return {
       fullScreen: true,
       mapCase: null,
-      positionpoint: new AMap.LngLat(121.032818, 31.121661),
+      position: { latitude: 31.121661, longitude: 121.032818 },
+      // positionpoint: new AMap.LngLat(this.position.latitude, position.longitude),
       title: "Base-复兴路",
       address: "长宁区复兴路22号",
-      markerend: null,
+      markerend: null
     }
   },
-
+  computed: {
+    positionpoint() {
+      return new AMap.LngLat(this.position.longitude, this.position.latitude)
+    }
+  },
   mounted() {
     this.init()
-   },
-
+  },
   methods: {
     changeFullScreen() {
       this.fullScreen = !this.fullScreen
@@ -99,14 +93,15 @@ export default {
       // var markerend;
 
       this.createMap();
+      $("#firstdiv").hide()
 
-      // $('.amap-sug-result').on('click', 'div', function (data) {
-      //   var text = $(this).contents().filter(function () {
-      //     return this.nodeType == 3;
-      //   }).remove().text()
+      $('.amap-sug-result').on('click', 'div', function (data) {
+        var text = $(this).contents().filter(function () {
+          return this.nodeType == 3;
+        }).remove().text()
 
-      //   _this.shownav(text);
-      // })
+        _this.shownav(text);
+      })
 
       $("li").click(function () {
         _this.mapCase.clearMap();
@@ -136,40 +131,37 @@ export default {
       var _this = this
       _this.mapCase = new AMap.Map('container', {
         resizeEnable: true,
-        center: _this.positionpoint, //初始化地图中心点
+        center: _this.positionpoint, //初始化地图中心点 
         zoom: 12, //地图显示的缩放级别
         lang: 'zh-cn',
-        mapStyle: 'amap://styles/whitesmoke', //设置地图样式 远山黛
+        mapStyle: 'amap://styles/whitesmoke', //设置地图样式 远山黛.
         zoomEnable: true,
         dragEnable: true,
       });
       var auto = new AMap.Autocomplete({
-        input: "txt"
+        input: "secondtxt"
       });
       this.addmarker();
     },
     addmarker() {
       var _this = this
       _this.markerend = new AMap.Marker({
-          map: _this.mapCase,
-          title:_this.title,
-         position: _this.positionpoint
+        map: _this.mapCase,
+        position: _this.positionpoint,
+        icon: require('../assets/images/mark.png'), //你需要更改成红色的图标
+        size: new AMap.Size(19,33),  //图标大小
       });
-
       //鼠标点击marker弹出自定义的信息窗体
       _this.mapCase.add(_this.markerend);
+
       var infoWindow = new AMap.InfoWindow({
         isCustom: true, //使用自定义窗体
         content: _this.createInfoWindow(),
         offset: new AMap.Pixel(0, -45)
       });
-     
-    // 绑定点击事件到点标记对象，点击打开上面创建的信息窗体
-   
       AMap.event.addListener(_this.markerend, 'click', function () {
         infoWindow.open(_this.mapCase, _this.markerend.getPosition());
       });
-
     },
     createInfoWindow() {
       var _this = this
@@ -204,7 +196,8 @@ export default {
       button.className = "info-button";
       button.innerHTML = "到这里去";
       button.id = 'btngo';
-      button.onclick = _this.showfirst;
+      // button.onclick = _this.showfirst;
+      button.onclick = _this.showNav1;
       info.appendChild(button);
       return info;
     },
@@ -214,6 +207,19 @@ export default {
       }
 
       $("#firstdiv").show()
+    },
+    showNav1() {
+      var _this = this
+
+      if (this.fullScreen) {
+        this.fullScreen = false
+      }
+      setTimeout(() => {
+        $("#secondfirst").show()
+        $("#secondtxt").focus();
+        $("#secondtxtend").val(_this.title);
+        $('.amap-info').hide()
+      });
     },
     shownav(text) {
       var _this = this
@@ -228,17 +234,20 @@ export default {
         return
       }
 
-      if (begin != "") {
-        _this.mapCase.clearMap();
-        $("#firstdiv").hide();
-        _this.addmarker();
-        $("#secondfirst").show()
-        $("#secondtxt").val(begin);
-        $("#secondtxtend").val(_this.title);
-        _this.route(1);
-      }
+
+      _this.mapCase.clearMap();
+      $("#firstdiv").hide();
+      _this.addmarker();
+      $("#secondfirst").show()
+      $("#secondtxt").val(begin);
+      $("#secondtxt").focus();
+      $("#secondtxtend").val(_this.title);
+      _this.route(1);
     },
     route(type) {
+      console.log('type');
+      console.log(type);
+
       var _this = this
       _this.mapCase.clearMap();
       _this.addmarker();
@@ -411,6 +420,10 @@ export default {
                 // result即是对应的步行路线数据信息，相关数据结构文档请参考  https://lbs.amap.com/api/javascript-api/reference/route-search#m_WalkingResult
                 console.log('result');
                 console.log(result);
+                if (result === 'OVER_DIRECTION_RANGE') {
+                  alert('起点终点距离过长,建议选择其他方式')
+                  return
+                }
                 if (status === 'complete') {
                   if (result.routes && result.routes.length) {
                     drawRoute(result.routes[0])
@@ -479,16 +492,18 @@ export default {
       var _this = this
       _this.mapCase.clearMap();
       _this.addmarker();
-      $("#secondfirst").hide();
+      // $("#secondfirst").hide();
       $("#secondtxt").val("");
-      $("#secondtxtend").val("");
-      $("#firstdiv").show();
+      // $("#secondtxtend").val("");
+      // $("#firstdiv").show();
     },
     openapp() {
-      var _this = this
-      _this.markerend.markOnAMAP({
-        position: _this.markerend.getPosition()
-      })
+      // var _this = this
+      // _this.markerend.markOnAMAP({
+      //   position: _this.markerend.getPosition()
+      // })
+
+      WXsdk.openLocation(this.position, this.address)
     },
   }
 }
@@ -565,17 +580,21 @@ export default {
     position: relative;
     box-shadow: none;
     bottom: 0;
-    left: 0;
-    width: 7.5rem;
+    // left: 0;
+    width: 6.5rem;
     height: 3.5rem;
     border-radius: 10px;
     padding-left: 0.4rem;
     padding-right: 0.4rem;
 
     h1 {
-      font-size: 0.6rem;
+      font-size: 0.4rem;
       padding-top: 0.2rem;
       padding-bottom: 0.4rem;
+    }
+
+    .info-newdiv {
+      font-size: 0.4rem;
     }
   }
 
@@ -759,18 +778,25 @@ export default {
     .secondfirst-wrap {
       display: flex;
       flex-direction: row;
+      position: relative;
+      box-sizing: border-box;
+      padding-left: 1rem;
 
       .back {
         width: 1rem;
-        height: 1.5rem;
+        // height: 1.7rem;
         background: url("../assets/images/back.png") no-repeat;
         background-size: 100% auto;
-        background-position: -10% top;
+        background-position: -13% center;
         margin-right: 0.2rem;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
       }
       .input-box {
         background: #f4f4f4;
-        border-radius: 0.1rem;
+        // border-radius: 0.1rem;
         box-sizing: border-box;
         padding-left: 0.5rem;
         width: 100%;
@@ -814,9 +840,9 @@ export default {
   }
 
   .tip {
-    height: 0.8rem;
-    line-height: 0.8rem;
-    bottom: 0.8rem;
+    height: 1.3rem;
+    line-height: 1.3rem;
+    bottom: 1.3rem;
     position: fixed;
     width: 100%;
     color: white;
@@ -826,8 +852,8 @@ export default {
   }
 
   .recommend {
-    height: 0.8rem;
-    line-height: 0.8rem;
+    height: 1.3rem;
+    line-height: 1.3rem;
     bottom: 0px;
     position: fixed;
     width: 100%;
@@ -846,6 +872,4 @@ export default {
     }
   }
 }
-
-
 </style>
