@@ -66,7 +66,7 @@ export default {
 
   created() {
 
-    // apitest.test()
+    // apitest.te st() 
     // 通过url中是否含有shareId来判断是否是分享出去的详情页，再由路由推向对应详情页
 
     // this.judgeShare()
