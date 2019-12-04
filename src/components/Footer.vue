@@ -9,18 +9,18 @@
         </div>
         <div class="foot_01">
             <ul>
-                <li> <img src="../assets/images/phone.png" alt="" style='width:0.24rem;height:0.24rem'> <span> {{ms2[1] }}
+                <li> <img src="../assets/images/phone.png" alt="" style='width:0.24rem;height:0.24rem'><span>{{contact.address}}
                   <!-- <em style='font-size:0.22rem;'>(8:00-22:00)</em>  -->
                 </span> </li>
-                <li> <img src="../assets/images/map.png" alt="" style='width:0.20rem;height:0.24rem'> <span>{{ms5}}</span>  </li>
-                <li> <img src="../assets/images/mail.png" alt="" style='width:0.24rem;height:0.20rem'>  <span>{{contact.keywords}}</span> </li>
+                <li> <img src="../assets/images/map.png" alt="" style='width:0.20rem;height:0.24rem'><span>{{contact.tel}}</span>  </li>
+                <li> <img src="../assets/images/mail.png" alt="" style='width:0.24rem;height:0.20rem'><span>{{contact.keywords}}</span> </li>
             </ul>
         </div>
        </div>
 
        <div class="foot-bottom">
-           沪ICP备15017628号  <br>
-            沪公网安备 31010502002526号   Powered by BDidea
+             {{ms2}}<br>
+             {{ms5}}
        </div>
  
   <div class="scrolltop"  v-show="gotop"  @click="toTop"><img src="../assets/images/top.png" alt=""></div>
@@ -54,10 +54,9 @@ export default{
   methods:{
     handleScroll() {
        let scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
-      scrolltop > 500 ? (this.gotop = true) : (this.gotop = false);
+        scrolltop > 500 ? (this.gotop = true) : (this.gotop = false);
     },
     toTop() {
-      
       let top = document.documentElement.scrollTop || document.body.scrollTop;
       // 实现滚动效果 
       const timeTop = setInterval(() => {
@@ -73,11 +72,11 @@ export default{
           if(res!=undefined){
               this.contact=res
               let main=res.content
-              let ms=main.split('<br/></p>')
-              this.ms2=ms[0].split('<p>')
+              let ms=main.split('</p>')
+              let ms4=ms[0].split('<p>')
               let ms3=ms[1].split('<p>')
-              let ms4=ms3[1].split('</p>')
-              this.ms5=ms4[0]
+              this.ms2= ms4[1]
+              this.ms5= ms3[1]
           }
        })
         },

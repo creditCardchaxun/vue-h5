@@ -21,7 +21,8 @@
        <p><span>{{$t('m.feedback8')}}</span>  <em>{{bookarr.name}}</em>  </p>
        <p><span>{{$t('m.feedback9')}}</span>  <em>{{bookarr.mobile}}</em> </p>
        <p><span>{{$t('m.feedback10')}}</span> <em>{{bookarr.book_time}}</em> </p>
-       <p><span>{{$t('m.feedback11')}}</span> <em>{{bookarr.intention}}</em> </p>
+       <p v-if='!feedbackarr.user_content'><span>{{$t('m.feedback11')}}</span> <em>{{bookarr.intention}}</em> </p>
+       <p v-if='feedbackarr.user_content'><span>{{$t('m.feedback20')}}</span> <em>{{feedbackarr.user_content}}</em> </p>
     </div>
 
     <div class="yijiedan" v-show="showSale">

@@ -267,4 +267,5 @@ select {
   background: #fff;
   overflow: scroll;
 }
+.van-index-bar .van-cell__value{text-align: left;}
 </style>

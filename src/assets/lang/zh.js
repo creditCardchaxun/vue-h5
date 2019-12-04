@@ -107,6 +107,7 @@ export const m = {
   feedback9:'手机号',
   feedback10:'看房日期',
   feedback11:'预约意向',
+  feedback20:'看房评价',
   feedback12:'预约单号',
   feedback13:'下单时间',
   feedback14:'复制',

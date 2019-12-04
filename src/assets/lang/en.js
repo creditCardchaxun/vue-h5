@@ -104,6 +104,7 @@ export const m = {
    feedback9:'phone number',
    feedback10:'House date',
    feedback11:'Reservation intention',
+   feedback20:'House appraisal',
    feedback12:'Reservation number',
    feedback13:'Order time',
    feedback14:'copy',
