@@ -50,7 +50,7 @@
 <script>
 import config from '@/config/config.js'
 import apitest from '@/config/apitest.js'
-import { requestWxInit } from "@/utils/wxShare"
+import { WXsdk } from "@/utils/wxShare"
 import interfaces from "@/utils/api.js";
 
 export default {
@@ -88,7 +88,7 @@ export default {
     console.log(config)
     console.log('accessToken')
     console.log(localStorage.getItem('accessToken'))
-    requestWxInit('测试标题', '描述啊描述', config.shareIcon, config.shareLink)
+    WXsdk.getShare('测试标题', '描述啊描述', config.shareIcon, config.shareLink)
 
     let accessToken= localStorage.getItem('accessToken')
     let userinfo=JSON.parse(localStorage.getItem('userinfo'))
