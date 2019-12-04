@@ -25,9 +25,9 @@
            </div>
          
           <div class="yu-m">
-           <div class="yu_01" style='margin-right:0.6rem;' v-if='iskehu==1'><router-link :to="{name:'booking',params:{active:0}}"><img src="../../assets/images/2_06.png" alt=""><i>{{$t('m.manage')}}</i> </router-link> </div>
-           <div class="yu_01" v-if='iskehu==1'><router-link :to="{path:'/myOrder'}"><img src="../../assets/images/2_03.jpg" alt=""><i>{{$t('m.myorder')}}</i></router-link> </div> 
-           <div class="yu_01" v-if='iskehu==0' :class="{xiaoshou:iskehuClass}"><router-link :to="{path:'/myOrder'}"><img src="../../assets/images/2_03.jpg" alt=""><i>{{$t('m.myorder')}}</i></router-link> </div>
+           <div class="yu_01" style='margin-right:0.6rem;' v-if='iskehu==0'><router-link :to="{name:'booking',params:{active:0}}"><img src="../../assets/images/2_06.png" alt=""><i>{{$t('m.manage')}}</i> </router-link> </div>
+           <div class="yu_01" v-if='iskehu==0'><router-link :to="{path:'/myOrder'}"><img src="../../assets/images/2_03.jpg" alt=""><i>{{$t('m.myorder')}}</i></router-link> </div> 
+           <!-- <div class="yu_01" v-if='iskehu==0' :class="{xiaoshou:iskehuClass}"><router-link :to="{path:'/myOrder'}"><img src="../../assets/images/2_03.jpg" alt=""><i>{{$t('m.myorder')}}</i></router-link> </div> -->
          </div>
        </div> 
        <div class="person_03">
@@ -129,12 +129,11 @@ export default {
     
    },
    mounted(){
-  
       this.iskehu=JSON.parse(localStorage.getItem('userinfo')).type
       this.avater=JSON.parse(localStorage.getItem('userinfo')).avater
       this.nickname=JSON.parse(localStorage.getItem('userinfo')).nickname
-      // this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile
-      this.mobileLocal=localStorage.getItem('mobile')
+      this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile
+      // this.mobileLocal=localStorage.getItem('mobile')
        if(this.mobileLocal){
          this.ischeckPhone=false
        }

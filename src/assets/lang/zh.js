@@ -121,79 +121,79 @@ export const m = {
       {
         short: "AD",
         name: "安道尔共和国",
-        en: "Andorra",
+        id: "Andorra",
         tel: "376"
       },
       {
         short: "AE",
         name: "阿拉伯联合酋长国",
-        en: "UnitedArabEmirates",
+        id: "UnitedArabEmirates",
         tel: "971"
       },
       {
         short: "AF",
         name: "阿富汗",
-        en: "Afghanistan",
+        id: "Afghanistan",
         tel: "93"
       },
       {
         short: "AG",
         name: "安提瓜和巴布达",
-        en: "AntiguaandBarbuda",
+        id: "AntiguaandBarbuda",
         tel: "1268"
       },
       {
         short: "AI",
         name: "安圭拉岛",
-        en: "Anguilla",
+        id: "Anguilla",
         tel: "1264"
       },
       {
         short: "AL",
         name: "阿尔巴尼亚",
-        en: "Albania",
+        id: "Albania",
         tel: "355"
       },
       {
         short: "AM",
         name: "亚美尼亚",
-        en: "Armenia",
+        id: "Armenia",
         tel: "374"
       },
       {
         short: "AS",
         name: "阿森松",
-        en: "Ascension",
+        id: "Ascension",
         tel: "247"
       },
       {
         short: "AO",
         name: "安哥拉",
-        en: "Angola",
+        id: "Angola",
         tel: "244"
       },
       {
         short: "AR",
         name: "阿根廷",
-        en: "Argentina",
+        id: "Argentina",
         tel: "54"
       },
       {
         short: "AT",
         name: "奥地利",
-        en: "Austria",
+        id: "Austria",
         tel: "43"
       },
       {
         short: "AU",
         name: "澳大利亚",
-        en: "Australia",
+        id: "Australia",
         tel: "61"
       },
       {
         short: "AZ",
         name: "阿塞拜疆",
-        en: "Azerbaijan",
+        id: "Azerbaijan",
         tel: "994"
       }
       //ff
@@ -202,103 +202,103 @@ export const m = {
       {
         short: "BB",
         name: "巴巴多斯",
-        en: "Barbados",
+        id: "Barbados",
         tel: "1246"
       },
       {
         short: "BD",
         name: "孟加拉国",
-        en: "Bangladesh",
+        id: "Bangladesh",
         tel: "880"
       },
       {
         short: "BE",
         name: "比利时",
-        en: "Belgium",
+        id: "Belgium",
         tel: "32"
       },
       {
         short: "BF",
         name: "布基纳法索",
-        en: "Burkina-faso",
+        id: "Burkina-faso",
         tel: "226"
       },
       {
         short: "BG",
         name: "保加利亚",
-        en: "Bulgaria",
+        id: "Bulgaria",
         tel: "359"
       },
       {
         short: "BH",
         name: "巴林",
-        en: "Bahrain",
+        id: "Bahrain",
         tel: "973"
       },
       {
         short: "BI",
         name: "布隆迪",
-        en: "Burundi",
+        id: "Burundi",
         tel: "257"
       },
       {
         short: "BJ",
         name: "贝宁",
-        en: "Benin",
+        id: "Benin",
         tel: "229"
       },
       {
         short: "BL",
         name: "巴勒斯坦",
-        en: "Palestine",
+        id: "Palestine",
         tel: "970"
       },
       {
         short: "BM",
         name: "百慕大群岛",
-        en: "BermudaIs.",
+        id: "BermudaIs.",
         tel: "1441"
       },
       {
         short: "BN",
         name: "文莱",
-        en: "Brunei",
+        id: "Brunei",
         tel: "673"
       },
       {
         short: "BO",
         name: "玻利维亚",
-        en: "Bolivia",
+        id: "Bolivia",
         tel: "591"
       },
       {
         short: "BR",
         name: "巴西",
-        en: "Brazil",
+        id: "Brazil",
         tel: "55"
       },
       {
         short: "BS",
         name: "巴哈马",
-        en: "Bahamas",
+        id: "Bahamas",
         tel: "1242"
       },
       {
         short: "BW",
         name: "博茨瓦纳",
-        en: "Botswana",
+        id: "Botswana",
         tel: "267"
       },
       {
         short: "BY",
         name: "白俄罗斯",
-        en: "Belarus",
+        id: "Belarus",
         tel: "375"
       },
       {
         short: "BZ",
         name: "伯利兹",
-        en: "Belize",
+        id: "Belize",
         tel: "501"
       }
     ],
@@ -306,91 +306,91 @@ export const m = {
       {
         short: "CA",
         name: "加拿大",
-        en: "Canada",
+        id: "Canada",
         tel: "1"
       },
       {
         short: "",
         name: "开曼群岛",
-        en: "CaymanIs.",
+        id: "CaymanIs.",
         tel: "1345"
       },
       {
         short: "CF",
         name: "中非共和国",
-        en: "CentralAfricanRepublic",
+        id: "CentralAfricanRepublic",
         tel: "236"
       },
       {
         short: "CG",
         name: "刚果",
-        en: "Congo",
+        id: "Congo",
         tel: "242"
       },
       {
         short: "CH",
         name: "瑞士",
-        en: "Switzerland",
+        id: "Switzerland",
         tel: "41"
       },
       {
         short: "CK",
         name: "库克群岛",
-        en: "CookIs.",
+        id: "CookIs.",
         tel: "682"
       },
       {
         short: "CL",
         name: "智利",
-        en: "Chile",
+        id: "Chile",
         tel: "56"
       },
       {
         short: "CM",
         name: "喀麦隆",
-        en: "Cameroon",
+        id: "Cameroon",
         tel: "237"
       },
       {
         short: "CN",
         name: "中国",
-        en: "China",
+        id: "China",
         tel: "86"
       },
       {
         short: "CO",
         name: "哥伦比亚",
-        en: "Colombia",
+        id: "Colombia",
         tel: "57"
       },
       {
         short: "CR",
         name: "哥斯达黎加",
-        en: "CostaRica",
+        id: "CostaRica",
         tel: "506"
       },
       {
         short: "CS",
         name: "捷克",
-        en: "Czech",
+        id: "Czech",
         tel: "420"
       },
       {
         short: "CU",
         name: "古巴",
-        en: "Cuba",
+        id: "Cuba",
         tel: "53"
       },
       {
         short: "CY",
         name: "塞浦路斯",
-        en: "Cyprus",
+        id: "Cyprus",
         tel: "357"
       },
       {
         short: "CZ",
         name: "捷克",
-        en: "CzechRepublic",
+        id: "CzechRepublic",
         tel: "420"
       }
     ],
@@ -398,31 +398,31 @@ export const m = {
       {
         short: "DE",
         name: "德国",
-        en: "Germany",
+        id: "Germany",
         tel: "49"
       },
       {
         short: "DJ",
         name: "吉布提",
-        en: "Djibouti",
+        id: "Djibouti",
         tel: "253"
       },
       {
         short: "DK",
         name: "丹麦",
-        en: "Denmark",
+        id: "Denmark",
         tel: "45"
       },
       {
         short: "DO",
         name: "多米尼加共和国",
-        en: "DominicaRep.",
+        id: "DominicaRep.",
         tel: "1890"
       },
       {
         short: "DZ",
         name: "阿尔及利亚",
-        en: "Algeria",
+        id: "Algeria",
         tel: "213"
       }
     ],
@@ -430,31 +430,31 @@ export const m = {
       {
         short: "EC",
         name: "厄瓜多尔",
-        en: "Ecuador",
+        id: "Ecuador",
         tel: "593"
       },
       {
         short: "EE",
         name: "爱沙尼亚",
-        en: "Estonia",
+        id: "Estonia",
         tel: "372"
       },
       {
         short: "EG",
         name: "埃及",
-        en: "Egypt",
+        id: "Egypt",
         tel: "20"
       },
       {
         short: "ES",
         name: "西班牙",
-        en: "Spain",
+        id: "Spain",
         tel: "34"
       },
       {
         short: "ET",
         name: "埃塞俄比亚",
-        en: "Ethiopia",
+        id: "Ethiopia",
         tel: "251"
       }
     ],
@@ -462,19 +462,19 @@ export const m = {
       {
         short: "FI",
         name: "芬兰",
-        en: "Finland",
+        id: "Finland",
         tel: "358"
       },
       {
         short: "FJ",
         name: "斐济",
-        en: "Fiji",
+        id: "Fiji",
         tel: "679"
       },
       {
         short: "FR",
         name: "法国",
-        en: "France",
+        id: "France",
         tel: "33"
       }
     ],
@@ -482,79 +482,79 @@ export const m = {
       {
         short: "GA",
         name: "加蓬",
-        en: "Gabon",
+        id: "Gabon",
         tel: "241"
       },
       {
         short: "GB",
         name: "英国",
-        en: "UnitedKiongdom",
+        id: "UnitedKiongdom",
         tel: "44"
       },
       {
         short: "GD",
         name: "格林纳达",
-        en: "Grenada",
+        id: "Grenada",
         tel: "1809"
       },
       {
         short: "GE",
         name: "格鲁吉亚",
-        en: "Georgia",
+        id: "Georgia",
         tel: "995"
       },
       {
         short: "GF",
         name: "法属圭亚那",
-        en: "FrenchGuiana",
+        id: "FrenchGuiana",
         tel: "594"
       },
       {
         short: "GH",
         name: "加纳",
-        en: "Ghana",
+        id: "Ghana",
         tel: "233"
       },
       {
         short: "GI",
         name: "直布罗陀",
-        en: "Gibraltar",
+        id: "Gibraltar",
         tel: "350"
       },
       {
         short: "GM",
         name: "冈比亚",
-        en: "Gambia",
+        id: "Gambia",
         tel: "220"
       },
       {
         short: "GN",
         name: "几内亚",
-        en: "Guinea",
+        id: "Guinea",
         tel: "224"
       },
       {
         short: "GR",
         name: "希腊",
-        en: "Greece",
+        id: "Greece",
         tel: "30"
       },
       {
         short: "GT",
         name: "危地马拉",
-        en: "Guatemala",
+        id: "Guatemala",
         tel: "502"
       },
       {
         short: "GU",
         name: "关岛",
-        en: "Guam",
+        id: "Guam",
         tel: "1671"
       },
       {
         short: "GY",
         name: "圭亚那",
-        en: "Guyana",
+        id: "Guyana",
         tel: "592"
       }
     ],
@@ -562,25 +562,25 @@ export const m = {
       {
         short: "HK",
         name: "香港特别行政区",
-        en: "Hongkong",
+        id: "Hongkong",
         tel: "852"
       },
       {
         short: "HN",
         name: "洪都拉斯",
-        en: "Honduras",
+        id: "Honduras",
         tel: "504"
       },
       {
         short: "HT",
         name: "海地",
-        en: "Haiti",
+        id: "Haiti",
         tel: "509"
       },
       {
         short: "HU",
         name: "匈牙利",
-        en: "Hungary",
+        id: "Hungary",
         tel: "36"
       }
     ],
@@ -588,55 +588,55 @@ export const m = {
       {
         short: "ID",
         name: "印度尼西亚",
-        en: "Indonesia",
+        id: "Indonesia",
         tel: "62"
       },
       {
         short: "IE",
         name: "爱尔兰",
-        en: "Ireland",
+        id: "Ireland",
         tel: "353"
       },
       {
         short: "IL",
         name: "以色列",
-        en: "Israel",
+        id: "Israel",
         tel: "972"
       },
       {
         short: "IN",
         name: "印度",
-        en: "India",
+        id: "India",
         tel: "91"
       },
       {
         short: "IQ",
         name: "伊拉克",
-        en: "Iraq",
+        id: "Iraq",
         tel: "964"
       },
       {
         short: "IR",
         name: "伊朗",
-        en: "Iran",
+        id: "Iran",
         tel: "98"
       },
       {
         short: "IS",
         name: "冰岛",
-        en: "Iceland",
+        id: "Iceland",
         tel: "354"
       },
       {
         short: "IT",
         name: "意大利",
-        en: "Italy",
+        id: "Italy",
         tel: "39"
       },
       {
         short: "I",
         name: "科特迪瓦",
-        en: "IvoryCoast",
+        id: "IvoryCoast",
         tel: "225"
       }
     ],
@@ -644,19 +644,19 @@ export const m = {
       {
         short: "JM",
         name: "牙买加",
-        en: "Jamaica",
+        id: "Jamaica",
         tel: "1876"
       },
       {
         short: "JO",
         name: "约旦",
-        en: "Jordan",
+        id: "Jordan",
         tel: "962"
       },
       {
         short: "JP",
         name: "日本",
-        en: "Japan",
+        id: "Japan",
         tel: "81"
       }
     ],
@@ -664,49 +664,49 @@ export const m = {
       {
         short: "KE",
         name: "肯尼亚",
-        en: "Kenya",
+        id: "Kenya",
         tel: "254"
       },
       {
         short: "KG",
         name: "吉尔吉斯坦",
-        en: "Kyrgyzstan",
+        id: "Kyrgyzstan",
         tel: "331"
       },
       {
         short: "KH",
         name: "柬埔寨",
-        en: "Kampuchea(Cambodia)",
+        id: "Kampuchea(Cambodia)",
         tel: "855"
       },
       {
         short: "KP",
         name: "朝鲜",
-        en: "NorthKorea",
+        id: "NorthKorea",
         tel: "850"
       },
       {
         short: "KR",
         name: "韩国",
-        en: "Korea",
+        id: "Korea",
         tel: "82"
       },
       {
         short: "KT",
         name: "科特迪瓦共和国",
-        en: "RepublicofIvoryCoast",
+        id: "RepublicofIvoryCoast",
         tel: "225"
       },
       {
         short: "KW",
         name: "科威特",
-        en: "Kuwait",
+        id: "Kuwait",
         tel: "965"
       },
       {
         short: "KZ",
         name: "哈萨克斯坦",
-        en: "Kazakstan",
+        id: "Kazakstan",
         tel: "327"
       }
     ],
@@ -714,67 +714,67 @@ export const m = {
       {
         short: "LA",
         name: "老挝",
-        en: "Laos",
+        id: "Laos",
         tel: "856"
       },
       {
         short: "LB",
         name: "黎巴嫩",
-        en: "Lebanon",
+        id: "Lebanon",
         tel: "961"
       },
       {
         short: "LC",
         name: "圣卢西亚",
-        en: "St.Lucia",
+        id: "St.Lucia",
         tel: "1758"
       },
       {
         short: "LI",
         name: "列支敦士登",
-        en: "Liechtenstein",
+        id: "Liechtenstein",
         tel: "423"
       },
       {
         short: "LK",
         name: "斯里兰卡",
-        en: "SriLanka",
+        id: "SriLanka",
         tel: "94"
       },
       {
         short: "LR",
         name: "利比里亚",
-        en: "Liberia",
+        id: "Liberia",
         tel: "231"
       },
       {
         short: "LS",
         name: "莱索托",
-        en: "Lesotho",
+        id: "Lesotho",
         tel: "266"
       },
       {
         short: "LT",
         name: "立陶宛",
-        en: "Lithuania",
+        id: "Lithuania",
         tel: "370"
       },
       {
         short: "LU",
         name: "卢森堡",
-        en: "Luxembourg",
+        id: "Luxembourg",
         tel: "352"
       },
       {
         short: "LV",
         name: "拉脱维亚",
-        en: "Latvia",
+        id: "Latvia",
         tel: "371"
       },
       {
         short: "LY",
         name: "利比亚",
-        en: "Libya",
+        id: "Libya",
         tel: "218"
       }
     ],
@@ -782,109 +782,109 @@ export const m = {
       {
         short: "MA",
         name: "摩洛哥",
-        en: "Morocco",
+        id: "Morocco",
         tel: "212"
       },
       {
         short: "MC",
         name: "摩纳哥",
-        en: "Monaco",
+        id: "Monaco",
         tel: "377"
       },
       {
         short: "MD",
         name: "摩尔多瓦",
-        en: "Moldova,Republicof",
+        id: "Moldova,Republicof",
         tel: "373"
       },
       {
         short: "MG",
         name: "马达加斯加",
-        en: "Madagascar",
+        id: "Madagascar",
         tel: "261"
       },
       {
         short: "ML",
         name: "马里",
-        en: "Mali",
+        id: "Mali",
         tel: "223"
       },
       {
         short: "MM",
         name: "缅甸",
-        en: "Burma",
+        id: "Burma",
         tel: "95"
       },
       {
         short: "MN",
         name: "蒙古",
-        en: "Mongolia",
+        id: "Mongolia",
         tel: "976"
       },
       {
         short: "MO",
         name: "澳门",
-        en: "Macao",
+        id: "Macao",
         tel: "853"
       },
       {
         short: "MS",
         name: "蒙特塞拉特岛",
-        en: "MontserratIs",
+        id: "MontserratIs",
         tel: "1664"
       },
       {
         short: "MT",
         name: "马耳他",
-        en: "Malta",
+        id: "Malta",
         tel: "356"
       },
       {
         short: "",
         name: "马里亚那群岛",
-        en: "MarianaIs",
+        id: "MarianaIs",
         tel: "1670"
       },
       {
         short: "",
         name: "马提尼克",
-        en: "Martinique",
+        id: "Martinique",
         tel: "596"
       },
       {
         short: "MU",
         name: "毛里求斯",
-        en: "Mauritius",
+        id: "Mauritius",
         tel: "230"
       },
       {
         short: "MV",
         name: "马尔代夫",
-        en: "Maldives",
+        id: "Maldives",
         tel: "960"
       },
       {
         short: "MW",
         name: "马拉维",
-        en: "Malawi",
+        id: "Malawi",
         tel: "265"
       },
       {
         short: "MX",
         name: "墨西哥",
-        en: "Mexico",
+        id: "Mexico",
         tel: "52"
       },
       {
         short: "MY",
         name: "马来西亚",
-        en: "Malaysia",
+        id: "Malaysia",
         tel: "60"
       },
       {
         short: "MZ",
         name: "莫桑比克",
-        en: "Mozambique",
+        id: "Mozambique",
         tel: "258"
       }
     ],
@@ -892,61 +892,61 @@ export const m = {
       {
         short: "NA",
         name: "纳米比亚",
-        en: "Namibia",
+        id: "Namibia",
         tel: "264"
       },
       {
         short: "NE",
         name: "尼日尔",
-        en: "Niger",
+        id: "Niger",
         tel: "977"
       },
       {
         short: "NG",
         name: "尼日利亚",
-        en: "Nigeria",
+        id: "Nigeria",
         tel: "234"
       },
       {
         short: "NI",
         name: "尼加拉瓜",
-        en: "Nicaragua",
+        id: "Nicaragua",
         tel: "505"
       },
       {
         short: "NL",
         name: "荷兰",
-        en: "Netherlands",
+        id: "Netherlands",
         tel: "31"
       },
       {
         short: "NO",
         name: "挪威",
-        en: "Norway",
+        id: "Norway",
         tel: "47"
       },
       {
         short: "NP",
         name: "尼泊尔",
-        en: "Nepal",
+        id: "Nepal",
         tel: "977"
       },
       {
         short: "",
         name: "荷属安的列斯",
-        en: "NetheriandsAntilles",
+        id: "NetheriandsAntilles",
         tel: "599"
       },
       {
         short: "NR",
         name: "瑙鲁",
-        en: "Nauru",
+        id: "Nauru",
         tel: "674"
       },
       {
         short: "NZ",
         name: "新西兰",
-        en: "NewZealand",
+        id: "NewZealand",
         tel: "64"
       }
     ],
@@ -954,7 +954,7 @@ export const m = {
       {
         short: "OM",
         name: "阿曼",
-        en: "Oman",
+        id: "Oman",
         tel: "968"
       }
     ],
@@ -962,61 +962,61 @@ export const m = {
       {
         short: "PA",
         name: "巴拿马",
-        en: "Panama",
+        id: "Panama",
         tel: "507"
       },
       {
         short: "PE",
         name: "秘鲁",
-        en: "Peru",
+        id: "Peru",
         tel: "51"
       },
       {
         short: "PF",
         name: "法属玻利尼西亚",
-        en: "FrenchPolynesia",
+        id: "FrenchPolynesia",
         tel: "689"
       },
       {
         short: "PG",
         name: "巴布亚新几内亚",
-        en: "PapuaNewCuinea",
+        id: "PapuaNewCuinea",
         tel: "675"
       },
       {
         short: "PH",
         name: "菲律宾",
-        en: "Philippines",
+        id: "Philippines",
         tel: "63"
       },
       {
         short: "PK",
         name: "巴基斯坦",
-        en: "Pakistan",
+        id: "Pakistan",
         tel: "92"
       },
       {
         short: "PL",
         name: "波兰",
-        en: "Poland",
+        id: "Poland",
         tel: "48"
       },
       {
         short: "PR",
         name: "波多黎各",
-        en: "PuertoRico",
+        id: "PuertoRico",
         tel: "1787"
       },
       {
         short: "PT",
         name: "葡萄牙",
-        en: "Portugal",
+        id: "Portugal",
         tel: "351"
       },
       {
         short: "PY",
         name: "巴拉圭",
-        en: "Paraguay",
+        id: "Paraguay",
         tel: "595"
       }
     ],
@@ -1024,7 +1024,7 @@ export const m = {
       {
         short: "QA",
         name: "卡塔尔",
-        en: "Qatar",
+        id: "Qatar",
         tel: "974"
       }
     ],
@@ -1032,19 +1032,19 @@ export const m = {
       {
         short: "",
         name: "留尼旺",
-        en: "Reunion",
+        id: "Reunion",
         tel: "262"
       },
       {
         short: "RO",
         name: "罗马尼亚",
-        en: "Romania",
+        id: "Romania",
         tel: "40"
       },
       {
         short: "RU",
         name: "俄罗斯",
-        en: "Russia",
+        id: "Russia",
         tel: "7"
       }
     ],
@@ -1052,115 +1052,115 @@ export const m = {
       {
         short: "SA",
         name: "沙特阿拉伯",
-        en: "SaudiArabia",
+        id: "SaudiArabia",
         tel: "966"
       },
       {
         short: "SB",
         name: "所罗门群岛",
-        en: "SolomonIs",
+        id: "SolomonIs",
         tel: "677"
       },
       {
         short: "SC",
         name: "塞舌尔",
-        en: "Seychelles",
+        id: "Seychelles",
         tel: "248"
       },
       {
         short: "SD",
         name: "苏丹",
-        en: "Sudan",
+        id: "Sudan",
         tel: "249"
       },
       {
         short: "SE",
         name: "瑞典",
-        en: "Sweden",
+        id: "Sweden",
         tel: "46"
       },
       {
         short: "SG",
         name: "新加坡",
-        en: "Singapore",
+        id: "Singapore",
         tel: "65"
       },
       {
         short: "SI",
         name: "斯洛文尼亚",
-        en: "Slovenia",
+        id: "Slovenia",
         tel: "386"
       },
       {
         short: "SK",
         name: "斯洛伐克",
-        en: "Slovakia",
+        id: "Slovakia",
         tel: "421"
       },
       {
         short: "SL",
         name: "塞拉利昂",
-        en: "SierraLeone",
+        id: "SierraLeone",
         tel: "232"
       },
       {
         short: "SM",
         name: "圣马力诺",
-        en: "SanMarino",
+        id: "SanMarino",
         tel: "378"
       },
       {
         short: "",
         name: "东萨摩亚(美)",
-        en: "SamoaEastern",
+        id: "SamoaEastern",
         tel: "684"
       },
       {
         short: "",
         name: "西萨摩亚",
-        en: "SanMarino",
+        id: "SanMarino",
         tel: "685"
       },
       {
         short: "SN",
         name: "塞内加尔",
-        en: "Senegal",
+        id: "Senegal",
         tel: "221"
       },
       {
         short: "SO",
         name: "索马里",
-        en: "Somali",
+        id: "Somali",
         tel: "252"
       },
       {
         short: "SR",
         name: "苏里南",
-        en: "Suriname",
+        id: "Suriname",
         tel: "597"
       },
       {
         short: "ST",
         name: "圣多美和普林西比",
-        en: "SaoTomeandPrincipe",
+        id: "SaoTomeandPrincipe",
         tel: "239"
       },
       {
         short: "SV",
         name: "萨尔瓦多",
-        en: "EISalvador",
+        id: "EISalvador",
         tel: "503"
       },
       {
         short: "SY",
         name: "叙利亚",
-        en: "Syria",
+        id: "Syria",
         tel: "963"
       },
       {
         short: "SZ",
         name: "斯威士兰",
-        en: "Swaziland",
+        id: "Swaziland",
         tel: "268"
       }
     ],
@@ -1168,67 +1168,67 @@ export const m = {
       {
         short: "TD",
         name: "乍得",
-        en: "Chad",
+        id: "Chad",
         tel: "235"
       },
       {
         short: "TG",
         name: "多哥",
-        en: "Togo",
+        id: "Togo",
         tel: "228"
       },
       {
         short: "TH",
         name: "泰国",
-        en: "Thailand",
+        id: "Thailand",
         tel: "66"
       },
       {
         short: "TJ",
         name: "塔吉克斯坦",
-        en: "Tajikstan",
+        id: "Tajikstan",
         tel: "992"
       },
       {
         short: "TM",
         name: "土库曼斯坦",
-        en: "Turkmenistan",
+        id: "Turkmenistan",
         tel: "993"
       },
       {
         short: "TN",
         name: "突尼斯",
-        en: "Tunisia",
+        id: "Tunisia",
         tel: "216"
       },
       {
         short: "TO",
         name: "汤加",
-        en: "Tonga",
+        id: "Tonga",
         tel: "676"
       },
       {
         short: "TR",
         name: "土耳其",
-        en: "Turkey",
+        id: "Turkey",
         tel: "90"
       },
       {
         short: "TT",
         name: "特立尼达和多巴哥",
-        en: "TrinidadandTobago",
+        id: "TrinidadandTobago",
         tel: "1809"
       },
       {
         short: "TW",
         name: "台湾省",
-        en: "Taiwan",
+        id: "Taiwan",
         tel: "886"
       },
       {
         short: "TZ",
         name: "坦桑尼亚",
-        en: "Tanzania",
+        id: "Tanzania",
         tel: "255"
       }
     ],
@@ -1236,31 +1236,31 @@ export const m = {
       {
         short: "UA",
         name: "乌克兰",
-        en: "Ukraine",
+        id: "Ukraine",
         tel: "380"
       },
       {
         short: "UG",
         name: "乌干达",
-        en: "Uganda",
+        id: "Uganda",
         tel: "256"
       },
       {
         short: "US",
         name: "美国",
-        en: "UnitedStatesofAmerica",
+        id: "UnitedStatesofAmerica",
         tel: "1"
       },
       {
         short: "UY",
         name: "乌拉圭",
-        en: "Uruguay",
+        id: "Uruguay",
         tel: "598"
       },
       {
         short: "UZ",
         name: "乌兹别克斯坦",
-        en: "Uzbekistan",
+        id: "Uzbekistan",
         tel: "233"
       }
     ],
@@ -1268,19 +1268,19 @@ export const m = {
       {
         short: "VC",
         name: "圣文森特岛",
-        en: "SaintVincent",
+        id: "SaintVincent",
         tel: "1784"
       },
       {
         short: "VE",
         name: "委内瑞拉",
-        en: "Venezuela",
+        id: "Venezuela",
         tel: "58"
       },
       {
         short: "VN",
         name: "越南",
-        en: "Vietnam",
+        id: "Vietnam",
         tel: "84"
       }
     ],
@@ -1290,13 +1290,13 @@ export const m = {
       {
         short: "YE",
         name: "也门",
-        en: "Yemen",
+        id: "Yemen",
         tel: "967"
       },
       {
         short: "YU",
         name: "南斯拉夫",
-        en: "Yugoslavia",
+        id: "Yugoslavia",
         tel: "381"
       }
     ],
@@ -1305,25 +1305,25 @@ export const m = {
       {
         short: "ZA",
         name: "南非",
-        en: "SouthAfrica",
+        id: "SouthAfrica",
         tel: "27"
       },
       {
         short: "ZM",
         name: "赞比亚",
-        en: "Zambia",
+        id: "Zambia",
         tel: "260"
       },
       {
         short: "ZR",
         name: "扎伊尔",
-        en: "Zaire",
+        id: "Zaire",
         tel: "243"
       },
       {
         short: "ZW",
         name: "津巴布韦",
-        en: "Zimbabwe",
+        id: "Zimbabwe",
         tel: "263"
       }
     ]

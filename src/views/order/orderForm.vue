@@ -232,7 +232,7 @@ export default {
     bookHouses() {
       interfaces.bookHouse().then(res => {
         this.columns = res;
-        console.log(this.columns);
+        console.log(this.columns,'项目列表');
       });
     },
 

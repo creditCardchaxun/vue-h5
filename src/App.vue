@@ -2,10 +2,10 @@
 <!-- <div><img src="../../" alt=""></div> -->
   <div id="app" :style='style'>
 
-    <keep-alive>
+    <!-- <keep-alive>
 		    <router-view v-if="$route.meta.keepalive" v-wechat-title='$route.meta.title'></router-view>
-		</keep-alive>
-   		<router-view v-if="!$route.meta.keepalive" v-wechat-title='$route.meta.title'></router-view>
+		</keep-alive> v-if="!$route.meta.keepalive"-->
+   		<router-view  v-wechat-title='$route.meta.title'></router-view>
 
        <!-- 评价弹框 -->
 

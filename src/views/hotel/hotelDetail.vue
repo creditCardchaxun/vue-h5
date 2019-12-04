@@ -97,7 +97,8 @@
 
                 <div class="map" id='maps' ref='tab1'>
                  <div class="map01">
-                   <img src="../../assets/images/map01.jpg" alt="">
+                   <!-- <img src="../../assets/images/map01.jpg" alt=""> -->
+                     <maps></maps>
                    <h3>周围及交通服务</h3>
                     <p><b>周围商圈:</b>浦东新区xxx大道</p>
                     <p><b>附近机场:</b>浦东机场 虹桥机场</p>
@@ -158,12 +159,12 @@ import Vue from 'vue';
 import { Swipe, SwipeItem,Icon,Tab, Tabs } from 'vant';
 
 Vue.use(Swipe).use(SwipeItem).use(Icon).use(Tab).use(Tabs);
+import maps from "@/components/map";
 import aheaders from "@/components/Header";
 import submitBtn from "@/components/submitBtn";
 import afooter from "@/components/Footer";
 import projectImg from "@/components/projectImg";
 import interfaces from "@/utils/api.js";
-
 
 
 export default{
@@ -213,13 +214,14 @@ export default{
          vm.projectdetail=res
          vm.detailId=res.id
           var div = vm.$refs.tab1
-          console.log(div)
-          if (div) {
-            setTimeout(function () {
+           if(from.name=='myOrder'){
+             if (div) {
+              setTimeout(function () {
               console.log($(div).offset().top);
               // $('html,body').scrollTop($(div).offset().top - 43);
               $('html, body').animate({scrollTop: $(div).offset().top - 43}, 500)
             }, 500);
+           }
            }
         })
     })
@@ -320,7 +322,7 @@ export default{
  
  
  
- mounted:function(){
+ mounted(){
       //  let id=this.$route.params.status
         // var hash = window.location.hash;
         // console.log(hash)
@@ -371,7 +373,8 @@ export default{
    aheaders,
    afooter,
    projectImg,
-   submitBtn 
+   submitBtn,
+   maps 
   }
 }
 
