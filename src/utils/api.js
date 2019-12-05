@@ -253,7 +253,7 @@ const interfaces = {
 	  bookSave2(data){
 		return axios.post( domain + 'index.php?m=api&c=booking&a=add',data)
 		.then(function (response) {
-		  return response.data.data
+		  return response.data
 		 })
 		.catch(function (error) {
 		return error

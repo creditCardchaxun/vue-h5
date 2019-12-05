@@ -1,5 +1,5 @@
 <template>
-  <div class="myReserve">
+  <div class="myReserve" :style='getHeight'>
     <aheaders status="3" @toback='toreplace'></aheaders>
     <!-- <van-cell is-link @click="showPopup">项目</van-cell> -->
     <van-cell-group>
@@ -151,7 +151,10 @@ export default {
       ids: "",
       intention: [],
       show_right: false,
-      checked: false
+      checked: false,
+       getHeight:{
+             minHeight:''
+            }
     };
   },
 
@@ -180,7 +183,7 @@ export default {
         this.phone = mobile;
       } else {
         //  this.phone=''
-        this.phone = localStorage.getItem("mobile");
+        this.phone = JSON.parse(localStorage.getItem('userinfo')).mobile
       }
       if (this.ids) {
         this.bookTag(this.ids);
@@ -189,6 +192,7 @@ export default {
   },
 
   created() {
+    this.getHeight.minHeight=window.innerHeight+'px'
     this.ids = this.$route.params.id;
     this.value = this.$route.params.name;
     let mobile = this.$route.params.mobile;
@@ -197,7 +201,7 @@ export default {
       this.phone = mobile;
     } else {
       //  this.phone=''
-      this.phone = localStorage.getItem("mobile");
+      this.phone = JSON.parse(localStorage.getItem('userinfo')).mobile
     }
     if (this.ids) {
       this.bookTag(this.ids);
@@ -232,7 +236,7 @@ export default {
     bookHouses() {
       interfaces.bookHouse().then(res => {
         this.columns = res;
-        console.log(this.columns);
+        console.log(this.columns,'项目列表');
       });
     },
 

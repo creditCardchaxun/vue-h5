@@ -14,10 +14,10 @@
                  <h3 style='font-weight:bold;'>{{contact.title}}</h3>  
                   <!-- <p v-html='contact.content' style='font-size:0.35rem;line-height:0.75rem;'>{{contact.content}}</p> -->
             <ul>
-                <li class='s11'><van-icon name="phone-o" />{{ms2[1]}}
+                <li class='s11'><van-icon name="phone-o" />{{contact.tel}}
                 <!-- <em style='font-size:0.28rem;color:#000;'>(8:00-22:00)</em> -->
                 </li>
-                <li class='s12'><van-icon name="location-o"/>{{ms5}}</li>
+                <li class='s12'><van-icon name="location-o"/>{{contact.address}}</li>
                 <li class='s13'><van-icon name="envelop-o"/>{{contact.keywords}} <em style='color:#bfbfbf;font-size:0.28rem;padding-left:0.1rem;'  @click="copy" class='getcopy' :data-clipboard-text="contact.keywords">{{$t('m.feedback14')}}</em></li>
             </ul>
           </div>
@@ -92,11 +92,11 @@ export default {
               if(res!=undefined){
               vm.contact=res
               let main=res.content
-              let ms=main.split('<br/></p>')
-              vm.ms2=ms[0].split('<p>')
-              let ms3=ms[1].split('<p>')
-              let ms4=ms3[1].split('</p>')
-              vm.ms5=ms4[0]
+              // let ms=main.split('<br/></p>')
+              // vm.ms2=ms[0].split('<p>')
+              // let ms3=ms[1].split('<p>')
+              // let ms4=ms3[1].split('</p>')
+              // vm.ms5=ms4[0]
           }
          })
         })
@@ -143,11 +143,11 @@ export default {
           if(res!=undefined){
               this.contact=res
               let main=res.content
-              let ms=main.split('<br/></p>')
-              this.ms2=ms[0].split('<p>')
-              let ms3=ms[1].split('<p>')
-              let ms4=ms3[1].split('</p>')
-              this.ms5=ms4[0]
+              // let ms=main.split('<br/></p>')
+              // this.ms2=ms[0].split('<p>')
+              // let ms3=ms[1].split('<p>')
+              // let ms4=ms3[1].split('</p>')
+              // this.ms5=ms4[0]
           }
        })
         },

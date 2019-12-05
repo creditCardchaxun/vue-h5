@@ -1,5 +1,5 @@
 <template>
- <div class="myReserve">
+ <div class="myReserve" :style='getHeight'>
  <aheaders status='3' @toback='toreplace'></aheaders>
  <!-- <van-cell is-link @click="showPopup">项目</van-cell> -->
     <van-cell-group>
@@ -70,7 +70,7 @@
                 @confirm="confirmPicker"
                 @change="onChanges"
                 /> -->
-                <date @startTime='togetTime'></date>
+             <date @startTime='togetTime'></date>
         </van-popup>
      
        <button class='btns-submit' type='submit' :disabled="isClick" @click='submitInfor'>{{$t('m.s4')}}</button>
@@ -117,16 +117,20 @@ export default {
              names:'',
              disabled:false,
              id:'',
-             mobileLocal:''
+             mobileLocal:'',
+         getHeight:{
+              minHeight:''
+         }
         }
     },
     created(){
-      let mobile=localStorage.getItem('mobile')
+      let mobile=JSON.parse(localStorage.getItem('userinfo')).mobile
       this.phone=mobile;
       let id=this.$route.params.id
       let name=this.$route.params.name
       this.value=name
       this.id=id
+      this.getHeight.minHeight=window.innerHeight+'px'
       // this.getListhouses()
     },
       beforeRouteEnter (to, from, next) {
@@ -245,10 +249,17 @@ export default {
             let data={projectid,name,user_id,in_time,out_time,mobile,sex}
                  console.log(data)
              interfaces.bookSave2(data).then((res)=>{
-                  //  console.log(res)
-                  // if(res.code=0){
+                  if(res.code==0){
                     this.$toast('预定信息成功')
-                  // }
+                   let xiecheng_id=res.xiecheng_id
+                     this.value2=''
+                     this.value3='' 
+                     this.names =''  
+                    setTimeout(()=>{
+                    window.location.href('https://m.ctrip.com/webapp/hotel/hoteldetail/'+xiecheng_id+'.html?atime='+this.value2 +'&ctm_ref=ch5_hp_bs_lst')
+                    },1000)
+                     
+                  }
               })  
               
             },

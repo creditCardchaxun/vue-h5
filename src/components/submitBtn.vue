@@ -1,14 +1,16 @@
 <template>
       <!-- 预约弹框 v-show='hideModel'-->
         <div class="model-diag" >
-           <selectcountry placeholder='请选择国家区号' v-if='showregion'></selectcountry>
+           <selectcountry  v-if='showregion' @select='selectedCountry'></selectcountry>
             <div class="model_main">
                  <div class="mains" :class="{'is-invalid':errors2}">
-                   <div class="left">{{$t('m.s1')}}</div>
+                   <div class="left">
+                     <!-- {{$t('m.s1')}} -->
+                   <input  class="numCode" placeholder='手机号/区号' style='width:2rem;height:1rem;text-align:center;'  @click="toshowRegion" v-model="numCode" />
+                   </div>
                    
                    <div class="right">
                      <input type="number" 
-                       @click="toshowRegion"
                         v-model="phone"
                         :placeholder="$t('m.s5')"
                         :disabled='iswrite'
@@ -70,7 +72,9 @@ export default {
          iswrite:false,
          timeing:false,
           region:'',
-          showregion:false
+          showregion:false,
+          numCode:'',
+          codeId:''
       }
    
   },
@@ -89,19 +93,19 @@ export default {
       }
   },
   created(){
-   
-    this.mobile=localStorage.getItem('mobile')
+    this.mobile=JSON.parse(localStorage.getItem('userinfo')).mobile
   },
   methods:{
+    selectedCountry(res){
+        this.showregion=false
+         this.numCode='+'+res.tel 
+         this.codeId=res.id
+     },
      toshowRegion(){
-       console.log(123123)
         this.showregion=true
      },
       hideClose(){
-        // this.leaveOut();
         this.$emit('tohideModel')
-        //  this.mobile=localStorage.getItem('mobile')
-        //  this.$router.push({name:'orderForm',params:{mobile: this.mobile}});
       },
       //销毁
       leaveOut(){
@@ -118,15 +122,15 @@ export default {
       },
       // 手机验证
           handleLogin() {
-      //  if (this.validatePhone()) {
-      //      this.validateBtn();
-
       // 取消错误提醒
         this.errors = {};
       // 发送请求
           let mobile=this.phone
+          let numCode=this.numCode
+          let codeid=this.codeId
           let code=this.sms
-          let data={mobile,code}
+          let data={mobile,code,numCode,codeid}
+          console.log(data)
           interfaces.postMessage(data).then((res)=>{
               if(res.data.code!=0){
                   this.$toast(res.data.data)
@@ -134,15 +138,18 @@ export default {
              
                 //  this.$toast('提交成功')
                  this.show_right=true
-                 localStorage.setItem("mobile",this.phone);
-                  // this.$emit('getPhone',this.phone)
+                 this.mobile=this.phone
+                //  localStorage.setItem("userinfo.mobile",this.phone);
+                // this.$emit('getPhone',this.phone)
                   this.$emit("update1", this.phone)
                   setTimeout(()=>{
                       if(this.mobile){
-                        this.show_right=false
-                        this.hideModel=false
+                         this.show_right=false
+                         this.hideModel=false
                           this.phone=''
                           this.sms=''
+                          this.numCode=''
+                          this.codeId=''
                        }else{
                          this.hideModel=false
                          if(this.status==1){
@@ -220,7 +227,7 @@ export default {
 </script>
 
 <style scoped>
-.model-diag{width:100%;height:100%;background:rgba(0,0,0,0.5);position:fixed;top:0;left:0;z-index: 99;}
+.model-diag{width:100%;height:100%;background:rgba(0,0,0,0.5);position:fixed;top:0;left:0;z-index: 99;overflow: scroll;}
 .model-diag .model_main{width:90%;height:auto;margin:0 auto;top:35%;left:5%;position:absolute;border-radius: 10px;background-color: #fff;padding-bottom:0.53rem;}
 .van-cell-group {
     background-color: #fff;

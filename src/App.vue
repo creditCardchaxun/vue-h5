@@ -2,10 +2,10 @@
 <!-- <div><img src="../../" alt=""></div> -->
   <div id="app" :style='style'>
 
-    <keep-alive>
+    <!-- <keep-alive>
 		    <router-view v-if="$route.meta.keepalive" v-wechat-title='$route.meta.title'></router-view>
-		</keep-alive>
-   		<router-view v-if="!$route.meta.keepalive" v-wechat-title='$route.meta.title'></router-view>
+		</keep-alive> v-if="!$route.meta.keepalive"-->
+   		<router-view  v-wechat-title='$route.meta.title'></router-view>
 
        <!-- 评价弹框 -->
 
@@ -26,7 +26,6 @@
       </div>
     </mt-popup> -->
 
-      <!-- <mt-popup v-model="showModel" name='pop'> -->
        <div class="goodStar" @touchmove="touchForbidden" v-show="showModel" v-if="appraiseModel!=null">
          <div class="goodAppraise">
            <div class="app_01">
@@ -42,7 +41,6 @@
            <button @click="toAppraise(appraiseModel.id)">立即评价</button>
            <img src="@/assets/images/remove.png" alt="" class='img_remove'  @click="hideClose(appraiseModel.id)">
        </div>
-    <!-- </mt-popup> -->
     </div> 
   </div>
 </template>
@@ -66,11 +64,11 @@ export default {
 
   created() {
 
-    // apitest.test()
+    // apitest.te st() 
     // 通过url中是否含有shareId来判断是否是分享出去的详情页，再由路由推向对应详情页
 
     // this.judgeShare()
-    // 评价弹框
+    // 评价弹框123
   },
   computed:{
       style(){

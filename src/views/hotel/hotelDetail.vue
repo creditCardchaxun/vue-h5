@@ -95,9 +95,10 @@
                </div>
              </div>
 
-                <div class="map" id='maps'>
+                <div class="map" id='maps' ref='tab1'>
                  <div class="map01">
-                   <img src="../../assets/images/map01.jpg" alt="">
+                   <!-- <img src="../../assets/images/map01.jpg" alt=""> -->
+                     <maps></maps>
                    <h3>周围及交通服务</h3>
                     <p><b>周围商圈:</b>浦东新区xxx大道</p>
                     <p><b>附近机场:</b>浦东机场 虹桥机场</p>
@@ -158,12 +159,12 @@ import Vue from 'vue';
 import { Swipe, SwipeItem,Icon,Tab, Tabs } from 'vant';
 
 Vue.use(Swipe).use(SwipeItem).use(Icon).use(Tab).use(Tabs);
+import maps from "@/components/map";
 import aheaders from "@/components/Header";
 import submitBtn from "@/components/submitBtn";
 import afooter from "@/components/Footer";
 import projectImg from "@/components/projectImg";
 import interfaces from "@/utils/api.js";
-
 
 
 export default{
@@ -198,26 +199,49 @@ export default{
 
  created(){
     // this.mobileLocal=localStorage.getItem('mobile')
-    this.mobileLocal=localStorage.getItem('mobile')
+    this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile
     let id=this.$route.params.id
     // this.getdetailhouses(id)
  },
     beforeRouteEnter (to, from, next) {
       let id=to.params.id
+      let status=to.params.status
+      console.log(status)
+    
       interfaces.getdetailhouse(id).then(function (res) {
       next(vm=>
          {
          vm.projectdetail=res
          vm.detailId=res.id
+          var div = vm.$refs.tab1
+           if(from.name=='myOrder'){
+             if (div) {
+              setTimeout(function () {
+              console.log($(div).offset().top);
+              // $('html,body').scrollTop($(div).offset().top - 43);
+              $('html, body').animate({scrollTop: $(div).offset().top - 43}, 500)
+            }, 500);
+           }
+           }
         })
     })
+  },
+  watch:{
+    scroll:function(newVal,oldVal){
+      if(newVal > oldVal){
+        this.local = false
+      }else{
+        this.local = true
+      }
+    }
   },
   methods: {
     toAppraise(){
       this.$router.push({name:'appraise',params:{id:this.idss}})
      },
     btn_pos:function(e){
-     this.local = false
+      // console.log(this.scroll)
+    //  this.local = false
       this.setlocaltrue()
     },
     setlocaltrue:_.debounce(function(){
@@ -286,29 +310,68 @@ export default{
 
     },
 
-     mounted:function(){
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ mounted(){
+      //  let id=this.$route.params.status
+        // var hash = window.location.hash;
+        // console.log(hash)
+        // var index = hash.lastIndexOf("#");
+        // if (index != -1) {
+        //   var id = hash.substring(index + 1, hash.length + 1);
+        //   console.log(id)
+        //   var div = document.getElementById(id);
+        //   console.log(div)
+        //   if (div) {
+        //     setTimeout(function () {
+        //       console.log($(div).offset().top);
+        //       // $('html,body').scrollTop($(div).offset().top - 43);
+        //       $('html, body').animate({scrollTop: $(div).offset().top - 43}, 500)
+        //     }, 500);
+        //    }
+        //   }
+
        window.addEventListener('scroll', this.handleScroll);
        window.addEventListener('scroll',this.btn_pos);
-          let height= window.getComputedStyle(this.$refs.heightShow).height
-          if(height>this.defaultheight+'px'){
-              this.showHeight=true
-            }
-            $eventbus.$on("changeLang", (res)=>{
-                // this.mobileLocal=localStorage.getItem('mobile')
-                // let id=this.$route.params.id
-                  this.getdetailhouses(id)
-                  // let height= window.getComputedStyle(this.$refs.heightShow).height
-                  // if(height>defaultheight+'px'){
-                  //     this.showHeight=true
-                  //   }
-             })
+        let height= window.getComputedStyle(this.$refs.heightShow).height
+        if(height>this.defaultheight+'px'){
+            this.showHeight=true
+          }
+          $eventbus.$on("changeLang", (res)=>{
+              // this.mobileLocal=localStorage.getItem('mobile')
+              // let id=this.$route.params.id
+                this.getdetailhouses(id)
+                // let height= window.getComputedStyle(this.$refs.heightShow).height
+                // if(height>defaultheight+'px'){
+                //     this.showHeight=true
+                //   }
+            })
        },
         	//第四步：当再次进入（前进或者后退）时，只触发activated（注：只有在keep-alive加载时调用）
    	activated(){
-	    if(this.scroll > 0){
-	        // window.scrollTo(0, this.scroll);
-	        window.addEventListener('scroll', this.handleScroll);
-	     }
+	    // if(this.scroll > 0){
+	    //     // window.scrollTo(0, this.scroll);
+	    //     window.addEventListener('scroll', this.handleScroll);
+	    //  }
    	},
    	//第五步：deactivated 页面退出时关闭事件 防止其他页面出现问题
   	deactivated(){
@@ -319,7 +382,8 @@ export default{
    aheaders,
    afooter,
    projectImg,
-   submitBtn 
+   submitBtn,
+   maps 
   }
 }
 

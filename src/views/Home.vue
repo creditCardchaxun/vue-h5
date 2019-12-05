@@ -389,9 +389,9 @@ export default {
   },
   created() {
     //  this.getHomedata()
-    this.getallother(3362)
-    this.getAllmap()
-    this.mobileLocal = localStorage.getItem('mobile')
+       this.getallother(3362) 
+       this.getAllmap()
+     this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile
     //  this.couponSelected = this.allcityName[0].name;
   },
   mounted: function () {

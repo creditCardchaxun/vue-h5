@@ -198,7 +198,7 @@ export default {
        },
      },
      created(){
-        this.mobileLocal=localStorage.getItem('mobile')
+        this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile
         let data={}
         this.getListhouses(data)
         this.getcitys()
@@ -221,7 +221,7 @@ export default {
      mounted:function(){
     window.addEventListener('scroll', this.handleScroll);
          $eventbus.$on("changeLang", (res)=>{
-                this.mobileLocal=localStorage.getItem('mobile')
+                this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile
                 let data={}
                 this.getListhouses(data)
                 this.getcitys()

@@ -1,5 +1,5 @@
 <template>
-  <div class="myorder">
+  <div class="myorder" :style='getHeight'>
      <!-- <img src='../assets/images/about.png'/> -->
      <aheaders status='2'></aheaders>
      <div class="order-list" :style="getHeight" >
@@ -11,7 +11,11 @@
                  <div class="right">
                       <h3><router-link :to="{name:'orderDetail', params:{id:item.id}}">{{item.project_name}}</router-link> </h3>
                       <p>{{$t('m.watch3')}}{{item.book_time}}</p>
-                      <em @click='toMaps'><span>{{$t('m.watch4')}}</span></em>
+                      <em @click.stop.prevent="toMaps(item.projectid)"> 
+                        <!-- <router-link :to="{name:'hotelDetail?#maps', params:{id:projectid}}"> -->
+                        <span>{{$t('m.watch4')}}</span>
+                        <!-- </router-link>  -->
+                        </em>
                  </div>
              </div>
            </div>
@@ -31,7 +35,7 @@
                       <h3>{{item.project_name}}</h3>
                       <p>{{$t('m.watch3')}}{{item.book_time}}</p>
                       <div class="morder-t">
-                       <em><span style='padding-bottom:2px;'>{{$t('m.watch4')}}</span></em>
+                       <em @click.stop.prevent='toMaps(item.projectid)'><span style='padding-bottom:2px;'>{{$t('m.watch4')}}</span></em>
                       <button v-show="item.is_pj==0"><router-link :to="{name:'appraise', params:{id:item.id}}">{{$t('m.watch6')}}</router-link> </button>
                       </div>
                  </div>
@@ -67,9 +71,8 @@ import interfaces from "@/utils/api.js";
                  getHeight:{
                     minHeight:''
                   }   
-    
-       }
-      },
+             }
+         },
           mounted(){
         $eventbus.$on("changeLang", (res)=>{
            let id=JSON.parse(localStorage.getItem('userinfo')).id 
@@ -82,6 +85,9 @@ import interfaces from "@/utils/api.js";
             this.getHeight.minHeight=window.innerHeight -160 +'px'
       },
        methods:{
+              toMaps(id){
+                this.$router.push({name:'hotelDetail',params:{id:id,status:'map'}})
+              },
                booklists(){
                interfaces.bookList().then((res)=>{
 

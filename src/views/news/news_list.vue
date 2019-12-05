@@ -120,8 +120,8 @@ export default {
 .news_main{width:90%;height:auto;margin:0 auto;padding-top:0.32rem;}
 .news_main .news_01{width:100%;height:auto;border-bottom:1px solid #e5e5e5;}
 .news_main .news_01 img{width:100%;height:auto;}
-.news_main .news_01 h3{font-size:0.44rem;color:#000;margin-top:0.64rem;line-height:0.44rem;overflow: hidden;}
-.news_main .news_01 p{font-size:0.3rem;color:#1b1b1b;line-height:0.5rem;height:1.44rem;overflow: hidden;margin-top:0.43rem; }
+.news_main .news_01 h3{font-size:0.44rem;color:#000;margin-top:0.64rem;line-height:0.44rem;overflow: hidden;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;}
+.news_main .news_01 p{font-size:0.3rem;color:#1b1b1b;line-height:0.5rem;height:1.44rem;overflow: hidden;margin-top:0.43rem; display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;}
 .news_main .news_01 .date{font-size:0.28rem;color:#959595;margin:0.35rem 0;}
 
 .news_02{width:100%;height:auto;border-bottom:1px solid #e5e5e5;display:flex;align-items: center;justify-content: center;padding:0.35rem 0;}
@@ -130,8 +130,8 @@ export default {
 .news_main .news_02 .left img{width:3.6rem;height:2.56rem;}
 .news_main .news_02 .right{width:6.02rem;height:2.56rem;display:flex;align-items: left;flex-direction: column;padding-left: 0.43rem;overflow: hidden;}
 .news_main .news_02 .right h3 a{color:#000;}
-.news_main .news_02 h3{font-size:0.4rem;color:#000;height: 1.2rem;overflow: hidden;line-height:0.56rem;width:6.02rem;overflow: hidden;}
-.news_main .news_02 p{font-size:0.28rem;color:#959595;height:1rem;overflow: hidden;line-height:0.5rem; }
+.news_main .news_02 h3{font-size:0.4rem;color:#000;height: 1.2rem;overflow: hidden;line-height:0.56rem;width:6.02rem;overflow: hidden;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;}
+.news_main .news_02 p{font-size:0.28rem;color:#959595;height:1rem;overflow: hidden;line-height:0.5rem;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2; }
 .news_main .news_02 p a{color:#959595;}
 .news_main .news_02 .date{font-size:0.28rem;color:#959595;margin:0.2rem 0 0;}
 

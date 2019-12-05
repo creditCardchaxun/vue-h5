@@ -68,7 +68,7 @@ export default{
 
  handleScrolls() {
        let scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
-         scrolltop >120? (this.showbg = true) : (this.showbg = false);
+         scrolltop >55? (this.showbg = true) : (this.showbg = false);
        },
 changeLangEvent() {
       if(this.lang=='zh-CN'){

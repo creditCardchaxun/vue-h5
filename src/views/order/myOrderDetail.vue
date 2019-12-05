@@ -1,5 +1,5 @@
 <template>
- <div class="order-detail">
+ <div class="order-detail" :style='getHeight'>
 <aheaders status='3' @toback='toreplace'></aheaders>
         <!-- 项目信息 -->
     <div class="order-detail01"> 
@@ -21,7 +21,8 @@
        <p><span>{{$t('m.feedback8')}}</span>  <em>{{bookarr.name}}</em>  </p>
        <p><span>{{$t('m.feedback9')}}</span>  <em>{{bookarr.mobile}}</em> </p>
        <p><span>{{$t('m.feedback10')}}</span> <em>{{bookarr.book_time}}</em> </p>
-       <p><span>{{$t('m.feedback11')}}</span> <em>{{bookarr.intention}}</em> </p>
+       <p v-if='!feedbackarr.user_content'><span>{{$t('m.feedback11')}}</span> <em>{{bookarr.intention}}</em> </p>
+       <p v-if='feedbackarr.user_content'><span>{{$t('m.feedback20')}}</span> <em>{{feedbackarr.user_content}}</em> </p>
     </div>
 
     <div class="yijiedan" v-show="showSale">
@@ -65,11 +66,14 @@ export default {
             bookarr:{},
             feedbackarr:{},
             sales:{},
-            showSale:false
+            showSale:false,
+            getHeight:{
+             minHeight:''
+            }
         }
     },
     created(){
- 
+        this.getHeight.minHeight=window.innerHeight+'px'
          let id=this.$route.params.id
          this.bookdetails(id)
       },
