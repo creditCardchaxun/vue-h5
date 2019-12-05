@@ -127,10 +127,8 @@ export default {
       interfaces.jieshou(data).then(res=>{
       if(res==true){
           this.show = false;
-      }
-        
+       }
       })
-     
       }
     },
     showRight() {
@@ -141,9 +139,8 @@ export default {
           this.show_right = true;
         setTimeout(()=>{
          this.show_right = false;
+         this.$router.replace({name:'booking',params:{active:1,num:2}})
         },1000)
-         
-        
       })
       
     },
@@ -158,6 +155,7 @@ export default {
 .bookingdetail {
   width: 100%;
   height: auto;
+  min-height:9rem;
   margin: 0 auto;
 }
 

@@ -9,7 +9,6 @@
             </div>
           </div>
         <projectImg :shows='showImgAll' :idss='detailId' @tohideList='tohideList'></projectImg>
-         
         <van-swipe @change="onChange">
           <template v-if='projectdetail.pic'>
         <van-swipe-item v-for='(item,index) in projectdetail.pic' :key='index'>
@@ -157,7 +156,6 @@
 <script>
 import Vue from 'vue';
 import { Swipe, SwipeItem,Icon,Tab, Tabs } from 'vant';
-
 Vue.use(Swipe).use(SwipeItem).use(Icon).use(Tab).use(Tabs);
 import maps from "@/components/map";
 import aheaders from "@/components/Header";
@@ -165,7 +163,6 @@ import submitBtn from "@/components/submitBtn";
 import afooter from "@/components/Footer";
 import projectImg from "@/components/projectImg";
 import interfaces from "@/utils/api.js";
-
 
 export default{
   name:'hotelDetail',
@@ -241,7 +238,7 @@ export default{
      },
     btn_pos:function(e){
       // console.log(this.scroll)
-    //  this.local = false
+     //  this.local = false
       this.setlocaltrue()
     },
     setlocaltrue:_.debounce(function(){
@@ -310,26 +307,6 @@ export default{
 
     },
 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
  
  mounted(){
       //  let id=this.$route.params.status

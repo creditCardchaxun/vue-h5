@@ -5,6 +5,12 @@
         </option>
     </select>-->
     <!-- {{}} -->
+  <van-popup
+    v-model="show"
+    closeable
+    position="bottom"
+    :style="{ height: '20%' }"
+    >
     <van-index-bar @select="changeIndex" :index-list="indexList">
       <van-index-anchor index="A"/>
       <van-cell
@@ -189,13 +195,14 @@
         :title="item.name"
       >{{item.tel}}</van-cell>
     </van-index-bar>
+    </van-popup>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
-import { IndexBar, IndexAnchor } from "vant";
-
+import { IndexBar, IndexAnchor,Popup } from "vant";
+Vue.use(Popup);
 Vue.use(IndexBar).use(IndexAnchor);
 export default {
   name: "select-country",

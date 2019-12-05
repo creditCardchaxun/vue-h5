@@ -204,7 +204,7 @@ export default {
 </script>
 
 <style>
-.contact{width:100%;height:auto;}
+.contact{width:100%;height:auto;min-height:9rem;}
 .contact .van-tabs .van-tab {
     flex: none;
     width: 50%;

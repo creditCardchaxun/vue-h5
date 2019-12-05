@@ -108,7 +108,7 @@ export default {
 
    methods:{
    tohideModel(){
-     this.hideModel=false
+     this.hideModel=true
    },
    toshowModel(){
     //  let mobile=localStorage.getItem('mobile')
@@ -123,10 +123,9 @@ export default {
    },
    callPhone(){
       window.location.href = 'tel://400 700 6608'
-   },
-  
+    },
    getShowModel(){
-     this.hideModel=true
+     this.hideModel=false
    },
     toback(){
        this.$router.push({path:'/'})

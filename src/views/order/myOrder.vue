@@ -3,9 +3,9 @@
      <!-- <img src='../assets/images/about.png'/> -->
      <aheaders status='2'></aheaders>
      <div class="order-list" :style="getHeight" >
-      <div class="myorder-list">
+        <div class="myorder-list" v-if="orderList.length>0">
              <h2>{{$t('m.watch')}}</h2>
-             <div class="total" v-if="orderList!=''">
+             <div class="total">
              <div class="orderlist" v-for="(item,index) in orderList"  :key='index' @click='todetailOrder(item.id)'>
                  <div class="left"><router-link :to="{name:'orderDetail', params:{id:item.id}}"><img :src="item.onepic" alt=""></router-link></div>
                  <div class="right">
@@ -17,16 +17,15 @@
                         <!-- </router-link>  -->
                         </em>
                  </div>
-             </div>
-           </div>
-             <div class="s1" v-else>{{$t('m.watch5')}}</div>
-          </div> 
+              </div>
+            </div>
+             <!-- <div class="s1" v-else>{{$t('m.watch5')}}</div> -->
+        </div> 
 
-          <div class="myorder-list2" >
+          <div class="myorder-list2" v-if="orderList2.length>0">
            <h2>{{$t('m.watch2')}}</h2>
-              <div class="total" v-if="orderList2.length>0">
+              <div class="total">
               <div class="orderlist" v-for="(item,index) in orderList2"  :key='index' @click='todetailOrder2(item.id)'>
-                   <!-- <router-link :to="{path:'/orderDetail'}" > -->
                    <router-link :to="{name:'orderDetail',params:{id:item.id}}" >
                  <div class="left"><img :src="item.onepic"  alt=""></div>
                    </router-link>
@@ -42,11 +41,14 @@
                  </router-link>
                </div>
                 </div>
-                <div class="s1" v-else>{{$t('m.watch5')}}</div>
+                <!-- <div class="s1" v-else>{{$t('m.watch5')}}</div> -->
                 
              </div>
 
-
+          <div class="s1" v-if='orderList.length==0&&orderList2.length==0'>
+            {{$t('m.watch5')}} 
+           <button>点击去预约</button>
+          </div>
 
          </div>
           <!-- </div> -->
@@ -119,7 +121,21 @@ import interfaces from "@/utils/api.js";
 .myorder-list2{width:9.69rem;height:auto;margin:0 auto;padding-top:0.9rem;}
 .myorder-list h2{font-size:0.44rem;color:#000;font-weight: bold;}
 
-.myorder-list .s1{font-size:0.35rem;color:#999;text-align: center;}
+
+.order-list .s1{font-size:0.35rem;color:#999;text-align: center;margin-top:0.8rem}
+.order-list .s1 button{
+    width: 5rem;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    color: #fff;
+    background-color: #5975a9;
+    text-align: center;
+    display: block;
+    margin: 54px auto;
+    padding: 0;
+    border: none;
+    border-radius: 3px;
+}
 .myorder-list2 .s1{font-size:0.35rem;color:#999;text-align: center;}
 .myorder-list2 h2{font-size:0.44rem;color:#000;font-weight: bold;}
  .orderlist{width:100%;height:auto;display: flex;align-items: left;padding:0.52rem 0;border-bottom:1px solid #f1f1f1;}
