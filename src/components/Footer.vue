@@ -98,7 +98,7 @@ export default{
 .foot-nav .foot{width: 9.63rem;;height:auto;color:#fff;padding:0.75rem 0 0.85rem;margin:0 auto;font-size: 0.4rem;} 
 .foot-nav .foot a{color:#fff;font-size:0.34rem;padding:0 0.35rem;}
 .foot_01{width:auto;height:auto;padding-bottom:0.88rem;margin:0 1.05rem;}
-.foot_01 ul {display: flex;align-items: left;flex-direction: column;padding-left: 0.3rem;}
+.foot_01 ul {display: flex;align-items: left;flex-direction: column;}
 .foot_01 ul li{font-size:0.28rem;color:#fff;padding:0.15rem 0 0.15rem 0rem;}
 .foot_01 ul li img{width:0.28rem;height:0.28rem; margin-right: 0.48rem;}
 .foot_01 ul li span{font-size:0.30rem;color:rgba(255,255,255,0.6);}

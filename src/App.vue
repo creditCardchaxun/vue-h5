@@ -26,7 +26,6 @@
       </div>
     </mt-popup> -->
 
-      <!-- <mt-popup v-model="showModel" name='pop'> -->
        <div class="goodStar" @touchmove="touchForbidden" v-show="showModel" v-if="appraiseModel!=null">
          <div class="goodAppraise">
            <div class="app_01">
@@ -42,7 +41,6 @@
            <button @click="toAppraise(appraiseModel.id)">立即评价</button>
            <img src="@/assets/images/remove.png" alt="" class='img_remove'  @click="hideClose(appraiseModel.id)">
        </div>
-    <!-- </mt-popup> -->
     </div> 
   </div>
 </template>

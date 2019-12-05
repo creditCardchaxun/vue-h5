@@ -1,5 +1,5 @@
 <template>
- <div class="order-detail">
+ <div class="order-detail" :style='getHeight'>
 <aheaders status='3' @toback='toreplace'></aheaders>
         <!-- 项目信息 -->
     <div class="order-detail01"> 
@@ -66,11 +66,14 @@ export default {
             bookarr:{},
             feedbackarr:{},
             sales:{},
-            showSale:false
+            showSale:false,
+            getHeight:{
+             minHeight:''
+            }
         }
     },
     created(){
- 
+        this.getHeight.minHeight=window.innerHeight+'px'
          let id=this.$route.params.id
          this.bookdetails(id)
       },

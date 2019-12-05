@@ -1,5 +1,5 @@
 <template>
- <div class="myReserve">
+ <div class="myReserve" :style='getHeight'>
  <aheaders status='3' @toback='toreplace'></aheaders>
  <!-- <van-cell is-link @click="showPopup">项目</van-cell> -->
     <van-cell-group>
@@ -117,16 +117,20 @@ export default {
              names:'',
              disabled:false,
              id:'',
-             mobileLocal:''
+             mobileLocal:'',
+         getHeight:{
+              minHeight:''
+         }
         }
     },
     created(){
-      let mobile=localStorage.getItem('mobile')
+      let mobile=JSON.parse(localStorage.getItem('userinfo')).mobile
       this.phone=mobile;
       let id=this.$route.params.id
       let name=this.$route.params.name
       this.value=name
       this.id=id
+      this.getHeight.minHeight=window.innerHeight+'px'
       // this.getListhouses()
     },
       beforeRouteEnter (to, from, next) {
@@ -252,7 +256,7 @@ export default {
                      this.value3='' 
                      this.names =''  
                     setTimeout(()=>{
-                     window.open('https://m.ctrip.com/webapp/hotel/hoteldetail/'+xiecheng_id+'.html?atime='+this.value2 +'&ctm_ref=ch5_hp_bs_lst')
+                    window.location.href('https://m.ctrip.com/webapp/hotel/hoteldetail/'+xiecheng_id+'.html?atime='+this.value2 +'&ctm_ref=ch5_hp_bs_lst')
                     },1000)
                      
                   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="order">
+  <div class="order" :style='getHeight'>
 
     <div class="person-center">
        <div class="person_01">  
@@ -96,17 +96,23 @@ export default {
        ischeckPhone:true,
        nickname:'',
        avater:'',
-       status:''
+       status:'',
+        getHeight:{
+             minHeight:''
+            }
      }
-  },
+    },
+    created(){
+      this.getHeight.minHeight=window.innerHeight+'px'
+    },
 
    methods:{
    tohideModel(){
      this.hideModel=false
    },
    toshowModel(){
-     let mobile=localStorage.getItem('mobile')
-      if(mobile){
+    //  let mobile=localStorage.getItem('mobile')
+      if(this.mobileLocal){
         this.hideModel=true
        this.$router.push({name:'orderForm',params:{mobile:this.mobileLocal}})
       }else{

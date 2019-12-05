@@ -93,7 +93,7 @@ export default {
       }
   },
   created(){
-    this.mobile=localStorage.getItem('mobile')
+    this.mobile=JSON.parse(localStorage.getItem('userinfo')).mobile
   },
   methods:{
     selectedCountry(res){
@@ -138,8 +138,9 @@ export default {
              
                 //  this.$toast('提交成功')
                  this.show_right=true
-                 localStorage.setItem("mobile",this.phone);
-                  // this.$emit('getPhone',this.phone)
+                 this.mobile=this.phone
+                //  localStorage.setItem("userinfo.mobile",this.phone);
+                // this.$emit('getPhone',this.phone)
                   this.$emit("update1", this.phone)
                   setTimeout(()=>{
                       if(this.mobile){

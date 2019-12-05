@@ -1,5 +1,5 @@
 <template>
-<div class="appraise">
+<div class="appraise" :style='getHeight'>
    <aheaders status='3' @toback='toreplace'></aheaders>
        <div class="appraise-01">
           <h3>{{$t('m.appraise1')}}</h3>
@@ -49,11 +49,15 @@ export default {
         selected:false,
         user_content:'',
         user_desc:'',
+        getHeight:{
+           minHeight:''
+         }
         };
     },
     created(){
         this.ids=this.$route.params.id;
         this.appraisesIcon(this.ids)
+        this.getHeight.minHeight=window.innerHeight+'px'
        },
        mounted(){
            $eventbus.$on("changeLang", (res)=>{

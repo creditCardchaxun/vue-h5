@@ -199,7 +199,7 @@ export default{
 
  created(){
     // this.mobileLocal=localStorage.getItem('mobile')
-    this.mobileLocal=localStorage.getItem('mobile')
+    this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile
     let id=this.$route.params.id
     // this.getdetailhouses(id)
  },
@@ -226,13 +226,22 @@ export default{
         })
     })
   },
-
+  watch:{
+    scroll:function(newVal,oldVal){
+      if(newVal > oldVal){
+        this.local = false
+      }else{
+        this.local = true
+      }
+    }
+  },
   methods: {
     toAppraise(){
       this.$router.push({name:'appraise',params:{id:this.idss}})
      },
     btn_pos:function(e){
-     this.local = false
+      // console.log(this.scroll)
+    //  this.local = false
       this.setlocaltrue()
     },
     setlocaltrue:_.debounce(function(){
@@ -343,19 +352,19 @@ export default{
 
        window.addEventListener('scroll', this.handleScroll);
        window.addEventListener('scroll',this.btn_pos);
-          let height= window.getComputedStyle(this.$refs.heightShow).height
-          if(height>this.defaultheight+'px'){
-              this.showHeight=true
-            }
-            $eventbus.$on("changeLang", (res)=>{
-                // this.mobileLocal=localStorage.getItem('mobile')
-                // let id=this.$route.params.id
-                  this.getdetailhouses(id)
-                  // let height= window.getComputedStyle(this.$refs.heightShow).height
-                  // if(height>defaultheight+'px'){
-                  //     this.showHeight=true
-                  //   }
-             })
+        let height= window.getComputedStyle(this.$refs.heightShow).height
+        if(height>this.defaultheight+'px'){
+            this.showHeight=true
+          }
+          $eventbus.$on("changeLang", (res)=>{
+              // this.mobileLocal=localStorage.getItem('mobile')
+              // let id=this.$route.params.id
+                this.getdetailhouses(id)
+                // let height= window.getComputedStyle(this.$refs.heightShow).height
+                // if(height>defaultheight+'px'){
+                //     this.showHeight=true
+                //   }
+            })
        },
         	//第四步：当再次进入（前进或者后退）时，只触发activated（注：只有在keep-alive加载时调用）
    	activated(){
