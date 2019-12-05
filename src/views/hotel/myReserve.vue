@@ -1,7 +1,7 @@
 <template>
- <div class="myReserve" :style='getHeight'>
+ <div class="myReserve">
  <aheaders status='3' @toback='toreplace'></aheaders>
- <!-- <van-cell is-link @click="showPopup">项目</van-cell> -->
+ <div class="myreserve" :style='getHeight'>
     <van-cell-group>
           <van-field 
             v-model="value"
@@ -15,7 +15,7 @@
            <div class="timesall" style=''>
            <van-field 
             v-model="value2"
-             width="45%"
+             width=""
             :placeholder="$t('m.house9')" 
             :label="$t('m.bookName3')" 
             disabled="true"
@@ -25,7 +25,7 @@
            -
             <!-- <input type="text" v-model="value3" class='endtime'>  -->
         <van-field 
-            style='padding-left:30px;width:40%'
+            style='padding-left:30px;width:44%'
             v-model="value3"
             right-icon="arrow-down"
             disabled="true"
@@ -78,6 +78,7 @@
      
         <submitBtn v-if='hideModel' @tohideModel='tohideModel'></submitBtn>
   <afooter></afooter> 
+    </div>
   </div> 
 </template>
 <script>
@@ -134,7 +135,7 @@ export default {
       // this.getListhouses()
     },
       beforeRouteEnter (to, from, next) {
-      interfaces.getListhouse().then(function (res) {
+      interfaces.getxiecheng().then(function (res) {
       next(vm=>
          {
            vm.columns=res
@@ -215,6 +216,18 @@ export default {
         tohideModel(){
          this.hideModel=false 
         },
+
+        // 比较二个日期的天数
+         DateDiff(sDate1,  sDate2){  //日期格式 2019-12-18
+          var  aDate,  oDate1,  oDate2,  iDays
+          aDate  =  sDate1.split("-")
+          oDate1  =  new  Date(aDate[1]  +  '-'  +  aDate[2]  +  '-'  +  aDate[0])    //转换为12-18-2019格式
+          aDate  =  sDate2.split("-")
+          oDate2  =  new  Date(aDate[1]  +  '-'  +  aDate[2]  +  '-'  +  aDate[0])
+          iDays  =  parseInt(Math.abs(oDate1  -  oDate2)  /  1000  /  60  /  60  /24)    //把相差的毫秒数转换为天数
+          return  iDays
+          },
+
         
         submitInfor(){
               if(!this.id ){
@@ -246,17 +259,21 @@ export default {
               let mobile=this.phone   //手机号
               let sex=this.radio    //男女性别
 
+              let date1,date2,date3,date4
+               date1=this.value2.split('-')
+               date2=date1[0]+date1[1]+date1[2]
             let data={projectid,name,user_id,in_time,out_time,mobile,sex}
-                 console.log(data)
              interfaces.bookSave2(data).then((res)=>{
+               console.log(res)
                   if(res.code==0){
                     this.$toast('预定信息成功')
-                   let xiecheng_id=res.xiecheng_id
-                     this.value2=''
-                     this.value3='' 
-                     this.names =''  
+                   let xiecheng_id=res.data.xiecheng_id
+                    //  this.value2=''
+                    //  this.value3='' 
+                    //  this.names =''  
+                    //https://m.ctrip.com/webapp/hotel/hoteldetail/552537.html?atime=20200101&days=2
                     setTimeout(()=>{
-                    window.location.href('https://m.ctrip.com/webapp/hotel/hoteldetail/'+xiecheng_id+'.html?atime='+this.value2 +'&ctm_ref=ch5_hp_bs_lst')
+                    window.location.href = ('https://m.ctrip.com/webapp/hotel/hoteldetail/'+xiecheng_id+'.html?atime='+date2 +'&days='+this.DateDiff(this.value2, this.value3))
                     },1000)
                      
                   }
@@ -266,7 +283,8 @@ export default {
 
         // 获取所有项目列表名称
            getListhouses(){
-              interfaces.getListhouse().then((res)=>{
+              interfaces.getxiecheng().then((res)=>{
+                console.log(res,'resdhdhjdfhj')
                   this.columns=res
            })
            }
@@ -316,6 +334,6 @@ export default {
 .timesall .van-cell{width:70%;} */
 
 .timesall{position:relative;font-size:0.3rem;display:flex;  align-items: center;margin:0  0.4rem;}
-.timesall .van-cell{padding:16px 0px;flex: none;width:56%;}
+.timesall .van-cell{padding:16px 0px;flex: none;width:55%;}
 .timesall .van-cell .van-cell__value{width:50% !important;}
 </style>

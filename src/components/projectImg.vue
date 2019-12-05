@@ -59,24 +59,31 @@ export default {
     methods:{
        getheight(){
          this.getheights.height=window.innerHeight+'px';
-       },
-        storyImg(id){
+        },
+         storyImg(id){
           let projectlist=[]
-        interfaces.getbrandstory(id).then((res)=>{
+          interfaces.getbrandstory(id).then((res)=>{
           this.imgAll=res
           })
-        },
+         },
        tohideLists(){
          this.$emit('tohideList')
         }
      },
+    //  beforeRouteEnter (to, from, next) {
+    //    alert('gfghfdhfhghf')
+    //   let id=to.params.id
+    //   interfaces.getbrandstory(14).then(function (res) {
+    //   next(vm=>{
+    //      vm.imgAll=res
+    //      console.log(res,'res')
+    //     })
+    //   })
+    //  },
 
      mounted(){
           　this.getheight()
             this.storyImg(this.idss)
-              //  interfaces.getbrandstory(this.idss).then((res)=>{
-              //      this.imgAll=res
-              //  })
             console.log(this.idss,'使得很多参加')
          }
       }

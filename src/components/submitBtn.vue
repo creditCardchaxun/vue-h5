@@ -1,6 +1,6 @@
 <template>
       <!-- 预约弹框 v-show='hideModel'-->
-        <div class="model-diag" >
+        <div class="model-diag">
            <selectcountry  v-if='showregion' @select='selectedCountry'></selectcountry>
             <div class="model_main">
                  <div class="mains" :class="{'is-invalid':errors2}">
@@ -75,9 +75,8 @@ export default {
           showregion:false,
           numCode:'',
           codeId:''
-      }
-   
-  },
+       }
+    },
 
   computed:{
     isClick() {
@@ -136,7 +135,6 @@ export default {
                   this.$toast(res.data.data)
               }else if(res.data.code==0){
              
-                //  this.$toast('提交成功')
                  this.show_right=true
                  this.mobile=this.phone
                 //  localStorage.setItem("userinfo.mobile",this.phone);
@@ -145,13 +143,15 @@ export default {
                   setTimeout(()=>{
                       if(this.mobile){
                          this.show_right=false
-                         this.hideModel=false
+                        //  this.hideModel=false
+                          this.$emit('tohideModel')
                           this.phone=''
                           this.sms=''
                           this.numCode=''
                           this.codeId=''
+                          // document.documentElement.scrollTop=0
                        }else{
-                         this.hideModel=false
+                         this.hideModel==false
                          if(this.status==1){
                           //  this.$router.replace({name:'orderForm',params:{mobile:this.phone,name:this.name,id:this.id}});
                           this.$router.push({name:'orderForm',params:{mobile:this.phone,name:this.name,id:this.id}});

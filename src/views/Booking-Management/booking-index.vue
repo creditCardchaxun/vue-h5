@@ -3,14 +3,17 @@
   <aheaders status='3' @toback='toreplace'></aheaders>
     <div class="books" style='margin-top:0.2rem;'>
    <van-tabs v-model="active" line-width='7%' :border='false' @click="onClick">
- 
-  <van-tab :title="$t('m.others5')">
+
+    <van-tab :title="$t('m.others5')">
+      <div class="search-phone">
            <van-search 
           :placeholder="$t('m.others8')" 
-         v-model="inputVal" 
-         type="number" 
-         maxlength="11"
-     />
+          v-model="inputVal" 
+          type="number" 
+          maxlength="11"
+        />
+     <button class='search' @click='togetnumber' v-if='noRearch'>搜索</button>
+    </div> 
      <!-- <p  v-if="!isShow">请输入正确的手机号</p> -->
       <div class="booking">
       <div class="book-list">
@@ -27,13 +30,14 @@
               <div class="date_03">
                 <div class="isNew" v-show='item.is_new==1'><img src="../../assets/images/news-icon.jpg" alt=""></div>
                 <div class="total-button">
-                 <button plain hairline  class='s11'>{{$t('m.others9')}}</button>
+                  <button plain hairline  class='s11' @click="toCallPhone(item.mobile)">{{$t('m.others9')}}</button>
                   <button  class='s22' @click="showRight(item.id)">{{$t('m.others11')}}</button>
                 </div>
               </div>
              </li>
            </ul>
-            <div class="nolist" v-else>{{$t('m.others13')}}</div>
+            <!-- <div class="nolist" v-else>{{$t('m.others13')}}</div> -->
+            <div class="nolist" v-show='noMain'>暂无搜索结果</div>
                  <van-popup v-model="show_right">
                 <div class="good">
                   <img src="../../assets/images/checkmark.png" alt style='width:1.05rem;height:0.95rem;' />
@@ -46,12 +50,15 @@
 
   </van-tab>
   <van-tab :title="$t('m.others6')">
-        <van-search 
+     <div class="search-phone">
+    <van-search 
      :placeholder="$t('m.others8')" 
          v-model="inputVal2" 
          type="number" 
          maxlength="11"
      />
+          <button class='search' @click='togetnumber2' v-if='noRearch2'>搜索</button>
+    </div> 
      <!-- <p  v-if="!isShow">请输入正确的手机号</p> -->
      <div class="booking">
       <div class="book-list">
@@ -68,26 +75,30 @@
               <div class="date_03">
                 <!-- <div class="isNew"><img src="../../assets/images/news-icon.jpg" alt=""></div> -->
                 <div class="total-button">
-                 <van-button plain hairline  class='s11'>{{$t('m.others9')}}</van-button>
+                 <van-button plain hairline  class='s11'  @click="toCallPhone(item.mobile)">{{$t('m.others9')}}</van-button>
                  <router-link :to="{name:'bookingfeedback',params:{id:item.id}}"><van-button  class='s22'> {{$t('m.others10')}}</van-button></router-link>
                 </div>
               </div>
 
              </li>
            </ul>
-               <div class="nolist" v-else>{{$t('m.others13')}}</div>
-                  <div class="index-more" v-show='this.list2.length>6'><span>more</span> <img src="../../assets/images/more-icon.jpg" alt=""></div>
+               <!-- <div class="nolist" v-else>{{$t('m.others13')}}</div> -->
+               <div class="nolist" v-if='noMain2'>暂无搜索结果</div>
+               <div class="index-more" v-show='this.list2.length>6'><span>more</span> <img src="../../assets/images/more-icon.jpg" alt=""></div>
         </div>  
    </div>
 
   </van-tab>
   <van-tab :title="$t('m.others7')">
+        <div class="search-phone">
         <van-search 
         :placeholder="$t('m.others8')" 
          v-model="inputVal3" 
          type="number" 
          maxlength="11"
      />
+      <button class='search' @click='togetnumber3' v-if='noRearch3'>搜索</button>
+    </div> 
      <!-- <p  v-if="!isShow">请输入正确的手机号</p> -->
       <div class="booking">
       <div class="book-list">
@@ -102,20 +113,18 @@
               <div class="date_03">
                 <!-- <div class="isNew"><img src="../../assets/images/news-icon.jpg" alt=""></div> -->
                 <div class="total-button onlyone">
-                 <van-button plain hairline  class='s11'>{{$t('m.others9')}}</van-button>
+                 <van-button plain hairline  class='s11'  @click="toCallPhone(item.mobile)">{{$t('m.others9')}}</van-button>
                 <!-- <van-button type="info">接受预约</van-button> -->
                 </div>
               </div>
-           
              </li>
 
            </ul>
-           <div class="nolist" v-else>{{$t('m.others13')}}</div>
+           <!-- <div class="nolist" v-else>{{$t('m.others13')}}</div> -->
+           <div class="nolist" v-if='noMain3'>暂无搜索结果</div>
            <div class="index-more" v-show='this.list3.length>6'><span>more</span> <img src="../../assets/images/more-icon.jpg" alt=""></div>
         </div>  
-        
    </div>
-
   </van-tab>
  </van-tabs>
 </div>
@@ -157,6 +166,12 @@ export default {
       inputVal3:'',
       timeout: null,
        isShow:true,
+       noMain:false,
+       noMain2:false,
+       noMain3:false,
+       noRearch:false,
+       noRearch2:false,
+       noRearch3:false,
     }
   },
 
@@ -178,7 +193,7 @@ export default {
   },
     mounted(){
       $eventbus.$on("changeLang", (res)=>{
-          this.active=this.$route.params.active
+    this.active=this.$route.params.active
     this.num=this.$route.params.num
      if(!this.num||!this.active){
           this.booklist1(1)
@@ -195,98 +210,128 @@ export default {
       })
   },
   watch:{
-
-      inputVal:_.debounce(function(){
-            this.togetnumber()
-       },1000),
-        inputVal2:_.debounce(function(){
-        this.togetnumber2()
-       },1000),
-        inputVal3:_.debounce(function(){
-            this.togetnumber3()
-      },1000),
+      inputVal(){
+         if(this.inputVal.length>=4){
+            this.noRearch=true
+           }else{
+            this.noRearch=false
+          }
+       },
+        inputVal2(){
+          //  this.togetnumber2()
+         if(this.inputVal2.length>=4){
+            this.noRearch2=true
+           }else{
+            this.noRearch2=false
+           }
+       },
+        inputVal3(){
+            // this.togetnumber3()
+           if(this.inputVal3.length>=4){
+            this.noRearch3=true
+           }else{
+            this.noRearch3=false
+           }
+      },
+    //   togetnumber:_.debounce(function(){
+    //  },1000),
+    //    togetnumber2:_.debounce(function(){
+    //  },1000),
+    //    togetnumber3:_.debounce(function(){
+    //  },1000)
 
   },
   methods:{
-       toreplace(){
-         this.$router.go(-1)
-       },
+   toreplace(){
+      this.$router.go(-1)
+     },
    togetnumber(){
        let re = /^1(3|4|5|6|7|8|9)\d{9}$/
         // 正则，验证手机号输入是否正确
         let show = re.test(this.inputVal)
         // 若正确返回true，反之false
-        this.isShow = show
-        // isShow获取之后返回到v-if进行判断是消失还是出现 
-             if (this.isShow) {
+             if (show) {
            interfaces.getphone(1,this.inputVal).then((res)=>{
-               if(res==null ||res==undefined){
-                    this.list1=[]
+               if(res==null ||res.length==0){
+                        this.list1=[]
+                        this.noMain=true
                         setTimeout(()=>{
                           this.inputVal=''
-                        },2000)
-                 }else{
+                          this.noRearch=false
+                          this.noMain=false
+                           this.booklist1(1,0)
+                        },3000)
+                   }else{
                    this.list1=res
                  }
-             
           })
+        }else{
+          this.$toast('请您输入正确的手机号')
         } 
    },
 
-      togetnumber2(){
+   togetnumber2(){
        let re = /^1(3|4|5|6|7|8|9)\d{9}$/
         // 正则，验证手机号输入是否正确
         let show = re.test(this.inputVal2)
         // 若正确返回true，反之false
-        this.isShow = show
+        // this.isShow = show
         // isShow获取之后返回到v-if进行判断是消失还是出现 
-             if (this.isShow) {
+             if (show) {
            interfaces.getphone(2,this.inputVal2).then((res)=>{
              console.log(res)
-               if(res==null ||res==undefined){
+               if(res==null ||res.length==0){
                   this.list2=[]
+                  this.noMain2=true
                   setTimeout(()=>{
                     this.inputVal2=''
-                  },2000)
+                    this.noRearch2=false
+                     this.noMain2=false
+                      this.booklist2(2,1)
+                  },3000)
                  }else{
                    this.list2=res
                  }
-             
           })
-        } 
+        }else{
+          this.$toast('请您输入正确的手机号')
+        }  
    },
 
-      togetnumber3(){
+   togetnumber3(){
        let re = /^1(3|4|5|6|7|8|9)\d{9}$/
         // 正则，验证手机号输入是否正确
         let show = re.test(this.inputVal3)
         // 若正确返回true，反之false
-        this.isShow = show
+        // this.isShow = show
         // isShow获取之后返回到v-if进行判断是消失还是出现 
-             if (this.isShow) {
+             if (show) {
            interfaces.getphone(3,this.inputVal3).then((res)=>{
-               if(res==null ||res==undefined){
-              
+               if(res==null ||res.length==0){
+                 this.noMain3=true
                   this.list3=[]
                   setTimeout(()=>{
                     this.inputVal3=''
-                  },2000)
+                    this.noRearch3=false
+                    this.noMain3=false
+                    this.booklist3(3,2)
+                  },3000)
                  }else{
                    this.list3=res
                  }
           })
-        } 
+        }else{
+          this.$toast('请您输入正确的手机号')
+        }   
    },
-    
 
-    tobookingxq(item){
+  tobookingxq(item){
        this.confirmList.push(item)
        this.$router.push({name:'bookingDetail',params:{id:item.id}})
-      },
-       booklist1(i,n){
-         let ids=localStorage.getItem('bookId')
-         console.log(ids)
-      interfaces.bookList2(i).then((res)=>{
+  },
+  booklist1(i,n){
+    let ids=localStorage.getItem('bookId')
+     interfaces.bookList2(i).then((res)=>{
               if(res!=null){
               this.list1=res
               this.list1.forEach((item,index)=>{
@@ -294,7 +339,6 @@ export default {
                let s2=other.split('-')
                   this.moth=s2[1]
                   this.date=s2[2]
-                  console.log(res,'1')
                   this.list1[index].moth=this.moth
                   this.list1[index].date=this.date
                   this.list1[index].checked=false
@@ -302,12 +346,12 @@ export default {
                this.active=n
               }
           })
-     },
-      booklist2(i,n){
+    },
+ booklist2(i,n){
      interfaces.bookList2(i).then((res)=>{
        if(res!=null){
               this.list2=res
-                    this.active=n
+              this.active=n
               this.list2.forEach((item,index)=>{
                let other=item.book_time 
                let s2=other.split('-')
@@ -318,9 +362,8 @@ export default {
               })
              }
           })
-     
      },
-      booklist3(i,n){
+ booklist3(i,n){
            interfaces.bookList2(i).then((res)=>{
              if(res!=null){
               this.list3=res
@@ -331,12 +374,12 @@ export default {
                   this.date=s2[2]
                   this.list3[index].moth=this.moth
                   this.list3[index].date=this.date
-              })
+               })
              this.active=n
            }
          })
-     },
-     onClick(index,title){
+},
+ onClick(index,title){
         if(title=='未确认'&&index==0){
            if(this.num==undefined){
             this.booklist1(1,0)
@@ -362,8 +405,7 @@ export default {
            }
         }
      },
-
-     showRight(id) {
+showRight(id) {
       let status=2
       let data={id,status}
       interfaces.jieshou(data).then(res=>{
@@ -371,11 +413,14 @@ export default {
            setTimeout(()=> {
                   this.show_right = false;
                    this.active=1
-                    // this.booklist2(2,1)
+                   this.booklist2(2,1)
              }, 3000);
          })
        },
-  },
+       toCallPhone(mobile){
+         window.location.href = `tel://${{mobile}}`
+       },
+},
   components:{
     aheaders,
     footers
@@ -461,5 +506,15 @@ export default {
     justify-content: center;
     font-size: 0.35rem;
 }
-
+.search-phone{width:auto;height:auto;position:relative;}
+.search-phone .van-search{flex:1;}
+.search-phone .search{ width: auto;
+    padding: 5px 10px;
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    color:#fff;
+    background-color: #5975a9;
+    border: 1px solid #5975a9;
+    font-size: 0.34rem;}
 </style>

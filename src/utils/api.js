@@ -51,7 +51,6 @@ const interfaces = {
 
 	},
 
-
 	//   新闻列表
 	  newsList(){
 		return axios.get( domain + "index.php?m=api&c=pagecenter&a=news_list&page=1")
@@ -186,7 +185,7 @@ const interfaces = {
 		.catch(function (error) {
 		return error
 		});  
-	},
+	  },
 
 	// 反馈信息详情获取
 	fankuidetail(id){
@@ -249,7 +248,6 @@ const interfaces = {
 
 
 	//   预定保存
-
 	  bookSave2(data){
 		return axios.post( domain + 'index.php?m=api&c=booking&a=add',data)
 		.then(function (response) {
@@ -297,8 +295,6 @@ const interfaces = {
 
 
 	//   获取全部项目名称列表
-	 
-
 	getListhouse(){
 		return axios.get( domain + 'index.php?m=api&c=project&a=project_list')
 		.then(function (response) {
@@ -308,6 +304,17 @@ const interfaces = {
 		return error
 		});  	
 	  },
+	// 获取带有携程项目的名称
+	getxiecheng(){
+		return axios.get( domain + 'index.php?m=api&c=booking&a=project_xiecheng')
+		.then(function (response) {
+		  return response.data.data
+		 })
+		.catch(function (error) {
+		return error
+		});  	
+	  },
+
 
 	// 获取项目详情
    
