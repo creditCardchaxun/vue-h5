@@ -55,6 +55,12 @@
 import $ from 'jquery';
 import { WXsdk } from '../utils/wxShare';
 export default {
+  props: {
+    dataArr: {
+      required: true,
+      // type: Array
+    }
+  },
   data() {
     return {
       fullScreen: true,
@@ -86,46 +92,23 @@ export default {
     },
     init() {
       var _this = this
-      // var _this.mapCase = null;
-      // var _this.positionpoint = new AMap.LngLat(121.032818, 31.121661);
-      // var title = "Base-复兴路";
-      // var address = "长宁区复兴路22号";
-      // var markerend;
 
       this.createMap();
-      $("#firstdiv").hide()
 
-      $('.amap-sug-result').on('click', 'div', function (data) {
-        var text = $(this).contents().filter(function () {
-          return this.nodeType == 3;
-        }).remove().text()
+      if (Object.prototype.toString.call(this.dataArr) === '[object Array]') {
+        this.dataArr.map((item) => {
+          console.log(item);
+        })
+      }else{
 
-        _this.shownav(text);
-      })
+      }
 
-      $("li").click(function () {
-        _this.mapCase.clearMap();
-        _this.addmarker();
-        $(this).siblings("li").removeAttr('class');
-        $(this).addClass("current_li");
-        var search = $(this).html();
-        if (search == "美食") search = "餐饮";
-        AMap.service(["AMap.PlaceSearch"], function () {
-          //构造地点查询类
-          var placeSearch = new AMap.PlaceSearch({
-            type: search, // 兴趣点类别
-            pageSize: 50, // 单页显示结果条数
-            pageIndex: 1, // 页码
-            autoFitView: false,
-            citylimit: true, //是否强制限制在设置的城市内搜索
-            map: _this.mapCase, // 展现结果的地图实例
+      this.addmarker();
 
-            autoFitView: false // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
-          });
-          placeSearch.searchNearBy('', _this.positionpoint, 5000, function (status, result) {
-          });
-        });
-      })
+      // 点击搜索结果，直接搜索
+      this.bindSearch()
+      // 搜索周边
+      this.searchArround()
     },
     createMap() {
       var _this = this
@@ -141,7 +124,7 @@ export default {
       var auto = new AMap.Autocomplete({
         input: "secondtxt"
       });
-      this.addmarker();
+      
     },
     addmarker() {
       var _this = this
@@ -149,7 +132,7 @@ export default {
         map: _this.mapCase,
         position: _this.positionpoint,
         icon: require('../assets/images/mark.png'), //你需要更改成红色的图标
-        size: new AMap.Size(19,33),  //图标大小
+        size: new AMap.Size(19, 33),  //图标大小
       });
       //鼠标点击marker弹出自定义的信息窗体
       _this.mapCase.add(_this.markerend);
@@ -282,12 +265,6 @@ export default {
                 cityd: '上海市'
               }
               var transfer = new AMap.Transfer(transferOption)
-              console.log('transfer');
-              console.log(transfer);
-              console.log('positionbegin');
-              console.log(positionbegin);
-              console.log('_this.positionpoint');
-              console.log(_this.positionpoint);
               //根据起、终点坐标查询公交换乘路线
               transfer.search(positionbegin, _this.positionpoint, function (status, result) {
                 // result即是对应的公交路线数据信息，相关数据结构文档请参考  https://lbs.amap.com/api/javascript-api/reference/route-search#m_TransferResult
@@ -505,6 +482,41 @@ export default {
 
       WXsdk.openLocation(this.position, this.address)
     },
+    bindSearch() {
+      var _this = this
+      $('.amap-sug-result').on('click', 'div', function (data) {
+        var text = $(this).contents().filter(function () {
+          return this.nodeType == 3;
+        }).remove().text()
+
+        _this.shownav(text);
+      })
+    },
+    searchArround() {
+      $("li").click(function () {
+        _this.mapCase.clearMap();
+        _this.addmarker();
+        $(this).siblings("li").removeAttr('class');
+        $(this).addClass("current_li");
+        var search = $(this).html();
+        if (search == "美食") search = "餐饮";
+        AMap.service(["AMap.PlaceSearch"], function () {
+          //构造地点查询类
+          var placeSearch = new AMap.PlaceSearch({
+            type: search, // 兴趣点类别
+            pageSize: 50, // 单页显示结果条数
+            pageIndex: 1, // 页码
+            autoFitView: false,
+            citylimit: true, //是否强制限制在设置的城市内搜索
+            map: _this.mapCase, // 展现结果的地图实例
+
+            autoFitView: false // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
+          });
+          placeSearch.searchNearBy('', _this.positionpoint, 5000, function (status, result) {
+          });
+        });
+      })
+    }
   }
 }
 </script>

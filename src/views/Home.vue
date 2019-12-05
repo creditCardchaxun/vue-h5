@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <van-swipe :autoplay="3000" indicator-color="white" class="swiperImg">
-      <van-swipe-item v-for='(item,index) in bannerImg' :key='index'>
-         <img :src="item.thumb" alt />
+      <van-swipe-item v-for="(item,index) in bannerImg" :key="index">
+        <img :src="item.thumb" alt />
       </van-swipe-item>
     </van-swipe>
 
@@ -11,12 +11,12 @@
         <img src="@/assets/images/logo.png" alt />
       </div>
       <div class="nav-lan">
-        <span @click="changeLangEvent">{{lang ==='zh-CN'?'EN':'ZH'}}</span> 
+        <span @click="changeLangEvent">{{lang ==='zh-CN'?'EN':'ZH'}}</span>
         <!-- <input type="text" v-model="lang" value="lang" style='display:none'>  -->
         <!-- <select id="sex" v-model="lang" @change="changeLangEvent">
           <option value="zh-CN">中文</option>
           <option value="en-US">英文</option>
-        </select> -->
+        </select>-->
         <div class="nav-menu">
           <router-link :to="{path:'/order'}">
             <img src="@/assets/images/right-menu.png" alt />
@@ -27,31 +27,35 @@
 
     <div class="brand-story">
       <h3>{{story.catname}}</h3>
-       <div class="brand-all" ref='heightShow' :class='{brandStory:showMore}'>
-            <!-- <p v-html='story.description'> 
+      <div class="brand-all" ref="heightShow" :class="{brandStory:showMore}">
+        <!-- <p v-html='story.description'> 
                {{story.description}}
-         </p> -->
-          <p v-for="(item,index) in story2" :key='index'>{{item}}</p>
-           <div class="story-img"><img :src="story.image" alt=""></div>
-         </div>
+        </p>-->
+        <p v-for="(item,index) in story2" :key="index">{{item}}</p>
+        <div class="story-img">
+          <img :src="story.image" alt />
+        </div>
+      </div>
 
-     <div class="index-more"  @click='toloadMore' style='margin:0 auto;'>
-       <div class="mas" v-show='toshows'><span>more</span><img src="../assets/images/more-icon.jpg" alt /></div> 
-       <div class="mas"  v-show='toshows2' :class='{brandimg2:showMore}'><img src="../assets/images/more-icon.jpg" alt /> </div>
-     </div>
-     <!-- <div class='index-more' ></div> -->
+      <div class="index-more" @click="toloadMore" style="margin:0 auto;">
+        <div class="mas" v-show="toshows">
+          <span>more</span>
+          <img src="../assets/images/more-icon.jpg" alt />
+        </div>
+        <div class="mas" v-show="toshows2" :class="{brandimg2:showMore}">
+          <img src="../assets/images/more-icon.jpg" alt />
+        </div>
+      </div>
+      <!-- <div class='index-more' ></div> -->
 
-     
-      
       <!-- <div class="active-img">
         <img src="../assets/images/index_03.jpg" alt />
-      </div> -->
+      </div>-->
     </div>
 
     <div class="yuyue">
-       
       <swiper :options="swiperOption">
-        <swiper-slide v-for='(item,index) in project_list' :key='index'>
+        <swiper-slide v-for="(item,index) in project_list" :key="index">
           <div class="yu-item">
             <div class="yu-img">
               <router-link :to="{name:'hotelDetail', params:{id:item.id,name:item.project_name}}">
@@ -62,7 +66,7 @@
             <div class="yu-name">
               <i>{{item.project_name}}</i>
               <!-- <router-link :to="{path:'/orderForm'}"> -->
-                <van-button type="info" @click='toOrderForm(item.id,item.project_name)'>预约看房</van-button>
+              <van-button type="info" @click="toOrderForm(item.id,item.project_name)">预约看房</van-button>
               <!-- </router-link> -->
             </div>
           </div>
@@ -115,58 +119,62 @@
               </router-link>
             </div>
           </div>
-        </swiper-slide> -->
+        </swiper-slide>-->
 
         <!-- <div class="swiper-pagination" slot="pagination"></div> -->
       </swiper>
     </div>
 
     <div class="news">
-      <van-tabs v-model="active" line-width='7%' :border='false'>
+      <van-tabs v-model="active" line-width="7%" :border="false">
         <van-tab :title="$t('m.news')">
           <ul>
-            <li v-for='(item,index) in news_list' :key='index'>
-              <router-link :to="{name:'newsdetail', params:{id:item.id}}" >
-              <div class="news-date">
-                <h3 style="font-size:0.38rem;font-weight:bold;" v-if='index==0'>{{item.title}}</h3>
-                <h3 v-else>{{item.title}}</h3>
-                <span style="font-size:0.4rem;font-weight:bold;" v-if='index==0'>{{item.inputtime}}</span>
-                 <span v-else>{{item.inputtime}}</span>
-              </div>
-              <div class="news-img" v-if="index==0&&item.thumb!=''">
-                <img :src="item.thumb" alt />
-              </div>
+            <li v-for="(item,index) in news_list" :key="index">
+              <router-link :to="{name:'newsdetail', params:{id:item.id}}">
+                <div class="news-date">
+                  <h3 style="font-size:0.38rem;font-weight:bold;" v-if="index==0">{{item.title}}</h3>
+                  <h3 v-else>{{item.title}}</h3>
+                  <span
+                    style="font-size:0.4rem;font-weight:bold;"
+                    v-if="index==0"
+                  >{{item.inputtime}}</span>
+                  <span v-else>{{item.inputtime}}</span>
+                </div>
+                <div class="news-img" v-if="index==0&&item.thumb!=''">
+                  <img :src="item.thumb" alt />
+                </div>
               </router-link>
             </li>
- 
           </ul>
           <div class="news-more">
             <router-link :to="{path:'/news'}">
-              <span style='color: #a5a5a5;'>more</span>
+              <span style="color: #a5a5a5;">more</span>
               <img src="../assets/images/right.png" alt />
             </router-link>
           </div>
         </van-tab>
         <van-tab :title="$t('m.activity')">
           <ul>
-               <li v-for='(item,index) in activity_list' :key='index'>
-                 <router-link :to="{name:'activitydetail', params:{id:item.id}}">
-              <div class="news-date">
-                <h3 style="font-size:0.38rem;font-weight:bold;" v-if='index==0'>{{item.title}}</h3>
-                <h3 v-else>{{item.title}}</h3>
-                <span style="font-size:0.4rem;font-weight:bold;" v-if='index==0'>{{item.inputtime}}</span>
-                 <span v-else>{{item.inputtime}}</span>
-              </div>
-              <div class="news-img" v-if="index==0&&item.thumb!=''">
-                <img :src="item.thumb" alt />
-              </div>
+            <li v-for="(item,index) in activity_list" :key="index">
+              <router-link :to="{name:'activitydetail', params:{id:item.id}}">
+                <div class="news-date">
+                  <h3 style="font-size:0.38rem;font-weight:bold;" v-if="index==0">{{item.title}}</h3>
+                  <h3 v-else>{{item.title}}</h3>
+                  <span
+                    style="font-size:0.4rem;font-weight:bold;"
+                    v-if="index==0"
+                  >{{item.inputtime}}</span>
+                  <span v-else>{{item.inputtime}}</span>
+                </div>
+                <div class="news-img" v-if="index==0&&item.thumb!=''">
+                  <img :src="item.thumb" alt />
+                </div>
               </router-link>
             </li>
-           
           </ul>
-             <div class="news-more">
+          <div class="news-more">
             <router-link :to="{path:'/activity'}">
-              <span style='color: #a5a5a5;'>more</span>
+              <span style="color: #a5a5a5;">more</span>
               <img src="../assets/images/right.png" alt />
             </router-link>
           </div>
@@ -174,20 +182,30 @@
       </van-tabs>
     </div>
 
-  <div class="map">
-            <div class="alltag" @click="toopencity">
-            <span>{{openName}}</span>
-          <div class="alltags" v-show='opens1'>
-            <!-- <span>fhfhh</span> -->
-              <span v-for='(item,index) in allcityName' :key='index' @click='tochangecity(item)'>{{item.name}}</span>
-          </div>
-          <img src="../assets/images/bottom.jpg" alt />
+    <div class="map">
+      <div class="alltag" @click="toopencity">
+        <span>{{openName}}</span>
+        <div class="alltags" v-show="opens1">
+          <!-- <span>fhfhh</span> -->
+          <span
+            v-for="(item,index) in allcityName"
+            :key="index"
+            @click="tochangecity(item)"
+          >{{item.name}}</span>
         </div>
-       <maps></maps>
+        <img src="../assets/images/bottom.jpg" alt />
+      </div>
+      <maps :dataArr="alllongitude"></maps>
       <!-- <iframe src="static/index.html" frameborder="0" scrolling="auto"></iframe> -->
-    </div> 
+    </div>
     <footers></footers>
-     <submitBtn v-if='hideModel' :name='names' :id='idss' @tohideModel='tohideModel' :status='status'></submitBtn>
+    <submitBtn
+      v-if="hideModel"
+      :name="names"
+      :id="idss"
+      @tohideModel="tohideModel"
+      :status="status"
+    ></submitBtn>
   </div>
 </template>
 
@@ -211,13 +229,13 @@ export default {
   data() {
     return {
       bannerImg: [],
-      story:{},
-      news_list:[],
-      project_list:[],
-      activity_list:[],
-      storyHeight:105,
-      toshows:false,
-      toshows2:false,
+      story: {},
+      news_list: [],
+      project_list: [],
+      activity_list: [],
+      storyHeight: 105,
+      toshows: false,
+      toshows2: false,
       showMore: false,
       active: 0,
       showImgs: false,
@@ -231,35 +249,35 @@ export default {
           clickable: true
         }
       },
-       lang: store.state.lang,
-       
-         hideModel:false,
-         mobileLocal:'',
-         story2:[],
-         idss:'',
-         names:'',
+      lang: store.state.lang,
 
-         name:'',
-         sms:'',
-         allcityName:'',
-         couponSelected:'',
-        // 地图
-        opens1:false,
-        openName:'上海',
-        alllongitude:[],
-        allcityName:[],
-        Longid:'',
-        LongName:'',
-        status:''
-      }
-   },
+      hideModel: false,
+      mobileLocal: '',
+      story2: [],
+      idss: '',
+      names: '',
 
-  computed:{
-    nav(){
-       if(this.iswx) return '';
-       return "width:660px;transform: translate3d(-50%, -4px, 10px);position:absolute;left:50%;margin:0;"
-      }
-   },
+      name: '',
+      sms: '',
+      allcityName: '',
+      couponSelected: '',
+      // 地图
+      opens1: false,
+      openName: '上海',
+      alllongitude: [],
+      allcityName: [],
+      Longid: '',
+      LongName: '',
+      status: ''
+    }
+  },
+
+  computed: {
+    nav() {
+      if (this.iswx) return '';
+      return "width:660px;transform: translate3d(-50%, -4px, 10px);position:absolute;left:50%;margin:0;"
+    }
+  },
 
   methods: {
     // getHomedata(){
@@ -270,7 +288,7 @@ export default {
     //       this.news_list=res.data.news_list
     //       this.activity_list=res.data.activity_list
     //       this.project_list=res.data.project_list
-           
+
     //        let story=res.data.story.description
     //        this.story2=story.split('。') 
     //       console.log(res.data)
@@ -288,108 +306,107 @@ export default {
     changeLangEvent() {
       // console.log("改变语言");
       // const totalLan='';
-       if(this.lang=='zh-CN'){
-         this.lang='en-US'
-       }else{
-        this.lang='zh-CN'
+      if (this.lang == 'zh-CN') {
+        this.lang = 'en-US'
+      } else {
+        this.lang = 'zh-CN'
         // totalLan=1
-       }
+      }
       this.$i18n.locale = this.lang; //关键语句
 
       this.$store.commit("changeLang", this.lang);
-       $eventbus.$emit("changeLang", this.lang);
-       localStorage.setItem('lanBase', this.lang=='zh-CN'?1:4)
+      $eventbus.$emit("changeLang", this.lang);
+      localStorage.setItem('lanBase', this.lang == 'zh-CN' ? 1 : 4)
     },
-     toloadMore(){
-       this.showMore=!this.showMore
-       if(this.showMore==true){
-        this.toshows=false
-        this.toshows2=true
-       }else{
-           this.toshows=true
-           this.toshows2=false
-       }
-     },
-    
-    tohideModel(){
-     this.hideModel=false
-     },
-     toOrderForm(id,name){
-       this.idss=id
-       this.names=name
-       this.status=1
-      if(this.mobileLocal){
-        //  console.log(this.mobileLocal)
-        this.$router.push({name:'orderForm',params:{id:id,name:name,mobile:this.mobileLocal}})
-      }else{
-         this.hideModel=true
+    toloadMore() {
+      this.showMore = !this.showMore
+      if (this.showMore == true) {
+        this.toshows = false
+        this.toshows2 = true
+      } else {
+        this.toshows = true
+        this.toshows2 = false
       }
-     },
-     getCouponSelected(){
-       console.log(this.couponSelected)
-     },
-      // 地图
-      toopencity(){
-     this.opens1=!this.opens1
     },
-    tochangecity(item){
+
+    tohideModel() {
+      this.hideModel = false
+    },
+    toOrderForm(id, name) {
+      this.idss = id
+      this.names = name
+      this.status = 1
+      if (this.mobileLocal) {
+        //  console.log(this.mobileLocal)
+        this.$router.push({ name: 'orderForm', params: { id: id, name: name, mobile: this.mobileLocal } })
+      } else {
+        this.hideModel = true
+      }
+    },
+    getCouponSelected() {
+      console.log(this.couponSelected)
+    },
+    // 地图
+    toopencity() {
+      this.opens1 = !this.opens1
+    },
+    tochangecity(item) {
       //  this.opens1=!this.opens1
-      this.openName=item.name
-      this.Longid=item.linkageid
-      this.LongName=item.name
+      this.openName = item.name
+      this.Longid = item.linkageid
+      this.LongName = item.name
       this.getallother(item.linkageid)
     },
-    getallother(id){
-     interfaces.getCode(id).then((res)=>{
-        this.alllongitude=res
+    getallother(id) {
+      interfaces.getCode(id).then((res) => {
+        this.alllongitude = res
         //  this.$store.dispatch("setLocation", res);
-        })
-     },
+      })
+    },
 
-     getAllmap(){
-       interfaces.getAllcity().then((res)=>{
-         this.allcityName=res
-       })
-     },
+    getAllmap() {
+      interfaces.getAllcity().then((res) => {
+        this.allcityName = res
+      })
+    },
 
   },
-  beforeRouteEnter (to, from, next) {
+  beforeRouteEnter(to, from, next) {
     interfaces.getData().then(function (res) {
-      next(vm=>
-         {
-          console.log(res.data.project_list)
-          vm.bannerImg=res.data.banner
-          vm.story=res.data.story
-          vm.news_list=res.data.news_list
-          vm.activity_list=res.data.activity_list
-          vm.project_list=res.data.project_list
+      next(vm => {
+        console.log(res.data.project_list)
+        vm.bannerImg = res.data.banner
+        vm.story = res.data.story
+        vm.news_list = res.data.news_list
+        vm.activity_list = res.data.activity_list
+        vm.project_list = res.data.project_list
 
-           let story=res.data.story.description
-           vm.story2=story.split('。') 
-          console.log(res.data)
-        })
+        let story = res.data.story.description
+        vm.story2 = story.split('。')
+        console.log(res.data)
+      })
     })
   },
   created() {
     //  this.getHomedata()
-       this.getallother(3362) 
-       this.getAllmap()
-     this.mobileLocal=localStorage.getItem('mobile') 
+    this.getallother(3362)
+    this.getAllmap()
+    this.mobileLocal = localStorage.getItem('mobile')
     //  this.couponSelected = this.allcityName[0].name;
-  }, 
-  mounted: function() {
+  },
+  mounted: function () {
     window.addEventListener("scroll", this.handleScroll);
     window.addEventListener("scroll", this.handleScrolls, true);
-    $eventbus.$on("changeLang", (res)=>{
-        this.getHomedata()
+    $eventbus.$on("changeLang", (res) => {
+      this.getHomedata()
     });
 
     // let height= window.getComputedStyle(this.$refs.heightShow).height
-    let height= window.getComputedStyle(this.$refs.heightShow).height
-      //  console.log(height,'px')
-      if(height>this.storyHeight+'px'){
-        this.toshows=true;
-       } 
+    let height = window.getComputedStyle(this.$refs.heightShow).height
+    //  console.log(height,'px')
+    if (height > this.storyHeight + 'px') {
+      this.toshows = true;
+    }
   },
   //第四步：当再次进入（前进或者后退）时，只触发activated（注：只有在keep-alive加载时调用）
   activated() {
@@ -416,8 +433,8 @@ export default {
 /* .map h3 select{width:2rem;height:1rem;overflow: hidden;background-color: #fff;border:transparent;}
 .map h3 select option{width:2rem;height:1rem;overflow: hidden;padding:0;height:1rem;min-height:1rem;} */
 
-.brandimg2{
-  transform:rotate(180deg)
+.brandimg2 {
+  transform: rotate(180deg);
 }
 .header {
   width: 9.55rem;
@@ -491,7 +508,11 @@ export default {
   text-align: center;
   margin: 0 auto;
 }
-.brand-all{width:100%;height:2.6rem;overflow: hidden;}
+.brand-all {
+  width: 100%;
+  height: 2.6rem;
+  overflow: hidden;
+}
 
 .brand-story h3 {
   font-size: 0.6rem;
@@ -505,12 +526,12 @@ export default {
   line-height: 0.68rem;
   /* height: 2.52rem; */
   /* max-height:2.52rem; */
-  min-height:0.68rem;
+  min-height: 0.68rem;
   overflow: hidden;
 }
 
-.brand-story .brandStory{
-  height:auto;
+.brand-story .brandStory {
+  height: auto;
   overflow: visible;
 }
 
@@ -530,9 +551,9 @@ export default {
 .index-more .mas img {
   /* width: 0.12rem;
   height: 0.15rem; */
-    width: 0.18rem;
+  width: 0.18rem;
   height: 0.18rem;
-  margin-top:0.1rem;
+  margin-top: 0.1rem;
 }
 .active-img {
   text-align: center;
@@ -546,20 +567,20 @@ export default {
   padding-bottom: 20px;
 }
 .yu-item {
-    width: 9.57rem;
-    height: auto;
+  width: 9.57rem;
+  height: auto;
   margin: 0 auto;
   padding-bottom: 0.2rem;
 }
 .yu-img {
-     width: 9.57rem;
-    height: auto;
+  width: 9.57rem;
+  height: auto;
   position: relative;
 }
 .yu-img img {
-   width: 9.57rem;
-    height: 6.83rem;
-    display: block;
+  width: 9.57rem;
+  height: 6.83rem;
+  display: block;
 }
 .yu-title {
   width: auto;
@@ -653,7 +674,7 @@ export default {
 
 .news-img {
   /* margin: 0.4rem 0; */
-  margin:0.2rem 0;
+  margin: 0.2rem 0;
 }
 .van-tabs .van-tab {
   flex: none;
@@ -741,13 +762,13 @@ export default {
   width: 2rem;
   margin-left: 0.6rem;
 }
-.map .alltag>span {
+.map .alltag > span {
   font-size: 0.38rem;
   color: #0e0e0e;
   font-weight: bold;
   margin-right: 0.1rem;
-  width:auto;
-  min-width:0.5rem
+  width: auto;
+  min-width: 0.5rem;
 }
 .map .alltag img {
   width: 0.27rem;
@@ -758,26 +779,34 @@ export default {
   height: auto;
   display: block;
 }
-.alltags{
-  position: absolute;;
-  top:24px;
-  left:-11px;
-  width:100%;
-  height:auto;
-  z-index:99;
+.alltags {
+  position: absolute;
+  top: 24px;
+  left: -11px;
+  width: 100%;
+  height: auto;
+  z-index: 99;
   background-color: #fff;
 }
-.alltags>span{width:auto;height:auto;padding:10px;  font-size: 0.38rem;
-  color: #0e0e0e;display: block;}
-
-@media screen and (min-width: 640px) {
-  body{width:100%;height:100%;background-color:#000 !important;}
-  .swiper-slide{
-    width: 65%;
-   }
+.alltags > span {
+  width: auto;
+  height: auto;
+  padding: 10px;
+  font-size: 0.38rem;
+  color: #0e0e0e;
+  display: block;
 }
 
-
+@media screen and (min-width: 640px) {
+  body {
+    width: 100%;
+    height: 100%;
+    background-color: #000 !important;
+  }
+  .swiper-slide {
+    width: 65%;
+  }
+}
 </style>>
 
 
