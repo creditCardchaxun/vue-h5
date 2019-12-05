@@ -69,12 +69,35 @@ export default {
       // positionpoint: new AMap.LngLat(this.position.latitude, position.longitude),
       title: "Base-复兴路",
       address: "长宁区复兴路22号",
-      markerend: null
+      markerend: null,
+      selectProject: null
     }
   },
   computed: {
     positionpoint() {
       return new AMap.LngLat(this.position.longitude, this.position.latitude)
+    },
+    mapCenter() {
+      if (Object.prototype.toString.call(this.dataArr) === '[object Array]') {
+        var longitude = null
+        var latitude = null
+        this.dataArr.map((item) => {
+          longitude += Number(item.longitude)
+          latitude += Number(item.latitude)
+        })
+        longitude = longitude / this.dataArr.length
+        latitude = latitude / this.dataArr.length
+
+        return new AMap.LngLat(longitude, latitude)
+
+      } else {
+        return new AMap.LngLat(this.dataArr.longitude, this.dataArr.latitude)
+      }
+    },
+    selectGDpoint() {
+      if (this.selectProject) {
+        return new AMap.LngLat(this.selectProject.longitude, this.selectProject.latitude)
+      }
     }
   },
   mounted() {
@@ -94,19 +117,15 @@ export default {
       var _this = this
 
       this.createMap();
+      // console.log(123);
 
-      if (Object.prototype.toString.call(this.dataArr) === '[object Array]') {
-        this.dataArr.map((item) => {
-          console.log(item);
-        })
-      }else{
 
-      }
+      this.addAllmarker()
+      // this.addmarker();
 
-      this.addmarker();
 
       // 点击搜索结果，直接搜索
-      this.bindSearch()
+      // this.bindSearch()
       // 搜索周边
       this.searchArround()
     },
@@ -114,8 +133,8 @@ export default {
       var _this = this
       _this.mapCase = new AMap.Map('container', {
         resizeEnable: true,
-        center: _this.positionpoint, //初始化地图中心点 
-        zoom: 12, //地图显示的缩放级别
+        center: _this.mapCenter, //初始化地图中心点 
+        zoom: 10, //地图显示的缩放级别
         lang: 'zh-cn',
         mapStyle: 'amap://styles/whitesmoke', //设置地图样式 远山黛.
         zoomEnable: true,
@@ -124,29 +143,35 @@ export default {
       var auto = new AMap.Autocomplete({
         input: "secondtxt"
       });
-      
+
     },
-    addmarker() {
+    addmarker(item) {
+      console.log('item');
+      console.log(item);
       var _this = this
+      // console.log(item);
+
       _this.markerend = new AMap.Marker({
         map: _this.mapCase,
-        position: _this.positionpoint,
+        position: new AMap.LngLat(Number(item.longitude), Number(item.latitude)) || _this.positionpoint,
         icon: require('../assets/images/mark.png'), //你需要更改成红色的图标
         size: new AMap.Size(19, 33),  //图标大小
       });
+
+      console.log(_this.markerend);
       //鼠标点击marker弹出自定义的信息窗体
       _this.mapCase.add(_this.markerend);
 
       var infoWindow = new AMap.InfoWindow({
         isCustom: true, //使用自定义窗体
-        content: _this.createInfoWindow(),
+        content: _this.createInfoWindow(item),
         offset: new AMap.Pixel(0, -45)
       });
       AMap.event.addListener(_this.markerend, 'click', function () {
         infoWindow.open(_this.mapCase, _this.markerend.getPosition());
       });
     },
-    createInfoWindow() {
+    createInfoWindow(item) {
       var _this = this
       var info = document.createElement("div");
       info.className = "custom-info input-card content-window-card";
@@ -157,13 +182,15 @@ export default {
 
       // 定义中部内容
       var h1 = document.createElement("h1");
-      h1.innerHTML = _this.title;
+      // h1.innerHTML = _this.title;
+      h1.innerHTML = item.project_name;
       info.appendChild(h1);
 
       var imgdiv = document.createElement("div");
       imgdiv.className = "info-newdiv";
       // imgdiv.innerHTML = "<img src='loca.png' style='vertical-align: middle;width: 20px;height: 25px;'/>" + _this.address;
-      imgdiv.innerHTML = _this.address;
+      // imgdiv.innerHTML = _this.address;
+      imgdiv.innerHTML = item.address;
       info.appendChild(imgdiv);
 
       var bottom = document.createElement("div");
@@ -181,6 +208,14 @@ export default {
       button.id = 'btngo';
       // button.onclick = _this.showfirst;
       button.onclick = _this.showNav1;
+      button.addEventListener('click', () => {
+        // alert(123)
+        this.bindSearch()
+        this.selectProject = item
+        _this.mapCase.clearMap();
+        this.addmarker(this.selectProject)
+      })
+
       info.appendChild(button);
       return info;
     },
@@ -200,32 +235,37 @@ export default {
       setTimeout(() => {
         $("#secondfirst").show()
         $("#secondtxt").focus();
-        $("#secondtxtend").val(_this.title);
+        // $("#secondtxtend").val(_this.title);
+        $("#secondtxtend").val(this.selectProject.address);
         $('.amap-info').hide()
       });
     },
     shownav(text) {
-      var _this = this
-      var begin = null;
-      if (typeof text === 'string') {
-        begin = text
-      } else {
-        begin = $("#txt").val();
-      }
 
-      if (!begin) {
-        return
-      }
+      // alert(123)
+      setTimeout(() => {
+        var _this = this
+        var begin = null;
+        if (typeof text === 'string') {
+          begin = text
+        } else {
+          begin = $("#txt").val();
+        }
 
+        // if (!begin) {
+        //   return
+        // }
 
-      _this.mapCase.clearMap();
-      $("#firstdiv").hide();
-      _this.addmarker();
-      $("#secondfirst").show()
-      $("#secondtxt").val(begin);
-      $("#secondtxt").focus();
-      $("#secondtxtend").val(_this.title);
-      _this.route(1);
+        _this.mapCase.clearMap();
+        $("#firstdiv").hide();
+        _this.addmarker(this.selectProject);
+        $("#secondfirst").show()
+        $("#secondtxt").val(begin);
+        $("#secondtxt").focus();
+        // $("#secondtxtend").val(_this.title);
+        $("#secondtxtend").val(_this.selectProject.address);
+        _this.route(1);
+      });
     },
     route(type) {
       console.log('type');
@@ -233,7 +273,7 @@ export default {
 
       var _this = this
       _this.mapCase.clearMap();
-      _this.addmarker();
+      _this.addmarker(this.selectProject);
       $(".span").removeClass('cus');
       var geocoder = new AMap.Geocoder({
       });
@@ -251,7 +291,10 @@ export default {
       }
 
       var positionbegin;
-      geocoder.getLocation($("#secondtxt").val(), function (status, result) {
+      // $("#secondtxt").val()
+
+      var start = $("#secondtxt").val()
+      geocoder.getLocation(start, function (status, result) {
         if (status === 'complete' && result.geocodes.length) {
           positionbegin = new AMap.LngLat(result.geocodes[0].location.lng, result.geocodes[0].location.lat);
           switch (type) {
@@ -266,7 +309,7 @@ export default {
               }
               var transfer = new AMap.Transfer(transferOption)
               //根据起、终点坐标查询公交换乘路线
-              transfer.search(positionbegin, _this.positionpoint, function (status, result) {
+              transfer.search(positionbegin, _this.selectGDpoint, function (status, result) {
                 // result即是对应的公交路线数据信息，相关数据结构文档请参考  https://lbs.amap.com/api/javascript-api/reference/route-search#m_TransferResult
                 console.log('status,result');
                 console.log(status, result);
@@ -347,7 +390,7 @@ export default {
               console.log('driving');
               console.log(driving);
               // 根据起终点经纬度规划驾车导航路线
-              driving.search(positionbegin, _this.positionpoint, function (status, result) {
+              driving.search(positionbegin, _this.selectGDpoint, function (status, result) {
                 // result即是对应的驾车导航信息，相关数据结构文档请参考 https://lbs.amap.com/api/javascript-api/reference/route-search#m_DrivingResult
                 console.log('result');
                 console.log(result);
@@ -393,7 +436,7 @@ export default {
               // 步行导航
               var walking = new AMap.Walking(walkingOption)
               //根据起终点坐标规划步行路线
-              walking.search(positionbegin, _this.positionpoint, function (status, result) {
+              walking.search(positionbegin, _this.selectGDpoint, function (status, result) {
                 // result即是对应的步行路线数据信息，相关数据结构文档请参考  https://lbs.amap.com/api/javascript-api/reference/route-search#m_WalkingResult
                 console.log('result');
                 console.log(result);
@@ -468,11 +511,13 @@ export default {
     backindex() {
       var _this = this
       _this.mapCase.clearMap();
-      _this.addmarker();
+      // _this.addmarker();
+      this.addAllmarker()
       // $("#secondfirst").hide();
       $("#secondtxt").val("");
       // $("#secondtxtend").val("");
       // $("#firstdiv").show();
+      this.selectProject = null
     },
     openapp() {
       // var _this = this
@@ -516,6 +561,20 @@ export default {
           });
         });
       })
+    },
+    addAllmarker() {
+      if (Object.prototype.toString.call(this.dataArr) === '[object Array]') {
+        this.dataArr.map((item) => {
+          setTimeout(() => {
+            this.addmarker(item);
+          }, 500);
+        })
+      } else {
+        setTimeout(() => {
+          this.addmarker(this.dataArr)
+        }, 500);
+
+      }
     }
   }
 }

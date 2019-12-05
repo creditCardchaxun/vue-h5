@@ -195,7 +195,7 @@
         </div>
         <img src="../assets/images/bottom.jpg" alt />
       </div>
-      <maps :dataArr="alllongitude"></maps>
+      <maps v-if="alllongitude" :dataArr="alllongitude"></maps>
       <!-- <iframe src="static/index.html" frameborder="0" scrolling="auto"></iframe> -->
     </div>
     <footers></footers>
@@ -264,7 +264,7 @@ export default {
       // 地图
       opens1: false,
       openName: '上海',
-      alllongitude: [],
+      alllongitude: null,
       allcityName: [],
       Longid: '',
       LongName: '',
