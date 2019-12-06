@@ -74,8 +74,8 @@ window.$axios = axios
 // // 微信授权
 if (process.env.NODE_ENV === 'development' && !process.env.VUE_APP_BUILD_TYPE) {
   // 调试开发，替换这里token
-  let testToken = '6tDvjoLOgUQE8qVtCDQURkV7dB1abC9okwAXqlIe'
-  // let userinfo={"id":"2","nickname":"","realname":"","avater":"","sex":"0","mobile":'18911793350',"type":"0","openid":"","siteid":"1"}
+  let testToken = 'E9Q4FCJRNQ3xqUyUKDLeTFfJ3Ooq9o44eYHT02Sw'
+  let userinfo={"id":"2","nickname":"","realname":"","avater":"","sex":"0","mobile":'18911793350',"type":"0","openid":"","siteid":"1"}
   axios.defaults.headers.common['systype'] = 1
   axios.defaults.headers.common['accesstoken'] = testToken
   localStorage.setItem('accessToken', testToken)

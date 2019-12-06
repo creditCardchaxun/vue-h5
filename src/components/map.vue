@@ -13,22 +13,36 @@
         </div>
         <div id="secondfirst">
           <div class="secondfirst-wrap">
-            <div class="back" @click="changeFullScreen"></div>
-            <div class="input-box">
-              <div class="flex-row">
-                <div class="red-ball"></div>
-                <input type="text" class="text border-b" id="secondtxt" placeholder="请输入起点" />
+            <div class="secondfirst-wrap-op">
+              <div class="back" @click="changeFullScreen">
+                <div class="back-icon"></div>
               </div>
-              <div class="flex-row">
-                <div class="green-ball"></div>
-                <input
-                  type="text"
-                  readonly="readonly"
-                  class="text"
-                  id="secondtxtend"
-                  placeholder="请输入终点"
-                />
+              <div class="input-box">
+                <div class="flex-row">
+                  <div class="red-ball"></div>
+                  <input type="text" class="text border-b" id="secondtxt" placeholder="请输入起点" />
+                </div>
+                <div class="flex-row">
+                  <div class="green-ball"></div>
+                  <input
+                    type="text"
+                    readonly="readonly"
+                    class="text"
+                    id="secondtxtend"
+                    placeholder="请输入终点"
+                  />
+                </div>
               </div>
+              <div class="point-box">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+            </div>
+            <div class="point-box">
+              <div class="point"></div>
+              <div class="point"></div>
+              <div class="point"></div>
             </div>
           </div>
           <div class="tab-box">
@@ -54,6 +68,7 @@
 <script>
 import $ from 'jquery';
 import { WXsdk } from '../utils/wxShare';
+
 export default {
   props: {
     dataArr: {
@@ -70,7 +85,9 @@ export default {
       title: "Base-复兴路",
       address: "长宁区复兴路22号",
       markerend: null,
-      selectProject: null
+      selectProject: null,
+      infoWindow: [],
+      infoWindowIndex: 0
     }
   },
   computed: {
@@ -97,6 +114,8 @@ export default {
     selectGDpoint() {
       if (this.selectProject) {
         return new AMap.LngLat(this.selectProject.longitude, this.selectProject.latitude)
+      } else {
+        null
       }
     }
   },
@@ -134,7 +153,7 @@ export default {
       _this.mapCase = new AMap.Map('container', {
         resizeEnable: true,
         center: _this.mapCenter, //初始化地图中心点 
-        zoom: 10, //地图显示的缩放级别
+        zoom: 11, //地图显示的缩放级别
         lang: 'zh-cn',
         mapStyle: 'amap://styles/whitesmoke', //设置地图样式 远山黛.
         zoomEnable: true,
@@ -146,11 +165,8 @@ export default {
 
     },
     addmarker(item) {
-      console.log('item');
-      console.log(item);
       var _this = this
       // console.log(item);
-
       _this.markerend = new AMap.Marker({
         map: _this.mapCase,
         position: new AMap.LngLat(Number(item.longitude), Number(item.latitude)) || _this.positionpoint,
@@ -158,7 +174,6 @@ export default {
         size: new AMap.Size(19, 33),  //图标大小
       });
 
-      console.log(_this.markerend);
       //鼠标点击marker弹出自定义的信息窗体
       _this.mapCase.add(_this.markerend);
 
@@ -167,11 +182,16 @@ export default {
         content: _this.createInfoWindow(item),
         offset: new AMap.Pixel(0, -45)
       });
+      _this.infoWindow.push(infoWindow)
+
       AMap.event.addListener(_this.markerend, 'click', function () {
         infoWindow.open(_this.mapCase, _this.markerend.getPosition());
       });
     },
     createInfoWindow(item) {
+      var index = this.infoWindowIndex
+      this.infoWindowIndex++
+
       var _this = this
       var info = document.createElement("div");
       info.className = "custom-info input-card content-window-card";
@@ -193,6 +213,13 @@ export default {
       imgdiv.innerHTML = item.address;
       info.appendChild(imgdiv);
 
+      var closeEle = document.createElement("div");
+      closeEle.className = "close";
+      closeEle.addEventListener('click', () => {
+        _this.closeInfo(index)
+      })
+      info.appendChild(closeEle);
+
       var bottom = document.createElement("div");
       bottom.className = "info-bottom";
       bottom.style.position = 'relative';
@@ -210,6 +237,8 @@ export default {
       button.onclick = _this.showNav1;
       button.addEventListener('click', () => {
         // alert(123)
+        console.log('item')
+        console.log(item)
         this.bindSearch()
         this.selectProject = item
         _this.mapCase.clearMap();
@@ -538,28 +567,31 @@ export default {
       })
     },
     searchArround() {
+      var _this = this
       $("li").click(function () {
-        _this.mapCase.clearMap();
-        _this.addmarker();
-        $(this).siblings("li").removeAttr('class');
-        $(this).addClass("current_li");
-        var search = $(this).html();
-        if (search == "美食") search = "餐饮";
-        AMap.service(["AMap.PlaceSearch"], function () {
-          //构造地点查询类
-          var placeSearch = new AMap.PlaceSearch({
-            type: search, // 兴趣点类别
-            pageSize: 50, // 单页显示结果条数
-            pageIndex: 1, // 页码
-            autoFitView: false,
-            citylimit: true, //是否强制限制在设置的城市内搜索
-            map: _this.mapCase, // 展现结果的地图实例
+        if (_this.selectProject) {
+          _this.mapCase.clearMap();
+          _this.addmarker(_this.selectProject);
+          $(this).siblings("li").removeAttr('class');
+          $(this).addClass("current_li");
+          var search = $(this).html();
+          if (search == "美食") search = "餐饮";
+          AMap.service(["AMap.PlaceSearch"], function () {
+            //构造地点查询类
+            var placeSearch = new AMap.PlaceSearch({
+              type: search, // 兴趣点类别
+              pageSize: 50, // 单页显示结果条数
+              pageIndex: 1, // 页码
+              autoFitView: false,
+              citylimit: true, //是否强制限制在设置的城市内搜索
+              map: _this.mapCase, // 展现结果的地图实例
 
-            autoFitView: false // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
+              autoFitView: false // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
+            });
+            placeSearch.searchNearBy('', _this.selectGDpoint, 5000, function (status, result) {
+            });
           });
-          placeSearch.searchNearBy('', _this.positionpoint, 5000, function (status, result) {
-          });
-        });
+        }
       })
     },
     addAllmarker() {
@@ -571,16 +603,20 @@ export default {
         })
       } else {
         setTimeout(() => {
+          console.log(this);
           this.addmarker(this.dataArr)
         }, 500);
 
       }
+    },
+    closeInfo(index) {
+      this.infoWindow[index].close()
     }
   }
 }
 </script>
 
-<style lang="less" >
+<style lang="less">
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -588,15 +624,15 @@ export default {
 }
 
 .red-ball {
-  width: 0.3rem;
-  height: 0.3rem;
+  width: 7px;
+  height: 7px;
   background: green;
   border-radius: 50%;
 }
 
 .green-ball {
-  width: 0.3rem;
-  height: 0.3rem;
+  width: 7px;
+  height: 7px;
   background: red;
   border-radius: 50%;
 }
@@ -666,6 +702,17 @@ export default {
 
     .info-newdiv {
       font-size: 0.4rem;
+    }
+
+    .close {
+      width: 0.4rem;
+      height: 0.4rem;
+      // border: 1px solid red;
+      background: url("../assets/images/closeInfo.png") no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      right: 0.2rem;
+      top: 0.2rem;
     }
   }
 
@@ -847,16 +894,37 @@ export default {
     }
 
     .secondfirst-wrap {
-      display: flex;
-      flex-direction: row;
       position: relative;
       box-sizing: border-box;
       padding-left: 1rem;
 
+      .point-box {
+        width: 4px;
+        height: 0.5rem;
+        // background: green;
+        position: absolute;
+        top: 50%;
+        left: 1.547rem;
+        transform: translate(0, -50%);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .point {
+          width: 2px;
+          height: 2px;
+          border-radius: 50%;
+          background: rgba(128, 128, 128, 0.8);
+        }
+      }
+
+      .secondfirst-wrap-op {
+        display: flex;
+        flex-direction: row;
+      }
+
       .back {
         width: 1rem;
         // height: 1.7rem;
-        background: url("../assets/images/back.png") no-repeat;
         background-size: 100% auto;
         background-position: -13% center;
         margin-right: 0.2rem;
@@ -864,6 +932,16 @@ export default {
         top: 0;
         bottom: 0;
         left: 0;
+
+        .back-icon {
+          background: url("../assets/images/back.png") no-repeat;
+          background-size: 100% auto;
+          width: 0.5rem;
+          height: 1rem;
+          position: absolute;
+          top: 0.2rem;
+          left: 0.2rem;
+        }
       }
       .input-box {
         background: #f4f4f4;
@@ -892,10 +970,12 @@ export default {
 
     .tab-box {
       width: 100%;
-      border-top: 1px #ccc solid;
+      // border-top: 1px #ccc solid;
       height: 0.8rem;
       line-height: 0.8rem;
-      margin-top: 5px;
+      padding-bottom: 0.2rem;
+      padding-top: 0.2rem;
+      // margin-top: 5px;
       display: flex;
       flex-direction: row;
       justify-content: space-around;
@@ -917,7 +997,7 @@ export default {
     position: fixed;
     width: 100%;
     color: white;
-    background: rgba(0, 0, 255, 0.5);
+    background: rgba(60, 88, 150, 0.8);
     text-align: center;
     font-size: 0.4rem;
   }
