@@ -11,7 +11,11 @@
         <img src="@/assets/images/logo.png" alt />
       </div>
       <div class="nav-lan">
-        <span @click="changeLangEvent">{{lang ==='zh-CN'?'EN':'ZH'}}</span>
+        <span @click="changeLangEvent">
+          {{lanBase}}
+          <!-- {{lang ==='zh-CN'?'EN':'ZH'}} -->
+          <!-- {{lang==1?'EN':'ZH'}} -->
+        </span>
         <!-- <input type="text" v-model="lang" value="lang" style='display:none'>  -->
         <!-- <select id="sex" v-model="lang" @change="changeLangEvent">
           <option value="zh-CN">中文</option>
@@ -268,7 +272,8 @@ export default {
       allcityName: [],
       Longid: '',
       LongName: '',
-      status: ''
+      status: '',
+      lanBase:''
     }
   },
 
@@ -280,20 +285,20 @@ export default {
   },
 
   methods: {
-    // getHomedata(){
-    //     interfaces.getData().then((res)=>{
-    //        console.log(res.data.project_list)
-    //       this.bannerImg=res.data.banner
-    //       this.story=res.data.story
-    //       this.news_list=res.data.news_list
-    //       this.activity_list=res.data.activity_list
-    //       this.project_list=res.data.project_list
+    getHomedata(){
+        interfaces.getData().then((res)=>{
+           console.log(res.data.project_list)
+          this.bannerImg=res.data.banner
+          this.story=res.data.story
+          this.news_list=res.data.news_list
+          this.activity_list=res.data.activity_list
+          this.project_list=res.data.project_list
 
-    //        let story=res.data.story.description
-    //        this.story2=story.split('。') 
-    //       console.log(res.data)
-    //     })
-    // },
+           let story=res.data.story.description
+           this.story2=story.split('。') 
+          console.log(res.data)
+        })
+    },
     handleScroll() {
       this.scroll = $(window).height() + $(document).scrollTop();
     },
@@ -304,13 +309,12 @@ export default {
       scrolltop > 55 ? (this.showbg = true) : (this.showbg = false);
     },
     changeLangEvent() {
-      // console.log("改变语言");
-      // const totalLan='';
       if (this.lang == 'zh-CN') {
-        this.lang = 'en-US'
+         this.lang = 'en-US'
+         this.lanBase='ZH'
       } else {
         this.lang = 'zh-CN'
-        // totalLan=1
+        this.lanBase='EN'
       }
       this.$i18n.locale = this.lang; //关键语句
 
@@ -389,8 +393,9 @@ export default {
   },
   created() {
     //  this.getHomedata()
-       this.getallother(3362) 
-       this.getAllmap()
+     this.getallother(3362) 
+     this.lanBase= localStorage.getItem('lan')
+     this.getAllmap()
      this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile
     //  this.couponSelected = this.allcityName[0].name;
   },

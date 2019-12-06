@@ -72,8 +72,14 @@ export default {
             }
         }
     },
+      computed:{
+    //  this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+    //      minHeight(){
+    //     return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+    //   }
+    },
     created(){
-        this.getHeight.minHeight=window.innerHeight+'px'
+        this.getHeight.minHeight=(window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
          let id=this.$route.params.id
          this.bookdetails(id)
       },

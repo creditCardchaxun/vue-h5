@@ -92,6 +92,17 @@ export default {
   },
   created(){
     this.mobile=JSON.parse(localStorage.getItem('userinfo')).mobile
+    // this.getUserInfo()
+    // var user = res
+
+    // localStorage.set('user',JSON.stringify(user))
+
+    // var user = JSON.parse(localStorage.get('user'))
+
+    // user.a = newval
+
+    // localStorage.set('user',JSON.stringify(user))
+
   },
   methods:{
     selectedCountry(res){
@@ -106,6 +117,13 @@ export default {
            }
        
      },
+     getUserInfo(){
+        interfaces.getuserInfo().then(res => {
+          this.userinfo=res
+          localStorage.setItem('userinfo',JSON.stringify(res))
+        });
+     },
+
      toshowRegion(){
         this.showregion=true
      },
@@ -130,7 +148,7 @@ export default {
       // 取消错误提醒
         this.errors = {};
       // 发送请求
-          let mobile=this.phone
+
           let numCode=this.numCode
           let codeid=this.codeId
           let code=this.sms
@@ -140,11 +158,8 @@ export default {
               if(res.data.code!=0){
                   this.$toast(res.data.data)
               }else if(res.data.code==0){
-             
                  this.show_right=true
-                 this.mobile=this.phone
-                //  localStorage.setItem("userinfo.mobile",this.phone);
-                // this.$emit('getPhone',this.phone)
+                  this.getUserInfo()
                   this.$emit("update1", this.phone)
                   setTimeout(()=>{
                       if(this.mobile){
@@ -233,6 +248,7 @@ export default {
 </script>
 
 <style scoped>
+  
 .model-diag{width:100%;height:100%;background:rgba(0,0,0,0.5);position:fixed;top:0;left:0;z-index: 99;overflow: scroll;}
 .model-diag .model_main{width:90%;height:auto;margin:0 auto;top:35%;left:5%;position:absolute;border-radius: 10px;background-color: #fff;padding-bottom:0.53rem;}
 .van-cell-group {
@@ -278,7 +294,7 @@ export default {
   text-align: center;
   margin-top: 0.5rem;
 }
-.van-popup {
+.model-diag .van-popup {
     border-radius: 10px;
     overflow:visible;
 }
@@ -320,5 +336,7 @@ export default {
       background-color: #dddddd;
       color:#333;
     }
+
+
 
 </style>

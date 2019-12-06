@@ -1,5 +1,5 @@
 <template>
-  <div class="star" :style='getHeight'>
+  <div class="star" :style='minHeight'>
     <!-- <img src='../../assets/images/jp.png'/> -->
       <aheaders status='2'></aheaders>
        <div class="top-hotel"><img src="../../assets/images/hotel-01.jpg" alt=""></div>
@@ -105,9 +105,16 @@ export default {
          },
          toshowicon:false,
          toshowicon2:false,
-         status:''
+         status:'',
+ 
      }
   },
+     computed:{
+    //  this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+        minHeight(){
+        return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+      }
+    },
   methods:{
         city(){
           this.toshowCity=!this.toshowCity 
@@ -213,7 +220,7 @@ export default {
         this.getListhouses(data)
         this.getcitys()
         this.gethouseTypes()
-        this.getHeight.minHeight=window.innerHeight+'px'
+        // this.getHeight.minHeight=window.innerHeight+'px'
      },
 
   //    beforeRouteEnter (to, from, next) {

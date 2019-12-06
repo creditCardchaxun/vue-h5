@@ -1,10 +1,19 @@
 <template>
-  <div class="myReserve" :style='getHeight'>
+<!-- :style='getHeight' -->
+  <div class="myReserve" >
+    <div :style='getHeight' >
     <aheaders status="3" @toback='toreplace'></aheaders>
     <!-- <van-cell is-link @click="showPopup">项目</van-cell> -->
-    <van-cell-group>
+    <van-cell-group >
+       <!-- <div class="inputGroup" 
+        @click="showPopup">
+           <label for="">{{$t('m.house1')}}</label>
+           <input type="text" disabled="true"  v-model="value" :placeholder="$t('m.house8')">
+           <span arrow-down></span>
+       </div> -->
       <van-field
         v-model="value"
+        id='input1'
         :placeholder="$t('m.house8')"
         :label="$t('m.house1')"
         right-icon="arrow-down"
@@ -13,6 +22,7 @@
       />
       <van-field
         v-model="value2"
+        id='input2'
         :placeholder="$t('m.house9')"
         :label="$t('m.house2')"
          right-icon="arrow-down"
@@ -20,7 +30,7 @@
         @click="showPopup2"
       />
       <div class="names">
-        <van-field type='text' v-model="name" :placeholder="$t('m.house10')" :label="$t('m.house3')" id='inputs' />
+        <van-field type='text' v-model="name" :placeholder="$t('m.house10')" :label="$t('m.house3')" id='orderFormInput' />
         <van-radio-group v-model="radio">
           <van-radio name="1">{{$t('m.woman')}}</van-radio>
           <van-radio name="0">{{$t('m.man')}}</van-radio>
@@ -33,6 +43,7 @@
         <!-- </van-field> -->
         <van-field
           v-model="phone"
+          id='input4'
           :placeholder="$t('m.house11')"
           :label="$t('m.house4')"
           type="number"
@@ -54,7 +65,7 @@
         <textarea
           v-model="message"
           name="message"
-          id
+          id='input5'
           cols="20"
           rows="2"
           :placeholder="$t('m.house6')"
@@ -98,7 +109,7 @@
         <p style="color:#000;font-size:0.4rem;">{{$t('m.other5')}}</p>
       </div>
     </van-popup>
-
+</div>
     <afooter></afooter>
   </div>
 </template>
@@ -189,13 +200,17 @@ export default {
       }
     });
   },
+  // computed:{
+  //     minHeight(){
+  //       return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+  //     }
+  //   },
 
   created() {
-    this.getHeight.minHeight=window.innerHeight+'px'
     this.ids = this.$route.params.id;
     this.value = this.$route.params.name;
     let mobile = this.$route.params.mobile;
-
+    this.getHeight.minHeight=(window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
     if (mobile) {
       this.phone = mobile;
     } else {
@@ -228,9 +243,11 @@ export default {
           });
 
     },
-    getPhones111(data) {
-      this.phone = data;
-     },
+    // getPhones111(data) {
+    //   // this.phone = data;
+    //   console.log(data,'ghdfgsgjhdfghjdgf')
+    //  },
+    
     // 公寓选择
     bookHouses() {
       interfaces.bookHouse().then(res => {
@@ -326,7 +343,7 @@ export default {
     },
     tohideModel() {
       this.hideModel = false;
-      this.phone = localStorage.getItem("mobile");
+      this.phone = JSON.parse(localStorage.getItem('userinfo')).mobile
     },
     chooseTag(e, list) {
       var str = {};
@@ -413,8 +430,79 @@ export default {
 </script>
 
 <style scoped>
+.inputGroup{
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 16px;
+    overflow: hidden;
+    color: #323233;
+    font-size: 14px;
+    line-height: 24px;
+    background-color: #fff;
+    border:1px solid #fafafa;
+}
+.inputGroup label {
+    -webkit-box-flex: 0;
+    -webkit-flex: none;
+    flex: none;
+    width: 90px;
+}
+.inputGroup input{
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    color: #323233;
+    text-align: left;
+    background-color: transparent;
+    border: 0;
+    resize: none;
+}
 
 
+
+.myReserve >>> #orderFormInput::input-placeholder{
+    color:#999;
+} 
+.myReserve >>> #orderFormInput::-webkit-input-placeholder{
+        color:#999;
+ }
+/* .myReserve >>> .van-cell__value .van-field__control{
+    color: #333 ;
+  }
+.myReserve >>> .van-cell__value .van-field__control:disabled {
+      color: #333;
+      -webkit-text-fill-color: #333 ;
+      background-color: transparent;
+      opacity: 1;
+  } */
+
+.myReserve >>> #input1::input-placeholder { 
+    color: #999;
+}
+.myReserve >>> #input1::-webkit-input-placeholder { 
+    color: #999;
+}
+
+.myReserve >>> .van-cell__value input::-moz-placeholder { 
+    color: #999;
+}
+
+.myReserve >>> .van-cell__value input:-ms-input-placeholder,
+.myReserve >>> .van-cell__value  textarea:-ms-input-placeholder {
+    color: #999;
+}
+
+.myReserve >>> .van-cell__value input::-webkit-input-placeholder,
+.myReserve >>> .van-cell__value textarea::-webkit-input-placeholder {
+    color: #999;
+}
 
 .names {
   position: relative;
@@ -529,9 +617,9 @@ export default {
   text-align: center;
   margin-top: 0.5rem;
 }
-.van-popup {
+.myReserve .van-popup {
   border-radius: 10px;
   overflow: visible;
 }
-#inputs input{color:#000;}
+
 </style>

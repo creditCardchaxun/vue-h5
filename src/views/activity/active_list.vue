@@ -1,5 +1,5 @@
 <template>
-  <div class="newlist" :style='newsHeight'>
+  <div class="newlist" :style='minHeight'>
          <aheaders status='2'></aheaders>
           <div class="news_main">
             <div class="news_01" v-if='topList'>
@@ -60,6 +60,11 @@ export default {
          }
       }
     },
+    computed:{
+         minHeight(){
+        return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+      }
+    },
      methods:{
       //  interfaces.activeList
      activeLists(){
@@ -80,7 +85,7 @@ export default {
     },
     created(){
     //  this.activeLists()
-     this.newsHeight.minHeight=window.innerHeight+'px'
+    //  this.newsHeight.minHeight=window.innerHeight+'px'
       },
        beforeRouteEnter (to, from, next) {
       interfaces.activeList().then(function (res) {

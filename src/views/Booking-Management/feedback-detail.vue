@@ -1,5 +1,5 @@
 <template>
-  <div class="bookingfeedback">
+  <div class="bookingfeedback" :style="getHeight">
     <aheaders status='3' @toback='toreplace'></aheaders>
     <div class="message">
       <h6>{{$t('m.feedback18')}}</h6>
@@ -75,14 +75,24 @@ export default {
   data() {
     return {
       ids:'',
-      feedback:''
+      feedback:'',
+      getHeight:{
+        minHeight:''
+      }
     };
   },
   components: {
     aheaders,
     footers
   },
+    computed:{
+    //  this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+       minHeight(){
+        return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+      }
+    },
   created(){
+    this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
     this.ids=this.$route.params.id
     this.detailfeed(this.ids)
   },
@@ -128,7 +138,7 @@ export default {
 .bookingdetail {
   width: 100%;
   height: auto;
-  min-height:9rem;
+  /* min-height:9rem; */
   margin: 0 auto;
 }
 

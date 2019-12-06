@@ -16,7 +16,7 @@ import axios from 'axios'
 
 var wxinfoApi = 'http://shengxi-test.iyunfish.com/index.php?m=api&c=weixin&a=getAppidSecret'
 var getAccessTokenByCodeApi = 'http://shengxi-test.iyunfish.com/index.php?m=api&c=weixin&a=callBack&code='
-var useidApi='http://shengxi-test.iyunfish.com/index.php?m=api&c=pagehome&a=getwx_user'
+// var useidApi='http://shengxi-test.iyunfish.com/index.php?m=api&c=pagehome&a=getwx_user'
 
 
 
@@ -27,19 +27,15 @@ function initWX() {
   if (localStorage.getItem('accessToken')) { // localstorge has token
     accessToken = localStorage.getItem('accessToken')
   } else if (getQueryString('code')) { // url has code
-    console.log('getQueryString')
-    console.log(getQueryString('code'))
     let datas= getAccessTokenByCode(config.sysType, getAccessTokenByCodeApi + getQueryString('code'))
-     console.log(datas)
-     console.log(getAccessTokenByCodeApi)
     accessToken =datas.accessToken // 该方法依赖Jq的ajax的同步请求
     userinfo = datas.userinfo
     localStorage.setItem('accessToken', accessToken)
-    localStorage.setItem('userinfo',JSON.stringify(userinfo))
+    // localStorage.setItem('userinfo',JSON.stringify(userinfo))
     // getWxInfor(accessToken)
   } else {
      init(config.sysType, wxinfoApi) // 该方法依赖Jq的ajax的同步请求
-  }
+   }
 }
 
 function getQueryString(name) {

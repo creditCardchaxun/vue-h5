@@ -35,31 +35,19 @@
 }
 .scrolltop img{width:100%;height:auto;}
 
-
-.myReserve .van-cell__value .van-field__control{
-    color: #333 !important;
-  }
-  .myReserve .van-cell__value .van-field__control:disabled {
-      color: #333;
-      -webkit-text-fill-color: #333 !important;
-      background-color: transparent;
-      opacity: 1;
-  }
-
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: #333;
+/* #orderFormInput::input-placeholder{
+    color:#333;
 }
 
-input:-ms-input-placeholder,
-textarea:-ms-input-placeholder {
-    color: #333;
+#orderFormInput::-webkit-input-placeholder{
+        color:#333;
+ } */
+/* #myReserveInput::-webkit-input-placeholder{
+    color:#333;
 }
-
-input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
-    color: #333;
-}
-
+#myReserveInput::input-placeholder{
+    color:#333;
+} */
 
 /* 预约弹框 */
 

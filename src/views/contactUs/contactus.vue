@@ -1,5 +1,5 @@
 <template>
-  <div class="contact">
+  <div class="contact" :style='getHeight'>
  <!-- <img src='../../assets/images/contact.png'/> -->
 <!-- 关于我们 联系我们 -->
     <aheaders status='2'></aheaders>
@@ -68,16 +68,26 @@ export default {
         heightOther2:200,
         showMoress:false,
         active:0,
-        listheight:''
+        listheight:'',
+        getHeight:{
+          minHeight:''
+        }
       }
    },
     components:{
     aheaders,
     afooters,
   },
+     computed:{
+      // this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+      //    minHeight(){
+      //   return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+      // }
+    },
   created(){
     // this.contacts()
     // this.abouts()
+    this.getHeight.minHeight=(window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
     this.active=this.$route.params.active 
     if(this.active==0){
       this.contacts()
@@ -204,7 +214,7 @@ export default {
 </script>
 
 <style>
-.contact{width:100%;height:auto;min-height:9rem;}
+.contact{width:100%;height:auto;}
 .contact .van-tabs .van-tab {
     flex: none;
     width: 50%;

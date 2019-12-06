@@ -1,13 +1,18 @@
 <template>
- <van-popup v-model="shows" position="top" :overlay="true">
+
+ <van-popup v-model="showImgAll" position="top" :overlay="true">
    <div class="projectImg">
-     <van-swipe :loop="false" :style='getheights' :show-indicators='false'>
+     <van-swipe :loop="false" :style='getheights' :show-indicators='true'>
+       <!-- <swipe :options="swiperOption"></swipe> -->
      <!-- <swiper :style='getheights' :options="swiperOption"> -->
         <van-swipe-item v-for='(item,index) in imgAll' :key='index'>
             <div class="pro-item">
                 <div class="pro-items">
-                      <img :src="item.fileurl" alt="" class='big-img' style='width:100%;height:100%;position:absolute;top:0;left:0;z-index:-1' >
+                      <img v-if='item.fileurl' :src="item.fileurl" alt="" class='big-img' style='width:100%;height:100%;position:absolute;top:0;left:0;z-index:-1' >
+                      <img v-if='item.video_pic' :src="item.video_pic" alt="" class='big-img' style='width:100%;height:100%;position:absolute;top:0;left:0;z-index:-1' >
                     <div class="project-img">
+                      <!-- 视频添加 -->
+                       <video v-if='item.video_url'  src="item.video_url" width=100%></video>  
                       <div class="pro-img"><img src="../assets/images/project-logo.png" alt=""></div>
                         <div class="main-other">
                           <div class="pro-main">
@@ -17,8 +22,11 @@
                           <div class="pro_font" v-if='item.type==1'> Beforer</div> 
                           <div class="pro_font" v-if='item.type==2'> After</div> 
                       </div>
-                          <p>
+                          <p v-if='item.project_name'>
                             {{item.project_name}}  
+                          </p>
+                           <p v-if='item.video_desc' >
+                            {{item.video_desc}}  
                           </p>
                     </div>
                 </div>
@@ -32,6 +40,7 @@
       </div>
    </div>
  </van-popup>
+
 </template>
 
 <script>
@@ -45,7 +54,7 @@ Vue.use(Swipe).use(SwipeItem);
 export default {
     name:'projectImg',
     props:{
-      shows:Boolean,
+      showImgAll:Boolean,
       idss:String
     },
     data(){
@@ -54,6 +63,14 @@ export default {
          getheights:{
            height:''
           },
+      //    swiperOption: {
+      //   slidesPerView: "auto",
+      //   spaceBetween: 10,
+      //   pagination: {
+      //     el: ".swiper-pagination",
+      //     clickable: true
+      //   }
+      // },
        } 
     },
     methods:{
@@ -70,26 +87,16 @@ export default {
          this.$emit('tohideList')
         }
      },
-    //  beforeRouteEnter (to, from, next) {
-    //    alert('gfghfdhfhghf')
-    //   let id=to.params.id
-    //   interfaces.getbrandstory(14).then(function (res) {
-    //   next(vm=>{
-    //      vm.imgAll=res
-    //      console.log(res,'res')
-    //     })
-    //   })
-    //  },
 
      mounted(){
           　this.getheight()
             this.storyImg(this.idss)
-            console.log(this.idss,'使得很多参加')
          }
       }
 </script>
 
-<style>
+<style scoped>
+
 .projectImg{width:100%;height:auto;position:relative;}
 .pro-item{width:100%;height:100%;position:fixed;top:0;left:0;z-index:999;}
 .pro-item .pro-items{width:100%;height:100%;

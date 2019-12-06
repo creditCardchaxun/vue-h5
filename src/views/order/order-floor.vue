@@ -47,30 +47,6 @@
        <van-button type="info" class='submits' @click="toshowModel">{{$t('m.orderhouse')}}</van-button>
 
        <!-- 预约弹框 -->
-        <!-- <div class="model-diag" v-show="hideModel">
-            <div class="model_main">
-                 <div class="mains">
-                   <div class="left">{{$t('m.s1')}}</div>
-                   <div class="right">
-                     <input type="text" 
-                     v-model="phone"
-                      :placeholder="$t('m.s5')"></div>
-                   </div>
-
-                   <div class="mains" style='position:relative;'>
-                       <div class="left">{{$t('m.s2')}}</div>
-                       <div class="right">
-                        <input type="text" 
-                        v-model="sms"
-                         :placeholder="$t('m.s6')">
-                          </div>
-                        <button>{{$t('m.s3')}}</button>
-                     </div> 
-                 <button class='btns'>{{$t('m.s4')}}</button>
-               <img src="../../assets/images/remove.png" alt="" class='img_remove'  @click="tohideModel">
-            </div> -->
-
-        <!-- </div> -->
         <submitBtn  v-if='!hideModel' @tohideModel='tohideModel' :status='status'></submitBtn>
     </div>
   </div>
@@ -79,6 +55,7 @@
 
 <script>
 import Vue from 'vue';
+import interfaces from "@/utils/api.js";
 import submitBtn from '@/components/submitBtn'
 import { NavBar,Field } from 'vant';
 import { Icon } from 'vant';
@@ -102,14 +79,30 @@ export default {
        status:'',
         getHeight:{
              minHeight:''
-            }
+            },
+        userinfo:{}    
      }
     },
     created(){
-      this.getHeight.minHeight=window.innerHeight+'px'
+      // this.getUserInfo()
+      this.getHeight.minHeight=(window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
     },
-
+     computed:{
+      //  this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+      //  minHeight(){
+      //   return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+      // }
+     },
+     
    methods:{
+        // 获取个人信息
+    //  getUserInfo(){
+    //     interfaces.getuserInfo().then(res => {
+    //       this.userinfo=res
+    //       localStorage.setItem('userinfo',JSON.stringify(res))
+    //     });
+    //  },
+
    tohideModel(){
      this.hideModel=true
    },

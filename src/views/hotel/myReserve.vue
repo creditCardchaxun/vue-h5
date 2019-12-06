@@ -36,7 +36,8 @@
         <div class="names">
         <van-field 
             style='width:60%'
-            v-model="names"
+              v-model="names"
+              id='myReserveInput'
              :placeholder="$t('m.house10')" 
             :label="$t('m.bookName4')" 
         />
@@ -125,6 +126,9 @@ export default {
          }
         }
     },
+    //    computed(){
+    //  this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+    // },
     created(){
       let mobile=JSON.parse(localStorage.getItem('userinfo')).mobile
       this.phone=mobile;
@@ -132,7 +136,7 @@ export default {
       let name=this.$route.params.name
       this.value=name
       this.id=id
-      this.getHeight.minHeight=window.innerHeight+'px'
+      this.getHeight.minHeight=(window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
       // this.getListhouses()
     },
       beforeRouteEnter (to, from, next) {
@@ -308,6 +312,37 @@ export default {
 </script>
 
 <style scoped>
+.myReserve >>> #myReserveInput::-webkit-input-placeholder{
+    color:#333;
+}
+.myReserve >>> #myReserveInput::input-placeholder{
+    color:#333;
+}
+.myReserve >>> .van-cell__value .van-field__control{
+    color: #333 !important;
+  }
+  .myReserve >>> .van-cell__value .van-field__control:disabled {
+      color: #333;
+      -webkit-text-fill-color: #333 !important;
+      background-color: transparent;
+      opacity: 1;
+  }
+
+.myReserve >>> ::-moz-placeholder { 
+    color: #333;
+}
+
+.myReserve >>> input:-ms-input-placeholder,
+.myReserve >>> textarea:-ms-input-placeholder {
+    color: #333;
+}
+
+.myReserve >>> input::-webkit-input-placeholder,
+.myReserve >>> textarea::-webkit-input-placeholder {
+    color: #333;
+}
+
+
 .names{position:relative;}
 .names .van-radio-group{position:absolute;right: 14px;top:20px;display: flex;align-items: center;}
 .names .van-radio{margin-right:0.2rem;font-size:0.3rem;}

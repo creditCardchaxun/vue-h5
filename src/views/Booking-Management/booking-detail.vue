@@ -1,5 +1,5 @@
 <template>
-  <div class="bookingdetail">
+  <div class="bookingdetail" :style='getHeight'>
     <aheaders status='3' @toback='toreplace'></aheaders>
     <div class="detail">
       <ul>
@@ -84,14 +84,24 @@ export default {
       show_right: false,
       ids:'',
       desc:'',
-      listInfo:{}
+      listInfo:{},
+      getHeight:{
+        minHeight:''
+      }
     };
   },
   components: {
     aheaders,
     footers
   },
+     computed:{
+    //  this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+      //  minHeight(){
+      //   return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+      // }
+    },
   created(){
+    this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
     this.ids=this.$route.params.id
     localStorage.setItem('bookId',this.ids)
     this.getdetailbook(this.ids)
@@ -155,7 +165,7 @@ export default {
 .bookingdetail {
   width: 100%;
   height: auto;
-  min-height:9rem;
+  /* min-height:9rem; */
   margin: 0 auto;
 }
 

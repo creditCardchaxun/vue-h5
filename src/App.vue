@@ -63,7 +63,7 @@ export default {
    },
 
   created() {
-
+      this.getUserInfo()  //获取个人信息
     // apitest.te st() 
     // 通过url中是否含有shareId来判断是否是分享出去的详情页，再由路由推向对应详情页
 
@@ -143,7 +143,14 @@ export default {
       this.showModel=false
       this.$router.push({name:'appraise',params:{id:id}})
       localStorage.setItem('appraiseId',id)
-    }
+    },
+    // 获取个人信息
+    getUserInfo(){
+       interfaces.getuserInfo().then(res => {
+          this.userinfo=res
+          localStorage.setItem('userinfo',JSON.stringify(res))
+        });
+      },
   }
 }
 </script>
@@ -159,6 +166,6 @@ export default {
 .goodAppraise .app_01 .app-right p{font-size:0.35rem;color:#999999;line-height: 0.6rem;    margin-top: 0.2rem;}
 .goodAppraise .app_02{font-size:0.40rem;color:#373737;margin:0.5rem 0 0.76rem;text-align: center;}
 .goodAppraise button{font-size: 0.35rem;color:#fff;width:7.8rem;height:1.2rem;line-height:1.2rem; background-color: #5975a9;display: block;border:1px solid transparent;margin:0 auto;border-radius: 5px;}
-#app .van-popup{overflow: visible;}
+ #app .van-popup{overflow: visible;}
 .img_remove{width:0.82rem;height:0.82rem;position: absolute;bottom:-53px;left:47%;}
 </style>
