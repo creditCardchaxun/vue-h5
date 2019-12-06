@@ -20,7 +20,7 @@
         @click="showPopup2"
       />
       <div class="names">
-        <van-field v-model="name" :placeholder="$t('m.house10')" :label="$t('m.house3')" />
+        <van-field type='text' v-model="name" :placeholder="$t('m.house10')" :label="$t('m.house3')" id='inputs' />
         <van-radio-group v-model="radio">
           <van-radio name="1">{{$t('m.woman')}}</van-radio>
           <van-radio name="0">{{$t('m.man')}}</van-radio>
@@ -50,7 +50,6 @@
             @click="chooseTag($event,tags[index])"
             :class="{onstag:tags[index].checked}"
           >{{item}}</span>
-
         </div>
         <textarea
           v-model="message"
@@ -414,6 +413,9 @@ export default {
 </script>
 
 <style scoped>
+
+
+
 .names {
   position: relative;
 }
@@ -531,4 +533,5 @@ export default {
   border-radius: 10px;
   overflow: visible;
 }
+#inputs input{color:#000;}
 </style>

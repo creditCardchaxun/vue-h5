@@ -446,13 +446,13 @@ border-bottom-left-radius: 0.1rem;border-bottom-right-radius: 0.1rem;}
 
 .map{width:100%;height:auto;padding-bottom:.9rem;border-bottom:1px solid #e5e5e5;}
 .map .map01{width:100%;height:auto;margin:0rem auto 0;}
-.map .map01 h3{font-size:0.42rem;color:#161616;font-weight:bold;margin:0 0.67rem 0.65rem;}
+.map .map01 h3{font-size:0.42rem;color:#161616;font-weight:bold;margin:0.48rem 0.67rem 0.65rem;}
 .map .map01 img{width:100%;height:auto;margin:0rem 0 0.85rem;}
 .map .map01 p{font-size:0.34rem;color:#000;line-height:0.62rem;margin:0 0.67rem;}
 .map .map01 p b{font-weight:bold;font-size:0.36rem;margin-right:0.2rem;}
 .hot-hotel{width:100%;height:auto;padding-bottom: 0.3rem;}
 .hot-hotel h3{font-size:0.42rem;color:#060606;margin:0.75rem 5% 0.36rem;font-weight:bold;}
-.hot-hotel .hotel-some{width:auto;height:auto;}
+.hot-hotel .hotel-some{width:auto;height:auto; padding-left: 0.30rem;}
 .hot-hotel .hotel-some .hotel-item{width:4.63rem;height:auto;}
 .hot-hotel .hotel-some .hotel-item img{width: 4.63rem;height: 3.31rem;overflow: hidden;}
 .hot-hotel .hotel-some .hotel-item  .hotel-title{font-size:0.36rem;color:#212121;line-height: 0.54rem;overflow: hidden;font-weight: bold;}

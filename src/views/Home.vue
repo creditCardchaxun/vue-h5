@@ -437,7 +437,7 @@ export default {
   transform: rotate(180deg);
 }
 .header {
-  width: 9.55rem;
+  width:100%;
   height: auto;
   display: flex;
   align-items: center;
@@ -445,7 +445,9 @@ export default {
   top: 0;
   left: 0;
   justify-content: space-between;
-  margin: 0 0 0 0.55rem;
+  padding:0 0.6rem;
+  box-sizing: border-box;
+  /* margin: 0 0 0 0.55rem; */
 }
 .header .logo {
   width: 1.54rem;

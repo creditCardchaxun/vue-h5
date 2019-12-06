@@ -1,20 +1,19 @@
 <template>
       <!-- 预约弹框 v-show='hideModel'-->
         <div class="model-diag">
-           <selectcountry  v-if='showregion' @select='selectedCountry'></selectcountry>
+           <selectcountry  v-if='showregion' :showregion='showregion'  @select='selectedCountry'></selectcountry>
             <div class="model_main">
                  <div class="mains" :class="{'is-invalid':errors2}">
                    <div class="left">
                      <!-- {{$t('m.s1')}} -->
-                   <input  class="numCode" placeholder='手机号/区号' style='width:2rem;height:1rem;text-align:center;'  @click="toshowRegion" v-model="numCode" />
+                   <input  class="numCode" placeholder='手机号/区号' style='width:2rem;height:1rem;text-align:left;'  @click="toshowRegion" v-model="numCode" />
                    </div>
-                   
                    <div class="right">
                      <input type="number" 
                         v-model="phone"
                         :placeholder="$t('m.s5')"
                         :disabled='iswrite'
-                       @input="$emit('input',$event.target.value)">
+                        @input="$emit('input',$event.target.value)">
                       </div>
                    </div>
 
@@ -96,9 +95,16 @@ export default {
   },
   methods:{
     selectedCountry(res){
+        console.log(res)
         this.showregion=false
-         this.numCode='+'+res.tel 
-         this.codeId=res.id
+           if(res==undefined){
+            this.numCode=''
+            this.codeId=''
+           }else{
+            this.numCode='+'+res.tel 
+            this.codeId=res.id
+           }
+       
      },
      toshowRegion(){
         this.showregion=true

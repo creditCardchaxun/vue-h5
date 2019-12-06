@@ -26,6 +26,7 @@
             <!-- <input type="text" v-model="value3" class='endtime'>  -->
         <van-field 
             style='padding-left:30px;width:44%'
+            :placeholder="$t('m.house9')" 
             v-model="value3"
             right-icon="arrow-down"
             disabled="true"

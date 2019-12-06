@@ -9,10 +9,10 @@
         </div>
         <div class="foot_01">
             <ul>
-                <li> <img src="../assets/images/phone.png" alt="" style='width:0.24rem;height:0.24rem'><span>{{contact.address}}
+                <li @click='toCallPhone'> <img src="../assets/images/phone.png" alt="" style='width:0.24rem;height:0.24rem'><span>{{contact.tel}}
                   <!-- <em style='font-size:0.22rem;'>(8:00-22:00)</em>  -->
                 </span> </li>
-                <li> <img src="../assets/images/map.png" alt="" style='width:0.20rem;height:0.24rem'><span>{{contact.tel}}</span>  </li>
+                <li> <img src="../assets/images/map.png" alt="" style='width:0.20rem;height:0.24rem'><span>{{contact.address}}</span>  </li>
                 <li> <img src="../assets/images/mail.png" alt="" style='width:0.24rem;height:0.20rem'><span>{{contact.keywords}}</span> </li>
             </ul>
         </div>
@@ -52,6 +52,9 @@ export default{
       }
   },
   methods:{
+    toCallPhone(){
+     window.location.href = 'tel://400 700 6608'
+    },
     handleScroll() {
        let scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
         scrolltop > 500 ? (this.gotop = true) : (this.gotop = false);
@@ -114,7 +117,7 @@ export default{
  }
 .scrolltop img{width:100%;height:auto;}
 
-.kefu{width:auto;height:1.18em;position:fixed;bottom:4.0rem;right:0px;background:rgba(0,0,0,1);border-top-left-radius:24px; border-bottom-left-radius:24px;z-index:99;}
+.kefu{width:auto;height:1.18em;position:fixed;bottom:4.0rem;right:0px;background:rgba(0,0,0,1);border-top-left-radius:24px; border-bottom-left-radius:24px;z-index:90;}
 /* .kefu img{width:2.5rem;height:1.35rem;} */
 .kefu .kefu_01{width:auto;height:auto;display: flex;align-items: center;justify-content: center;}
 .kefu .kefu_01 img{width:0.55rem;height:0.55rem;margin:0 0.2rem;}

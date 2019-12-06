@@ -6,8 +6,8 @@
            <!-- <van-nav-bar title="首页" left-text="返回" left-arrow  @click='toback'>
           </van-nav-bar> -->
           <div class='person-arr' style='position:relative;'>
-            <div class="person-arr1"  @click='toback'><van-icon name="arrow-left" /> <em>{{$t('m.home')}}</em> </div> 
-            <span class='remove-index' style='position:absolute;top:12px;right:10px;width:0.6rem;height:0.6rem;'><van-icon name="cross"  style='width:100%;height:100%;'/></span>
+            <div class="person-arr1"  @click.stop='toback'><van-icon name="arrow-left" /> <em>{{$t('m.home')}}</em> </div> 
+            <span class='remove-index' style='position:absolute;top:12px;right:10px;' @click.stop='toreplace' ><van-icon name="cross"  style='width:100%;height:100%;'/></span>
              </div>
           </div>
 
@@ -35,9 +35,12 @@
           <li><router-link :to="{path:'/hotel'}"><img src="../../assets/images/2_11.png" alt=""><i>{{$t('m.home1')}}</i> </router-link>  </li>
           <li><router-link :to="{path:'/news'}"><img src="../../assets/images/2_14.png" alt=""><i>{{$t('m.home2')}}</i> </router-link>  </li>
           <li><router-link :to="{path:'/activity'}"><img src="../../assets/images/2_16.png" alt=""><i>{{$t('m.home3')}}</i> </router-link> </li>
-          <li style='border-bottom:10px solid #f1f1f1;'><router-link :to="{name:'contact',params:{active:1}}"><img src="../../assets/images/2_18.png" alt=""><i>{{$t('m.home4')}}</i></router-link> </li>
+          <li><router-link :to="{name:'contact',params:{active:1}}"><img src="../../assets/images/2_18.png" alt=""><i>{{$t('m.home4')}}</i></router-link> </li>
+   
+        </ul>
+        <ul style='border-top:10px solid #f1f1f1;'>
           <li><router-link :to="{name:'contact',params:{active:0}}"><img src="../../assets/images/2_20.png" alt=""><i>{{$t('m.home5')}}</i> </router-link></li>
-          <li @click="callPhone"><img src="../../assets/images/2_22.png" alt=""><i>400-700-6008</i> </li>
+          <li @click="callPhone"><router-link to=""><img src="../../assets/images/2_22.png" alt=""><i>400-700-6008</i> </router-link></li>
         </ul>  
        </div>
 
@@ -130,6 +133,9 @@ export default {
     toback(){
        this.$router.push({path:'/'})
     },
+    toreplace(){
+      this.$router.go(-1)
+    },
 
     
    },
@@ -194,13 +200,13 @@ export default {
 
 .person_03{width:auto;height:auto;background-color: #fff;display:flex;align-items:center;flex-direction: column;}
 .person_03 ul{width:100%;height:auto;display:flex;align-items:center;flex-direction: column;}
-.person_03 ul li{width:100%;display:flex;align-items:center;border-bottom:1px solid #ddd;padding:0 1.5rem;box-sizing: border-box;height:1.6rem;line-height: 1.6rem;}
-.person_03 ul li a{font-size:0.37rem;color:#000;display: block;width:100%;} 
+.person_03 ul li{width:100%;display:flex;align-items:flex-end;border-bottom:1px solid #ddd;padding:0 1.5rem;box-sizing: border-box;height:1.6rem;line-height: 1.6rem;}
+.person_03 ul li a{font-size:0.37rem;color:#000;display: block;width:100%;height:100%;} 
 .person_03 ul li i{font-size:0.37rem;color:#000;}
 .person_03 ul li img{width:0.42rem;height:0.38rem;margin-right:0.55rem;}
 
 .person_03 ul li:last-child{border-bottom:none;}
-.person-center .submits{width:8rem;height:1rem;background-color: #5975a9;margin:0 auto;color:#fff;display: block;margin-top:20px; line-height: 1rem;display: block;}
+.person-center .submits{width:8rem;height:1rem;background-color: #5975a9;margin:0 auto;color:#fff;display: block;margin-top:20px; line-height: 1rem;display: block;border:1px solid transparent;}
 
 .model-diag{width:100%;height:100%;background:rgba(0,0,0,0.5);position:fixed;top:0;left:0;}
 .model-diag .model_main{width:90%;height:auto;margin:0 auto;top:35%;left:5%;position:absolute;border-radius: 10px;background-color: #fff;padding-bottom:0.53rem;}

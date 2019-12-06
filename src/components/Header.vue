@@ -100,7 +100,9 @@ changeLangEvent() {
 .nav-lan span{font-size:18px;border-bottom:1px solid #000;}
 .nav-lan .nav-menu{width:25%;height:auto;} */
 
-.header {width:9.55rem;height:1.54rem;display:flex;align-items: center;justify-content: space-between;margin:0 0 0 0.55rem;}
+.header {width:auto;padding:0 0.6rem; height:1.63rem;display:flex;align-items: center;justify-content: space-between;
+/* margin:0 0 0 0.55rem; */
+}
 .header .logo{width:1.54rem;height:1.09rem;margin-top:10px;}
 .header .logo img{width:1.54rem;height:1.09rem;}
 
@@ -113,12 +115,17 @@ changeLangEvent() {
 .nav-lan .nav-menu img{width:0.85rem;height:0.6rem;}
 .nav-lan .nav-menu a{font-size:0.4rem;width:0.85rem;height:0.6rem;display:block;}
 
-.showbgs{width: 10.8rem;
-    height: 1.54rem;
+.showbgs{
+
+   width:100%;
+   height:1.63rem;
+   display:flex;
+   align-items: center;
+   justify-content: space-between;
+
     position: fixed;
     background: rgba(255,255,255,0.8);
-    /* padding: 0 10%; */
-    padding: 0 .5rem;
+    padding: 0 .6rem;
     box-sizing: border-box;
     margin:0;
     z-index:99;
