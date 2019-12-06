@@ -7,10 +7,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     lang: 'en-US',
-    // mapList:[]
-  },
+    // minHeight:''
+   },
   getters:{
-     mapList: state => state.mapList,
+    // minHeight: state => state.minHeight,
   },
   mutations: {
     setDefaultLang() {
@@ -24,28 +24,14 @@ export default new Vuex.Store({
     },
     changeLang(state,playload){
       state.lang = playload
-      // axios.defaults.headers.common['systype'] = playload
     },
-    // SET_MAP(state, mapList){
-    //     if (mapList) {
-    //       state.mapList = mapList;
-    //     } else {
-    //       state.mapList = null;
-    //     }
-    //   }
-  },
-  // actions: {
-  //   setLocation: ({commit}, mapList) => {
-  //     commit('SET_MAP', mapList);
-  //   },
-  // },
 
+    // setDefaultHeight(state){
+    //   this.state.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 7.2)+'rem'
+    //  },
+
+  },
 
 });
 
-// export default new Vuex.Store({
-//   state,
-//   getters,
-//   mutations,
-//   actions
-// });
+

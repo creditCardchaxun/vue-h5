@@ -50,6 +50,9 @@ export default {
          }
       }
     },
+    //  computed(){
+    //  this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+    // },
     mounted:function(){
     window.addEventListener('scroll', this.handleScroll);
        $eventbus.$on("changeLang", (res)=>{
@@ -72,7 +75,7 @@ export default {
   },
     created(){
     //  this.newsList()
-    this.getHeight.minHeight=window.innerHeight+'px'
+    this.getHeight.minHeight=(window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
     },
     methods:{
     //  newsList(){

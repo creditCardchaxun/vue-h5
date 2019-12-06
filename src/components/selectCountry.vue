@@ -5,12 +5,13 @@
         </option>
     </select>-->
     <!-- {{}} -->
-  <van-popup
-    v-model="show"
+  <!-- <van-popup
     closeable
-    position="bottom"
-    :style="{ height: '20%' }"
-    >
+    v-model="showregion"
+    position="left"
+    :style="{ height: '100%',width:'100%' }"
+    > -->
+    <van-icon name="close" size='25px'  class='iconClose'  @click='setCountry()'/>
     <van-index-bar @select="changeIndex" :index-list="indexList">
       <van-index-anchor index="A"/>
       <van-cell
@@ -195,7 +196,7 @@
         :title="item.name"
       >{{item.tel}}</van-cell>
     </van-index-bar>
-    </van-popup>
+    <!-- </van-popup> -->
   </div>
 </template>
 
@@ -204,6 +205,9 @@ import Vue from "vue";
 import { IndexBar, IndexAnchor,Popup } from "vant";
 Vue.use(Popup);
 Vue.use(IndexBar).use(IndexAnchor);
+import { Icon } from 'vant';
+Vue.use(Icon);
+
 export default {
   name: "select-country",
   // type: [String, Number, Array],
@@ -212,7 +216,8 @@ export default {
     //   type: Number,
     //   default: ''
     // },
-    placeholder: String
+    placeholder: String,
+    showregion:Boolean
   },
   // mounted(){console.log('mounted')},
   data() {
@@ -264,6 +269,7 @@ export default {
 
 <style scoped>
 /* .select{width:2rem;height:1rem;position:absolute;top:0;left:0;} */
+.select-country .iconClose{width:10%;height:auto;position:fixed;top:7px;right:-8px;z-index:999;color:#999;}
 select {
   width: 2rem;
   height: 1rem;

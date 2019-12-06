@@ -6,7 +6,7 @@
         <div class="myorder-list" v-if="orderList.length>0">
              <h2>{{$t('m.watch')}}</h2>
              <div class="total">
-             <div class="orderlist" v-for="(item,index) in orderList"  :key='index' @click='todetailOrder(item.id)'>
+             <div class="orderlist" v-for="(item,index) in orderList"  :key='index' @click.stop='todetailOrder(item.id)'>
                  <div class="left"><router-link :to="{name:'orderDetail', params:{id:item.id}}"><img :src="item.onepic" alt=""></router-link></div>
                  <div class="right">
                       <h3><router-link :to="{name:'orderDetail', params:{id:item.id}}">{{item.project_name}}</router-link> </h3>
@@ -25,7 +25,7 @@
           <div class="myorder-list2" v-if="orderList2.length>0">
            <h2>{{$t('m.watch2')}}</h2>
               <div class="total">
-              <div class="orderlist" v-for="(item,index) in orderList2"  :key='index' @click='todetailOrder2(item.id)'>
+              <div class="orderlist" v-for="(item,index) in orderList2"  :key='index' @click.stop='todetailOrder2(item.id)'>
                    <router-link :to="{name:'orderDetail',params:{id:item.id}}" >
                  <div class="left"><img :src="item.onepic"  alt=""></div>
                    </router-link>
@@ -35,7 +35,7 @@
                       <p>{{$t('m.watch3')}}{{item.book_time}}</p>
                       <div class="morder-t">
                        <em @click.stop.prevent='toMaps(item.projectid)'><span style='padding-bottom:2px;'>{{$t('m.watch4')}}</span></em>
-                      <button v-show="item.is_pj==0"><router-link :to="{name:'appraise', params:{id:item.id}}">{{$t('m.watch6')}}</router-link> </button>
+                      <button v-show="item.is_pj==0" @click.stop.prevent='toAppraise(item.id)'>{{$t('m.watch6')}}</button>
                       </div>
                  </div>
                  </router-link>
@@ -75,6 +75,12 @@ import interfaces from "@/utils/api.js";
                   }   
              }
          },
+           computed:{
+        //  this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+      //       minHeight(){
+      //   return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+      // }
+       },
           mounted(){
         $eventbus.$on("changeLang", (res)=>{
            let id=JSON.parse(localStorage.getItem('userinfo')).id 
@@ -84,7 +90,7 @@ import interfaces from "@/utils/api.js";
       created(){
             let id=JSON.parse(localStorage.getItem('userinfo')).id 
             this.booklists()
-            this.getHeight.minHeight=window.innerHeight -160 +'px'
+            this.getHeight.minHeight=(window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
       },
        methods:{
               toMaps(id){
@@ -107,6 +113,9 @@ import interfaces from "@/utils/api.js";
                 todetailOrder2(id){
                 this.$router.push({name:'orderDetail',params:{id:id}})
                },
+               toAppraise(id){
+                 this.$router.push({name:'appraise',params:{id:id}})
+               }
        },
       components:{
        aheaders,

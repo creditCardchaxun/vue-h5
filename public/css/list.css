@@ -35,6 +35,19 @@
 }
 .scrolltop img{width:100%;height:auto;}
 
+/* #orderFormInput::input-placeholder{
+    color:#333;
+}
+
+#orderFormInput::-webkit-input-placeholder{
+        color:#333;
+ } */
+/* #myReserveInput::-webkit-input-placeholder{
+    color:#333;
+}
+#myReserveInput::input-placeholder{
+    color:#333;
+} */
 
 /* 预约弹框 */
 

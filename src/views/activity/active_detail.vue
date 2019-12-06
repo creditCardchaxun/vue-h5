@@ -1,5 +1,5 @@
 <template>
-  <div class="activitydetail">
+  <div class="activitydetail" :style="getHeight">
     <!-- <img src='../../assets/images/news-detail.png'/> -->
     <aheaders status='3' @toback='toreplace'></aheaders>
        <div class="newsdatails">
@@ -42,7 +42,9 @@ export default {
 
     }
    },
-
+      // minHeight(){
+      //   return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+      // },
    methods:{
        toreplace(){
          this.$router.go(-1)
@@ -61,7 +63,7 @@ export default {
     created(){
            this.id = this.$route.params.id;
           //  this.activedetails(this.id)
-           this.newsHeight.minHeight=window.innerHeight+'px'
+           this.newsHeight.minHeight=(window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
     },
      beforeRouteEnter (to, from, next) {
        let id=to.params.id
@@ -100,7 +102,7 @@ export default {
 
 <style scoped>
 .newsdetail{width:100%;height:auto;}
-.newsdatails{width:90%;height:auto;margin:0.6rem auto 0;min-height:11rem}
+.newsdatails{width:90%;height:auto;margin:0.6rem auto 0;}
 .newsdatails h2{font-size:0.6rem;color:#2d2d2d;line-height: 0.87rem;max-height: 1.7rem;min-height:0.87rem;overflow: hidden;}
 .newsdatails .date{font-size:0.34rem;color:#aeaeae;margin:0.6rem 0;}
 .newsdatails .mains-new{font-size:0.36rem;color:#000;padding-bottom:1rem;}

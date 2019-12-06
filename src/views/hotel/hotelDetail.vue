@@ -1,5 +1,5 @@
 <template>
- <div class="hotel-detail" >
+ <div class="hotel-detail" :style="minHeight">
     <aheaders status="2"></aheaders>
     <div class="banner-img">
          <div class="banner_top" @click='showStory'> <em>查看项目故事</em> 
@@ -8,7 +8,9 @@
                <img src="../../assets/images/more-icon01.jpg" alt="" style='width:0.2rem;height:0.2rem;'>
             </div>
           </div>
-        <projectImg :shows='showImgAll' :idss='detailId' @tohideList='tohideList'></projectImg>
+          <div class="Project-imgs">
+        <projectImg v-if='showImgAll' :showImgAll='showImgAll' :idss='detailId' @tohideList='tohideList'></projectImg>
+         </div>
         <van-swipe @change="onChange">
           <template v-if='projectdetail.pic'>
         <van-swipe-item v-for='(item,index) in projectdetail.pic' :key='index'>
@@ -52,9 +54,9 @@
                <div class="types">
                  <div class="types-nav">
                      <h3>户型展示</h3>
-                    <van-tabs @click="onClick" line-width='6%' :border='false' v-if="projectdetail.house_type!=''">
+                    <van-tabs @click="onClick" line-width='6%' :border='false' :ellipsis='false' v-if="projectdetail.house_type!=''">
                      <div class="class" v-for="(item,index) in projectdetail.house_type" :key='index'>
-                    <van-tab :title="item.typename" >
+                     <van-tab :title="item.typename" >
                         <van-swipe @change="onChange">
                         <van-swipe-item v-for='(i,ins) in item.pic' :key='ins'>
                             <img :src="i.fileurl" alt="" class='hotel-msg'>
@@ -79,7 +81,7 @@
                  </div>
 
 
-             <div class="desc">
+             <div class="desc" ref='tab1'>
               <h3 style='margin-top:1.2rem;'>公寓配置</h3>
                  <ul v-if="projectdetail.project_setting!=''" ref='heightShow' :class='{activeLi:showHeight}'>
                  <li v-for='(item,index) in projectdetail.project_setting' :key='index'>
@@ -94,7 +96,7 @@
                </div>
              </div>
 
-                <div class="map" id='maps' ref='tab1'>
+                <div class="map" id='maps'>
                  <div class="map01">
                    <!-- <img src="../../assets/images/map01.jpg" alt=""> -->
                      <maps v-if="projectdetail.address" :dataArr="projectdetail"></maps>
@@ -190,10 +192,18 @@ export default{
          showImgAll:false,
          local:true,
          scroller:'',
-         detailId:''
+         detailId:'',
+         getHeight:{
+           minHeight:''
+         }
     }
  },
-
+    computed:{
+      minHeight(){
+        return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+      }
+    
+    },
  created(){
     // this.mobileLocal=localStorage.getItem('mobile')
     this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile
@@ -234,7 +244,7 @@ export default{
   },
   methods: {
     toAppraise(){
-      this.$router.push({name:'appraise',params:{id:this.idss}})
+      this.$router.push({name:'appraise',params:{id:this.detailId}})
      },
     btn_pos:function(e){
       // console.log(this.scroll)
@@ -246,7 +256,7 @@ export default{
     },1000),
 
     showStory(){
-      this.showImgAll=!this.showImgAll
+      this.showImgAll=true
     },
     toshowModels(id,name){
       this.status=1
@@ -368,7 +378,7 @@ export default{
 
 </script>
 
-<style>
+<style scoped>
 .banner-img{
     width:100%;height:7.71rem;position:relative;padding-top:0.2rem;
 }
@@ -386,6 +396,7 @@ border-bottom-left-radius: 0.1rem;border-bottom-right-radius: 0.1rem;}
 .banner-img .banner_top em{font-size:0.28rem;}
 .banner-img .banner_top{display: flex;align-items: center;justify-content: center;}
 
+.Project-imgs .van-popup{border-radius: none !important;}
 .van-swipe .custom-indicator {
     position: absolute;
     right: 5px;
@@ -452,7 +463,7 @@ border-bottom-left-radius: 0.1rem;border-bottom-right-radius: 0.1rem;}
 .map .map01 p b{font-weight:bold;font-size:0.36rem;margin-right:0.2rem;}
 .hot-hotel{width:100%;height:auto;padding-bottom: 0.3rem;}
 .hot-hotel h3{font-size:0.42rem;color:#060606;margin:0.75rem 5% 0.36rem;font-weight:bold;}
-.hot-hotel .hotel-some{width:auto;height:auto;}
+.hot-hotel .hotel-some{width:auto;height:auto; padding-left: 0.30rem;}
 .hot-hotel .hotel-some .hotel-item{width:4.63rem;height:auto;}
 .hot-hotel .hotel-some .hotel-item img{width: 4.63rem;height: 3.31rem;overflow: hidden;}
 .hot-hotel .hotel-some .hotel-item  .hotel-title{font-size:0.36rem;color:#212121;line-height: 0.54rem;overflow: hidden;font-weight: bold;}

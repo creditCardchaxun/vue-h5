@@ -6,6 +6,17 @@ const domain = "http://shengxi-test.iyunfish.com/";
 import axios from 'axios'
 const interfaces = {
 
+//获取用户信息
+getuserInfo(){
+	return axios.get( domain + "index.php?m=api&c=pagehome&a=getwx_user")
+	.then(function (response) {
+		return response.data.data
+	  
+	})
+	.catch(function (error) {
+	return error
+	});
+  },  
 
 //   首页数据
 	getData(){

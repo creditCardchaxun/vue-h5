@@ -1,5 +1,5 @@
 <template>
-  <div class="booking" id='bookings'>
+  <div class="booking" id='bookings' :style='getHeight'>
   <aheaders status='3' @toback='toreplace'></aheaders>
     <div class="books" style='margin-top:0.2rem;'>
    <van-tabs v-model="active" line-width='7%' :border='false' @click="onClick">
@@ -172,10 +172,20 @@ export default {
        noRearch:false,
        noRearch2:false,
        noRearch3:false,
+       getHeight:{
+         minHeight:''
+       }
     }
   },
-
+   
+  computed:{
+    //  this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+      //  minHeight(){
+      //   return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+      // }
+    },
   created(){
+    this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
     this.active=this.$route.params.active
     this.num=this.$route.params.num
      if(!this.num||!this.active){
@@ -436,7 +446,7 @@ showRight(id) {
 
 .van-tabs--line .van-tabs__wrap{ border-bottom: 1px solid #d9d9d9;}
 
-.booking{width:100%;height:auto;margin:0 auto;min-height:9rem;}
+.booking{width:100%;height:auto;margin:0 auto;}
 .book-list{width:90%;height:auto;margin:0.2rem auto;}
 .book-list ul{width:100%;height:auto;margin:0 auto;}
 .book-list ul li{width:auto;height:auto;margin:0 auto;display: flex;align-items: flex-end;border-bottom:0.03rem solid #f1f1f1;padding:0.4rem 0;position: relative;}
@@ -496,7 +506,7 @@ showRight(id) {
   text-align: center;
   margin-top: 0.5rem;
 }
-.van-popup {
+#bookings .van-popup {
     border-radius: 10px;
     overflow:visible;
 }

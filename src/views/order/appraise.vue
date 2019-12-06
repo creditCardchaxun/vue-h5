@@ -54,10 +54,16 @@ export default {
          }
         };
     },
+      computed:{
+    //  this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 7.2)+'rem'
+    //      minHeight(){
+    //     return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+    //   }
+    },
     created(){
         this.ids=this.$route.params.id;
         this.appraisesIcon(this.ids)
-        this.getHeight.minHeight=window.innerHeight+'px'
+        this.getHeight.minHeight=(window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
        },
        mounted(){
            $eventbus.$on("changeLang", (res)=>{

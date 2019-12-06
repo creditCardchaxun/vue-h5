@@ -1,5 +1,5 @@
 <template>
-  <div class="star" :style='getHeight'>
+  <div class="star" :style='minHeight'>
     <!-- <img src='../../assets/images/jp.png'/> -->
       <aheaders status='2'></aheaders>
        <div class="top-hotel"><img src="../../assets/images/hotel-01.jpg" alt=""></div>
@@ -18,10 +18,10 @@
                                 <span> {{item.name}}</span> 
                                    </div>
                                 </div> 
-                                  <div class="right active" >
+                                  <div class="right" :class="{active:currentIndex!=-1}" >
                                   <ul>
                                      <!-- <li>全部</li> -->
-                                     <li v-for='(i,ins) in alllistss' :key='ins' @click='getname(i.name,i.linkageid)'>{{i.name}}</li>
+                                     <li v-for='(i,ins) in alllistss' :class='{active:index==currentIndex}' :key='ins' @click='getname(i.name,i.linkageid)'>{{i.name}}</li>
                                   </ul>
                                 </div>
                         </div>
@@ -30,7 +30,7 @@
                        <div class="s2" v-show='toshowtype'> 
                             <div class="right">
                                   <ul>
-                                     <li @click="getName(item.id,item.title)" v-for='(item,index) in getHouseType' :key='index'>{{item.title}}</li>
+                                     <li @click="getName(item.id,item.title,index)" v-for='(item,index) in getHouseType' :key='index' :class='{active:index==currentIndex2}'>{{item.title}}</li>
                                      <!-- <li @click="getName(2,'二居')">二居</li> -->
                                   </ul>
                             </div>
@@ -90,6 +90,7 @@ export default {
         toshowtype:false,
         cityAll:[],
         currentIndex:-1,
+        currentIndex2:0,
         alllistss:[],
         cityName:this.$i18n.t('m.hotel1'),
         typehousename:this.$i18n.t('m.hotel2'),
@@ -104,9 +105,16 @@ export default {
          },
          toshowicon:false,
          toshowicon2:false,
-         status:''
+         status:'',
+ 
      }
   },
+     computed:{
+    //  this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+        minHeight(){
+        return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+      }
+    },
   methods:{
         city(){
           this.toshowCity=!this.toshowCity 
@@ -128,12 +136,20 @@ export default {
            let area=this.idsarea
            let type=this.houseId
            let data={city,area,type}
-
-          interfaces.getListhouseAll(data).then((res)=>{
+          getcity(data)
+        //   interfaces.getListhouseAll(data).then((res)=>{
+        //   this.alllist=res
+        //   console.log(res)
+        //  })
+        },
+        // 获取地区
+        getcity(data){
+            interfaces.getListhouseAll(data).then((res)=>{
           this.alllist=res
           console.log(res)
          })
         },
+
         typeHouse(){
             this.toshowtype=!this.toshowtype
             this.toshowicon2=!this.toshowicon2
@@ -155,7 +171,8 @@ export default {
           console.log(res)
          })
         },
-        getName(id,title){
+        getName(id,title,index){
+          this.currentIndex2=index
            this.typehousename=title
            this.houseId=id
            this.toshowtype=false
@@ -203,7 +220,7 @@ export default {
         this.getListhouses(data)
         this.getcitys()
         this.gethouseTypes()
-        this.getHeight.minHeight=window.innerHeight+'px'
+        // this.getHeight.minHeight=window.innerHeight+'px'
      },
 
   //    beforeRouteEnter (to, from, next) {
@@ -286,8 +303,10 @@ export default {
 .s4 .right{width:5.4rem;}
 .s4 .right ul{width:100%;display: flex;flex-direction: column;align-items: center;}
 .s4 .right ul li{font-size:0.37rem;color:#0e0e0e;line-height:0.85rem;}
-.s2 ul li{font-size:0.37rem;color:#0e0e0e;line-height:0.85rem;} 
+.s2 ul li{font-size:0.37rem;color:#0e0e0e;line-height:0.85rem;text-align: center} 
+.s2 .right{width:100%;padding: 0.3rem 0;}
+.s2 .right ul{width:100%;}
 .active{background-color: #eeeeee;}
-
+.active span{border-left:0.1rem solid #3c5896;}
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-<div class="bookingfeedback">
+<div class="bookingfeedback" :style='getHeight'>
     <aheaders status='3' @toback='toreplace'></aheaders>
 
     <div class="message">
@@ -122,7 +122,10 @@ export default {
       msg:'',
       moren:'',
       disabled:false,
-      date2:''
+      date2:'',
+      getHeight:{
+        minHeight:''
+      }
     };
   },
   components: {
@@ -136,9 +139,10 @@ export default {
      }else{
        return false
      }
-    }
+    },
   },
   created(){
+    this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
     this.ids=this.$route.params.id
     this.detailInfor(this.ids)
     // this.endTime=this.confirmPicker(new Date())
@@ -250,7 +254,7 @@ export default {
 .bookingdetail {
   width: 100%;
   height: auto;
-  min-height:9rem;
+  /* min-height:9rem; */
   margin: 0 auto;
 }
 .isHouse{width:100%;display: flex; align-items: center; justify-content: space-between;}

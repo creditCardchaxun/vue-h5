@@ -55,13 +55,16 @@ export default {
         })
     })
   },
+   computed(){
+     this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+    },
    methods:{
-    //  newsDetail(id){
-    //    interfaces.newsDetail(id).then((res)=>{
-    //       this.newsDetails=res
-    //       console.log(res)
-    //    })
-    //  },
+     newsDetail(id){
+       interfaces.newsDetail(id).then((res)=>{
+          this.newsDetails=res
+          console.log(res)
+       })
+     },
      
      toreplace(){
          this.$router.go(-1)
@@ -71,7 +74,7 @@ export default {
 	   	}
    },
    created(){
-        this.newsHeight.minHeight=window.innerHeight+'px'
+        // this.newsHeight.minHeight=window.innerHeight+'px'
           //  this.newsId = this.$route.params.id;
           //  this.newsDetail(this.newsId)
     },
