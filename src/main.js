@@ -111,7 +111,8 @@ Vue.prototype.iswx = iswx
 window.$router = router
 
 router.afterEach((from,to)=>{
-  document.documentElement.scrollTop=0
+  // document.documentElement.scrollTop=0
+  window.$(document).scrollTop(0)
 })
 new Vue({
   router,
