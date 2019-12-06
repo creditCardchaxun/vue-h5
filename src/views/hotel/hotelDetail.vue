@@ -447,7 +447,7 @@ border-bottom-left-radius: 0.1rem;border-bottom-right-radius: 0.1rem;}
 .map{width:100%;height:auto;padding-bottom:.9rem;border-bottom:1px solid #e5e5e5;}
 .map .map01{width:100%;height:auto;margin:0rem auto 0;}
 .map .map01 h3{font-size:0.42rem;color:#161616;font-weight:bold;margin:0 0.67rem 0.65rem;}
-.map .map01 img{width:100%;height:auto;margin:0rem 0 0.85rem;}
+/* .map .map01 img{width:100%;height:auto;margin:0rem 0 0.85rem;} */
 .map .map01 p{font-size:0.34rem;color:#000;line-height:0.62rem;margin:0 0.67rem;}
 .map .map01 p b{font-weight:bold;font-size:0.36rem;margin-right:0.2rem;}
 .hot-hotel{width:100%;height:auto;padding-bottom: 0.3rem;}

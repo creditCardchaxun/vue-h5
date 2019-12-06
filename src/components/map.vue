@@ -54,6 +54,7 @@
 <script>
 import $ from 'jquery';
 import { WXsdk } from '../utils/wxShare';
+
 export default {
   props: {
     dataArr: {
@@ -70,7 +71,8 @@ export default {
       title: "Base-复兴路",
       address: "长宁区复兴路22号",
       markerend: null,
-      selectProject: null
+      selectProject: null,
+      infoWindow: null
     }
   },
   computed: {
@@ -150,7 +152,6 @@ export default {
       console.log(item);
       var _this = this
       // console.log(item);
-
       _this.markerend = new AMap.Marker({
         map: _this.mapCase,
         position: new AMap.LngLat(Number(item.longitude), Number(item.latitude)) || _this.positionpoint,
@@ -158,17 +159,16 @@ export default {
         size: new AMap.Size(19, 33),  //图标大小
       });
 
-      console.log(_this.markerend);
       //鼠标点击marker弹出自定义的信息窗体
       _this.mapCase.add(_this.markerend);
 
-      var infoWindow = new AMap.InfoWindow({
+      _this.infoWindow = new AMap.InfoWindow({
         isCustom: true, //使用自定义窗体
         content: _this.createInfoWindow(item),
         offset: new AMap.Pixel(0, -45)
       });
       AMap.event.addListener(_this.markerend, 'click', function () {
-        infoWindow.open(_this.mapCase, _this.markerend.getPosition());
+        _this.infoWindow.open(_this.mapCase, _this.markerend.getPosition());
       });
     },
     createInfoWindow(item) {
@@ -192,6 +192,13 @@ export default {
       // imgdiv.innerHTML = _this.address;
       imgdiv.innerHTML = item.address;
       info.appendChild(imgdiv);
+
+      var closeEle = document.createElement("div");
+      closeEle.className = "close";
+      closeEle.addEventListener('click', () => {
+        _this.closeInfo()
+      })
+      info.appendChild(closeEle);
 
       var bottom = document.createElement("div");
       bottom.className = "info-bottom";
@@ -571,16 +578,20 @@ export default {
         })
       } else {
         setTimeout(() => {
+          console.log(this);
           this.addmarker(this.dataArr)
         }, 500);
 
       }
+    },
+    closeInfo() {
+      this.infoWindow.close()
     }
   }
 }
 </script>
 
-<style lang="less" >
+<style lang="less">
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -666,6 +677,17 @@ export default {
 
     .info-newdiv {
       font-size: 0.4rem;
+    }
+
+    .close {
+      width: 0.4rem;
+      height: 0.4rem;
+      // border: 1px solid red;
+      background: url("../assets/images/closeInfo.png") no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      right: 0.2rem;
+      top: 0.2rem;
     }
   }
 
