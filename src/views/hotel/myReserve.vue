@@ -8,7 +8,7 @@
             :key='id'
             :placeholder="$t('m.bookName2')" 
             :label="$t('m.bookName')" 
-            disabled="true"
+            readonly
             right-icon="arrow-down"
             @click="showPopup"
           />
@@ -18,18 +18,18 @@
              width=""
             :placeholder="$t('m.house9')" 
             :label="$t('m.bookName3')" 
-            disabled="true"
+            readonly
             @click="showPopup2"
           />
            
            -
             <!-- <input type="text" v-model="value3" class='endtime'>  -->
         <van-field 
-            style='padding-left:30px;width:44%'
+            style='padding-left:52px;width:50%'
             :placeholder="$t('m.house9')" 
             v-model="value3"
             right-icon="arrow-down"
-            disabled="true"
+            readonly
             @click="showPopup2"
           />
            </div>
@@ -52,7 +52,7 @@
             v-model="phone"
             :placeholder="$t('m.s1')" 
             :label="$t('m.s1')" 
-            disabled="true"
+            readonly
           />
           <span @click="changePhone">{{$t('m.changePhone')}}</span>
        </div>
@@ -94,7 +94,8 @@ import { Popup } from 'vant';
 Vue.use(Popup);
 import { Picker,DatetimePicker  } from 'vant';
  Vue.use(Picker).use(DatetimePicker);
-
+import { Field } from 'vant';
+Vue.use(Field);
  import { RadioGroup, Radio } from 'vant';
 Vue.use(RadioGroup);
 Vue.use(Radio);
@@ -312,7 +313,7 @@ export default {
 </script>
 
 <style scoped>
-.myReserve >>> #myReserveInput::-webkit-input-placeholder{
+/* .myReserve >>> #myReserveInput::-webkit-input-placeholder{
     color:#333;
 }
 .myReserve >>> #myReserveInput::input-placeholder{
@@ -340,7 +341,7 @@ export default {
 .myReserve >>> input::-webkit-input-placeholder,
 .myReserve >>> textarea::-webkit-input-placeholder {
     color: #333;
-}
+} */
 
 
 .names{position:relative;}
@@ -362,7 +363,7 @@ export default {
     border-radius: 0.1rem;
     margin: 1.2rem auto 1.64rem;}
 
-      .btns-submit[disabled] {
+ .btns-submit[disabled] {
   background-color: #dddddd;
   color:#333;
 }
@@ -370,6 +371,6 @@ export default {
 .timesall .van-cell{width:70%;} */
 
 .timesall{position:relative;font-size:0.3rem;display:flex;  align-items: center;margin:0  0.4rem;}
-.timesall .van-cell{padding:16px 0px;flex: none;width:55%;}
+.timesall .van-cell{padding:16px 0px;flex: none;width:50%;}
 .timesall .van-cell .van-cell__value{width:50% !important;}
 </style>

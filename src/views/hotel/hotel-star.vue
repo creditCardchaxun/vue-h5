@@ -18,18 +18,18 @@
                                 <span> {{item.name}}</span> 
                                    </div>
                                 </div> 
-                                  <div class="right" :class="{active:currentIndex!=-1}" >
+                                  <div class="right" :class="{active:currentIndex!=-1}" v-show='tochina'>
                                   <ul>
-                                     <!-- <li>全部</li> -->
-                                     <li v-for='(i,ins) in alllistss' :class='{active:index==currentIndex}' :key='ins' @click='getname(i.name,i.linkageid)'>{{i.name}}</li>
+                                     <li @click='city3()'>全部</li>
+                                     <li v-for='(i,ins) in alllistss' :class='{active:ins==currentIndex}' :key='ins' @click='getname(i.name,i.linkageid)'>{{i.name}}</li>
                                   </ul>
                                 </div>
                         </div>
                    </div> 
-
                        <div class="s2" v-show='toshowtype'> 
                             <div class="right">
                                   <ul>
+                                     <li :class='{active:currentIndex2==-1}' @click="getName('','全部',-1)">全部</li>
                                      <li @click="getName(item.id,item.title,index)" v-for='(item,index) in getHouseType' :key='index' :class='{active:index==currentIndex2}'>{{item.title}}</li>
                                      <!-- <li @click="getName(2,'二居')">二居</li> -->
                                   </ul>
@@ -90,7 +90,7 @@ export default {
         toshowtype:false,
         cityAll:[],
         currentIndex:-1,
-        currentIndex2:0,
+        currentIndex2:-1,
         alllistss:[],
         cityName:this.$i18n.t('m.hotel1'),
         typehousename:this.$i18n.t('m.hotel2'),
@@ -106,6 +106,8 @@ export default {
          toshowicon:false,
          toshowicon2:false,
          status:'',
+         tochina:false
+        
  
      }
   },
@@ -127,25 +129,34 @@ export default {
          })
          },
         city2(index,item){
+          this.tochina=true;
            this.alllistss=item.area
            this.cityName=item.name
            this.currentIndex=index
            this.cityid=item.linkageid
-             this.toshowicon=false
            let city=item.linkageid
            let area=this.idsarea
            let type=this.houseId
            let data={city,area,type}
-          getcity(data)
+           this.getcity(data)
         //   interfaces.getListhouseAll(data).then((res)=>{
         //   this.alllist=res
         //   console.log(res)
         //  })
         },
+        city3(){
+          this.toshowCity=false
+           this.toshowicon=false
+           let city=this.cityid
+           let area=this.idsarea
+           let type=this.houseId
+           let data={city,area,type}
+           this.getcity(data)
+        },
         // 获取地区
         getcity(data){
             interfaces.getListhouseAll(data).then((res)=>{
-          this.alllist=res
+            this.alllist=res
           console.log(res)
          })
         },
@@ -156,15 +167,14 @@ export default {
             this.toshowCity=false
         },
         getname(name,id){
-         this.cityName=name,
-         this.idsarea=id
-         this.toshowCity=false
-        this.toshowicon=false
+          this.cityName=name,
+          this.idsarea=id
+          this.toshowCity=false
+          this.toshowicon=false
            let city=this.cityid
            let area=id
            let type=this.houseId
            let data={city,area,type}
-
          //   this.getListhouses(data)
            interfaces.getListhouseAll(data).then((res)=>{
           this.alllist=res
@@ -213,27 +223,32 @@ export default {
           this.hideModel=true
         }
        },
+      //  获取全部城市
+       getAllCity(){
+          let data={}
+        this.getListhouses(data)
+       }
      },
      created(){
         this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile
-        let data={}
-        this.getListhouses(data)
-        this.getcitys()
-        this.gethouseTypes()
+        // let data={}
+        // this.getListhouses(data)
+        // this.getcitys()
+        // this.gethouseTypes()
         // this.getHeight.minHeight=window.innerHeight+'px'
      },
 
-  //    beforeRouteEnter (to, from, next) {
-  //     let data={}
-  //     interfaces.getListhouseAll(data).then(function (res) {
-  //     next(vm=>
-  //        {
-  //         vm.alllist=res
-  //         vm.getcitys()
-  //         vm.gethouseTypes()
-  //       })
-  //   })
-  // },
+     beforeRouteEnter (to, from, next) {
+      let data={}
+      interfaces.getListhouseAll(data).then(function (res) {
+      next(vm=>
+         {
+          vm.alllist=res
+          vm.getcitys()
+          vm.gethouseTypes()
+        })
+    })
+  },
 
      mounted:function(){
     window.addEventListener('scroll', this.handleScroll);

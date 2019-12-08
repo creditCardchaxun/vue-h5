@@ -76,56 +76,6 @@
           </div>
         </swiper-slide>
 
-        <!-- <swiper-slide>
-          <div class="yu-item">
-            <div class="yu-img">
-              <router-link :to="{path:'/hotelDetail'}">
-                <img src="../assets/images/index_01.jpg" alt />
-                <div class="yu-title">上海市浦东区龙东大道3000号</div>
-              </router-link>
-            </div>
-            <div class="yu-name">
-              <i>张江</i>
-              <router-link :to="{path:'/orderForm'}">
-                <van-button type="info">预约看房</van-button>
-              </router-link>
-            </div>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="yu-item">
-            <div class="yu-img">
-              <router-link :to="{path:'/hotelDetail'}">
-                <img src="../assets/images/index_01.jpg" alt />
-                <div class="yu-title">上海市浦东区龙东大道3000号</div>
-              </router-link>
-            </div>
-            <div class="yu-name">
-              <i>张江</i>
-              <router-link :to="{path:'/orderForm'}">
-                <van-button type="info">预约看房</van-button>
-              </router-link>
-            </div>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="yu-item">
-            <div class="yu-img">
-              <router-link :to="{path:'/hotelDetail'}">
-                <img src="../assets/images/index_01.jpg" alt />
-                <div class="yu-title">上海市浦东区龙东大道3000号</div>
-              </router-link>
-            </div>
-            <div class="yu-name">
-              <i>张江</i>
-              <router-link :to="{path:'/orderForm'}">
-                <van-button type="info">预约看房</van-button>
-              </router-link>
-            </div>
-          </div>
-        </swiper-slide>-->
-
-        <!-- <div class="swiper-pagination" slot="pagination"></div> -->
       </swiper>
     </div>
 

@@ -14,7 +14,7 @@
                  <h3 style='font-weight:bold;'>{{contact.title}}</h3>  
                   <!-- <p v-html='contact.content' style='font-size:0.35rem;line-height:0.75rem;'>{{contact.content}}</p> -->
             <ul>
-                <li class='s11'><van-icon name="phone-o" />{{contact.tel}}
+                <li class='s11' @click='toCallPhone'><van-icon name="phone-o" />{{contact.tel}}
                 <!-- <em style='font-size:0.28rem;color:#000;'>(8:00-22:00)</em> -->
                 </li>
                 <li class='s12'><van-icon name="location-o"/>{{contact.address}}</li>
@@ -139,12 +139,15 @@ export default {
           clipboard.destroy();
         });
       }, 　　
-
+    
        heightGet(){
          if(this.heightOther2>this.heightOther){
            this.showMoress=true
          }
        },
+         toCallPhone(){
+        window.location.href = 'tel://400 700 6608'
+        },
         moreLoad(){
           this.showMore=! this.showMore
         },

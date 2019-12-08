@@ -147,7 +147,13 @@ export default {
       this.showModel = false
       this.$router.push({ name: 'appraise', params: { id: id } })
       localStorage.setItem('appraiseId', id)
-    }
+    },
+        getUserInfo(){
+        interfaces.getuserInfo().then(res => {
+          this.userinfo=res
+          localStorage.setItem('userinfo',JSON.stringify(res))
+        });
+     },
   }
 }
 </script>
