@@ -622,7 +622,7 @@ export default {
 .news ul li .news-date {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   line-height: 1rem;
   height: 1rem;
   overflow: hidden;
@@ -633,13 +633,14 @@ export default {
   line-height: 1rem;
   height: 1rem;
   overflow: hidden;
-  width: 7.8rem;
+  /* width: 7.8rem; */
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 .news ul li .news-date span {
   font-size: 0.34rem;
   color: #959595;
+  text-indent: 2em;
 }
 
 .news-img {
