@@ -43,7 +43,6 @@
           <li @click="callPhone"><router-link to=""><img src="../../assets/images/2_22.png" alt=""><i>400-700-6008</i> </router-link></li>
         </ul>  
        </div>
-
        <van-button type="info" class='submits' @click="toshowModel">{{$t('m.orderhouse')}}</van-button>
 
        <!-- 预约弹框 -->

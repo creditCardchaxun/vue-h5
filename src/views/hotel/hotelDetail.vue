@@ -110,7 +110,7 @@
                     <p><b>附近地铁:</b>2号线</p> -->
                  </div>
                  </div>
-
+                 
                  <div class="hot-hotel">
                      <h3>推荐公寓</h3>
                       <div class="hotel-some" v-if="projectdetail.recommend_list!=''">
