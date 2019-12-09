@@ -695,13 +695,17 @@ export default {
     padding-right: 0.4rem;
 
     h1 {
-      font-size: 0.4rem;
-      padding-top: 0.2rem;
+      font-size: 16px;
+      padding-top: 0.6rem;
       padding-bottom: 0.4rem;
+      font-weight: bold;
     }
 
     .info-newdiv {
       font-size: 0.4rem;
+      padding-left: 0.4rem;
+      background: url('../assets/images/dingwei3.png') no-repeat left;
+      background-size: auto 100%;
     }
 
     .close {
@@ -1021,6 +1025,31 @@ export default {
     li.current_li {
       color: #3c5896;
     }
+  }
+}
+
+.auto-item {
+  width: 8.6rem;
+  height: 1.4rem;
+  line-height: 0.7rem;
+  white-space: nowrap;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+  color: #688dd9;
+  margin: 0 auto;
+  position: relative;
+  left: 0.4rem;
+  
+  border-bottom: 1px solid #bfbfbf;
+  .auto-item-span {
+    font-size: 14px;
+    position: absolute;
+    bottom: 0.2rem;
+    left: -0.5rem;
+    padding-left: 0.6rem;
+    background: url("../assets/images/dingwei2.png") no-repeat left;
+    background-size: auto 60%;
   }
 }
 </style>
