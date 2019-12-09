@@ -718,7 +718,7 @@ export default {
 
     .sanjiao {
       position: absolute;
-      bottom: -0.3rem;
+      bottom: -0.24rem;
       left: 50%;
       transform: translate(-50%, 0) rotate(45deg);
       width: 0.5rem;
