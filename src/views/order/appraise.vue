@@ -25,7 +25,7 @@
       <p>
         <textarea name v-model="user_desc" id cols="30" rows="3" :placeholder="$t('m.appraise2')"></textarea>
       </p>
-      <button class="btn" @click="todetailOrder">提交</button>
+      <button class="btn" @click="todetailOrder" :disabled='isclick'>提交</button>
     </div>
     <afooter class="myFooter"></afooter>
   </div>
@@ -44,30 +44,25 @@ export default {
     return {
       value: 0,
       tags: false,
-      // tagslist:['环境优美','房屋合适','设施齐全','风格喜欢'],
       toshows: false,
       ids: '',
       iconList: [],
       currentIndex: 0,
       show2: 0,
       selected: false,
-      user_content: '',
+      user_content:[],
       user_desc: '',
       getHeight: {
         minHeight: ''
-      }
+      },
+      disabled:false
     };
   },
-  computed: {
-    //  this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 7.2)+'rem'
-    //      minHeight(){
-    //     return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
-    //   }
-  },
+
   created() {
     this.ids = this.$route.params.id;
     this.appraisesIcon(this.ids)
-    this.getHeight.minHeight = (window.outerHeight / window.outerWidth * 10.8 - 5.96) + 'rem'
+    // this.getHeight.minHeight = (window.outerHeight / window.outerWidth * 10.8 - 5.96) + 'rem'
   },
   mounted() {
     $eventbus.$on("changeLang", (res) => {
@@ -75,33 +70,55 @@ export default {
       this.appraisesIcon(this.ids)
     })
   },
+ computed:{
+   isclick(){
+      if(this.value==0||(!this.user_content[0]&&!this.user_content[1]&&!this.user_desc)) return true;
+      else return false
+    
 
+    }
+ },
   methods: {
     toreplace() {
       this.$router.go(-1)
     },
     toaddTag(e, item, list) {
-      let add = ''
-      if (e.target.className.indexOf('tagons') == -1) {
-        if (this.value == list + 1) {
-          e.target.className = 'tagons'
-          this.user_content += ',' + item
-          this.user_content = this.user_content.substr(1)
-          console.log(this.user_content)
-        } else {
-          e.target.className = ''
-        }
-      } else {
-        e.target.className = ''
-      }
+      this.user_content=[]
+      // let add = ''
+      // if (e.target.className.indexOf('tagons') == -1) {
+      //   if (this.value == list + 1) {
+      //     e.target.className = 'tagons'
+      //     this.user_content += ',' + item
+      //     this.user_content = this.user_content.substr(1)
+      //     console.log(this.user_content)
+      //   } else {
+      //     e.target.className = ''
+      //   }
+      // } else {
+      //   e.target.className = ''
+      // }
       // this.tags=true
+
+      var str = {};
+      var str2 = "";
+      if (e.target.className.indexOf("tagons") == -1) {
+          e.target.className = "tagons";
+          this.user_content.push(item);
+      } else {
+        e.target.className = "";
+        this.user_content.forEach((item, index) => {
+          if (item == list) {
+            this.user_content.splice(index, 1);
+          }
+        });
+      }
+
     },
     todetailOrder() {
       if (this.value == 0) {
         this.$toast('请填写评价内容');
 
       } else {
-
         this.appraises()
       }
     },
@@ -109,26 +126,30 @@ export default {
       if (value > 0) {
         this.toshows = true
       }
-
-
     },
 
     //    1评价保存接口
     appraises() {
+      let inter = "";
+      let inter2 = "";
+      this.user_content.forEach((item, index) => {
+        inter += "," + item;
+        return (inter2 = inter.substr(1));
+      });
+
       let bookid = this.ids
       let user_score = this.value
-      let user_content = this.user_content
+      let user_content = inter2
       let user_desc = this.user_desc
+      
+      console.log(user_content)
       let data = {
         bookid, user_score, user_content, user_desc
       }
-      console.log(data)
-
       interfaces.orderSave(data).then((res) => {
-        console.log(res, 'gusgfghsg')
         if (res.code == 0) {
           this.$toast({
-            message: '提交评价完成',
+            message: '已评价完成',
             icon: 'passed'
           });
           console.log(this.ids)
@@ -171,8 +192,10 @@ export default {
     /* margin-left: 10%; */
     border-radius: 0.1rem;
     margin: 1.2rem auto 1.64rem;
-    margin-left:0.8rem;
+    /* margin-left:0.8rem; */
+    display: block;
     }
+  .btn[disabled]{background-color: #ddd;color:#333;}  
 .btn a{color:#fff;}
    .appraise .appraise-01 p .tagons{background-color:#5975a9 ;color:#fff;}
 </style>

@@ -510,6 +510,5 @@ border-bottom-left-radius: 0.1rem;border-bottom-right-radius: 0.1rem;}
   .bottomMessage .sai2{width:0.16rem;height:0.27rem;}
   .brandimg2 {
   transform: rotate(180deg); 
- 
  }
 </style>

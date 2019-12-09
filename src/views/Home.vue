@@ -222,7 +222,7 @@ export default {
       Longid: '',
       LongName: '',
       status: '',
-      lanBase:''
+      lanBase:'EN'
     }
   },
 
@@ -255,21 +255,29 @@ export default {
     handleScrolls() {
       let scrolltop =
         document.documentElement.scrollTop || document.body.scrollTop;
-      scrolltop > 55 ? (this.showbg = true) : (this.showbg = false);
+        scrolltop > 0 ? (this.showbg = true) : (this.showbg = false);
     },
     changeLangEvent() {
+   
       if (this.lang == 'zh-CN') {
-         this.lang = 'en-US'
-         this.lanBase='ZH'
+          this.lang = 'en-US'
+        //  this.lanBase='ZH'
       } else {
         this.lang = 'zh-CN'
-        this.lanBase='EN'
+        // this.lanBase='EN'
       }
       this.$i18n.locale = this.lang; //关键语句
 
       this.$store.commit("changeLang", this.lang);
       $eventbus.$emit("changeLang", this.lang);
       localStorage.setItem('lanBase', this.lang == 'zh-CN' ? 1 : 4)
+
+        let lanBase =localStorage.getItem('lanBase')
+       if(lanBase==1){
+          this.lanBase='EN'
+       }else{
+         this.lanBase='ZH'
+       }
     },
     toloadMore() {
       this.showMore = !this.showMore
@@ -316,7 +324,6 @@ export default {
         //  this.$store.dispatch("setLocation", res);
       })
     },
-
     getAllmap() {
       interfaces.getAllcity().then((res) => {
         this.allcityName = res
@@ -342,7 +349,12 @@ export default {
   },
   created() {
     //  this.getHomedata()
-     this.lanBase= localStorage.getItem('lan')
+     let lanBase=localStorage.getItem('lanBase')
+     if(lanBase==1){
+      this.lanBase='EN'
+     }else{
+       this.lanBase='ZH'
+     }
      this.getAllmap()
      this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile
     //  this.couponSelected = this.allcityName[0].name;
@@ -695,12 +707,12 @@ width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: bo
 }
 
 .showbgs {
-  width: 10.8rem;
+  width: 100%;
   height: auto;
   position: fixed;
   background: rgba(255, 255, 255, 0.8);
   /* padding: 0 10%; */
-  padding: 0 0.5rem;
+  padding: 0 0.6rem;
   box-sizing: border-box;
   margin: 0;
   z-index: 99;

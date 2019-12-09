@@ -126,7 +126,8 @@ export default {
              mobileLocal:'',
          getHeight:{
               minHeight:''
-         }
+         },
+         goback:''
         }
     },
     //    computed(){
@@ -143,7 +144,7 @@ export default {
       // this.getListhouses()
     },
       beforeRouteEnter (to, from, next) {
-        console.log(to,'jdjfjfjddjj',from)
+        this.goback=from.name
       interfaces.getxiecheng().then(function (res) {
       next(vm=>
          {
@@ -171,7 +172,10 @@ export default {
           }).then(() => {
             return;
           }).catch(() => {
-              this.$router.go(-1)
+             if(this.goback=='hotelDetail'){
+                this.$router.go(-1)
+             }
+              
           });
        },
 
