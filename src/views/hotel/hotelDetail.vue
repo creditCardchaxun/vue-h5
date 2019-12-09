@@ -215,13 +215,12 @@ export default{
     let id=this.$route.params.id
     this.getHeight.minHeight=window.outerHeight/window.outerWidth * 10.8 - 5.96+'rem'
     // this.getdetailhouses(id)
- },
-    beforeRouteEnter (to, from, next) {
-      console.log(to, from)
+ },    
+ beforeRouteEnter (to, from, next) {  
+      console.log('beforeRouteEnter')
       let id=to.params.id
       let status=to.params.status
       console.log(status)
-    
       interfaces.getdetailhouse(id).then(function (res) {
       next(vm=>
          {
@@ -238,6 +237,28 @@ export default{
            }
            }
         })
+    })
+  },
+  beforeRouteUpdate (to, from, next) {
+      console.log('beforeRouteUpdate')
+      let id=to.params.id
+      let status=to.params.status
+      console.log(to)
+      var that= this
+      interfaces.getdetailhouse(id).then(function (res) {
+         that.projectdetail=res
+         that.detailId=res.id
+          var div = that.$refs.tab1
+           if(from.name=='myOrder'){
+             if (div) {
+              setTimeout(function () {
+              console.log($(div).offset().top);
+              // $('html,body').scrollTop($(div).offset().top - 43);
+              $('html, body').animate({scrollTop: $(div).offset().top - 43}, 500)
+            }, 500);
+           }
+           }
+      next()
     })
   },
   watch:{
@@ -297,8 +318,9 @@ export default{
       }
      },
     toDetailxq(id){
-      this.showHeight=false
-      this.getdetailhouses(id)
+      // this.showHeight=false
+      console.log('id值',id)
+      //  this.getdetailhouses(id)
       this.$router.push({name:'hotelDetail',params:{id:id}})
      
     },

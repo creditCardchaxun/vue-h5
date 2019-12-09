@@ -352,7 +352,7 @@ export default {
      let lanBase=localStorage.getItem('lanBase')
      if(lanBase==1){
       this.lanBase='EN'
-     }else{
+     }else if(lanBase==4){
        this.lanBase='ZH'
      }
      this.getAllmap()

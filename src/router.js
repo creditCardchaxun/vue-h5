@@ -164,7 +164,7 @@ const routes = [
   },
   // 精品旅社详情
   {
-    path: `hotelDetail/:id`,
+    path: `/hotelDetail/:id`,
     name: 'hotelDetail',
     component: hotelDetail,
     meta: {
