@@ -432,7 +432,7 @@ border-bottom-left-radius: 0.1rem;border-bottom-right-radius: 0.1rem;}
 .main-loaction span{font-size:0.36rem;margin-left: 0.2rem;max-height: 1rem;
     line-height: 0.5rem;
     overflow: hidden;}
-.location{width:auto;height:auto;display:flex;align-items: center;margin: 0 auto;}
+.location{width:auto;height:auto;display:flex;align-items: center;}
 
 .desc{width:auto;height:auto;padding:0 0.66rem;}
 .desc h3{margin-top:0.85rem;font-size:0.42rem;color:#060606;font-weight:bold;}
@@ -504,7 +504,7 @@ border-bottom-left-radius: 0.1rem;border-bottom-right-radius: 0.1rem;}
    .down img{ -webkit-animation: bounce-down 1s linear infinite;animation: bounce-down 1s linear infinite;
     }
   .bottomMessage{width:90%;padding:0 0.60rem; display: flex;align-items: center;justify-content:space-between;background-color: rgba(0,0,0,0.8);height:1.2rem;position: fixed;bottom:1.40rem;left:0;z-index:100;}
-    .bottomMessage .leftMessage{display: flex;align-items: center;justify-content:space-between; margin: 0 auto;}
+    .bottomMessage .leftMessage{display: flex;align-items: center;justify-content:space-between;}
   .bottomMessage .leftMessage p{font-size:0.37rem;color:#fff;margin-left:0.15rem;}
   .bottomMessage .leftMessage .sai1{width:0.32rem;height:0.32rem;}
   .bottomMessage .sai2{width:0.16rem;height:0.27rem;}

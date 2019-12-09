@@ -36,7 +36,7 @@
                {{story.description}}
         </p>-->
         <p v-for="(item,index) in story2" :key="index">{{item}}</p>
-        <div class="story-img">
+        <div class="story-img" v-if="story.image">
           <img :src="story.image" alt />
         </div>
       </div>
@@ -622,7 +622,7 @@ export default {
 .news ul li .news-date {
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   line-height: 1rem;
   height: 1rem;
   overflow: hidden;
@@ -633,7 +633,7 @@ export default {
   line-height: 1rem;
   height: 1rem;
   overflow: hidden;
-  /* width: 7.8rem; */
+  width: 7.8rem;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
