@@ -335,7 +335,7 @@ export default {
 .s2 ul li{font-size:0.37rem;color:#0e0e0e;line-height:0.85rem;text-align: center} 
 .s2 .right{width:100%;padding: 0.3rem 0;}
 .s2 .right ul{width:100%;}
-.active{background-color: #eeeeee;}
+.active{background-color: #eeeeee; border-left: 0.1rem solid #3c5896;}
 .active span{border-left:0.1rem solid #3c5896;}
 
 </style>
