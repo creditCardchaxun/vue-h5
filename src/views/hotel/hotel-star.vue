@@ -310,7 +310,7 @@ export default {
 .star .hotel_main ul li .hotel-img{width:9.62rem;height:6.85rem;position:relative;}
 .star .hotel_main ul li .hotel-img img{width:9.62rem;height:6.85rem;}
 .star .hotel_main ul li .hotel-img .location{position:absolute;left:0;bottom:0;font-size:0.36rem;color:#fff; background-image:linear-gradient(to top,rgba(0,0,0,0.5), rgba(0,0,0,0)) ;  width:96%;padding:0.2rem;}
-.star .hotel_main ul li .hotel-title{display: flex;align-items: center;justify-content:space-between;margin-top:0.45rem;}
+.star .hotel_main ul li .hotel-title{display: flex;align-items: center;justify-content:space-between;margin-top:0.45rem;padding-left: 0.2rem;}
 .star .hotel_main ul li .hotel-title .title{font-size:0.48rem;color:#000;font-weight: bold;}
 .star .hotel_main ul li .hotel-title button{width:2.97rem;height:0.98rem;font-size:0.38rem;background-color: #5975a9;color:#fff;border:none;border-radius: 5px;}
 .star .hotel_main ul li .hotel-title button a{color:#fff;}
