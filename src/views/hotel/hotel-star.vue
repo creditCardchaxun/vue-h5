@@ -14,9 +14,13 @@
                        <div class="s3"><span style='border-right: 1px solid #ddd;'>{{$t('m.hotel3')}}</span> <span>{{$t('m.hotel4')}}</span></div>
                         <div class="s4">
                            <div class="left">
+                             <div class='city3' @click='togetAll' :class='{active:currentIndex==-1}'>
+                                <span> 全部</span> 
+                               </div>
                                <div class='city3' @click='city2(index,item)' :class='{active:index==currentIndex}'  v-for='(item,index) in cityAll' :key='index'>
                                 <span> {{item.name}}</span> 
-                                   </div>
+                               </div>
+                                <!-- <span @click='getListhouses({})'> 全部</span>  -->
                                 </div> 
                                   <div class="right" :class="{active:currentIndex!=-1}" v-show='tochina'>
                                   <ul>
@@ -129,7 +133,7 @@ export default {
          })
          },
         city2(index,item){
-          this.tochina=true;
+           this.tochina=true;
            this.alllistss=item.area
            this.cityName=item.name
            this.currentIndex=index
@@ -139,10 +143,6 @@ export default {
            let type=this.houseId
            let data={city,area,type}
            this.getcity(data)
-        //   interfaces.getListhouseAll(data).then((res)=>{
-        //   this.alllist=res
-        //   console.log(res)
-        //  })
         },
         city3(){
           this.toshowCity=false
@@ -160,6 +160,19 @@ export default {
           console.log(res)
          })
         },
+
+        // 城市获取全部
+       togetAll(){
+          this.cityName='全部'
+          this.currentIndex=-1
+          this.tochina=false
+         let data={};
+         this.getListhouses(data)
+         this.toshowCity=false
+         this.toshowicon=false
+       },
+
+
 
         typeHouse(){
             this.toshowtype=!this.toshowtype
