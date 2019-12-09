@@ -84,7 +84,7 @@ export default {
       // positionpoint: new AMap.LngLat(this.position.latitude, position.longitude),
       title: "Base-复兴路",
       address: "长宁区复兴路22号",
-      markerend: null,
+      markerArr: [],
       selectProject: null,
       infoWindow: [],
       infoWindowIndex: 0
@@ -96,14 +96,26 @@ export default {
     },
     mapCenter() {
       if (Object.prototype.toString.call(this.dataArr) === '[object Array]') {
+        // var longitude = null
+        // var latitude = null
+        // this.dataArr.map((item) => {
+        //   longitude += Number(item.longitude)
+        //   latitude += Number(item.latitude)
+        // })
+        // longitude = longitude / this.dataArr.length
+        // latitude = latitude / this.dataArr.length
+        var longitudeArr = []
+        var latitudeArr = []
         var longitude = null
         var latitude = null
+
         this.dataArr.map((item) => {
-          longitude += Number(item.longitude)
-          latitude += Number(item.latitude)
+          longitudeArr.push(Number(item.longitude))
+          latitudeArr.push(Number(item.latitude))
         })
-        longitude = longitude / this.dataArr.length
-        latitude = latitude / this.dataArr.length
+
+        longitude = (Math.max.apply(null, longitudeArr) + Math.min.apply(null, longitudeArr)) / 2;
+        latitude = (Math.max.apply(null, latitudeArr) + Math.min.apply(null, latitudeArr)) / 2
 
         return new AMap.LngLat(longitude, latitude)
 
@@ -127,9 +139,15 @@ export default {
       this.fullScreen = !this.fullScreen
 
       if (this.fullScreen) {
+        // 缩小窗口时
         this.destroyMap()
         this.createMap()
         this.backindex()
+      }else{
+        // 全屏时
+        if (Object.prototype.toString.call(this.dataArr) !== '[object Array]') {
+          this.selectProject = this.dataArr
+        }
       }
     },
     init() {
@@ -167,7 +185,7 @@ export default {
     addmarker(item) {
       var _this = this
       // console.log(item);
-      _this.markerend = new AMap.Marker({
+      var markerend = new AMap.Marker({
         map: _this.mapCase,
         position: new AMap.LngLat(Number(item.longitude), Number(item.latitude)) || _this.positionpoint,
         icon: require('../assets/images/mark.png'), //你需要更改成红色的图标
@@ -175,7 +193,7 @@ export default {
       });
 
       //鼠标点击marker弹出自定义的信息窗体
-      _this.mapCase.add(_this.markerend);
+      _this.mapCase.add(markerend);
 
       var infoWindow = new AMap.InfoWindow({
         isCustom: true, //使用自定义窗体
@@ -184,8 +202,8 @@ export default {
       });
       _this.infoWindow.push(infoWindow)
 
-      AMap.event.addListener(_this.markerend, 'click', function () {
-        infoWindow.open(_this.mapCase, _this.markerend.getPosition());
+      AMap.event.addListener(markerend, 'click', function () {
+        infoWindow.open(_this.mapCase, markerend.getPosition());
       });
     },
     createInfoWindow(item) {
@@ -219,6 +237,11 @@ export default {
         _this.closeInfo(index)
       })
       info.appendChild(closeEle);
+
+
+      var sanjiao = document.createElement("div");
+      sanjiao.className = "sanjiao";
+      info.appendChild(sanjiao);
 
       var bottom = document.createElement("div");
       bottom.className = "info-bottom";
@@ -576,6 +599,7 @@ export default {
           $(this).addClass("current_li");
           var search = $(this).html();
           if (search == "美食") search = "餐饮";
+          if (search == "购物") search = "超级市场";
           AMap.service(["AMap.PlaceSearch"], function () {
             //构造地点查询类
             var placeSearch = new AMap.PlaceSearch({
@@ -585,10 +609,10 @@ export default {
               autoFitView: false,
               citylimit: true, //是否强制限制在设置的城市内搜索
               map: _this.mapCase, // 展现结果的地图实例
-
-              autoFitView: false // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
+              autoFitView: true, // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
+              pageSize: 20
             });
-            placeSearch.searchNearBy('', _this.selectGDpoint, 5000, function (status, result) {
+            placeSearch.searchNearBy('', _this.selectGDpoint, 1000, function (status, result) {
             });
           });
         }
@@ -684,7 +708,7 @@ export default {
   .content-window-card {
     position: relative;
     box-shadow: none;
-    bottom: 0;
+    // bottom: 0;
     // left: 0;
     width: 6.5rem;
     height: 3.5rem;
@@ -692,8 +716,18 @@ export default {
     padding-left: 0.4rem;
     padding-right: 0.4rem;
 
+    .sanjiao {
+      position: absolute;
+      bottom: -0.3rem;
+      left: 50%;
+      transform: translate(-50%, 0) rotate(45deg);
+      width: 0.5rem;
+      height: 0.5rem;
+      background: white;
+    }
+
     h1 {
-      font-size: 16px;
+      font-size: 0.5rem;
       padding-top: 0.6rem;
       padding-bottom: 0.4rem;
       font-weight: bold;
@@ -702,8 +736,9 @@ export default {
     .info-newdiv {
       font-size: 0.4rem;
       padding-left: 0.4rem;
-      background: url('../assets/images/dingwei3.png') no-repeat left;
-      background-size: auto 100%;
+      font-size: 0.4rem;
+      background: url("../assets/images/dingwei3.png") no-repeat left;
+      background-size: 0.28rem auto;
     }
 
     .close {
@@ -1038,7 +1073,7 @@ export default {
   margin: 0 auto;
   position: relative;
   left: 0.4rem;
-  
+
   border-bottom: 1px solid #bfbfbf;
   .auto-item-span {
     font-size: 14px;
