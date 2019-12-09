@@ -104,8 +104,8 @@ export default {
 .newsdetail{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
 .newsdatails{width:90%;height:auto;margin:0.6rem auto 0;}
 .newsdatails h2{font-size:0.6rem;color:#2d2d2d;line-height: 0.87rem;max-height: 0.8rem;min-height:0.87rem;overflow: hidden;}
-.newsdatails .date{font-size:0.34rem;color:#aeaeae;margin:0.6rem 0;}
-.newsdatails .mains-new{font-size:0.36rem;color:#000;padding-bottom:1rem;}
+.newsdatails .date{font-size:0.34rem;color:#aeaeae;margin:0.35rem 0;}
+.newsdatails .mains-new{font-size:0.36rem;color:#000;padding-bottom:1rem;line-height: 1.5;}
 .newsdatails .mains-new img{width:100%;height:auto;margin:0 auto;}
 .newsdatails .mains-new p{font-size:0.36rem;color:#000;line-height:0.79rem;}
 </style>
