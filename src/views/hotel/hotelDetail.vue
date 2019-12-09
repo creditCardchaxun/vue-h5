@@ -2,7 +2,7 @@
  <div class="hotel-detail" :style="getHeight">
     <aheaders status="2"></aheaders>
     <div class="banner-img">
-         <div class="banner_top" @click='showStory'> <em>查看项目故事</em> 
+         <div class="banner_top" @click='showStory'> <em>{{$t('m.hotelxq1')}}</em> 
           <div class="down">
               <!-- <span></span> <span></span> -->
                <img src="../../assets/images/more-icon01.jpg" alt="" style='width:0.2rem;height:0.2rem;'>
@@ -44,16 +44,22 @@
              </div>
 
             <div class="desc">
-            <h3>公寓特色</h3>
-            <p v-if="projectdetail.desc!=''">
-                 {{projectdetail.desc}}
-            </p>
-              <div class="nolist" v-else style='font-size:0.35rem;text-align:center;'>暂无公寓特色详细信息</div>
+            <h3>{{$t('m.hotelxq2')}}</h3>
+             <div class="desc02" v-if="projectdetail.desc!=''" ref="desc" :class="{brandStory:showMore}">
+              <p>
+                  {{projectdetail.desc}}
+              </p>
+            </div>
+              <div class="nolist" v-else style='font-size:0.35rem;text-align:center;'>{{$t('m.others13')}}</div>
+                <div class="index-more" v-show="showMore01" @click='toloadMore2' style='margin:0.3rem 0;'>
+                  <span v-show='hideIcon'>more</span>
+                  <img src="../../assets/images/more-icon.jpg" alt  style='margin-top: 0.1rem;' :class="{brandimg2:showMore}"/>
+               </div>
            </div>
 
                <div class="types">
                  <div class="types-nav">
-                     <h3>户型展示</h3>
+                     <h3>{{$t('m.hotelxq3')}}</h3>
                     <van-tabs  line-width='6%' :border='false' :ellipsis='false' v-if="projectdetail.house_type!=''">
                      <div class="class" v-for="(item,index) in projectdetail.house_type" :key='index'>
                      <van-tab :title="item.typename" >
@@ -68,7 +74,7 @@
                         </van-swipe>
 
                       <div class="types-mianji">
-                        <div class="yiju">户型面积:{{item.room_size}}㎡</div>
+                        <div class="yiju">{{$t('m.hotelxq10')}}:{{item.room_size}}/{{$t('m.hotelxq11')}}㎡</div>
                         <div class="yiju-img">
                             <img :src="item.house_type_pic" alt="">
                         </div>
@@ -82,7 +88,7 @@
 
 
              <div class="desc" id='maps'>
-              <h3 style='margin-top:1.2rem;'>公寓配置</h3>
+              <h3 style='margin-top:1.2rem;'>{{$t('m.hotelxq4')}}</h3>
                  <div class="toall-ul" >
                  <ul :class='{activeLi:showHeight}'  ref='heightShow' v-if="projectdetail.project_setting!=null">
                  <li v-for='(item,index) in projectdetail.project_setting' :key='index'>
@@ -103,7 +109,7 @@
                  <div class="map01">
                    <!-- <img src="../../assets/images/map01.jpg" alt=""> -->
                      <maps v-if="projectdetail.address" :dataArr="projectdetail"></maps>
-                   <h3>周围及交通服务</h3>
+                   <h3>{{$t('m.hotelxq5')}}</h3>
                    <p v-html='projectdetail.content'>projectdetail.content</p>
                     <!-- <p><b>周围商圈:</b>浦东新区xxx大道</p>
                     <p><b>附近机场:</b>浦东机场 虹桥机场</p>
@@ -112,7 +118,7 @@
                  </div>
 
                  <div class="hot-hotel">
-                     <h3>推荐公寓</h3>
+                     <h3>{{$t('m.hotelxq6')}}</h3>
                       <div class="hotel-some" v-if="projectdetail.recommend_list!=''">
                        <swiper :options="swiperOption">
                         <swiper-slide v-for="(item,index) in projectdetail.recommend_list" :key='index'>
@@ -125,9 +131,8 @@
                         </swiper-slide>
                       </swiper>
 
-                      
                       </div>
-                      <div class="nolist" v-else style='font-size:0.35rem;text-align:center;'>暂无推荐公寓</div>
+                      <div class="nolist" v-else style='font-size:0.35rem;text-align:center;'>{{$t('m.others13')}}</div>
                  </div>
 
              </div>
@@ -137,7 +142,7 @@
       <div class="bottomMessage" v-show='projectdetail.is_show_black==1' v-if="local" @click='toAppraise'> 
          <div class="leftMessage">
             <img src="../../assets/images/warning.png" alt="" class='sai1'>
-            <p>您已预约过了，请给我们留下宝贵意见吧！</p>
+            <p>{{$t('m.hotelxq7')}}</p>
           </div>  
              <img src="../../assets/images/warn_right.png" alt="" class='sai2'>
         </div>
@@ -145,12 +150,12 @@
       <div class="bottom-phone"><van-icon name="phone-o" /></div>
        <button @click='toServe(projectdetail.id,projectdetail.project_name)'>
          <!-- <router-link :to="{name:'myReserve', params:{id:projectdetail.id,name:projectdetail.project_name}}"> -->
-         预订入住
+        {{$t('m.hotelxq9')}}
          <!-- </router-link> -->
           </button>
        <button class='s1' @click='toshowModels(projectdetail.id,projectdetail.project_name)'> 
          <!-- <router-link :to="{path:'/orderForm'}">  -->
-           预约看房
+           {{$t('m.orderhouse')}}
          <!-- </router-link> -->
          </button>
     </div>
@@ -186,6 +191,7 @@ export default{
         },
          projectdetail:{},
          defaultheight:200,
+         defaultheight2:70,
          showHeight:false,
          hideModel:false,
          mobileLocal:'',
@@ -200,8 +206,9 @@ export default{
          getHeight:{
            minHeight:''
          },
-         hideIcon:true
-        //  showMore:false
+         hideIcon:true,
+         showMore:false,
+         showMore01:false
     }
  },
   computed:{
@@ -215,13 +222,12 @@ export default{
     let id=this.$route.params.id
     this.getHeight.minHeight=window.outerHeight/window.outerWidth * 10.8 - 5.96+'rem'
     // this.getdetailhouses(id)
- },
-    beforeRouteEnter (to, from, next) {
-      console.log(to, from)
+ },    
+ beforeRouteEnter (to, from, next) {  
+      console.log('beforeRouteEnter')
       let id=to.params.id
       let status=to.params.status
       console.log(status)
-    
       interfaces.getdetailhouse(id).then(function (res) {
       next(vm=>
          {
@@ -238,6 +244,28 @@ export default{
            }
            }
         })
+    })
+  },
+  beforeRouteUpdate (to, from, next) {
+      console.log('beforeRouteUpdate')
+      let id=to.params.id
+      let status=to.params.status
+      console.log(to)
+      var that= this
+      interfaces.getdetailhouse(id).then(function (res) {
+         that.projectdetail=res
+         that.detailId=res.id
+          var div = that.$refs.tab1
+           if(from.name=='myOrder'){
+             if (div) {
+              setTimeout(function () {
+              console.log($(div).offset().top);
+              // $('html,body').scrollTop($(div).offset().top - 43);
+              $('html, body').animate({scrollTop: $(div).offset().top - 43}, 500)
+            }, 500);
+           }
+           }
+      next()
     })
   },
   watch:{
@@ -296,9 +324,18 @@ export default{
          this.hideIcon=true
       }
      },
+        toloadMore2(){
+      this.showMore=!this.showMore
+      if(this.showMore==true){
+        this.hideIcon=false
+      }else{
+         this.hideIcon=true
+      }
+     },
     toDetailxq(id){
-      this.showHeight=false
-      this.getdetailhouses(id)
+      // this.showHeight=false
+      console.log('id值',id)
+      //  this.getdetailhouses(id)
       this.$router.push({name:'hotelDetail',params:{id:id}})
      
     },
@@ -350,9 +387,14 @@ export default{
        window.addEventListener('scroll', this.handleScroll);
        window.addEventListener('scroll',this.btn_pos);
         this.$nextTick(()=>{
-        let height= window.getComputedStyle(this.$refs.heightShow).height
-        if(height>this.defaultheight+'px'){
-            this.showHeight=true
+        // let height= window.getComputedStyle(this.$refs.heightShow).height
+         let height2= window.getComputedStyle(this.$refs.desc).height
+        //  alert(height2)
+          //  if(height>this.defaultheight+'px'){
+          //   this.showHeight=true
+          //  }
+          if(height2>this.defaultheight2+'px'){
+            this.showMore01=true
           }
         }), 
           $eventbus.$on("changeLang", (res)=>{
@@ -391,6 +433,11 @@ export default{
 </script>
 
 <style scoped>
+.desc .desc02{height:2.3rem;overflow: hidden;}
+.desc .brandStory {
+  height: auto;
+  overflow: visible;
+}
 .hotel-detail{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
 .banner-img{
     width:100%;height:7.71rem;position:relative;padding-top:0.2rem;
@@ -510,6 +557,5 @@ border-bottom-left-radius: 0.1rem;border-bottom-right-radius: 0.1rem;}
   .bottomMessage .sai2{width:0.16rem;height:0.27rem;}
   .brandimg2 {
   transform: rotate(180deg); 
- 
  }
 </style>

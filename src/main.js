@@ -47,8 +47,11 @@ import VueI18n from 'vue-i18n'
 Vue.use(VueI18n) // 通过插件的形式挂载
 store.commit('setDefaultLang')
 
+let lanBase=localStorage.getItem('lanBase')
+if(lanBase=null)lanBase = 1
+
 const i18n = new VueI18n({
-    locale: 'zh-CN',    // 语言标识
+    locale: lanBase=='1'?'zh-CN':'en-US',    // 语言标识
     //this.$i18n.locale // 通过切换locale的值来实现语言切换
     messages: {
       'zh-CN': require('./assets/lang/zh'),   // 中文语言包
@@ -109,7 +112,11 @@ if (process.env.NODE_ENV === 'development' && !process.env.VUE_APP_BUILD_TYPE) {
       }
 Vue.prototype.iswx = iswx
 window.$router = router
-
+router.beforeEach((from,to,next)=>{
+  // document.documentElement.scrollTop=0
+  console.log(from,to)
+  next()
+})
 
 router.afterEach((from,to)=>{
   // document.documentElement.scrollTop=0

@@ -5,7 +5,8 @@
             <div class="model_main">
                 <div class="mains">
                      <div class="left">
-                     <!-- {{$t('m.s1')}} --> 国家/区号
+                     {{$t('m.s7')}} 
+                      <!-- {{$t('m.selectCountry.'+codeLettet+'.'+findArrIndex('m.selectCountry.'+codeLettet,codeId))}}  -->
                    </div>
                    <div class="right">
                        <input class="numCode" placeholder='手机号/区号'   @click="toshowRegion" v-model="numCode" />
@@ -56,6 +57,7 @@
 <script>
 import interfaces from "@/utils/api.js";
 import selectcountry from "@/components/selectCountry";
+import { log } from 'util';
 export default {
   name: "submitBtn",
 
@@ -80,13 +82,20 @@ export default {
          timeing:false,
           region:'',
           showregion:false,
-          numCode:'中国+86',
+          // numCode:'中国+86',
           codeId:'China',
-          numName:'中国'
+          numName:'中国',
+          codeLettet:'optionsC',
+
        }
     },
 
   computed:{
+    numCode(){
+      var index = this.findArrIndex(this.$t('m.selectCountry.'+this.codeLettet),this.codeId)
+      var selectedObj = this.$t('m.selectCountry.'+this.codeLettet+'['+index+']')
+      return selectedObj.name + '/+'+selectedObj.tel
+    },
     isClick() {
       if (!this.phone||!this.sms) return true;
          else return false;
@@ -114,17 +123,23 @@ export default {
 
   },
   methods:{
+    findArrIndex(arr,id){
+      console.log(arr,id);
+      console.log(_)
+      return _.findIndex(arr, function(o) { return o.id == id; });
+    },
     selectedCountry(res){
+      
+         
         console.log(res)
         this.showregion=false
            if(res==undefined){
-            this.numCode='中国+86'
             this.codeId='China'
-            this.numName='中国'
+            this.codeLettet='optionsC'
            }else{
-            this.numCode=res.name+'+'+res.tel 
+            // this.numCode=res.name+'+'+res.tel 
             this.codeId=res.id
-            this.numName=res.name
+            this.codeLettet='options'+res.short[0] 
            }
      },
      getUserInfo(){

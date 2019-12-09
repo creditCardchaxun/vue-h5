@@ -3,9 +3,9 @@
   <div id="app" :style="style">
     <!-- <keep-alive>
 		    <router-view v-if="$route.meta.keepalive" v-wechat-title='$route.meta.title'></router-view>
-    </keep-alive> v-if="!$route.meta.keepalive"-->
+    </keep-alive> v-if="!$route.meta.keepalive"  :key='$route.fillPath'-->
     <router-view v-wechat-title="$route.meta.title"></router-view>
-<!-- :key="$route.fullPath"  :key="$route.fullPath" -->
+
     <!-- 评价弹框 -->
 
     <!-- <mt-popup v-model="showModel" :close-on-click-overlay='false'>
@@ -67,7 +67,7 @@ export default {
   },
 
   created() {
-      this.getUserInfo()  //获取个人信息
+        this.getUserInfo()  //获取个人信息
     // apitest.te st() 
     // 通过url中是否含有shareId来判断是否是分享出去的详情页，再由路由推向对应详情页
 

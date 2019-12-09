@@ -126,7 +126,8 @@ export default {
              mobileLocal:'',
          getHeight:{
               minHeight:''
-         }
+         },
+         goback:''
         }
     },
     //    computed(){
@@ -143,7 +144,7 @@ export default {
       // this.getListhouses()
     },
       beforeRouteEnter (to, from, next) {
-        console.log(to,'jdjfjfjddjj',from)
+        // this.goback=from.name
       interfaces.getxiecheng().then(function (res) {
       next(vm=>
          {
@@ -171,7 +172,7 @@ export default {
           }).then(() => {
             return;
           }).catch(() => {
-              this.$router.go(-1)
+            this.$router.go(-1)
           });
        },
 
@@ -285,7 +286,7 @@ export default {
              interfaces.bookSave2(data).then((res)=>{
                console.log(res)
                   if(res.code==0){
-                    this.$toast('预定信息成功')
+                    // this.$toast('预定信息成功')
                    let xiecheng_id=res.data.xiecheng_id
                     //  this.value2=''
                     //  this.value3='' 

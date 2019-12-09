@@ -30,6 +30,8 @@ export const m = {
   // 客户评价
   appraise1:'您对本次看房满意吗',
   appraise2:'点击标签快速评价，还可以写下您的体验感受',
+  appraise3:'请填写评价内容',
+  appraise4:'已评价完成',
 
   //底部
   homebottom:'精品居舍',
@@ -73,6 +75,7 @@ export const m = {
   others11:'接受预约',
   others12:'接受预约成功',
   others13:'暂无数据',
+  
 
   //  注册按钮
   s1:'手机号',
@@ -81,6 +84,7 @@ export const m = {
   s4:'提交',
   s5:'请输入手机号',
   s6:'输入短信验证码',
+  s7:'国家/区号',
 
 
   // 精品旅舍
@@ -88,6 +92,20 @@ export const m = {
   hotel2:'户型',
   hotel3:'市',
   hotel4:'区',
+
+  // 精品旅社详情
+  hotelxq1:'查看项目故事',
+  hotelxq2:'公寓特色',
+  hotelxq3:'户型展示',
+  hotelxq4:'公寓配置',
+  hotelxq5:'周围及交通服务',
+  hotelxq6:'推荐公寓',
+  hotelxq7:'您已预约过了，请给我们留下宝贵意见吧！',
+  hotelxq8:'推荐公寓',
+  hotelxq9:'预订入住',
+  hotelxq10:'户型面积',
+  hotelxq11:'面积',
+
 
   // 预定项目
   bookName:'项目',
@@ -311,7 +329,7 @@ export const m = {
         tel: "1"
       },
       {
-        short: "",
+        short: "C",
         name: "开曼群岛",
         id: "CaymanIs.",
         tel: "1345"
@@ -841,13 +859,13 @@ export const m = {
         tel: "356"
       },
       {
-        short: "",
+        short: "M",
         name: "马里亚那群岛",
         id: "MarianaIs",
         tel: "1670"
       },
       {
-        short: "",
+        short: "M",
         name: "马提尼克",
         id: "Martinique",
         tel: "596"
@@ -933,7 +951,7 @@ export const m = {
         tel: "977"
       },
       {
-        short: "",
+        short: "N",
         name: "荷属安的列斯",
         id: "NetheriandsAntilles",
         tel: "599"
@@ -1031,7 +1049,7 @@ export const m = {
     ],
     optionsR: [
       {
-        short: "",
+        short: "R",
         name: "留尼旺",
         id: "Reunion",
         tel: "262"
@@ -1111,13 +1129,13 @@ export const m = {
         tel: "378"
       },
       {
-        short: "",
+        short: "S",
         name: "东萨摩亚(美)",
         id: "SamoaEastern",
         tel: "684"
       },
       {
-        short: "",
+        short: "S",
         name: "西萨摩亚",
         id: "SanMarino",
         tel: "685"
@@ -1325,7 +1343,8 @@ export const m = {
         short: "ZW",
         name: "津巴布韦",
         id: "Zimbabwe",
-        tel: "263"
+        tel: "263",
+        PY: "JBBW",
       }
     ]
   }

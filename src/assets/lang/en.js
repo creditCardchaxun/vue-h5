@@ -29,6 +29,8 @@ export const m = {
     // 客户评价
     appraise1:'Are you satisfied with this visit',
     appraise2:'Click on the tag to quickly evaluate and write down your experience',
+    appraise3:'Please fill in the evaluation content',
+    appraise4:'Evaluated',
 
   // 底部
   homebottom:'baseLIVING',
@@ -79,12 +81,27 @@ export const m = {
   s4:'submit',
   s5:'enter number',
   s6:'enter code',
+  s7:'countryCode',
+  
 
     // 精品旅舍
     hotel1:'Choice area',
     hotel2:'Apartment',
     hotel3:'city',
     hotel4:'area',
+
+  // 精品旅社详情
+  hotelxq1:'project stories',
+  hotelxq2:'Apartment features',
+  hotelxq3:'Apartment display',
+  hotelxq4:'Apartment allocation',
+  hotelxq5:'Surrounding and transportation services',
+  hotelxq6:'Recommended apartment',
+  hotelxq7:'You have made an appointment. Please give us your valuable advice!',
+  hotelxq8:'Recommended apartment',
+  hotelxq9:'Reservation',
+  hotelxq10:'Apartment area',
+  hotelxq11:'area',
 
      // 预定项目
   bookName:'project',
@@ -105,7 +122,7 @@ export const m = {
    feedback10:'House date',
    feedback11:'Reservation intention',
    feedback20:'House appraisal',
-   feedback12:'Reservation number',
+   feedback12:'Order No.',
    feedback13:'Order time',
    feedback14:'copy',
 
@@ -309,7 +326,7 @@ export const m = {
         id:'Canada',
       },
       {
-        short: "",
+        short: "C",
         name: "CaymanIs.",
         tel: "1345",
         id:'CaymanIs.'
@@ -792,12 +809,12 @@ export const m = {
         tel: "356"
       },
       {
-        short: "",
+        short: "M",
         name: "MarianaIs",
         tel: "1670"
       },
       {
-        short: "",
+        short: "M",
         name: "Martinique",
         tel: "596"
       },
@@ -869,7 +886,7 @@ export const m = {
         tel: "977"
       },
       {
-        short: "",
+        short: "N",
         name: "NetheriandsAntilles",
         tel: "599"
       },
@@ -952,7 +969,7 @@ export const m = {
     ],
     optionsR: [
       {
-        short: "",
+        short: "R",
         name: "Reunion",
         tel: "262"
       },
@@ -1019,12 +1036,12 @@ export const m = {
         tel: "378"
       },
       {
-        short: "",
+        short: "S",
         name: "SamoaEastern",
         tel: "684"
       },
       {
-        short: "",
+        short: "S",
         name: "SanMarino",
         tel: "685"
       },

@@ -11,7 +11,10 @@
           <option value="zh-CN">中文</option>
           <option value="en-US">英文</option>
         </select> -->
-        <span @click="changeLangEvent">{{lang ==='zh-CN'?'EN':'ZH'}}</span> 
+        <span @click="changeLangEvent">
+          <!-- {{lang ==='zh-CN'?'EN':'ZH'}} -->
+          {{lanBase}}
+          </span> 
         <div class="nav-menu" @click='toorder' >
          <router-link :to="{path:'/order'}"> 
          <img src="@/assets/images/right-menu.png" alt=""></router-link></div></div>
@@ -34,6 +37,7 @@ export default{
       return{
         showbg:false,
         lang: store.state.lang,
+        lanBase:'EN'
       }
   },
   computed:{
@@ -43,28 +47,6 @@ export default{
      }
   },
   methods:{
-    // toback(){
-      // if(where){
-      //   if(where=='tolist'){
-      //    this.$router.push({name:'booking',params:{active:1,num:2}})
-      //   }
-      //   if(where=='toreplace'){
-      //    Dialog.confirm({
-      //       title: this.$i18n.t('m.other1'),
-      //       message: this.$i18n.t('m.other2'),
-      //       confirmButtonText:this.$i18n.t('m.other4'),
-      //       cancelButtonText:this.$i18n.t('m.other3')
-      //     }).then(() => {
-      //        return;
-      //     }).catch(() => {
-      //          this.$router.go(-1)
-      //     });
-      //    }
-      //  }else{
-        // this.$router.go(-1)
-      //  }
-       
-    // },
     toorder(){
       this.$router.push({path:'/order'})
     },
@@ -83,6 +65,12 @@ changeLangEvent() {
        this.$store.commit("changeLang", this.lang);
        $eventbus.$emit("changeLang", this.lang);
        localStorage.setItem('lanBase', this.lang=='zh-CN'?1:4)
+           let lanBase=localStorage.getItem('lanBase')
+          if(lanBase==1){
+            this.lanBase='EN'
+          }else{
+            this.lanBase='ZH'
+          }
     }
 
   },
@@ -90,6 +78,14 @@ changeLangEvent() {
       // window.addEventListener("scroll", this.handleScrolls, true);
       $eventbus.$on('changeLang', this.reload)
    },
+   created(){
+    let lanBase=localStorage.getItem('lanBase')
+     if(lanBase==1){
+      this.lanBase='EN'
+     }else{
+       this.lanBase='ZH'
+     }
+   }
 
 }
 

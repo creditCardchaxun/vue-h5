@@ -169,6 +169,11 @@ export default {
                this.about=res
                res.forEach((item,index)=>{
                   let abouts=item.content
+                  // this.GetLength(abouts)
+                  // if(this.GetLength(abouts)>300){
+                  //   this.showMore=true
+                  // }
+                  // console.log('uuu',this.GetLength(abouts))
                })
             })
         },
@@ -181,7 +186,20 @@ export default {
      },
      handleScroll () {
          this.scroll  = $(window).height()+ $(document).scrollTop()
-       }
+       },
+
+      //  获取字符串长度
+        GetLength(str) {
+        ///<summary>获得字符串实际长度，中文2，英文1</summary>
+        ///<param name="str">要获得长度的字符串</param>
+        var realLength = 0, len = str.length, charCode = -1;
+        for (var i = 0; i < len; i++) {
+          charCode = str.charCodeAt(i);
+          if (charCode >= 0 && charCode <= 128) realLength += 1;
+          else realLength += 2;
+        }
+        return realLength;
+      }
      },
 
      updated:function(){
