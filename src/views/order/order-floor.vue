@@ -26,8 +26,8 @@
          
           <div class="yu-m">
            <div class="yu_01" style='margin-right:0.6rem;' v-if='iskehu==1'><router-link :to="{name:'booking',params:{active:0}}"><img src="../../assets/images/2_06.png" alt=""><i>{{$t('m.manage')}}</i> </router-link> </div>
-           <div class="yu_01" v-if='iskehu==1'><router-link :to="{path:'/myOrder'}"><img src="../../assets/images/2_03.jpg" alt=""><i>{{$t('m.myorder')}}</i></router-link> </div> 
-           <div class="yu_01" v-if='iskehu==0' :class="{xiaoshou:iskehuClass}"><router-link :to="{path:'/myOrder'}"><img src="../../assets/images/2_03.jpg" alt=""><i>{{$t('m.myorder')}}</i></router-link> </div>
+           <div class="yu_01" v-if='iskehu==1'><router-link :to="{name:'myOrder'}"><img src="../../assets/images/2_03.jpg" alt=""><i>{{$t('m.myorder')}}</i></router-link> </div> 
+           <div class="yu_01" v-if='iskehu==0' :class="{xiaoshou:iskehuClass}"><router-link :to="{name:'myOrder'}"><img src="../../assets/images/2_03.jpg" alt=""><i>{{$t('m.myorder')}}</i></router-link> </div>
          </div>
        </div> 
        <div class="person_03">
@@ -190,7 +190,7 @@ export default {
 .yu-m .yu_01 i{font-size:0.39rem;color:#000;margin-left: 0.2rem;}
 .yu-m .xiaoshou{width:7.82rem;height:1.18rem;}
 .yu-m .yu_01 img{width:0.35rem;height:0.35rem;}
-.yu-m .yu_01 a{display: inherit;display: flex;align-items: center;}
+.yu-m .yu_01 a{display: inherit;display: flex;align-items: center;width: 100%;text-align: center;justify-content: center;}
 
 .person_03{width:auto;height:auto;background-color: #fff;display:flex;align-items:center;flex-direction: column;}
 .person_03 ul{width:100%;height:auto;display:flex;align-items:center;flex-direction: column;}

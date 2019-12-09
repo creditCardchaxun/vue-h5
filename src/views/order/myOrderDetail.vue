@@ -138,7 +138,7 @@ export default {
 </script>
 
 <style scoped>
-.order-detail{width:100%;height:auto;}
+.order-detail{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
 .order-detail .order-detail01{width:auto;height:4.5rem;border-bottom:0.2rem solid #f5f5f5;display: flex;align-items: center;justify-content: space-between; border-top:1px solid #f5f5f5;padding:0 0.6rem;}
 .order-detail .order-detail01 .order-left{width:auto;height:auto;}
 .order-detail .order-detail01 .order-left h3{font-size:0.44rem;color:#060606;margin-bottom:0.3rem;font-weight: bold;}

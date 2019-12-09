@@ -75,12 +75,11 @@
             </div>
           </div>
         </swiper-slide>
-
       </swiper>
     </div>
 
     <div class="news">
-      <van-tabs v-model="active" line-width="7%" :border="false">
+      <van-tabs v-model="active" line-width="7%" :border="false" :ellipsis='false'>
         <van-tab :title="$t('m.news')">
           <ul>
             <li v-for="(item,index) in news_list" :key="index">
@@ -343,7 +342,6 @@ export default {
   },
   created() {
     //  this.getHomedata()
-     this.getallother(3362) 
      this.lanBase= localStorage.getItem('lan')
      this.getAllmap()
      this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile
@@ -355,6 +353,9 @@ export default {
     $eventbus.$on("changeLang", (res) => {
       this.getHomedata()
     });
+     this.$nextTick(()=>{
+       this.getallother(3362) 
+    })
 
     // let height= window.getComputedStyle(this.$refs.heightShow).height
     let height = window.getComputedStyle(this.$refs.heightShow).height
@@ -442,8 +443,7 @@ export default {
   width: 90%;
 }
 .home {
-  width: 100%;
-  height: auto;
+ width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;
 }
 .home img {
   width: 100%;
@@ -623,10 +623,13 @@ export default {
   line-height: 1rem;
   height: 1rem;
   overflow: hidden;
+  width:7.8rem;
+  white-space: nowrap;
+  text-overflow: ellipsis
 }
 .news ul li .news-date span {
   font-size: 0.34rem;
-  color: #000;
+  color: #959595;
 }
 
 .news-img {

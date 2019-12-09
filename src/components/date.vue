@@ -159,21 +159,23 @@
         }
       },
  
- 
+    //  确认按钮
       firm(){
         this.$parent.$parent.hidepop();
-         this.senMsg(this.starttime,this.endtime)
+        this.senMsg(this.starttime,this.endtime)
         },
       senMsg(s1,s2){
         let datas={s1,s2}
         this.$emit('startTime',datas)
       },
- 
+    
+    // 取消按钮
       cancle(){
     //    this.$parent.$parent.$parent.hidepop();
         this.starttime = this.nowtime;
         this.endtime = this.nowtime;
-     
+        this.senMsg(this.starttime,this.endtime)
+        this.$parent.$parent.hidepop();
       }
  
     }

@@ -1,6 +1,6 @@
 <template>
   <div class="booking" id='bookings' :style='getHeight'>
-  <aheaders status='3' @toback='toreplace'></aheaders>
+  <aheaders status='2'></aheaders>
     <div class="books" style='margin-top:0.2rem;'>
    <van-tabs v-model="active" line-width='7%' :border='false' @click="onClick">
 
@@ -252,9 +252,9 @@ export default {
 
   },
   methods:{
-   toreplace(){
-      this.$router.go(-1)
-     },
+  //  toreplace(){
+  //     this.$router.go(-1)
+  //    },
    togetnumber(){
        let re = /^1(3|4|5|6|7|8|9)\d{9}$/
         // 正则，验证手机号输入是否正确
@@ -446,7 +446,7 @@ showRight(id) {
 
 .van-tabs--line .van-tabs__wrap{ border-bottom: 1px solid #d9d9d9;}
 
-.booking{width:100%;height:auto;margin:0 auto;}
+.booking{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
 .book-list{width:90%;height:auto;margin:0.2rem auto;}
 .book-list ul{width:100%;height:auto;margin:0 auto;}
 .book-list ul li{width:auto;height:auto;margin:0 auto;display: flex;align-items: flex-end;border-bottom:0.03rem solid #f1f1f1;padding:0.4rem 0;position: relative;}

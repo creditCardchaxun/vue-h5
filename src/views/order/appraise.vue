@@ -150,7 +150,7 @@ export default {
 }
 </script>
 <style scoped>
-.appraise{width:100%;height:auto;}
+.appraise{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
 .appraise .appraise-01{width:90%;height:auto;padding:1.29rem 0 0;border-top:1px solid #f5f5f5;margin:0 auto;}
 .appraise .appraise-01 h3{font-size:0.6rem;color:#000;margin-bottom:0.7rem;font-weight: bold;}
 .appraise .appraise-01 p{width:auto;height:auto;}

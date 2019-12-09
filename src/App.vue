@@ -5,7 +5,7 @@
 		    <router-view v-if="$route.meta.keepalive" v-wechat-title='$route.meta.title'></router-view>
     </keep-alive> v-if="!$route.meta.keepalive"-->
     <router-view v-wechat-title="$route.meta.title"></router-view>
-
+<!-- :key="$route.fullPath"  :key="$route.fullPath" -->
     <!-- 评价弹框 -->
 
     <!-- <mt-popup v-model="showModel" :close-on-click-overlay='false'>

@@ -31,9 +31,9 @@ const routes = [
     name: 'home',
     component: Home,
     meta: {
-      keepalive: false ,// 组件是否需要被保存
-      title:'首页'
-  }
+      keepalive: false,// 组件是否需要被保存
+      title: '首页'
+    }
   },
 
   // // 关于我们
@@ -53,8 +53,8 @@ const routes = [
     component: newsList,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title:'新闻'
-  }
+      title: '新闻'
+    }
   },
   // 新闻详情
   {
@@ -63,8 +63,8 @@ const routes = [
     component: newsDetail,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title:'新闻详情'
-  }
+      title: '新闻详情'
+    }
   },
   // 活动列表
   {
@@ -73,8 +73,8 @@ const routes = [
     component: activeList,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title:'活动'
-  }
+      title: '活动'
+    }
   },
   // 活动详情
   {
@@ -83,8 +83,8 @@ const routes = [
     component: activeDetail,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title:'活动详情'
-  }
+      title: '活动详情'
+    }
   },
   // 联系我们
   {
@@ -93,19 +93,19 @@ const routes = [
     component: contactUs,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title:'联系我们'
-  }
+      title: '联系我们'
+    }
   },
 
   // 个人中心
   {
     path: '/order',
     name: 'order',
-    component:orderFloor,
+    component: orderFloor,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title:'个人中心'
-  }
+      title: '个人中心'
+    }
 
   },
   // 我的预约
@@ -115,41 +115,41 @@ const routes = [
     component: myOrder,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title:'我的预约'
-  }
+      title: '我的预约'
+    }
   },
 
-    // 预约信息填写
-    {
-      path: '/orderForm',
-      name: 'orderForm',
-      component: orderForm,
-      meta: {
-        keepalive: false, // 组件是否需要被保存
-        title:'预约表单'
+  // 预约信息填写
+  {
+    path: '/orderForm',
+    name: 'orderForm',
+    component: orderForm,
+    meta: {
+      keepalive: false, // 组件是否需要被保存
+      title: '预约看房'
     }
-    },
+  },
 
-        // 预约信息详情客户
-        {
-          path: '/orderDetail/:id',
-          name: 'orderDetail',
-          component: orderDetail,
-          meta: {
-            keepalive: false, // 组件是否需要被保存
-            title:'预约详情'
-        }
-        },
-        // 评价
-        {
-          path: '/appraise/:id',
-          name: 'appraise',
-          component: appraise,
-          meta: {
-            keepalive: false, // 组件是否需要被保存
-            title:'填写评价'
-        }
-        },
+  // 预约信息详情客户
+  {
+    path: '/orderDetail/:id',
+    name: 'orderDetail',
+    component: orderDetail,
+    meta: {
+      keepalive: false, // 组件是否需要被保存
+      title: '预约详情'
+    }
+  },
+  // 评价
+  {
+    path: '/appraise/:id',
+    name: 'appraise',
+    component: appraise,
+    meta: {
+      keepalive: false, // 组件是否需要被保存
+      title: '填写评价'
+    }
+  },
 
   // 精品旅社
 
@@ -159,20 +159,20 @@ const routes = [
     component: hotelStar,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title:'精品居舍'
+      title: '精品居舍'
     },
   },
-
   // 精品旅社详情
   {
-    path: `/hotelDetail/:id`,
+    path: `hotelDetail/:id`,
     name: 'hotelDetail',
     component: hotelDetail,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title:'精品居舍详情'
-  }
+      title: '精品居舍详情'
+    }
   },
+
   // 我的预订
   {
     path: '/myReserve',
@@ -180,8 +180,8 @@ const routes = [
     component: myReserve,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title:'预订'
-  }
+      title: '预订入住'
+    }
   },
 
 
@@ -192,40 +192,40 @@ const routes = [
     component: bookingIndex,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title:'预约管理'
-  }
+      title: '预约管理'
+    }
   },
 
-    // 预约详情销售
-    {
-      path: '/bookingDetail/:id',
-      name: 'bookingDetail',
-      component: bookingDetail,
-      meta: {
-        keepalive: false, // 组件是否需要被保存
-        title:'预约详情'
+  // 预约详情销售
+  {
+    path: '/bookingDetail/:id',
+    name: 'bookingDetail',
+    component: bookingDetail,
+    meta: {
+      keepalive: false, // 组件是否需要被保存
+      title: '预约详情'
     }
-    },
-    // 看房反馈
-    {
-      path: '/bookingfeedback/:id',
-      name: 'bookingfeedback',
-      component: bookingfeedback,
-      meta: {
-        keepalive: false, // 组件是否需要被保存
-        title:'看房反馈'
+  },
+  // 看房反馈
+  {
+    path: '/bookingfeedback/:id',
+    name: 'bookingfeedback',
+    component: bookingfeedback,
+    meta: {
+      keepalive: false, // 组件是否需要被保存
+      title: '看房反馈'
     }
-    },
-    //看房反馈信息 
-    {
-      path: '/feedbackdetail/:id',
-      name: 'feedbackdetail',
-      component: feedbackDetail,
-      meta: {
-        keepalive: false, // 组件是否需要被保存
-        title:'反馈详情'
+  },
+  //看房反馈信息 
+  {
+    path: '/feedbackdetail/:id',
+    name: 'feedbackdetail',
+    component: feedbackDetail,
+    meta: {
+      keepalive: false, // 组件是否需要被保存
+      title: '反馈详情'
     }
-    },
+  },
 
 ]
 

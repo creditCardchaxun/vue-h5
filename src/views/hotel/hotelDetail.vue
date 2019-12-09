@@ -1,5 +1,5 @@
 <template>
- <div class="hotel-detail" :style="minHeight">
+ <div class="hotel-detail" :style="getHeight">
     <aheaders status="2"></aheaders>
     <div class="banner-img">
          <div class="banner_top" @click='showStory'> <em>查看项目故事</em> 
@@ -54,7 +54,7 @@
                <div class="types">
                  <div class="types-nav">
                      <h3>户型展示</h3>
-                    <van-tabs @click="onClick" line-width='6%' :border='false' :ellipsis='false' v-if="projectdetail.house_type!=''">
+                    <van-tabs  line-width='6%' :border='false' :ellipsis='false' v-if="projectdetail.house_type!=''">
                      <div class="class" v-for="(item,index) in projectdetail.house_type" :key='index'>
                      <van-tab :title="item.typename" >
                         <van-swipe @change="onChange">
@@ -81,7 +81,7 @@
                  </div>
 
 
-             <div class="desc" ref='tab1'>
+             <div class="desc" id='maps'>
               <h3 style='margin-top:1.2rem;'>公寓配置</h3>
                  <div class="toall-ul" >
                  <ul :class='{activeLi:showHeight}'  ref='heightShow' v-if="projectdetail.project_setting!=null">
@@ -99,7 +99,7 @@
           
              </div>
 
-                <div class="map" id='maps'>
+                <div class="map">
                  <div class="map01">
                    <!-- <img src="../../assets/images/map01.jpg" alt=""> -->
                      <maps v-if="projectdetail.address" :dataArr="projectdetail"></maps>
@@ -110,7 +110,7 @@
                     <p><b>附近地铁:</b>2号线</p> -->
                  </div>
                  </div>
-                 
+
                  <div class="hot-hotel">
                      <h3>推荐公寓</h3>
                       <div class="hotel-some" v-if="projectdetail.recommend_list!=''">
@@ -203,18 +203,20 @@ export default{
         //  showMore:false
     }
  },
-    computed:{
-      minHeight(){
-        return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
-      }
+  computed:{
+      // minHeight(){
+      //   return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+      // }
     },
  created(){
     // this.mobileLocal=localStorage.getItem('mobile')
     this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile
     let id=this.$route.params.id
+    this.getHeight.minHeight=window.outerHeight/window.outerWidth * 10.8 - 5.96+'rem'
     // this.getdetailhouses(id)
  },
     beforeRouteEnter (to, from, next) {
+      console.log(to, from)
       let id=to.params.id
       let status=to.params.status
       console.log(status)
@@ -289,13 +291,12 @@ export default{
       this.showHeight=!this.showHeight
      },
     toDetailxq(id){
-      console.log('id值',id)
-       this.getdetailhouses(id)
+      this.showHeight=false
+      this.getdetailhouses(id)
       this.$router.push({name:'hotelDetail',params:{id:id}})
      
     },
      getdetailhouses(id){
-      //  console.log('id值22',id)
        interfaces.getdetailhouse(id).then((res)=>{
          this.projectdetail=res
          this.detailId=res.id
@@ -304,9 +305,9 @@ export default{
     onChange(index) {
       this.current = index;
     },
-     onClick(name, title) {
-      // this.$toast(title);
-    },
+    //  onClick(name, title) {
+    //   // this.$toast(title);
+    // },
          handleScroll () {
          this.scroll  = $(window).height()+ $(document).scrollTop()
       },
@@ -384,6 +385,7 @@ export default{
 </script>
 
 <style scoped>
+.hotel-detail{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
 .banner-img{
     width:100%;height:7.71rem;position:relative;padding-top:0.2rem;
 }
@@ -417,8 +419,8 @@ border-bottom-left-radius: 0.1rem;border-bottom-right-radius: 0.1rem;}
 .main-content h3{color:#fff;width:9.5rem;margin:0.51rem auto 0;display:flex;align-items: center;justify-content: space-between;font-weight:bold;}
 .main-content h3 span{color:#fff;font-size:0.36rem;text-align: right;}
 .main-content h3 em{color:#fff;font-size:0.6rem;text-align: left;}
-.main-icon{width:9.5rem;display:flex;align-items:center;margin:0.44rem auto 0;}
-.main-icon span{font-size:0.3rem;border:1px solid #fff;padding:0 0.25rem;height:0.56rem;line-height:0.56rem;margin-right:0.28rem;border-radius: 0.1rem;}
+.main-icon{width:9.5rem;display:flex;align-items:center;margin:0.44rem auto 0;flex-wrap: wrap}
+.main-icon span{font-size:0.3rem;border:1px solid #fff;padding:0 0.25rem;height:0.56rem;line-height:0.56rem;margin:0.2rem 0.2rem 0 0;border-radius: 0.1rem;}
 .main-loaction{display:flex;align-items: center;justify-content: space-between;width:9.5rem;margin:0.55rem auto;}
 .main-loaction i{font-size:0.36rem;}
 .main-loaction span{font-size:0.36rem;margin-left: 0.2rem;max-height: 1rem;
