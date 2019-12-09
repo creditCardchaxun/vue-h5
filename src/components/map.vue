@@ -143,7 +143,7 @@ export default {
         this.destroyMap()
         this.createMap()
         this.backindex()
-      }else{
+      } else {
         // 全屏时
         if (Object.prototype.toString.call(this.dataArr) !== '[object Array]') {
           this.selectProject = this.dataArr
@@ -598,21 +598,24 @@ export default {
           $(this).siblings("li").removeAttr('class');
           $(this).addClass("current_li");
           var search = $(this).html();
+          var distance = 1000
           if (search == "美食") search = "餐饮";
           if (search == "购物") search = "超级市场";
+          if (search === '景点') {
+            distance = 10000
+          }
           AMap.service(["AMap.PlaceSearch"], function () {
             //构造地点查询类
             var placeSearch = new AMap.PlaceSearch({
               type: search, // 兴趣点类别
               pageSize: 50, // 单页显示结果条数
               pageIndex: 1, // 页码
-              autoFitView: false,
               citylimit: true, //是否强制限制在设置的城市内搜索
               map: _this.mapCase, // 展现结果的地图实例
               autoFitView: true, // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
               pageSize: 20
             });
-            placeSearch.searchNearBy('', _this.selectGDpoint, 1000, function (status, result) {
+            placeSearch.searchNearBy('', _this.selectGDpoint, distance, function (status, result) {
             });
           });
         }
