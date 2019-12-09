@@ -472,6 +472,7 @@ width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: bo
 }
 
 .brand-story h3 {
+  line-height: 1.5;
   font-size: 0.6rem;
   color: #060606;
   margin: 1.5rem 0 0.86rem;
