@@ -213,8 +213,9 @@ export default{
     this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile
     let id=this.$route.params.id
     // this.getdetailhouses(id)
- },
-    beforeRouteEnter (to, from, next) {
+ },    beforeRouteEnter (to, from, next) {
+      
+      console.log('beforeRouteEnter')
       let id=to.params.id
       let status=to.params.status
       console.log(status)
@@ -235,6 +236,29 @@ export default{
            }
            }
         })
+    })
+  },
+    beforeRouteUpdate (to, from, next) {
+      console.log('beforeRouteUpdate')
+      let id=to.params.id
+      let status=to.params.status
+      console.log(to)
+      var that= this
+      interfaces.getdetailhouse(id).then(function (res) {
+        
+         that.projectdetail=res
+         that.detailId=res.id
+          var div = that.$refs.tab1
+           if(from.name=='myOrder'){
+             if (div) {
+              setTimeout(function () {
+              console.log($(div).offset().top);
+              // $('html,body').scrollTop($(div).offset().top - 43);
+              $('html, body').animate({scrollTop: $(div).offset().top - 43}, 500)
+            }, 500);
+           }
+           }
+      next()
     })
   },
   watch:{
@@ -290,7 +314,7 @@ export default{
      },
     toDetailxq(id){
       console.log('id值',id)
-       this.getdetailhouses(id)
+      //  this.getdetailhouses(id)
       this.$router.push({name:'hotelDetail',params:{id:id}})
      
     },
