@@ -260,7 +260,7 @@ export default {
 <style scoped>
   
 .model-diag{width:100%;height:100%;background:rgba(0,0,0,0.5);position:fixed;top:0;left:0;z-index: 99;overflow: scroll;}
-.model-diag .model_main{width:90%;height:auto;margin:0 auto;top:35%;left:5%;position:absolute;border-radius: 10px;background-color: #fff;padding-bottom:0.53rem;}
+.model-diag .model_main{width:90%;height:auto;margin:0 auto;top:35%;left:5%;position:absolute;border-radius: 10px;background-color: #fff;padding-bottom:0.53rem;padding-top: 0.4rem;}
 .van-cell-group {
     background-color: #fff;
     border-radius: 12px;
