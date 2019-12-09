@@ -638,12 +638,10 @@ export default {
 }
 
 .window-screen {
-  background: red;
   height: 6rem;
 }
 
 .full-screen {
-  background: green;
   height: 100%;
   position: fixed;
   top: 0;
