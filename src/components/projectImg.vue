@@ -19,7 +19,7 @@
                               <span v-if='item.type==1'>改造以前</span>     
                               <span v-if='item.type==2'>改造以后</span>
                           </div> 
-                          <div class="pro_font" v-if='item.type==1'> Beforer</div> 
+                          <div class="pro_font" v-if='item.type==1'> Before</div> 
                           <div class="pro_font" v-if='item.type==2'> After</div> 
                       </div>
                           <p v-if='item.project_name'>

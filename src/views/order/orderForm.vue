@@ -94,6 +94,7 @@
           :min-date="minDate"
           :max-date="maxDate"
           @confirm="confirmPicker"
+          @cancel='cancelPicker'
           @change="onChanges"
         />
       </van-popup>
@@ -288,6 +289,10 @@ export default {
     showPopup2() {
       this.show2 = true;
     },
+    cancelPicker(){
+       this.show2 = false;
+    },
+
     confirmPicker(value) {
       // 确定按钮，时间格式化并显示在页面上
       var date = value;
@@ -300,33 +305,37 @@ export default {
         d = "0" + d;
       }
       var timer = date.getFullYear() + "-" + m + "-" + d;
-      //  if(this.getnewDate()){
-      if (this.getnewDate() == timer) {
-        this.$toast("请选择其它预约日期");
-        this.value2 = "";
-        return;
-      } else {
-        this.value2 = timer;
-        this.show2 = false;
-        this.datePicker = "";
-      }
+       this.value2 = timer;
+       this.show2 = false;
+       this.datePicker = "";
+      
+      // if (this.getnewDate() == timer) {
+      //   this.$toast("请选择其它预约日期");
+      //   this.value2 = "";
+      //   return;
+      // } else {
+      //   this.value2 = timer;
+      //   this.show2 = false;
+      //   this.datePicker = "";
+      // }
+
     },
 
-    getnewDate(time) {
-      var date = new Date();
-      var seperator1 = "-";
-      var year = date.getFullYear();
-      var month = date.getMonth() + 1;
-      var strDate = date.getDate();
-      if (month >= 1 && month <= 9) {
-        month = "0" + month;
-      }
-      if (strDate >= 0 && strDate <= 9) {
-        strDate = "0" + strDate;
-      }
-      time = year + seperator1 + month + seperator1 + strDate;
-      return time;
-    },
+    // getnewDate(time) {
+    //   var date = new Date();
+    //   var seperator1 = "-";
+    //   var year = date.getFullYear();
+    //   var month = date.getMonth() + 1;
+    //   var strDate = date.getDate();
+    //   if (month >= 1 && month <= 9) {
+    //     month = "0" + month;
+    //   }
+    //   if (strDate >= 0 && strDate <= 9) {
+    //     strDate = "0" + strDate;
+    //   }
+    //   time = year + seperator1 + month + seperator1 + strDate;
+    //   return time;
+    // },
 
     formatter(type, value) {
       // 格式化选择器日期
@@ -430,43 +439,7 @@ export default {
 </script>
 
 <style scoped>
-.inputGroup{
-    position: relative;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
-    box-sizing: border-box;
-    width: 100%;
-    padding: 10px 16px;
-    overflow: hidden;
-    color: #323233;
-    font-size: 14px;
-    line-height: 24px;
-    background-color: #fff;
-    border:1px solid #fafafa;
-}
-.inputGroup label {
-    -webkit-box-flex: 0;
-    -webkit-flex: none;
-    flex: none;
-    width: 90px;
-}
-.inputGroup input{
-    display: block;
-    box-sizing: border-box;
-    width: 100%;
-    min-width: 0;
-    margin: 0;
-    padding: 0;
-    color: #323233;
-    text-align: left;
-    background-color: transparent;
-    border: 0;
-    resize: none;
-}
-
-
-
+.myReserve{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
 .myReserve >>> #orderFormInput::input-placeholder{
     color:#999;
 } 

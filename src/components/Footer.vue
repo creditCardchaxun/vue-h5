@@ -96,7 +96,7 @@ export default{
 </script>
 
 <style scoped>
-.footer{height:5.96rem;}
+.footer{height:5.96rem; position:absolute;bottom:0;}
 .foot-nav{width:10.8rem;background-color: #3c5896;color:#fff;height:4.45rem;}
 .foot-nav .foot{width: 9.63rem;;height:auto;color:#fff;padding:0.84rem 0 0.85rem; margin:0 auto; font-size: 0.4rem;} 
 .foot-nav .foot a{color:#fff;font-size:0.34rem;padding:0 0.35rem;}

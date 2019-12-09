@@ -124,7 +124,7 @@ export default {
 </script>
 
 <style scoped>
-.newlist{width:100%;height:auto;}
+.newlist{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
 .news_main{width:90%;height:auto;margin:0 auto;padding-top:0.32rem;}
 .news_main .news_01{width:100%;height:auto;border-bottom:1px solid #e5e5e5;}
 .news_main .news_01 img{width:100%;height:auto;}

@@ -25,7 +25,7 @@
            -
             <!-- <input type="text" v-model="value3" class='endtime'>  -->
         <van-field 
-            style='padding-left:52px;width:50%'
+            style='padding-left:52px;width:48%'
             :placeholder="$t('m.house9')" 
             v-model="value3"
             right-icon="arrow-down"
@@ -96,7 +96,9 @@ import { Picker,DatetimePicker  } from 'vant';
  Vue.use(Picker).use(DatetimePicker);
 import { Field } from 'vant';
 Vue.use(Field);
- import { RadioGroup, Radio } from 'vant';
+import { Icon ,Dialog} from 'vant';
+Vue.use(Icon,Dialog);
+import { RadioGroup, Radio } from 'vant';
 Vue.use(RadioGroup);
 Vue.use(Radio);
 
@@ -141,6 +143,7 @@ export default {
       // this.getListhouses()
     },
       beforeRouteEnter (to, from, next) {
+        console.log(to,'jdjfjfjddjj',from)
       interfaces.getxiecheng().then(function (res) {
       next(vm=>
          {
@@ -160,8 +163,18 @@ export default {
     
     methods:{
          toreplace(){
-         this.$router.go(-1)
+              Dialog.confirm({
+            title: this.$i18n.t('m.other1'),
+            message: this.$i18n.t('m.other2'),
+            confirmButtonText:this.$i18n.t('m.other4'),
+            cancelButtonText:this.$i18n.t('m.other3')
+          }).then(() => {
+            return;
+          }).catch(() => {
+              this.$router.go(-1)
+          });
        },
+
        togetTime(data){
        this.value2=data.s1
        this.value3=data.s2
@@ -343,10 +356,11 @@ export default {
     color: #333;
 } */
 
-
-.names{position:relative;}
+.myReserve{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
+.names{position:relative;border: 1px solid #f5f5f5;}
 .names .van-radio-group{position:absolute;right: 14px;top:20px;display: flex;align-items: center;}
 .names .van-radio{margin-right:0.2rem;font-size:0.3rem;}
+.names >>> .van-cell:not(:last-child)::after {border-bottom: none;}
 .phones{position:relative;}
 .phones span{font-size:0.3rem;color:#5975a9;position:absolute; top: 20px;right: 14px;}
 .reserve{width:80%;height:auto;margin:0 auto;}
@@ -373,4 +387,5 @@ export default {
 .timesall{position:relative;font-size:0.3rem;display:flex;  align-items: center;margin:0  0.4rem;}
 .timesall .van-cell{padding:16px 0px;flex: none;width:50%;}
 .timesall .van-cell .van-cell__value{width:50% !important;}
+.timesall >>> .van-cell:not(:last-child)::after {border-bottom: none;}
 </style>

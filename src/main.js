@@ -110,8 +110,10 @@ if (process.env.NODE_ENV === 'development' && !process.env.VUE_APP_BUILD_TYPE) {
 Vue.prototype.iswx = iswx
 window.$router = router
 
+
 router.afterEach((from,to)=>{
   // document.documentElement.scrollTop=0
+  // console.log(from,to)
   window.$(document).scrollTop(0)
 })
 new Vue({

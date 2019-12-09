@@ -45,9 +45,9 @@
                 
              </div>
 
-          <div class="s1" v-if='orderList.length==0&&orderList2.length==0'>
+          <div class="s1" v-show='showBtn'>
             {{$t('m.watch5')}} 
-           <button>点击去预约</button>
+           <button @click='toOrder'>点击去预约</button>
           </div>
 
          </div>
@@ -70,11 +70,12 @@ import interfaces from "@/utils/api.js";
        return{
                 orderList:[],
                 orderList2:[],
-                 getHeight:{
+                getHeight:{
                     minHeight:''
-                  }   
-             }
-         },
+                  },
+                showBtn:false     
+                }
+             },
            computed:{
         //  this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
       //       minHeight(){
@@ -99,12 +100,15 @@ import interfaces from "@/utils/api.js";
                booklists(){
                interfaces.bookList().then((res)=>{
 
-                  if(res.not_finish!=''){
+                  if(res.not_finish!=null||res.not_finish!=''){
                    this.orderList=res.not_finish   //即将开始
                   } 
-                   if(res.finish !=''){
-                  this.orderList2=res.finish   //已经看过
+                   if(res.finish !=null||res.finish !=''){
+                    this.orderList2=res.finish   //已经看过
                   } 
+                  if((res.not_finish==null||res.not_finish==''||res.not_finish.length==0)&&(res.finish ==null||res.finish ==''||res.finish.length==0)){
+                     this.showBtn=true
+                  }
                 })
                }, 
                todetailOrder(id){
@@ -115,6 +119,9 @@ import interfaces from "@/utils/api.js";
                },
                toAppraise(id){
                  this.$router.push({name:'appraise',params:{id:id}})
+               },
+               toOrder(){
+                 this.$router.push({name:'orderForm'})
                }
        },
       components:{
@@ -125,7 +132,7 @@ import interfaces from "@/utils/api.js";
 </script>
 
 <style scoped>
-.myorder{width:100%;height:auto;}
+.myorder{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
 .myorder-list{width:9.69rem;height:auto;margin:0 auto;padding-top:0.9rem;border-top:1px solid #f5f5f5;}
 .myorder-list2{width:9.69rem;height:auto;margin:0 auto;padding-top:0.9rem;}
 .myorder-list h2{font-size:0.44rem;color:#000;font-weight: bold;}

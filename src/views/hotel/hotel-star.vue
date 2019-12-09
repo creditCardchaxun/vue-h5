@@ -63,7 +63,7 @@
 
        <submitBtn  v-if='hideModel' @tohideModel='tohideModel' :status='status'></submitBtn>  
 
-
+   <!-- <router-view /> -->
   </div>
 </template>
 
@@ -239,6 +239,7 @@ export default {
      },
 
      beforeRouteEnter (to, from, next) {
+       console.log(to, from)
       let data={}
       interfaces.getListhouseAll(data).then(function (res) {
       next(vm=>
@@ -282,7 +283,7 @@ export default {
 </script>
 
 <style>
-.star{width:100%;height:auto;}
+.star{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
 .hotel{width:auto;height:auto;margin:0 auto;}
 .star .top-hotel{width:100%;height:auto;margin:0.22rem 0 0.88rem;}
 .star .top-hotel img{width:100%;height:auto;}

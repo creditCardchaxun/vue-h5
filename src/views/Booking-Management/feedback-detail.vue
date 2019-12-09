@@ -136,10 +136,7 @@ export default {
 
 <style>
 .bookingdetail {
-  width: 100%;
-  height: auto;
-  /* min-height:9rem; */
-  margin: 0 auto;
+width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;
 }
 
 .top {

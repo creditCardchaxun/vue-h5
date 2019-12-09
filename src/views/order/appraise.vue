@@ -154,72 +154,25 @@ export default {
 }
 </script>
 <style scoped>
-.appraise {
-  width: 100%;
-  min-height: 100%;
-  box-sizing: border-box;
-  padding-bottom: 5.96rem;
-  position: relative;
-}
-
-.myFooter {
-  position: absolute;
-  bottom: 0;
-}
-
-.appraise .appraise-01 {
-  width: 90%;
-  height: auto;
-  padding: 1.29rem 0 0;
-  border-top: 1px solid #f5f5f5;
-  margin: 0 auto;
-}
-.appraise .appraise-01 h3 {
-  font-size: 0.6rem;
-  color: #000;
-  margin-bottom: 0.7rem;
-  font-weight: bold;
-}
-.appraise .appraise-01 p {
-  width: auto;
-  height: auto;
-}
-.appraise .appraise-01 p span {
-  width: auto;
-  height: 0.68rem;
-  line-height: 0.68rem;
-  display: inline-block;
-  border: 1px solid #bfbfbf;
-  padding: 0 0.3rem;
-  font-size: 0.3rem;
-  margin-right: 0.3rem;
-}
-.appraise .appraise-01 p textarea {
-  width: 92%;
-  border: 0;
-  line-height: 0.4rem;
-  font-size: 0.4rem;
-  margin-top: 0.5rem;
-}
-.btn {
-  width: 8.07rem;
-  height: 1rem;
-  line-height: 1rem;
-  color: #fff;
-  text-align: center;
-  background-color: #5975a9;
-  font-size: 0.3rem;
-  border: none;
-  /* margin-left: 10%; */
-  border-radius: 0.1rem;
-  margin: 1.2rem auto 1.64rem;
-  margin-left: 0.8rem;
-}
-.btn a {
-  color: #fff;
-}
-.appraise .appraise-01 p .tagons {
-  background-color: #5975a9;
-  color: #fff;
-}
+.appraise{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
+.appraise .appraise-01{width:90%;height:auto;padding:1.29rem 0 0;border-top:1px solid #f5f5f5;margin:0 auto;}
+.appraise .appraise-01 h3{font-size:0.6rem;color:#000;margin-bottom:0.7rem;font-weight: bold;}
+.appraise .appraise-01 p{width:auto;height:auto;}
+.appraise .appraise-01 p span{width:auto;height:0.68rem;line-height:0.68rem;display: inline-block;  border:1px solid #bfbfbf;padding:0 0.3rem;font-size:0.3rem;margin-right:0.3rem;}
+ .appraise .appraise-01 p textarea{width: 92%;border: 0;line-height: 0.4rem;font-size: 0.4rem;margin-top:0.5rem;}
+.btn{width: 8.07rem;
+    height: 1.0rem;
+    line-height: 1.0rem;
+    color: #fff;
+    text-align: center;
+    background-color: #5975a9;
+    font-size: 0.3rem;
+    border: none;
+    /* margin-left: 10%; */
+    border-radius: 0.1rem;
+    margin: 1.2rem auto 1.64rem;
+    margin-left:0.8rem;
+    }
+.btn a{color:#fff;}
+   .appraise .appraise-01 p .tagons{background-color:#5975a9 ;color:#fff;}
 </style>
