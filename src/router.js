@@ -160,7 +160,7 @@ const routes = [
     meta: {
       keepalive: false, // 组件是否需要被保存
       title:'精品居舍'
-  }
+    },
   },
 
   // 精品旅社详情

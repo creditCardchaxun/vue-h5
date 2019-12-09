@@ -17,7 +17,7 @@
         :placeholder="$t('m.house8')"
         :label="$t('m.house1')"
         right-icon="arrow-down"
-        disabled="true"
+        readonly
         @click="showPopup"
       />
       <van-field
@@ -26,7 +26,7 @@
         :placeholder="$t('m.house9')"
         :label="$t('m.house2')"
          right-icon="arrow-down"
-         disabled="true"
+        readonly
         @click="showPopup2"
       />
       <div class="names">
@@ -47,7 +47,7 @@
           :placeholder="$t('m.house11')"
           :label="$t('m.house4')"
           type="number"
-          disabled="true"
+          readonly
         />
         <span @click="changePhone">{{$t('m.changePhone')}}</span>
       </div>
@@ -126,7 +126,8 @@ import { Picker, DatetimePicker } from "vant";
 Vue.use(Picker).use(DatetimePicker);
 import { Icon ,Dialog} from 'vant';
 Vue.use(Icon,Dialog);
-
+import { Field } from 'vant';
+Vue.use(Field);
 import { RadioGroup, Radio } from "vant";
 Vue.use(RadioGroup);
 Vue.use(Radio);
@@ -243,10 +244,9 @@ export default {
           });
 
     },
-    // getPhones111(data) {
-    //   // this.phone = data;
-    //   console.log(data,'ghdfgsgjhdfghjdgf')
-    //  },
+    getPhones111(data) {
+      this.phone = data;
+     },
     
     // 公寓选择
     bookHouses() {
@@ -502,6 +502,13 @@ export default {
 .myReserve >>> .van-cell__value input::-webkit-input-placeholder,
 .myReserve >>> .van-cell__value textarea::-webkit-input-placeholder {
     color: #999;
+}
+
+.myReserve >>> .van-field__control:disabled {
+    color: #333;
+    -webkit-text-fill-color: #333;
+    background-color: transparent;
+    opacity: 1;
 }
 
 .names {

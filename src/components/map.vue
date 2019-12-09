@@ -663,7 +663,7 @@ export default {
     height: 1.5rem;
     position: absolute;
     right: 0.3rem;
-    z-index: 100;
+    z-index: 80;
   }
 
   .window-button {

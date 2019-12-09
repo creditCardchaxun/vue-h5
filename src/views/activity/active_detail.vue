@@ -36,7 +36,7 @@ export default {
     id:'',
     newsDetails:{},
      scroll:0,
-     newsHeight:{
+     getHeight:{
        minHeight:''
      }
 
@@ -63,7 +63,7 @@ export default {
     created(){
            this.id = this.$route.params.id;
           //  this.activedetails(this.id)
-           this.newsHeight.minHeight=(window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
+           this.getHeight.minHeight=(window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
     },
      beforeRouteEnter (to, from, next) {
        let id=to.params.id

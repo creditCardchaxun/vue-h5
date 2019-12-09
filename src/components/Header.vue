@@ -1,4 +1,5 @@
 <template>
+ <div class="header-nav">
   <div class="header" :class='{showbgs:showbg}' :style='nav'>
     <!-- 2代表2级页面  3代表3级页面 -->
        <div class="logo" v-if="status==2"><router-link :to="{path:'/'}"><img src="@/assets/images/logo.png" alt=""></router-link> </div>
@@ -14,6 +15,8 @@
         <div class="nav-menu" @click='toorder' >
          <router-link :to="{path:'/order'}"> 
          <img src="@/assets/images/right-menu.png" alt=""></router-link></div></div>
+  </div>
+  <div class="empty"></div>
   </div>
 </template>
 <script>
@@ -66,10 +69,10 @@ export default{
       this.$router.push({path:'/order'})
     },
 
- handleScrolls() {
-       let scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
-         scrolltop >55? (this.showbg = true) : (this.showbg = false);
-       },
+//  handleScrolls() {
+//        let scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
+//          scrolltop >55? (this.showbg = true) : (this.showbg = false);
+//        },
 changeLangEvent() {
       if(this.lang=='zh-CN'){
          this.lang='en-US'
@@ -84,7 +87,7 @@ changeLangEvent() {
 
   },
    mounted() {
-     window.addEventListener("scroll", this.handleScrolls, true);
+      // window.addEventListener("scroll", this.handleScrolls, true);
       $eventbus.$on('changeLang', this.reload)
    },
 
@@ -100,9 +103,12 @@ changeLangEvent() {
 .nav-lan span{font-size:18px;border-bottom:1px solid #000;}
 .nav-lan .nav-menu{width:25%;height:auto;} */
 
-.header {width:auto;padding:0 0.6rem; height:1.63rem;display:flex;align-items: center;justify-content: space-between;
+.header {width:100%;padding:0 0.6rem; height:1.63rem;display:flex;box-sizing: border-box;
+align-items: center;justify-content: space-between;
+position:fixed;top:0;left:0; background: rgba(255,255,255,0.8);z-index: 99;
 /* margin:0 0 0 0.55rem; */
 }
+.empty{height:1.63rem;}  
 .header .logo{width:1.54rem;height:1.09rem;margin-top:10px;}
 .header .logo img{width:1.54rem;height:1.09rem;}
 

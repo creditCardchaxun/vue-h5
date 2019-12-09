@@ -83,17 +83,20 @@
 
              <div class="desc" ref='tab1'>
               <h3 style='margin-top:1.2rem;'>公寓配置</h3>
-                 <ul v-if="projectdetail.project_setting!=''" ref='heightShow' :class='{activeLi:showHeight}'>
+                 <div class="toall-ul" >
+                 <ul :class='{activeLi:showHeight}'  ref='heightShow' v-if="projectdetail.project_setting!=null">
                  <li v-for='(item,index) in projectdetail.project_setting' :key='index'>
                     <img :src="item.image" alt="">
                     <span>{{item.title}}</span>
                  </li>
-             </ul>
-               <div class="nolist" v-else style='font-size:0.35rem;text-align:center;margin:0.3rem 0;'>暂无公寓配置详细信息</div>
-               <div class="index-more" v-show="projectdetail.project_setting!=null" @click='toloadMore'>
+              </ul>
+               <div class="index-more" v-if="projectdetail.project_setting!=null&&projectdetail.project_setting.length>8" @click='toloadMore'>
                  <span>more</span>
                   <img src="../../assets/images/more-icon.jpg" alt  style='margin-top: 0.1rem;'/>
                </div>
+             </div>
+               <!-- <div class="nolist" v-else style='font-size:0.35rem;text-align:center;margin:0.3rem 0;'>暂无公寓配置详细信息</div> -->
+          
              </div>
 
                 <div class="map" id='maps'>
@@ -101,12 +104,13 @@
                    <!-- <img src="../../assets/images/map01.jpg" alt=""> -->
                      <maps v-if="projectdetail.address" :dataArr="projectdetail"></maps>
                    <h3>周围及交通服务</h3>
-                    <p><b>周围商圈:</b>浦东新区xxx大道</p>
+                   <p v-html='projectdetail.content'>projectdetail.content</p>
+                    <!-- <p><b>周围商圈:</b>浦东新区xxx大道</p>
                     <p><b>附近机场:</b>浦东机场 虹桥机场</p>
-                    <p><b>附近地铁:</b>2号线</p>
+                    <p><b>附近地铁:</b>2号线</p> -->
                  </div>
                  </div>
-
+                 
                  <div class="hot-hotel">
                      <h3>推荐公寓</h3>
                       <div class="hotel-some" v-if="projectdetail.recommend_list!=''">
@@ -181,7 +185,7 @@ export default{
           },
         },
          projectdetail:{},
-         defaultheight:180,
+         defaultheight:200,
          showHeight:false,
          hideModel:false,
          mobileLocal:'',
@@ -195,14 +199,14 @@ export default{
          detailId:'',
          getHeight:{
            minHeight:''
-         }
+         },
+        //  showMore:false
     }
  },
     computed:{
       minHeight(){
         return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
       }
-    
     },
  created(){
     // this.mobileLocal=localStorage.getItem('mobile')
@@ -247,8 +251,6 @@ export default{
       this.$router.push({name:'appraise',params:{id:this.detailId}})
      },
     btn_pos:function(e){
-      // console.log(this.scroll)
-     //  this.local = false
       this.setlocaltrue()
     },
     setlocaltrue:_.debounce(function(){
@@ -287,9 +289,10 @@ export default{
       this.showHeight=!this.showHeight
      },
     toDetailxq(id){
-      // console.log('id值',id)
+      console.log('id值',id)
+       this.getdetailhouses(id)
       this.$router.push({name:'hotelDetail',params:{id:id}})
-      this.getdetailhouses(id)
+     
     },
      getdetailhouses(id){
       //  console.log('id值22',id)
@@ -339,13 +342,15 @@ export default{
 
        window.addEventListener('scroll', this.handleScroll);
        window.addEventListener('scroll',this.btn_pos);
+        this.$nextTick(()=>{
         let height= window.getComputedStyle(this.$refs.heightShow).height
         if(height>this.defaultheight+'px'){
             this.showHeight=true
           }
+        }), 
           $eventbus.$on("changeLang", (res)=>{
-              // this.mobileLocal=localStorage.getItem('mobile')
-              // let id=this.$route.params.id
+              this.mobileLocal=localStorage.getItem('mobile')
+                let id=this.$route.params.id
                 this.getdetailhouses(id)
                 // let height= window.getComputedStyle(this.$refs.heightShow).height
                 // if(height>defaultheight+'px'){
@@ -424,7 +429,7 @@ border-bottom-left-radius: 0.1rem;border-bottom-right-radius: 0.1rem;}
 .desc{width:auto;height:auto;padding:0 0.66rem;}
 .desc h3{margin-top:0.85rem;font-size:0.42rem;color:#060606;font-weight:bold;}
 .desc p{font-size:0.34rem;color:#000;line-height:0.6rem;color:#0d0d0d;margin-top:0.44rem;}
-.desc ul{width:auto;height:180px;overflow: hidden;margin:0 0 0.6rem;transition: all 0.4s ease;}
+.desc ul{width:auto;height:190px;overflow: hidden;margin:0 0 0.6rem;transition: all 0.4s ease;}
 .desc .activeLi{width:auto;height:auto;}
 .desc ul li{display:flex;align-items: center;justify-content: center;flex-direction: column;width:25%;float:left;margin-top:0.87rem;}
 .desc ul li img{width:1.3rem;height:1rem;}
@@ -457,7 +462,7 @@ border-bottom-left-radius: 0.1rem;border-bottom-right-radius: 0.1rem;}
 
 .map{width:100%;height:auto;padding-bottom:.9rem;border-bottom:1px solid #e5e5e5;}
 .map .map01{width:100%;height:auto;margin:0rem auto 0;}
-.map .map01 h3{font-size:0.42rem;color:#161616;font-weight:bold;margin:0 0.67rem 0.65rem;}
+.map .map01 h3{font-size:0.42rem;color:#161616;font-weight:bold;margin:0.5rem 0.67rem 0.65rem;}
 /* .map .map01 img{width:100%;height:auto;margin:0rem 0 0.85rem;} */
 .map .map01 p{font-size:0.34rem;color:#000;line-height:0.62rem;margin:0 0.67rem;}
 .map .map01 p b{font-weight:bold;font-size:0.36rem;margin-right:0.2rem;}

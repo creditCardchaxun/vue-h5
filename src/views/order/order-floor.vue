@@ -43,11 +43,10 @@
           <li @click="callPhone"><router-link to=""><img src="../../assets/images/2_22.png" alt=""><i>400-700-6008</i> </router-link></li>
         </ul>  
        </div>
-
        <van-button type="info" class='submits' @click="toshowModel">{{$t('m.orderhouse')}}</van-button>
 
        <!-- 预约弹框 -->
-        <submitBtn  v-if='!hideModel' @tohideModel='tohideModel' :status='status'></submitBtn>
+        <submitBtn  v-if='!hideModel' @tohideModel='tohideModel' :status='status' @update1="getPhones111"></submitBtn>
     </div>
   </div>
 
@@ -84,7 +83,7 @@ export default {
      }
     },
     created(){
-      // this.getUserInfo()
+      this.getUserInfo()
       this.getHeight.minHeight=(window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
     },
      computed:{
@@ -96,13 +95,15 @@ export default {
      
    methods:{
         // 获取个人信息
-    //  getUserInfo(){
-    //     interfaces.getuserInfo().then(res => {
-    //       this.userinfo=res
-    //       localStorage.setItem('userinfo',JSON.stringify(res))
-    //     });
-    //  },
-
+     getUserInfo(){
+        interfaces.getuserInfo().then(res => {
+          this.userinfo=res
+          localStorage.setItem('userinfo',JSON.stringify(res))
+        });
+     },
+  getPhones111(data) {
+      this.mobileLocal = data;
+     },
    tohideModel(){
      this.hideModel=true
    },
@@ -194,7 +195,7 @@ export default {
 .person_03{width:auto;height:auto;background-color: #fff;display:flex;align-items:center;flex-direction: column;}
 .person_03 ul{width:100%;height:auto;display:flex;align-items:center;flex-direction: column;}
 .person_03 ul li{width:100%;display:flex;align-items:flex-end;border-bottom:1px solid #ddd;padding:0 1.5rem;box-sizing: border-box;height:1.6rem;line-height: 1.6rem;}
-.person_03 ul li a{font-size:0.37rem;color:#000;display: block;width:100%;height:100%;} 
+.person_03 ul li a{font-size:0.37rem;color:#000;display: block;width:100%;height:100%;display: flex;align-items: center} 
 .person_03 ul li i{font-size:0.37rem;color:#000;}
 .person_03 ul li img{width:0.42rem;height:0.38rem;margin-right:0.55rem;}
 

@@ -3,10 +3,18 @@
         <div class="model-diag">
            <selectcountry  v-if='showregion' :showregion='showregion'  @select='selectedCountry'></selectcountry>
             <div class="model_main">
+                <div class="mains">
+                     <div class="left">
+                     <!-- {{$t('m.s1')}} --> 国家/区号
+                   </div>
+                   <div class="right">
+                       <input class="numCode" placeholder='手机号/区号'   @click="toshowRegion" v-model="numCode" />
+                   </div>
+                  
+                </div>
                  <div class="mains" :class="{'is-invalid':errors2}">
                    <div class="left">
-                     <!-- {{$t('m.s1')}} -->
-                   <input  class="numCode" placeholder='手机号/区号' style='width:2rem;height:1rem;text-align:left;'  @click="toshowRegion" v-model="numCode" />
+                     {{$t('m.s1')}}
                    </div>
                    <div class="right">
                      <input type="number" 
@@ -72,8 +80,9 @@ export default {
          timeing:false,
           region:'',
           showregion:false,
-          numCode:'',
-          codeId:''
+          numCode:'中国+86',
+          codeId:'China',
+          numName:'中国'
        }
     },
 
@@ -109,13 +118,14 @@ export default {
         console.log(res)
         this.showregion=false
            if(res==undefined){
-            this.numCode=''
-            this.codeId=''
+            this.numCode='中国+86'
+            this.codeId='China'
+            this.numName='中国'
            }else{
-            this.numCode='+'+res.tel 
+            this.numCode=res.name+'+'+res.tel 
             this.codeId=res.id
+            this.numName=res.name
            }
-       
      },
      getUserInfo(){
         interfaces.getuserInfo().then(res => {
@@ -148,7 +158,7 @@ export default {
       // 取消错误提醒
         this.errors = {};
       // 发送请求
-
+          let mobile=this.phone
           let numCode=this.numCode
           let codeid=this.codeId
           let code=this.sms

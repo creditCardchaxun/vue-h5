@@ -114,6 +114,7 @@ export default{
     position: fixed;
     bottom: 5%;
     right: 3%;
+    z-index:90;
  }
 .scrolltop img{width:100%;height:auto;}
 .kefu{width:auto;height:1.18em;position:fixed;bottom:4.0rem;right:0px;background:rgba(0,0,0,1);border-top-left-radius:24px; border-bottom-left-radius:24px;z-index:90;}

@@ -3,7 +3,7 @@
          <aheaders status='2'></aheaders>
 
           <div class="news_main">
-            <div class="news_01">
+            <div class="news_01" v-if='topList!=null'>
               <router-link :to="{name:'newsdetail', params:{id:topList.id}}">
               <img :src="topList.thumb" alt="">
              <h3>{{topList.title}}</h3>
@@ -78,18 +78,23 @@ export default {
     this.getHeight.minHeight=(window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
     },
     methods:{
-    //  newsList(){
-    //    interfaces.newsList().then((res)=>{
-    //       console.log(res.news_top)
-    //        this.news=res.news_list
-    //        this.topList=res.news_top
-    //     if(this.news.length>6){
-    //        this.pagemore=true
-    //     }else{
-    //        this.pagemore=false
-    //     }
-    //   })
-    //  },
+     newsList(){
+       interfaces.newsList().then((res)=>{
+              if(res.news_list!=null){
+                this.news=res.news_list
+              }
+                
+                if(res.news_top!=null){
+                   this.topList=res.news_top
+                }
+         
+        if(this.news.length>6){
+           this.pagemore=true
+        }else{
+           this.pagemore=false
+        }
+      })
+     },
      addMore(){
       this.page++
       this.newsList(this.page)
