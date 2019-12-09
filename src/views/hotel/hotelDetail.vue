@@ -68,7 +68,7 @@
                         </van-swipe>
 
                       <div class="types-mianji">
-                        <div class="yiju">户型面积:{{item.room_size}}/面积</div>
+                        <div class="yiju">户型面积:{{item.room_size}}㎡</div>
                         <div class="yiju-img">
                             <img :src="item.house_type_pic" alt="">
                         </div>
