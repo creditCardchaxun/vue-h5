@@ -25,7 +25,7 @@
       <p>
         <textarea name v-model="user_desc" id cols="30" rows="3" :placeholder="$t('m.appraise2')"></textarea>
       </p>
-      <button class="btn" @click="todetailOrder" :disabled='isclick'>提交</button>
+      <button class="btn" @click="todetailOrder" :disabled='isclick'>{{$t('m.orderform')}}</button>
     </div>
     <afooter class="myFooter"></afooter>
   </div>
@@ -116,8 +116,7 @@ export default {
     },
     todetailOrder() {
       if (this.value == 0) {
-        this.$toast('请填写评价内容');
-
+         this.$toast(this.$i18n.t('m.appraise3'));
       } else {
         this.appraises()
       }
@@ -149,7 +148,7 @@ export default {
       interfaces.orderSave(data).then((res) => {
         if (res.code == 0) {
           this.$toast({
-            message: '已评价完成',
+            message: this.$i18n.t('m.appraise4'),
             icon: 'passed'
           });
           console.log(this.ids)
@@ -166,7 +165,6 @@ export default {
 
       })
     }
-
   },
   components: {
     aheaders,

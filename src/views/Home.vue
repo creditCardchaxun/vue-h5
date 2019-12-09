@@ -70,7 +70,7 @@
             <div class="yu-name">
               <i>{{item.project_name}}</i>
               <!-- <router-link :to="{path:'/orderForm'}"> -->
-              <van-button type="info" @click="toOrderForm(item.id,item.project_name)">预约看房</van-button>
+              <van-button type="info" @click="toOrderForm(item.id,item.project_name)">{{$t('m.orderhouse')}}</van-button>
               <!-- </router-link> -->
             </div>
           </div>

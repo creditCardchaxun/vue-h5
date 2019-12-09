@@ -65,7 +65,6 @@ changeLangEvent() {
        this.$store.commit("changeLang", this.lang);
        $eventbus.$emit("changeLang", this.lang);
        localStorage.setItem('lanBase', this.lang=='zh-CN'?1:4)
-
            let lanBase=localStorage.getItem('lanBase')
           if(lanBase==1){
             this.lanBase='EN'
