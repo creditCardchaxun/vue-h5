@@ -158,7 +158,15 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+html,body{
+  height: 100%;
+}
+
+#app {
+  height: 100%;
+}
+
 .goodStar {
   width: 100%;
   height: 100%;
