@@ -57,7 +57,7 @@
       </div>-->
     </div>
 
-    <div class="yuyue">
+    <div :class="[showMore?'': 'yuyue']">
       <swiper :options="swiperOption">
         <swiper-slide v-for="(item,index) in project_list" :key="index">
           <div class="yu-item">
@@ -79,7 +79,7 @@
     </div>
 
     <div class="news">
-      <van-tabs v-model="active" line-width="7%" :border="false" :ellipsis='false'>
+      <van-tabs v-model="active" line-width="7%" :border="false" :ellipsis="false">
         <van-tab :title="$t('m.news')">
           <ul>
             <li v-for="(item,index) in news_list" :key="index">
@@ -222,7 +222,7 @@ export default {
       Longid: '',
       LongName: '',
       status: '',
-      lanBase:''
+      lanBase: ''
     }
   },
 
@@ -234,19 +234,19 @@ export default {
   },
 
   methods: {
-    getHomedata(){
-        interfaces.getData().then((res)=>{
-           console.log(res.data.project_list)
-          this.bannerImg=res.data.banner
-          this.story=res.data.story
-          this.news_list=res.data.news_list
-          this.activity_list=res.data.activity_list
-          this.project_list=res.data.project_list
+    getHomedata() {
+      interfaces.getData().then((res) => {
+        console.log(res.data.project_list)
+        this.bannerImg = res.data.banner
+        this.story = res.data.story
+        this.news_list = res.data.news_list
+        this.activity_list = res.data.activity_list
+        this.project_list = res.data.project_list
 
-           let story=res.data.story.description
-           this.story2=story.split('。') 
-          console.log(res.data)
-        })
+        let story = res.data.story.description
+        this.story2 = story.split('。')
+        console.log(res.data)
+      })
     },
     handleScroll() {
       this.scroll = $(window).height() + $(document).scrollTop();
@@ -259,11 +259,11 @@ export default {
     },
     changeLangEvent() {
       if (this.lang == 'zh-CN') {
-         this.lang = 'en-US'
-         this.lanBase='ZH'
+        this.lang = 'en-US'
+        this.lanBase = 'ZH'
       } else {
         this.lang = 'zh-CN'
-        this.lanBase='EN'
+        this.lanBase = 'EN'
       }
       this.$i18n.locale = this.lang; //关键语句
 
@@ -342,9 +342,9 @@ export default {
   },
   created() {
     //  this.getHomedata()
-     this.lanBase= localStorage.getItem('lan')
-     this.getAllmap()
-     this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile
+    this.lanBase = localStorage.getItem('lan')
+    this.getAllmap()
+    this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
     //  this.couponSelected = this.allcityName[0].name;
   },
   mounted: function () {
@@ -353,8 +353,8 @@ export default {
     $eventbus.$on("changeLang", (res) => {
       this.getHomedata()
     });
-     this.$nextTick(()=>{
-       this.getallother(3362) 
+    this.$nextTick(() => {
+      this.getallother(3362)
     })
 
     // let height= window.getComputedStyle(this.$refs.heightShow).height
@@ -393,7 +393,7 @@ export default {
   transform: rotate(180deg);
 }
 .header {
-  width:100%;
+  width: 100%;
   height: auto;
   display: flex;
   align-items: center;
@@ -401,7 +401,7 @@ export default {
   top: 0;
   left: 0;
   justify-content: space-between;
-  padding:0 0.6rem;
+  padding: 0 0.6rem;
   box-sizing: border-box;
   /* margin: 0 0 0 0.55rem; */
 }
@@ -443,7 +443,12 @@ export default {
   width: 90%;
 }
 .home {
-width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 100%;
+  padding-bottom: 5.96rem;
+  box-sizing: border-box;
+  position: relative;
 }
 .home img {
   width: 100%;
@@ -519,7 +524,7 @@ width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: bo
 }
 
 .yuyue {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 .yuyue .van-swipe {
   padding-bottom: 20px;
@@ -541,11 +546,15 @@ width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: bo
   display: block;
 }
 .yu-title {
-  width: auto;
-  height: auto;
+  /* width: auto;
+  height: auto; */
   position: absolute;
-  bottom: 13px;
+  bottom: 0;
   left: 0px;
+  right: 0;
+  height: 0.85rem;
+  line-height: 0.85rem;
+  background: rgba(0, 0, 0,0.4);
   font-size: 0.34rem;
   color: #fff;
   padding: 0 0.6rem;
@@ -624,9 +633,9 @@ width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: bo
   line-height: 1rem;
   height: 1rem;
   overflow: hidden;
-  width:7.8rem;
+  width: 7.8rem;
   white-space: nowrap;
-  text-overflow: ellipsis
+  text-overflow: ellipsis;
 }
 .news ul li .news-date span {
   font-size: 0.34rem;
