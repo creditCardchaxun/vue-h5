@@ -443,7 +443,7 @@ export default {
   width: 90%;
 }
 .home {
- width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;
+width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;
 }
 .home img {
   width: 100%;

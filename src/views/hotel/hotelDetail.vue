@@ -91,8 +91,8 @@
                  </li>
               </ul>
                <div class="index-more" v-if="projectdetail.project_setting!=null&&projectdetail.project_setting.length>8" @click='toloadMore'>
-                 <span>more</span>
-                  <img src="../../assets/images/more-icon.jpg" alt  style='margin-top: 0.1rem;'/>
+                  <span v-show='hideIcon'>more</span>
+                  <img src="../../assets/images/more-icon.jpg" alt  style='margin-top: 0.1rem;' :class="{brandimg2:showHeight}"/>
                </div>
              </div>
                <!-- <div class="nolist" v-else style='font-size:0.35rem;text-align:center;margin:0.3rem 0;'>暂无公寓配置详细信息</div> -->
@@ -200,6 +200,7 @@ export default{
          getHeight:{
            minHeight:''
          },
+         hideIcon:true
         //  showMore:false
     }
  },
@@ -289,6 +290,11 @@ export default{
      },
     toloadMore(){
       this.showHeight=!this.showHeight
+      if(this.showHeight==true){
+        this.hideIcon=false
+      }else{
+         this.hideIcon=true
+      }
      },
     toDetailxq(id){
       this.showHeight=false
@@ -488,7 +494,7 @@ border-bottom-left-radius: 0.1rem;border-bottom-right-radius: 0.1rem;}
 
 
     @keyframes bounce-down {
-    25% {transform: translateY(-3px);}
+     25% {transform: translateY(-3px);}
      50%{transform: translateY(0);}
      75% {transform: translateY(3px);}
      100% {transform: translateY(0);}
@@ -502,4 +508,8 @@ border-bottom-left-radius: 0.1rem;border-bottom-right-radius: 0.1rem;}
   .bottomMessage .leftMessage p{font-size:0.37rem;color:#fff;margin-left:0.15rem;}
   .bottomMessage .leftMessage .sai1{width:0.32rem;height:0.32rem;}
   .bottomMessage .sai2{width:0.16rem;height:0.27rem;}
+  .brandimg2 {
+  transform: rotate(180deg); 
+ 
+ }
 </style>
