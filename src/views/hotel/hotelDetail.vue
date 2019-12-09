@@ -479,8 +479,8 @@ border-bottom-left-radius: 0.1rem;border-bottom-right-radius: 0.1rem;}
 .hot-hotel .hotel-some{width:auto;height:auto; padding-left: 0.30rem;}
 .hot-hotel .hotel-some .hotel-item{width:4.63rem;height:auto;}
 .hot-hotel .hotel-some .hotel-item img{width: 4.63rem;height: 3.31rem;overflow: hidden;}
-.hot-hotel .hotel-some .hotel-item  .hotel-title{font-size:0.36rem;color:#212121;line-height: 0.54rem;overflow: hidden;font-weight: bold;}
-.hot-hotel .hotel-some .hotel-item  p{font-size:0.32rem;color:#212121;line-height:0.42rem;height:0.42rem;overflow: hidden;}
+.hot-hotel .hotel-some .hotel-item  .hotel-title{padding-left: 0.2rem; font-size:0.36rem;color:#212121;line-height: 0.54rem;overflow: hidden;font-weight: bold;}
+.hot-hotel .hotel-some .hotel-item  p{padding-left: 0.2rem; font-size:0.32rem;color:#212121;line-height:0.42rem;height:0.42rem;overflow: hidden;}
 .van-swipe-item {float: left;}
 
 .bottom-nav{width:100%;height:1.44rem;display:flex;align-items: center;justify-content:space-around;position:fixed;bottom:-1px;left:0;background-color: #fff;z-index:100;}
