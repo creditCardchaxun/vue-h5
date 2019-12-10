@@ -736,8 +736,10 @@ export default {
 }
 
 .map {
-  width: auto;
-  height: auto;
+  /* width: auto; */
+  /* height: auto; */
+  width: 100%;
+  overflow: hidden;
   padding-top: 1.51rem;
   padding-bottom: 0 !important;
 }
