@@ -43,7 +43,7 @@
             </div>
             <div class="right" :class="{active:currentIndex!=-1}" v-show="tochina">
               <ul class="nihao">
-                <li @click="city3()">{{$t('m.show5')}}</li>
+                <li @click="city3('全部',-1)">{{$t('m.show5')}}</li>
                 <li
                   v-for="(i,ins) in alllistss"
                   :class="{active:ins===currentIndex3}"
@@ -183,14 +183,18 @@ export default {
       let data = { city, area, type }
       this.getcity(data)
     },
-    city3() {
+    city3(title,index) {
       // let city = ''
       // let area = ''
       // let type = ''
     console.log(this.cityid,'全部1')
     console.log(this.idsarea,'全部2')
     console.log(this.houseId,'全部3')
-    
+       if(this.idsarea!=''){
+         this.idsarea=''
+       }
+       this.cityName = title
+       this.currentIndex=index
       this.toshowCity = false
       this.toshowicon = false
       let city = this.cityid

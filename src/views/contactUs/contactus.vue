@@ -26,13 +26,47 @@
         </van-tab>
         <van-tab :title="$t('m.home4')">
                      
-         <div class="about-01" ref='brandHeight' v-for='(item,index) in about' :key='index'  :class='{moreHeight:showMore}'>
+         <!-- <div class="about-01" ref='brandHeight' v-for='(item,index) in about' :key='index'  :class='{moreHeight:showMore}'>
             <div class="brand-01" :height='listheight'>
                <h2 style='font-weight:bold;'>{{item.title}}</h2>
                <p v-html='item.content'>{{item.content}}</p>
             </div>
            <div class="index-more" v-show='showMoress' @click='moreLoad' ><span>more</span> <img src="../../assets/images/more-icon.jpg" alt=""></div>
-         </div>
+         </div> -->
+
+            <div class="about-01" ref='brandHeight'  :class='{moreHeight:showMore}'>
+            <div class="brand-01">
+               <h2 style='font-weight:bold;'>品牌背景</h2>
+               <p>base是盛煦存量地产 (Shanghai NOVA Real Estate Co., Ltd)旗下的一个创意地产品牌。盛煦存量地产成立于2014年，是一家专业性存量地产投资及资产管理公司。2016年，盛煦存量地产对存量地产改造及增值服务运营商翌成创意的股权进行收购，成为其控股股东，并共同发展旗下品牌base。</p>
+               <p>base秉承着国际化的视角和前瞻性的创新发展理念，专注于投资、开发及运营一体化经营的领域。而我们所做的，远不止于此，我们始终相信，建筑物并非盈盈独立的个体，而是灵感的聚集地，城市社群的据点，以此交织成城市的脉搏。对于生活在其中的人们，我们希望他们可以彼此联结，相互启发，发现无处不在的灵感。</p>
+               <p>目前base旗下所运营及改造中的项目已接近40个，总投资规模近120亿人民币，项目面积约达400,000平方米，覆盖上海、北京等一线城市。旗下运营品牌有base佰舍和Waterline盛溪，着力打造品牌联盟，以满足不同业态定位需求。我们的版图仍在不断扩大，我们将会把创新的理念带去更多的地方。</p>
+               
+            </div>
+              <div class="index-more"  @click='moreLoad' ><span>more</span> <img src="../../assets/images/more-icon.jpg" alt=""></div>
+           </div>
+
+            <div class="about-01" ref='brandHeight2' >
+            <div class="brand-01">
+               <h2 style='font-weight:bold;'>品牌精神</h2>
+               <p>我们始于生活, 着眼未来，让人们在有形的空间中彼此联结，在交流中获得启发、突破创新，</p>
+               <p> —— 这是base的品牌精神。</p>               
+            </div>
+              <div class="index-more" v-if='showMoress' @click='moreLoad' ><span>more</span> <img src="../../assets/images/more-icon.jpg" alt=""></div>
+           </div>
+
+              <div class="about-01" ref='brandHeight3'>
+            <div class="brand-01">
+               <h2 style='font-weight:bold;'>品牌故事</h2>
+               <p>base 源于2012年，但我们的故事和上海的老旧社区生活有着难解情缘。</p>
+               <p>老旧社区见证着上海的发展进程，为每一位居民构筑出属于自己的生活天地，也凝聚了这座都市悠久的人文情怀。</p>
+               <p>眼下，“破旧立新”的住行方式，被视为是城市发展必经的阶段，却忽略了凝聚在老旧社区原有的情怀与记忆。</p>
+               <p>人与人之间互相联结居住的生态，才让建筑和生活散发出由内而外的美。那些老式的建筑、废弃的房屋，保存着我们无法割舍的闪光点。</p>
+               <p>老旧社区，对久居者来说是儿时的回忆；对异乡旅人而言，它是探寻一座城市的起点。反之，房客是旧社区焕发新生的源泉，书写新篇章的开始。</p>
+               <p>“以旧创新”，正是base的灵魂所在。</p>
+               <p>我们以老旧社区与人的关系为灵感，主张在废旧建筑开放式的格局基础上，以现代空间美学理念为其重新赋予新生活力，重新连接人与人之间的亲密关系，营造焕然一新的社群生活。</p>
+            </div>
+              <div class="index-more" v-if='showMoress' @click='moreLoad' ><span>more</span> <img src="../../assets/images/more-icon.jpg" alt=""></div>
+           </div>
          
         
         </van-tab>
@@ -92,7 +126,7 @@ export default {
     if(this.active==0){
       this.contacts()
     }else{
-     this.abouts()
+    //  this.abouts()
     }
   },
   beforeRouteEnter (to, from, next) {
@@ -111,11 +145,11 @@ export default {
          })
         })
 
-        interfaces.aboutus().then((res)=>{ 
-          next(vm=>{
-              vm.about=res
-          })  
-        })
+        // interfaces.aboutus().then((res)=>{ 
+        //   next(vm=>{
+        //       vm.about=res
+        //   })  
+        // })
       
 
    },
@@ -162,26 +196,23 @@ export default {
               // let ms4=ms3[1].split('</p>')
               // this.ms5=ms4[0]
           }
-       })
+         })
         },
-         abouts(){
-             interfaces.aboutus().then((res)=>{   
-               this.about=res
-               res.forEach((item,index)=>{
-                  let abouts=item.content
-                  // this.GetLength(abouts)
-                  // if(this.GetLength(abouts)>300){
-                  //   this.showMore=true
-                  // }
-                  // console.log('uuu',this.GetLength(abouts))
-               })
-            })
-        },
+
+        //  abouts(){
+        //      interfaces.aboutus().then((res)=>{   
+        //        this.about=res
+        //        res.forEach((item,index)=>{
+        //           let abouts=item.content
+        //        })
+        //     })
+        // },
+
      onClick(name, title) {
        if(title=='联系我们'){
          this.contacts()
        }else if(title=='关于我们'){
-        this.abouts()
+        //  this.abouts()
        }
      },
      handleScroll () {
@@ -189,36 +220,46 @@ export default {
        },
 
       //  获取字符串长度
-        GetLength(str) {
-        ///<summary>获得字符串实际长度，中文2，英文1</summary>
-        ///<param name="str">要获得长度的字符串</param>
-        var realLength = 0, len = str.length, charCode = -1;
-        for (var i = 0; i < len; i++) {
-          charCode = str.charCodeAt(i);
-          if (charCode >= 0 && charCode <= 128) realLength += 1;
-          else realLength += 2;
-        }
-        return realLength;
-      }
-     },
+      //   GetLength(str) {
+      //   ///<summary>获得字符串实际长度，中文2，英文1</summary>
+      //   ///<param name="str">要获得长度的字符串</param>
+      //   var realLength = 0, len = str.length, charCode = -1;
+      //   for (var i = 0; i < len; i++) {
+      //     charCode = str.charCodeAt(i);
+      //     if (charCode >= 0 && charCode <= 128) realLength += 1;
+      //     else realLength += 2;
+      //   }
+      //   return realLength;
+      //   }
+      },
 
      updated:function(){
       },
-    mounted:function(){
-      
+     mounted:function(){
+       this.$nextTick(() => {
+      // let height= window.getComputedStyle(this.$refs.heightShow).height
+      let height2 = window.getComputedStyle(this.$refs.brandHeight).height;
+      let height3 = window.getComputedStyle(this.$refs.brandHeight2).height;
+      let height4 = window.getComputedStyle(this.$refs.brandHeight3).height;
+      alert(height2)
+        if(height2>180+'px'){
+          this.showMoress=true
+        }
+
+       })
+
              $eventbus.$on("changeLang", (res)=>{
                 this.contacts()
-                this.abouts()
+                // this.abouts()
                 this.active=this.$route.params.active 
                 if(this.active==0){
                   this.contacts()
                 }else{
-                this.abouts()
+                // this.abouts()
                 }
-            
-         })
+             })
 
-    },
+       },
 
       	//第四步：当再次进入（前进或者后退）时，只触发activated（注：只有在keep-alive加载时调用）
 	activated(){
@@ -253,9 +294,9 @@ export default {
     align-items: center;    justify-content: flex-start;}
 .contact .foot_01s ul li i{margin-right:0.3rem;}
 .brand-01{width:auto;height:auto;}
-.about-01{width:90%;height:auto;margin:0.64rem auto 1rem;overflow: hidden;}
-.about-01 h2{font-size:0.40rem;height:auto;color:#0e0e0e;margin-top:0.57rem;}
-.about-01 p{font-size:0.36rem;height:auto;color:#0e0e0e;margin-top:0.57rem;line-height: 0.75rem;}
+.about-01{width:90%;height:5.5rem;margin:0.64rem auto 1rem;overflow: hidden;}
+.about-01 h2{font-size:0.40rem;height:auto;color:#0e0e0e;margin-top:0.57rem;margin-bottom:0.57rem;}
+.about-01 p{font-size:0.36rem;height:auto;color:#0e0e0e;line-height: 0.81rem;}
 
 .about-01 .index-more {width:auto;height:auto;display: flex;align-items: center;justify-content: center;margin:0.5rem 0;}
 .about-01 .index-more span{font-size:0.35rem;margin-right:0.1rem;color:#a5a5a5;}
