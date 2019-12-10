@@ -135,6 +135,15 @@ export const m = {
   feedback17:'如无法满足客人的看房需求，可将此订单退回总部',
 
   feedback18:'看房反馈信息',
+
+  // 信息提示弹框
+  show1:'请填写反馈信息',
+  show2:'数据不能为空',
+  show3:'复制成功',
+  show4:'该浏览器不支持自动复制',
+
+
+  // 国际区号
   selectCountry: {
     optionsA: [
       {

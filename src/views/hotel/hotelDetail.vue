@@ -110,7 +110,13 @@
                    <!-- <img src="../../assets/images/map01.jpg" alt=""> -->
                      <maps v-if="projectdetail.address" :dataArr="projectdetail"></maps>
                    <h3>{{$t('m.hotelxq5')}}</h3>
-                   <p v-html='projectdetail.content'>projectdetail.content</p>
+                  <div class="map_mains" ref='jiaotong' :class='{jiaoActive:showLoadMore}'>
+                    <p v-html='projectdetail.content'>projectdetail.content</p>
+                   </div>
+                 <div class="index-more" v-if="showJiao" @click='toloadMoreJiao' style='margin:0.3rem 0;'>
+                  <span v-show='hideIcon'>more</span>
+                  <img src="../../assets/images/more-icon.jpg" alt  style='margin-top: 0.1rem;' :class="{brandimg2:showLoadMore}"/>
+               </div>
                     <!-- <p><b>周围商圈:</b>浦东新区xxx大道</p>
                     <p><b>附近机场:</b>浦东机场 虹桥机场</p>
                     <p><b>附近地铁:</b>2号线</p> -->
@@ -208,7 +214,9 @@ export default{
          },
          hideIcon:true,
          showMore:false,
-         showMore01:false
+         showMore01:false,
+         showJiao:false,
+         showLoadMore:false,
     }
  },
   computed:{
@@ -332,6 +340,14 @@ export default{
          this.hideIcon=true
       }
      },
+     toloadMoreJiao(){
+      this.showLoadMore=!this.showLoadMore
+      if(this.showLoadMore==true){
+        this.hideIcon=false
+      }else{
+         this.hideIcon=true
+      }
+     },
     toDetailxq(id){
       // this.showHeight=false
       console.log('id值',id)
@@ -389,10 +405,12 @@ export default{
         this.$nextTick(()=>{
         // let height= window.getComputedStyle(this.$refs.heightShow).height
          let height2= window.getComputedStyle(this.$refs.desc).height
+         let height3= window.getComputedStyle(this.$refs.jiaotong).height
+
         //  alert(height2)
-          //  if(height>this.defaultheight+'px'){
-          //   this.showHeight=true
-          //  }
+           if(height3>80+'px'){
+            this.showJiao=true
+           }
           if(height2>this.defaultheight2+'px'){
             this.showMore01=true
           }
@@ -437,7 +455,9 @@ export default{
 .desc .brandStory {
   height: auto;
   overflow: visible;
+  transition: 0.4s ease;
 }
+
 .hotel-detail{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
 .banner-img{
     width:100%;height:7.71rem;position:relative;padding-top:0.2rem;
@@ -484,7 +504,7 @@ border-bottom-left-radius: 0.1rem;border-bottom-right-radius: 0.1rem;}
 .desc{width:auto;height:auto;padding:0 0.66rem;}
 .desc h3{margin-top:0.85rem;font-size:0.42rem;color:#060606;font-weight:bold;}
 .desc p{font-size:0.34rem;color:#000;line-height:0.6rem;color:#0d0d0d;margin-top:0.44rem;}
-.desc ul{width:auto;height:190px;overflow: hidden;margin:0 0 0.6rem;transition: all 0.4s ease;}
+.desc ul{width:auto;height:180px;overflow: hidden;margin:0 0 0.6rem;transition: all 0.4s ease;}
 .desc .activeLi{width:auto;height:auto;}
 .desc ul li{display:flex;align-items: center;justify-content: center;flex-direction: column;width:25%;float:left;margin-top:0.87rem;}
 .desc ul li img{width:1.3rem;height:1rem;}
@@ -519,6 +539,7 @@ border-bottom-left-radius: 0.1rem;border-bottom-right-radius: 0.1rem;}
 .map .map01{width:100%;height:auto;margin:0rem auto 0;}
 .map .map01 h3{font-size:0.42rem;color:#161616;font-weight:bold;margin:0.5rem 0.67rem 0.65rem;}
 /* .map .map01 img{width:100%;height:auto;margin:0rem 0 0.85rem;} */
+.map .map01 .map_mains{height:2.5rem;overflow: hidden;}
 .map .map01 p{font-size:0.34rem;color:#000;line-height:0.62rem;margin:0 0.67rem;}
 .map .map01 p b{font-weight:bold;font-size:0.36rem;margin-right:0.2rem;}
 .hot-hotel{width:100%;height:auto;padding-bottom: 0.3rem;}
@@ -558,4 +579,7 @@ border-bottom-left-radius: 0.1rem;border-bottom-right-radius: 0.1rem;}
   .brandimg2 {
   transform: rotate(180deg); 
  }
+
+ .map .map01 .jiaoActive{ height: auto;
+  overflow: visible; transition: 0.4s ease;}
 </style>

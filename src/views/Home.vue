@@ -345,7 +345,7 @@ export default {
   },
   created() {
     //  this.getHomedata()
-    this.getallother(3362)
+    // this.getallother(3362)
      let lanBase=localStorage.getItem('lanBase')
      if(lanBase==1){
       this.lanBase='EN'
@@ -362,9 +362,9 @@ export default {
     $eventbus.$on("changeLang", (res) => {
       this.getHomedata()
     });
-    // this.$nextTick(() => {
-    //   this.getallother(3362)
-    // })
+     this.$nextTick(() => {
+      this.getallother(3362)
+     })
 
     // let height= window.getComputedStyle(this.$refs.heightShow).height
     let height = window.getComputedStyle(this.$refs.heightShow).height
