@@ -16,10 +16,8 @@ export default new Vuex.Store({
     setDefaultLang() {
       if (window.navigator && window.navigator.language.includes('zh')) {
         this.commit('changeLang','zh-CN') 
-        // this.commit('changeLangs','EN') 
       } else {
         this.commit('changeLang','en-US') 
-        // this.commit('changeLangs','zh-CN') 
       }
     },
     changeLang(state,playload){

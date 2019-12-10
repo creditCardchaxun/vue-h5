@@ -1,5 +1,5 @@
 <template>
-  <div class="activitydetail" :style="getHeight">
+  <div class="activitydetail">
     <!-- <img src='../../assets/images/news-detail.png'/> -->
     <aheaders status='3' @toback='toreplace'></aheaders>
        <div class="newsdatails">
@@ -101,7 +101,8 @@ export default {
 </script>
 
 <style scoped>
-.newsdetail{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
+.activitydetail{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
+.newsdetail{width:100%;margin:0 auto;}
 .newsdatails{width:90%;height:auto;margin:0.6rem auto 0;}
 .newsdatails h2{font-size:0.6rem;color:#2d2d2d;line-height: 0.87rem;max-height: 0.8rem;min-height:0.87rem;overflow: hidden;}
 .newsdatails .date{font-size:0.34rem;color:#aeaeae;margin:0.35rem 0;}

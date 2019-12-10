@@ -1,5 +1,5 @@
 <template>
-  <div class="order" :style='getHeight'>
+  <div class="order">
 
     <div class="person-center">
        <div class="person_01">  

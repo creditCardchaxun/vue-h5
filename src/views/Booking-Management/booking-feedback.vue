@@ -1,5 +1,5 @@
 <template>
-<div class="bookingfeedback" :style='getHeight'>
+<div class="bookingfeedback">
     <aheaders status='3' @toback='toreplace'></aheaders>
 
     <div class="message">
@@ -200,7 +200,7 @@ export default {
     // 提交表单
     showRight() {
       if(!this.endTime||!this.statusIcon||!this.msg){
-        this.$toast('数据不能为空')
+        this.$toast(this.$i18n.t('m.show2'))
       }else{
        let bookid=this.ids;
        let sales_time=this.endTime;
@@ -210,7 +210,7 @@ export default {
        console.log(data)
         interfaces.fankuiList(data).then((res)=>{
             if(res==true){
-              this.$toast('提交成功')
+              // this.$toast('提交成功')
               this.$router.replace({name:"feedbackdetail",params:{id:this.ids}});
             }
        })
@@ -229,14 +229,14 @@ export default {
         var _this = this;
         var clipboard = new Clipboard(".getcopy"); //单页面引用
         clipboard.on("success", e => {
-         this.$toast('复制成功') 
+         this.$toast(this.$i18n.t('m.show3')) 
           // 释放内存
           clipboard.destroy();
         });
         clipboard.on("error", e => {
           // 不支持复制
           Message({
-            message: "该浏览器不支持自动复制",
+            message: this.$i18n.t('m.show4'),
             type: "warning"
           });
           // 释放内存

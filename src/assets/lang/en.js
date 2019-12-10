@@ -132,6 +132,12 @@ export const m = {
    feedback17:"If you can't meet the needs of the guests, you can return this order to the headquarters",
  
    feedback18:'Feedback on house visit',
+    // 提示弹框
+    show1:'Please fill in the feedback',
+    show2:'Data cannot be empty',
+    show3:'Replication success',
+    show4:'The browser does not support automatic replication',
+
    selectCountry: {
     optionsA: [
       {

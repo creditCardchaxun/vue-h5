@@ -1,5 +1,5 @@
 <template>
-  <div class="bookingfeedback" :style="getHeight">
+  <div class="bookingfeedback">
     <aheaders status='3' @toback='toreplace'></aheaders>
     <div class="message">
       <h6>{{$t('m.feedback18')}}</h6>

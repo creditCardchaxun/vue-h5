@@ -1,5 +1,5 @@
 <template>
- <div class="order-detail" :style='getHeight'>
+ <div class="order-detail">
 <aheaders status='3' @toback='toreplace'></aheaders>
         <!-- 项目信息 -->
     <div class="order-detail01"> 
@@ -95,7 +95,6 @@ export default {
              },
              bookdetails(id){
                interfaces.bookDetail(id).then((res)=>{
-                    console.log('我的预约详情22222',res)
                    this.projectarr=res.projectarr  // 项目信息部分
                    this.bookarr  =res.bookarr  //预约人信息部分
                    this.feedbackarr=res.feedbackarr //评价信息部分

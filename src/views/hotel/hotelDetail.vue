@@ -1,12 +1,13 @@
 <template>
-  <div class="hotel-detail" :style="getHeight">
-    <aheaders status="3" @toback="toHome"></aheaders>
+  <div class="hotel-detail">
+    <aheaders status="3" @toback="goHome"></aheaders>
     <div class="banner-img">
       <div class="banner_top" @click="showStory">
         <em>{{$t('m.hotelxq1')}}</em>
-        <!-- <div class="down">
+        <div class="down">
+          <!-- <span></span> <span></span> -->
           <img src="../../assets/images/more-icon01.jpg" alt style="width:0.2rem;height:0.2rem;" />
-        </div>-->
+        </div>
       </div>
       <div class="Project-imgs">
         <projectImg
@@ -132,7 +133,18 @@
           <!-- <img src="../../assets/images/map01.jpg" alt=""> -->
           <maps v-if="projectdetail.address" :dataArr="projectdetail"></maps>
           <h3>{{$t('m.hotelxq5')}}</h3>
-          <p v-html="projectdetail.content">projectdetail.content</p>
+          <div class="map_mains" ref="jiaotong" :class="{jiaoActive:showLoadMore}">
+            <p v-html="projectdetail.content">projectdetail.content</p>
+          </div>
+          <div class="index-more" v-if="showJiao" @click="toloadMoreJiao" style="margin:0.3rem 0;">
+            <span v-show="hideIcon">more</span>
+            <img
+              src="../../assets/images/more-icon.jpg"
+              alt
+              style="margin-top: 0.1rem;"
+              :class="{brandimg2:showLoadMore}"
+            />
+          </div>
           <!-- <p><b>周围商圈:</b>浦东新区xxx大道</p>
                     <p><b>附近机场:</b>浦东机场 虹桥机场</p>
           <p><b>附近地铁:</b>2号线</p>-->
@@ -197,9 +209,13 @@
   </div>
 </template>
 <script>
-import Vue from 'vue';
-import { Swipe, SwipeItem, Icon, Tab, Tabs } from 'vant';
-Vue.use(Swipe).use(SwipeItem).use(Icon).use(Tab).use(Tabs);
+import Vue from "vue";
+import { Swipe, SwipeItem, Icon, Tab, Tabs } from "vant";
+Vue.use(Swipe)
+  .use(SwipeItem)
+  .use(Icon)
+  .use(Tab)
+  .use(Tabs);
 import maps from "@/components/map";
 import aheaders from "@/components/Header";
 import submitBtn from "@/components/submitBtn";
@@ -208,176 +224,193 @@ import projectImg from "@/components/projectImg";
 import interfaces from "@/utils/api.js";
 
 export default {
-  name: 'hotelDetail',
+  name: "hotelDetail",
   data() {
     return {
       current: 0,
       scroll: 0,
       swiperOption: {
-        slidesPerView: 'auto',
+        slidesPerView: "auto",
         // spaceBetween: 10,
         pagination: {
-          el: '.swiper-pagination',
+          el: ".swiper-pagination",
           clickable: true
-        },
+        }
       },
       projectdetail: {},
       defaultheight: 200,
       defaultheight2: 70,
       showHeight: false,
       hideModel: false,
-      mobileLocal: '',
-      idss: '',
-      names: '',
-      status: '',
+      mobileLocal: "",
+      idss: "",
+      names: "",
+      status: "",
       scroll: null,
       showImgAll: false,
       local: true,
-      scroller: '',
-      detailId: '',
+      scroller: "",
+      detailId: "",
       getHeight: {
-        minHeight: ''
+        minHeight: ""
       },
       hideIcon: true,
       showMore: false,
-      showMore01: false
-    }
+      showMore01: false,
+      showJiao: false,
+      showLoadMore: false
+    };
   },
-  computed: {
-    // minHeight(){
-    //   return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
-    // }
-  },
+
   created() {
     // this.mobileLocal=localStorage.getItem('mobile')
-    this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
-    let id = this.$route.params.id
-    this.getHeight.minHeight = window.outerHeight / window.outerWidth * 10.8 - 5.96 + 'rem'
+    this.mobileLocal = JSON.parse(localStorage.getItem("userinfo")).mobile;
+    let id = this.$route.params.id;
+    this.getHeight.minHeight =
+      (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
     // this.getdetailhouses(id)
   },
   beforeRouteEnter(to, from, next) {
-    console.log('beforeRouteEnter')
-    let id = to.params.id
-    let status = to.params.status
-    console.log(status)
+    console.log("beforeRouteEnter");
+    let id = to.params.id;
+    let status = to.params.status;
+    console.log(status);
     interfaces.getdetailhouse(id).then(function (res) {
       next(vm => {
-        vm.projectdetail = res
-        vm.detailId = res.id
-        var div = vm.$refs.tab1
-        if (from.name == 'myOrder') {
+        vm.projectdetail = res;
+        vm.detailId = res.id;
+        var div = vm.$refs.tab1;
+        if (from.name == "myOrder") {
           if (div) {
             setTimeout(function () {
               console.log($(div).offset().top);
               // $('html,body').scrollTop($(div).offset().top - 43);
-              $('html, body').animate({ scrollTop: $(div).offset().top - 43 }, 500)
+              $("html, body").animate(
+                { scrollTop: $(div).offset().top - 43 },
+                500
+              );
             }, 500);
           }
         }
-      })
-    })
+      });
+    });
   },
   beforeRouteUpdate(to, from, next) {
-    console.log('beforeRouteUpdate')
-    let id = to.params.id
-    let status = to.params.status
-    console.log(to)
-    var that = this
+    console.log("beforeRouteUpdate");
+    let id = to.params.id;
+    let status = to.params.status;
+    console.log(to);
+    var that = this;
     interfaces.getdetailhouse(id).then(function (res) {
-      that.projectdetail = res
-      that.detailId = res.id
-      var div = that.$refs.tab1
-      if (from.name == 'myOrder') {
+      that.projectdetail = res;
+      that.detailId = res.id;
+      var div = that.$refs.tab1;
+      if (from.name == "myOrder") {
         if (div) {
           setTimeout(function () {
             console.log($(div).offset().top);
             // $('html,body').scrollTop($(div).offset().top - 43);
-            $('html, body').animate({ scrollTop: $(div).offset().top - 43 }, 500)
+            $("html, body").animate(
+              { scrollTop: $(div).offset().top - 43 },
+              500
+            );
           }, 500);
         }
       }
-      next()
-    })
+      next();
+    });
   },
   watch: {
     scroll: function (newVal, oldVal) {
       if (newVal > oldVal) {
-        this.local = false
+        this.local = false;
       } else {
-        this.local = true
+        this.local = true;
       }
     }
   },
   methods: {
-    toHome() {
-      this.$router.push({ name: 'home' })
+    goHome() {
+      this.$router.push({ name: "home" });
     },
     toAppraise() {
-      this.$router.push({ name: 'appraise', params: { id: this.detailId } })
+      this.$router.push({ name: "appraise", params: { id: this.detailId } });
     },
     btn_pos: function (e) {
-      this.setlocaltrue()
+      this.setlocaltrue();
     },
     setlocaltrue: _.debounce(function () {
-      this.local = true
+      this.local = true;
     }, 1000),
 
     showStory() {
-      this.showImgAll = true
+      this.showImgAll = true;
     },
     toshowModels(id, name) {
-      this.status = 1
-      this.idss = id
-      this.names = name
+      this.status = 1;
+      this.idss = id;
+      this.names = name;
       if (this.mobileLocal) {
-        this.hideModel = false
-        this.$router.push({ name: 'orderForm', params: { mobile: this.mobileLocal, id: id, name: name } })
+        this.hideModel = false;
+        this.$router.push({
+          name: "orderForm",
+          params: { mobile: this.mobileLocal, id: id, name: name }
+        });
       } else {
-        this.hideModel = true
+        this.hideModel = true;
       }
     },
     toServe(id, name) {
-      this.status = 2
-      this.idss = id
-      this.names = name
+      this.status = 2;
+      this.idss = id;
+      this.names = name;
       if (this.mobileLocal) {
-        this.hideModel = false
-        this.$router.push({ name: 'myReserve', params: { mobile: this.mobileLocal, id: id, name: name } })
+        this.hideModel = false;
+        this.$router.push({
+          name: "myReserve",
+          params: { mobile: this.mobileLocal, id: id, name: name }
+        });
       } else {
-        this.hideModel = true
+        this.hideModel = true;
       }
     },
     toMap(e) {
       document.getElementById("maps").scrollIntoView();
     },
     toloadMore() {
-      this.showHeight = !this.showHeight
+      this.showHeight = !this.showHeight;
       if (this.showHeight == true) {
-        this.hideIcon = false
+        this.hideIcon = false;
       } else {
-        this.hideIcon = true
+        this.hideIcon = true;
       }
     },
     toloadMore2() {
-      this.showMore = !this.showMore
+      this.showMore = !this.showMore;
       if (this.showMore == true) {
-        this.hideIcon = false
+        this.hideIcon = false;
       } else {
-        this.hideIcon = true
+        this.hideIcon = true;
+      }
+    },
+    toloadMoreJiao() {
+      this.showLoadMore = !this.showLoadMore;
+      if (this.showLoadMore == true) {
+        this.hideIcon = false;
+      } else {
+        this.hideIcon = true;
       }
     },
     toDetailxq(id) {
       // this.showHeight=false
-      console.log('id值', id)
       //  this.getdetailhouses(id)
-      this.$router.push({ name: 'hotelDetail', params: { id: id } })
-
+      this.$router.push({ name: "hotelDetail", params: { id: id } });
     },
     getdetailhouses(id) {
-      interfaces.getdetailhouse(id).then((res) => {
-        this.projectdetail = res
-        this.detailId = res.id
-      })
+      interfaces.getdetailhouse(id).then(res => {
+        this.projectdetail = res;
+        this.detailId = res.id;
+      });
     },
     onChange(index) {
       this.current = index;
@@ -386,18 +419,16 @@ export default {
     //   // this.$toast(title);
     // },
     handleScroll() {
-      this.scroll = $(window).height() + $(document).scrollTop()
+      this.scroll = $(window).height() + $(document).scrollTop();
     },
     tohideModel() {
-      this.hideModel = false
+      this.hideModel = false;
     },
 
     tohideList() {
-      this.showImgAll = false
+      this.showImgAll = false;
     }
-
   },
-
 
   mounted() {
     //  let id=this.$route.params.status
@@ -418,28 +449,30 @@ export default {
     //    }
     //   }
 
-    window.addEventListener('scroll', this.handleScroll);
-    window.addEventListener('scroll', this.btn_pos);
+    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("scroll", this.btn_pos);
     this.$nextTick(() => {
       // let height= window.getComputedStyle(this.$refs.heightShow).height
-      let height2 = window.getComputedStyle(this.$refs.desc).height
+      let height2 = window.getComputedStyle(this.$refs.desc).height;
+      let height3 = window.getComputedStyle(this.$refs.jiaotong).height;
+
       //  alert(height2)
-      //  if(height>this.defaultheight+'px'){
-      //   this.showHeight=true
-      //  }
-      if (height2 > this.defaultheight2 + 'px') {
-        this.showMore01 = true
+      if (height3 > 80 + "px") {
+        this.showJiao = true;
+      }
+      if (height2 > this.defaultheight2 + "px") {
+        this.showMore01 = true;
       }
     }),
-      $eventbus.$on("changeLang", (res) => {
-        this.mobileLocal = localStorage.getItem('mobile')
-        let id = this.$route.params.id
-        this.getdetailhouses(id)
+      $eventbus.$on("changeLang", res => {
+        this.mobileLocal = localStorage.getItem("mobile");
+        let id = this.$route.params.id;
+        this.getdetailhouses(id);
         // let height= window.getComputedStyle(this.$refs.heightShow).height
         // if(height>defaultheight+'px'){
         //     this.showHeight=true
         //   }
-      })
+      });
   },
   //第四步：当再次进入（前进或者后退）时，只触发activated（注：只有在keep-alive加载时调用）
   activated() {
@@ -450,8 +483,8 @@ export default {
   },
   //第五步：deactivated 页面退出时关闭事件 防止其他页面出现问题
   deactivated() {
-    window.removeEventListener('scroll', this.handleScroll);
-    window.removeEventListener('scroll', this.btn_pos)
+    window.removeEventListener("scroll", this.handleScroll);
+    window.removeEventListener("scroll", this.btn_pos);
   },
   components: {
     aheaders,
@@ -460,13 +493,10 @@ export default {
     submitBtn,
     maps
   }
-}
-
-
-
+};
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .desc .desc02 {
   height: 2.3rem;
   overflow: hidden;
@@ -474,7 +504,9 @@ export default {
 .desc .brandStory {
   height: auto;
   overflow: visible;
+  transition: 0.4s ease;
 }
+
 .hotel-detail {
   width: 100%;
   margin: 0 auto;
@@ -637,7 +669,7 @@ export default {
 }
 .desc ul {
   width: auto;
-  height: 190px;
+  height: 180px;
   overflow: hidden;
   margin: 0 0 0.6rem;
   transition: all 0.4s ease;
@@ -746,6 +778,10 @@ export default {
   margin: 0.5rem 0.67rem 0.65rem;
 }
 /* .map .map01 img{width:100%;height:auto;margin:0rem 0 0.85rem;} */
+.map .map01 .map_mains {
+  height: 2.5rem;
+  overflow: hidden;
+}
 .map .map01 p {
   font-size: 0.34rem;
   color: #000;
@@ -899,5 +935,11 @@ export default {
 }
 .brandimg2 {
   transform: rotate(180deg);
+}
+
+.map .map01 .jiaoActive {
+  height: auto;
+  overflow: visible;
+  transition: 0.4s ease;
 }
 </style>

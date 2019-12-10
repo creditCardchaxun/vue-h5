@@ -1,5 +1,5 @@
 <template>
-  <div class="contact" :style='getHeight'>
+  <div class="contact">
  <!-- <img src='../../assets/images/contact.png'/> -->
 <!-- 关于我们 联系我们 -->
     <aheaders status='2'></aheaders>

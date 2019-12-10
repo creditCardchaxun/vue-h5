@@ -1,5 +1,5 @@
 <template>
-  <div class="booking" id='bookings' :style='getHeight'>
+  <div class="booking" id='bookings'>
   <aheaders status='2'></aheaders>
     <div class="books" style='margin-top:0.2rem;'>
    <van-tabs v-model="active" line-width='7%' :border='false' @click="onClick">

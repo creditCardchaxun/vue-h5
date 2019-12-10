@@ -1,5 +1,5 @@
 <template>
-  <div class="myorder" :style='getHeight'>
+  <div class="myorder">
      <!-- <img src='../assets/images/about.png'/> -->
      <aheaders status='2'></aheaders>
      <div class="order-list" :style="getHeight" >

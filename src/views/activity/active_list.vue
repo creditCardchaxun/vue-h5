@@ -1,5 +1,5 @@
 <template>
-  <div class="newlist" :style='minHeight'>
+  <div class="newlist">
          <aheaders status='2'></aheaders>
           <div class="news_main">
             <div class="news_01" v-if='topList'>

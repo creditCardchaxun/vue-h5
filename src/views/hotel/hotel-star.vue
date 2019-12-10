@@ -1,5 +1,5 @@
 <template>
-  <div class="star" :style="minHeight">
+  <div class="star">
     <!-- <img src='../../assets/images/jp.png'/> -->
     <aheaders status="2"></aheaders>
     <div class="top-hotel">

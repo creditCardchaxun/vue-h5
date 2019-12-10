@@ -1,5 +1,5 @@
 <template>
-  <div class="bookingdetail" :style='getHeight'>
+  <div class="bookingdetail">
     <aheaders status='3' @toback='toreplace'></aheaders>
     <div class="detail">
       <ul>
@@ -128,7 +128,7 @@ export default {
     closePopup() {
       if(this.desc==''){
         return;
-        this.$toast('请填写反馈信息')
+        this.$toast(this.$i18n.t('m.show1'))
       }else{
       let id=this.ids
       let status=3

@@ -71,7 +71,7 @@ changeLangEvent() {
           }else{
             this.lanBase='ZH'
           }
-    }
+      }
 
   },
    mounted() {

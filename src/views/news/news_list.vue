@@ -1,5 +1,5 @@
 <template>
-  <div class="newlist" :style="getHeight">
+  <div class="newlist">
          <aheaders status='2'></aheaders>
 
           <div class="news_main">
