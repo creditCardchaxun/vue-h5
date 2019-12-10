@@ -141,7 +141,6 @@
       <div class="alltag" @click="toopencity">
         <span>{{openName}}</span>
         <div class="alltags" v-show="opens1">
-          <!-- <span>fhfhh</span> -->
           <span
             v-for="(item,index) in allcityName"
             :key="index"
@@ -151,7 +150,6 @@
         <img src="../assets/images/bottom.jpg" alt />
       </div>
       <maps v-if="alllongitude" :dataArr="alllongitude"></maps>
-      <!-- <iframe src="static/index.html" frameborder="0" scrolling="auto"></iframe> -->
     </div>
     <footers></footers>
     <submitBtn

@@ -161,6 +161,7 @@ export default {
 <style>
 html,body{
   height: 100%;
+  overflow-x: hidden;
 }
 
 #app {
