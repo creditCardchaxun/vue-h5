@@ -21,7 +21,7 @@
         <em>{{$t('m.bookdetail2')}}</em>
         <van-rate v-model="value" readonly />
       </div>
-      <p>
+      <p style='margin-top:0.5rem'>
         <span>{{$t('m.feedback8')}}</span>
         <em>{{bookarr.name}}</em>
       </p>
@@ -48,7 +48,9 @@
         <img :src="sales.avater" alt />
         <div class="yi_02">
           <h3>{{sales.realname}}</h3>
-          <p>{{sales.sale_desc}}</p>
+          <!-- <p>{{sales.sale_desc}}</p> -->
+          <p>我是您的专属看房管家
+希望帮您找到满意的房子</p>
         </div>
       </div>
 
@@ -268,6 +270,34 @@ export default {
 .yijiedan .yi_03 img {
   width: 0.68rem;
   height: 0.68rem;
+}
+.order-detail02{
+      width: auto;
+  height: auto;
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+  padding: 0 0.6rem 0.7rem;
+  justify-content: center;
+  border-bottom: 0.2rem solid #f5f5f5;
+}
+.order-detail02 p{
+    font-size: 0.35rem;
+    line-height: 1rem;
+    color: #060606;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+.order-detail02 p span{
+ color: #929292;
+  width: 2.3rem;
 }
 
 .order-detail03 {

@@ -428,7 +428,8 @@ showRight(id) {
          })
        },
        toCallPhone(mobile){
-         window.location.href = `tel://${{mobile}}`
+         console.log(mobile,'获取手机号')
+         window.location.href = 'tel://'+mobile
        },
 },
   components:{
@@ -446,7 +447,7 @@ showRight(id) {
 
 .van-tabs--line .van-tabs__wrap{ border-bottom: 1px solid #d9d9d9;}
 
-.booking{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
+#booking{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
 .book-list{width:90%;height:auto;margin:0.2rem auto;}
 .book-list ul{width:100%;height:auto;margin:0 auto;}
 .book-list ul li{width:auto;height:auto;margin:0 auto;display: flex;align-items: flex-end;border-bottom:0.03rem solid #f1f1f1;padding:0.4rem 0;position: relative;}
