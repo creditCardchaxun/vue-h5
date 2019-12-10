@@ -1,24 +1,23 @@
 <template>
   <div class="order">
-    <div class="person-center">
-      <div class="person_01">
-        <!-- <van-nav-bar title="首页" left-text="返回" left-arrow  @click='toback'>
-        </van-nav-bar>-->
-        <div class="person-arr" style="position:relative;">
-          <div class="person-arr1" @click.stop="toback">
-            <van-icon name="arrow-left" />
-            <em>{{$t('m.home')}}</em>
-          </div>
-          <span
-            class="remove-index"
-            style="position:absolute;top:12px;right:10px;"
-            @click.stop="toreplace"
-          >
-            <van-icon name="cross" style="width:100%;height:100%;" />
-          </span>
+    <div class="person_01">
+      <!-- <van-nav-bar title="首页" left-text="返回" left-arrow  @click='toback'>
+      </van-nav-bar>-->
+      <div class="person-arr" style="position:relative;">
+        <div class="person-arr1" @click.stop="toback">
+          <van-icon name="arrow-left" />
+          <em>{{$t('m.home')}}</em>
         </div>
+        <span
+          class="remove-index"
+          style="position:absolute;top:12px;right:10px;"
+          @click.stop="toreplace"
+        >
+          <van-icon name="cross" style="width:100%;height:100%;" />
+        </span>
       </div>
-
+    </div>
+    <div class="person-center">
       <div class="person_02">
         <div class="person_05">
           <div class="per-msg">
@@ -162,21 +161,21 @@ export default {
     },
     getPhones111(data) {
       this.mobileLocal = data;
-     },
-   tohideModel(){
-     this.hideModel=true
-   },
-   toshowModel(){
-    //  let mobile=localStorage.getItem('mobile')
-      if(this.mobileLocal){
-        this.hideModel=true
-       this.$router.push({name:'orderForm',params:{mobile:this.mobileLocal}})
-      }else{
-         this.hideModel=false
-         this.status=1
-       }
-   },
-   callPhone(){
+    },
+    tohideModel() {
+      this.hideModel = true
+    },
+    toshowModel() {
+      //  let mobile=localStorage.getItem('mobile')
+      if (this.mobileLocal) {
+        this.hideModel = true
+        this.$router.push({ name: 'orderForm', params: { mobile: this.mobileLocal } })
+      } else {
+        this.hideModel = false
+        this.status = 1
+      }
+    },
+    callPhone() {
       window.location.href = 'tel://400 700 6608'
     },
     getShowModel() {
@@ -189,24 +188,24 @@ export default {
       this.$router.go(-1)
     },
 
-   },
-   mounted(){
-      this.iskehu=JSON.parse(localStorage.getItem('userinfo')).type
-      this.avater=JSON.parse(localStorage.getItem('userinfo')).avater
-      this.nickname=JSON.parse(localStorage.getItem('userinfo')).nickname
-      this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile
-      // this.mobileLocal=localStorage.getItem('mobile')
-       if(this.mobileLocal){
-         this.ischeckPhone=false
-       }
-      if( this.iskehu==0){
-        this.iskehuClass=true
-      }
-       console.log(this.iskehu)
-   },
-   components:{
-     submitBtn
-   }
+  },
+  mounted() {
+    this.iskehu = JSON.parse(localStorage.getItem('userinfo')).type
+    this.avater = JSON.parse(localStorage.getItem('userinfo')).avater
+    this.nickname = JSON.parse(localStorage.getItem('userinfo')).nickname
+    this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
+    // this.mobileLocal=localStorage.getItem('mobile')
+    if (this.mobileLocal) {
+      this.ischeckPhone = false
+    }
+    if (this.iskehu == 0) {
+      this.iskehuClass = true
+    }
+    console.log(this.iskehu)
+  },
+  components: {
+    submitBtn
+  }
 
 }
 </script>
@@ -227,12 +226,21 @@ export default {
   margin: 0;
   width: 50%;
 }
+
+.person-center {
+  padding-top: 1.67rem;
+}
+
 .person_01 {
   width: 100%;
   height: 1.67rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: white;
+  position: fixed;
+  left: 0;
+  right: 0;
 }
 
 .person-arr {
