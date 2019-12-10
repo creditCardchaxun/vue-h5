@@ -328,6 +328,9 @@ export default {
     }
   },
   methods: {
+    goHome(){
+      this.$router.go(-1)
+    },
     toAppraise() {
       this.$router.push({ name: "appraise", params: { id: this.detailId } });
     },
