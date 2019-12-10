@@ -21,6 +21,7 @@ export const m = {
   watch4:'查看地图',
   watch5:'您还没预约订单,快去预约吧',
   watch6:'立即评价',
+  watch7:'点击去预约',
 
   // 客户预约详情
   bookdetail1:'感谢光临',
@@ -39,6 +40,8 @@ export const m = {
   //  首页
    news:'新闻',
    activity:'活动',
+   models1:'预约看房时间',
+ 
 
   // 预约表单
    house1:'公寓',
@@ -75,7 +78,9 @@ export const m = {
   others11:'接受预约',
   others12:'接受预约成功',
   others13:'暂无数据',
-  
+  others14:'暂无搜索结果',
+  others15:'月',
+  others16:'搜索',
 
   //  注册按钮
   s1:'手机号',
@@ -141,7 +146,15 @@ export const m = {
   show2:'数据不能为空',
   show3:'复制成功',
   show4:'该浏览器不支持自动复制',
+  show5:'全部',
+  show6:'请选择项目',
+  show7:'请输入姓名',
+  show8:'请选择性别',
+  show9:'请填写正确的手机号码',
+  show10:'请选择预订时间',
 
+  show11:'请选择预约时间',
+  show12:'请选择意向标签或填写意向信息',
 
   // 国际区号
   selectCountry: {

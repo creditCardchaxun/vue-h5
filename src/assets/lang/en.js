@@ -21,6 +21,7 @@ export const m = {
    watch4:'consult a map',
    watch5:"You haven't made an appointment yet. Please make an appointment",
    watch6:'evaluation',
+   watch7:'Click to make an appointment',
      // 客户预约详情
   bookdetail1:'Thank you for coming.',
   bookdetail2:'Your evaluation',
@@ -37,6 +38,7 @@ export const m = {
     //  首页
   news:'news',
   activity:'activity',
+  models1:'Appointment time',
 
    // 预约表单
    house1:'apartment',
@@ -73,6 +75,9 @@ export const m = {
   others11:'Accepting appointment',
   others12:'Appointment accepted successfully',
   others13:'No data',
+  others14:'No search results yet',
+  others15:'month',
+  others16:'search',
 
 //  注册按钮
   s1:'number',
@@ -137,7 +142,17 @@ export const m = {
     show2:'Data cannot be empty',
     show3:'Replication success',
     show4:'The browser does not support automatic replication',
+    show5:'all',
+    show6:'Please select an item',
+    show7:'Please enter a name',
+    show8:'Please select gender',
+    show9:'Please fill in the correct mobile number',
+    show10:'Please select a booking time',
 
+    show11:'Please select an appointment time',
+    show12:'Please select the intention label or fill in the intention information',
+   
+    // 城市区号
    selectCountry: {
     optionsA: [
       {

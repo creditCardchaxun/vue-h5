@@ -33,11 +33,11 @@
           </div>
           <div class="app-right">
             <h3>{{appraiseModel.project_name}}</h3>
-            <p>预约看房时间:{{appraiseModel.book_time}}</p>
+            <p>{{$t('m.models1')}}:{{appraiseModel.book_time}}</p>
           </div>
         </div>
-        <div class="app_02">您已预约过了,请给我们留下宝贵的意见吧!</div>
-        <button @click="toAppraise(appraiseModel.id)">立即评价</button>
+        <div class="app_02">{{$t('m.hotelxq7')}}</div>
+        <button @click="toAppraise(appraiseModel.id)">{{$t('m.watch6')}}</button>
         <img
           src="@/assets/images/remove.png"
           alt
