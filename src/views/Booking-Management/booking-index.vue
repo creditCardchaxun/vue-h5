@@ -436,7 +436,7 @@ showRight(id) {
     aheaders,
     footers
   }
-}
+ }
 </script>
 
 <style>
