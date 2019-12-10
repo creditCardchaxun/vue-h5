@@ -42,11 +42,11 @@
               <!-- <span @click='getListhouses({})'> 全部</span>  -->
             </div>
             <div class="right" :class="{active:currentIndex!=-1}" v-show="tochina">
-              <ul>
+              <ul class="nihao">
                 <li @click="city3()">全部</li>
                 <li
                   v-for="(i,ins) in alllistss"
-                  :class="{active:ins===currentIndex}"
+                  :class="{active:ins===currentIndex3}"
                   :key="ins"
                   @click="getname(i.name,i.linkageid,ins)"
                 >{{i.name}}</li>
@@ -132,6 +132,7 @@ export default {
       cityAll: [],
       currentIndex: -1,
       currentIndex2: -1,
+      currentIndex3: -1,
       alllistss: [],
       cityName: this.$i18n.t('m.hotel1'),
       typehousename: this.$i18n.t('m.hotel2'),
@@ -174,6 +175,7 @@ export default {
       this.alllistss = item.area
       this.cityName = item.name
       this.currentIndex = index
+      this.currentIndex3 = -1
       this.cityid = item.linkageid
       let city = item.linkageid
       let area = this.idsarea
@@ -216,10 +218,10 @@ export default {
       this.toshowicon2 = !this.toshowicon2
       this.toshowCity = false
     },
-    getname(name, id,index) {
-      this.currentIndex = index
+    getname(name, id, index) {
+      this.currentIndex3= index
       this.cityName = name,
-      this.idsarea = id
+        this.idsarea = id
       this.toshowCity = false
       this.toshowicon = false
       let city = this.cityid
@@ -474,12 +476,14 @@ export default {
   font-size: 0.48rem;
   flex: 1;
   text-align: center;
+  font-weight: bold;
 }
 .s4 {
   width: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  font-weight: bold;
 }
 .s4 .left {
   width: 5.38rem;
@@ -491,7 +495,9 @@ export default {
 }
 .s4 .left .city3 {
   width: 5.38rem;
-  text-align: center;
+  text-align: left;
+  box-sizing: border-box;
+  // padding-left: 0.3rem;
   display: flex;
   align-items: center;
 }
@@ -500,6 +506,7 @@ export default {
   height: 1rem;
   line-height: 1rem;
   width: 5.38rem;
+  padding-left: 0.4rem;
 }
 .s4 .left .city3 .right {
   width: 5.4rem;
@@ -514,10 +521,27 @@ export default {
   flex-direction: column;
   align-items: center;
 }
+
+.s4 {
+  .nihao {
+    font-size: 0.37rem;
+    color: #0e0e0e;
+    line-height: 0.85rem;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 0.5rem;
+    text-align: left;
+  }
+}
+
 .s4 .right ul li {
   font-size: 0.37rem;
   color: #0e0e0e;
   line-height: 0.85rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 0.5rem;
+  text-align: left;
 }
 .s2 ul li {
   font-size: 0.37rem;
@@ -532,15 +556,16 @@ export default {
 .s2 .right ul {
   width: 100%;
 }
-.s2 ul li.active {
+.s2 .nihao li.active {
   color: #3c5896;
   position: relative;
-
+  background: url("../../assets/images/gou.png") no-repeat 80%;
+  background-size: auto 50%;
 }
 .active {
   background-color: #eeeeee;
 }
 .active span {
-  border-left: 0.1rem solid #3c5896;
+  border-left: 0.15rem solid #3c5896;
 }
 </style>
