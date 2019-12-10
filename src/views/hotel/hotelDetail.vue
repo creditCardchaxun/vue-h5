@@ -260,7 +260,6 @@ export default {
       showLoadMore: false
     };
   },
-
   created() {
     // this.mobileLocal=localStorage.getItem('mobile')
     this.mobileLocal = JSON.parse(localStorage.getItem("userinfo")).mobile;
