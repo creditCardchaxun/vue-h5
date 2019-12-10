@@ -78,12 +78,16 @@ window.$axios = axios
 // // 微信授权
 if (process.env.NODE_ENV === 'development' && !process.env.VUE_APP_BUILD_TYPE) {
   // 调试开发，替换这里token
+<<<<<<< HEAD
   let testToken = 'HURW3R8c1hr24KY6lD1qwkuOb8dkcCPZjejNKOa5'
+=======
+  let testToken = 'Ylk4OLixLEMCwaxIvcVcRVrqOthQ834JjZbfJSNt'
+>>>>>>> 5816d11bff753bab46cd88b2d0b32b99fd193921
   let userinfo={"id":"2","nickname":"","realname":"","avater":"","sex":"0","mobile":'18911793350',"type":"0","openid":"","siteid":"1"}
   axios.defaults.headers.common['systype'] = 1
   axios.defaults.headers.common['accesstoken'] = testToken
   localStorage.setItem('accessToken', testToken)
-  // localStorage.setItem('userinfo', JSON.stringify(userinfo) )
+  // localStorage.setItem('userinfo', JSON.stringify(userinfo))
 } else {
    wxAuth.initWX()
 }
@@ -121,10 +125,9 @@ router.beforeEach((from,to,next)=>{
 
 router.afterEach((from,to)=>{
   // document.documentElement.scrollTop=0
-  // console.log(from,to)
-  console.log('document');
-  console.log(document);
+  console.log(from,to)
   window.$(document).scrollTop(0)
+  console.log(window.$(document).scrollTop())
 })
 new Vue({
   router,

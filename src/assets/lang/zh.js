@@ -1,5 +1,24 @@
 export const m = {
-  //  address:'上海市徐汇区钦州路528号',
+    //页面标题
+    news:'新闻',
+    news1:'新闻详情',
+    news2:'活动',
+    news3:'活动详情',
+    news4:'联系我们',
+    news5:'个人中心',
+    news6:'我的预约',
+    news7:'预约看房',
+    news8:'预约详情',
+    news9:'填写评价',
+    news10:'精品居舍',
+    news11:'精品居舍详情',
+    news12:'预订入住',
+    news13:'预约管理',
+    news14:'看房反馈',
+    news15:'反馈详情',
+    news16:'首页',
+
+   // 首页
    home:'首页',
   //  centerName:'姓名',
    ischeck:'未验证手机号',
@@ -42,7 +61,6 @@ export const m = {
    activity:'活动',
    models1:'预约看房时间',
  
-
   // 预约表单
    house1:'公寓',
    house2:'预约时间',
@@ -81,7 +99,7 @@ export const m = {
   others14:'暂无搜索结果',
   others15:'月',
   others16:'搜索',
-
+  
   //  注册按钮
   s1:'手机号',
   s2:'短信验证码',

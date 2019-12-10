@@ -1,5 +1,6 @@
 <template>
   <div class="newsdetail">
+    <div class="news">
     <!-- <img src='../../assets/images/news-detail.png'/> -->
     <aheaders status='3' @toback='toreplace'></aheaders>
        <div class="newsdatails">
@@ -17,7 +18,7 @@
         </div>
        </div>
      <afooter></afooter>
-
+   </div>
   </div>
 
 
@@ -65,7 +66,6 @@ export default {
           console.log(res)
        })
      },
-     
      toreplace(){
          this.$router.go(-1)
        },
@@ -111,7 +111,8 @@ export default {
 </script>
 
 <style>
-.newsdetail{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
+.newsdetail{width:100%;height:auto;}
+.news{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
 .newsdatails{width:90%;height:auto;margin:0.6rem auto 0;overflow: hidden;}
 .newsdatails h2{font-size:0.6rem;color:#2d2d2d;line-height: 0.87rem;height: 1.7rem;overflow: hidden;}
 .newsdatails .date{font-size:0.34rem;color:#aeaeae;margin:0.6rem 0;}

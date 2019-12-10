@@ -162,22 +162,21 @@ export default {
     },
     getPhones111(data) {
       this.mobileLocal = data;
-    },
-    tohideModel() {
-      this.hideModel = true
-    },
-    toshowModel() {
-      //  let mobile=localStorage.getItem('mobile')
-      if (this.mobileLocal) {
-        this.hideModel = true
-        this.$router.push({ name: 'orderForm', params: { mobile: this.mobileLocal } })
-      } else {
-        this.hideModel = false
-        this.status = 1
-      }
-
-    },
-    callPhone() {
+     },
+   tohideModel(){
+     this.hideModel=true
+   },
+   toshowModel(){
+    //  let mobile=localStorage.getItem('mobile')
+      if(this.mobileLocal){
+        this.hideModel=true
+       this.$router.push({name:'orderForm',params:{mobile:this.mobileLocal}})
+      }else{
+         this.hideModel=false
+         this.status=1
+       }
+   },
+   callPhone(){
       window.location.href = 'tel://400 700 6608'
     },
     getShowModel() {
@@ -190,25 +189,24 @@ export default {
       this.$router.go(-1)
     },
 
-
-  },
-  mounted() {
-    this.iskehu = JSON.parse(localStorage.getItem('userinfo')).type
-    this.avater = JSON.parse(localStorage.getItem('userinfo')).avater
-    this.nickname = JSON.parse(localStorage.getItem('userinfo')).nickname
-    this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
-    // this.mobileLocal=localStorage.getItem('mobile')
-    if (this.mobileLocal) {
-      this.ischeckPhone = false
-    }
-    if (this.iskehu == 0) {
-      this.iskehuClass = true
-    }
-    console.log(this.iskehu)
-  },
-  components: {
-    submitBtn
-  }
+   },
+   mounted(){
+      this.iskehu=JSON.parse(localStorage.getItem('userinfo')).type
+      this.avater=JSON.parse(localStorage.getItem('userinfo')).avater
+      this.nickname=JSON.parse(localStorage.getItem('userinfo')).nickname
+      this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile
+      // this.mobileLocal=localStorage.getItem('mobile')
+       if(this.mobileLocal){
+         this.ischeckPhone=false
+       }
+      if( this.iskehu==0){
+        this.iskehuClass=true
+      }
+       console.log(this.iskehu)
+   },
+   components:{
+     submitBtn
+   }
 
 }
 </script>
