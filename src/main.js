@@ -122,6 +122,8 @@ router.beforeEach((from,to,next)=>{
 router.afterEach((from,to)=>{
   // document.documentElement.scrollTop=0
   // console.log(from,to)
+  console.log('document');
+  console.log(document);
   window.$(document).scrollTop(0)
 })
 new Vue({
