@@ -56,7 +56,9 @@
         <img src="../assets/images/index_03.jpg" alt />
       </div>-->
     </div>
-
+    <div class="logo1">
+      
+    </div>
     <div :class="[showMore?'': 'yuyue']">
       <swiper :options="swiperOption">
         <swiper-slide v-for="(item,index) in project_list" :key="index">
@@ -400,6 +402,15 @@ export default {
 <style scoped>
 /* .map h3 select{width:2rem;height:1rem;overflow: hidden;background-color: #fff;border:transparent;}
 .map h3 select option{width:2rem;height:1rem;overflow: hidden;padding:0;height:1rem;min-height:1rem;} */
+
+.logo1{
+  height: 1.5rem;
+  width: 70%;
+  background: url('../assets/images/logo1.png') no-repeat;
+  background-size: 100% auto;
+  margin: 0 auto;
+  margin-top: 0.3rem;
+}
 
 .brandimg2 {
   transform: rotate(180deg);
