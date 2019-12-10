@@ -1,5 +1,24 @@
 export const m = { 
-  // address:'No.528, qinzhou road, xuhui district, Shanghai',
+     //页面标题
+     news:'NEWS',
+     news1:'NEWS',
+     news2:'Activity',
+     news3:'Activity',
+     news4:'Contact us',
+     news5:'Personal ',
+     news6:'Order',
+     news7:'Information',
+     news8:' My Order',
+     news9:'Evaluation',
+     news10:'baseLIVING',
+     news11:'Apartment Introduction',
+     news12:'Bookings',
+     news13:' Order Center',
+     news14:'Feedback',
+     news15:'Feedback',
+     news16:'HOME',
+          
+  // 首页
   home:'home',
   ischeck:'No phone number verified',
   changePhone:'change number',

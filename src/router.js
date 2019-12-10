@@ -1,4 +1,5 @@
 import Vue from 'vue'
+// import VueI18n from 'vue-i18n'
 import VueRouter from 'vue-router'
 import Home from '../src/views/Home.vue'
 // import About from '@/views/About.vue'
@@ -23,6 +24,20 @@ import orderDetail from '@/views/order/myOrderDetail.vue'
 
 import appraise from '@/views/order/appraise.vue'
 
+// Vue.use(VueI18n)
+
+// let lanBase=localStorage.getItem('lanBase')
+// if(lanBase==null)lanBase = 1
+
+// const i18n = new VueI18n({
+//    locale: lanBase=='1'?'zh-CN':'en-US', 
+//     // locale: 'en-US',    // 语言标识
+//     //this.$i18n.locale // 通过切换locale的值来实现语言切换
+//     messages: {
+//       'zh-CN': require('./assets/lang/zh'),   // 中文语言包
+//       'en-US': require('./assets/lang/en')    // 英文语言包
+//     }
+// })
 Vue.use(VueRouter)
 console.log(Home)
 const routes = [
@@ -32,7 +47,8 @@ const routes = [
     component: Home,
     meta: {
       keepalive: false,// 组件是否需要被保存
-      title: '首页'
+      title:'首页'
+      // this.$i18n.t('m.news16')
     }
   },
 
@@ -46,6 +62,7 @@ const routes = [
   //     title:'关于我们'
   //    }
   // },
+
   // 新闻列表
   {
     path: '/news',
@@ -53,7 +70,8 @@ const routes = [
     component: newsList,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title: '新闻'
+      title: '新闻列表',
+      // this.$i18n.t('m.news')
     }
   },
   // 新闻详情
@@ -63,7 +81,8 @@ const routes = [
     component: newsDetail,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title: '新闻详情'
+      title: '新闻详情',
+      // this.$i18n.t('m.news1')
     }
   },
   // 活动列表
@@ -73,7 +92,8 @@ const routes = [
     component: activeList,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title: '活动'
+      title: '活动列表',
+      // this.$i18n.t('m.news2')
     }
   },
   // 活动详情
@@ -83,7 +103,8 @@ const routes = [
     component: activeDetail,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title: '活动详情'
+      title: '活动详情',
+      // this.$i18n.t('m.news3')
     }
   },
   // 联系我们
@@ -94,6 +115,7 @@ const routes = [
     meta: {
       keepalive: false, // 组件是否需要被保存
       title: '联系我们'
+      // this.$i18n.t('m.news4')
     }
   },
 
@@ -104,7 +126,8 @@ const routes = [
     component: orderFloor,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title: '个人中心'
+      title: '个人中心',
+      // this.$i18n.t('m.news5')
     }
 
   },
@@ -116,6 +139,7 @@ const routes = [
     meta: {
       keepalive: false, // 组件是否需要被保存
       title: '我的预约'
+      // this.$i18n.t('m.news6')
     }
   },
 
@@ -126,7 +150,8 @@ const routes = [
     component: orderForm,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title: '预约看房'
+      title: '我的预约'
+      // this.$i18n.t('m.news7')
     }
   },
 
@@ -138,6 +163,7 @@ const routes = [
     meta: {
       keepalive: false, // 组件是否需要被保存
       title: '预约详情'
+      // this.$i18n.t('m.news8')
     }
   },
   // 评价
@@ -147,7 +173,8 @@ const routes = [
     component: appraise,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title: '填写评价'
+      title: '评价详情',
+      // this.$i18n.t('m.news9')
     }
   },
 
@@ -159,7 +186,8 @@ const routes = [
     component: hotelStar,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title: '精品居舍'
+      title: '精品旅社',
+      // this.$i18n.t('m.news10')
     },
   },
   // 精品旅社详情
@@ -169,7 +197,8 @@ const routes = [
     component: hotelDetail,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title: '精品居舍详情'
+      title: '精品旅社详情',
+      // this.$i18n.t('m.news11')
     }
   },
 
@@ -180,7 +209,8 @@ const routes = [
     component: myReserve,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title: '预订入住'
+      title: '我的预订'
+      // this.$i18n.t('m.news12')
     }
   },
 
@@ -193,6 +223,7 @@ const routes = [
     meta: {
       keepalive: false, // 组件是否需要被保存
       title: '预约管理'
+      // this.$i18n.t('m.news13')
     }
   },
 
@@ -203,7 +234,8 @@ const routes = [
     component: bookingDetail,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title: '预约详情'
+      title:'预约详情'
+      //  this.$i18n.t('m.news8')
     }
   },
   // 看房反馈
@@ -214,6 +246,7 @@ const routes = [
     meta: {
       keepalive: false, // 组件是否需要被保存
       title: '看房反馈'
+      // this.$i18n.t('m.news14')
     }
   },
   //看房反馈信息 
@@ -223,7 +256,8 @@ const routes = [
     component: feedbackDetail,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title: '反馈详情'
+      title: '看房反馈详情'
+      // this.$i18n.t('m.news15')
     }
   },
 

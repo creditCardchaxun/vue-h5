@@ -57,7 +57,6 @@
       </div>-->
     </div>
     <div class="logo1">
-      
     </div>
     <div :class="[showMore?'': 'yuyue']">
       <swiper :options="swiperOption">

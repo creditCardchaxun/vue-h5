@@ -184,6 +184,13 @@ export default {
       this.getcity(data)
     },
     city3() {
+      // let city = ''
+      // let area = ''
+      // let type = ''
+    console.log(this.cityid,'全部1')
+    console.log(this.idsarea,'全部2')
+    console.log(this.houseId,'全部3')
+    
       this.toshowCity = false
       this.toshowicon = false
       let city = this.cityid
@@ -210,8 +217,6 @@ export default {
       this.toshowCity = false
       this.toshowicon = false
     },
-
-
 
     typeHouse() {
       this.toshowtype = !this.toshowtype

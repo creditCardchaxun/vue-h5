@@ -116,7 +116,6 @@ export default {
          this.hideModel=false
          this.status=1
        }
-
    },
    callPhone(){
       window.location.href = 'tel://400 700 6608'
@@ -131,7 +130,6 @@ export default {
       this.$router.go(-1)
     },
 
-    
    },
    mounted(){
       this.iskehu=JSON.parse(localStorage.getItem('userinfo')).type
