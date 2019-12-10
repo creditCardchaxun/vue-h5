@@ -1,5 +1,5 @@
 <template>
-  <div class="bookingdetail" :style='getHeight'>
+  <div class="bookingdetail">
     <aheaders status='3' @toback='toreplace'></aheaders>
     <div class="detail">
       <ul>

@@ -1,5 +1,5 @@
 <template>
-  <div class="activitydetail" :style="getHeight">
+  <div class="activitydetail">
     <!-- <img src='../../assets/images/news-detail.png'/> -->
     <aheaders status='3' @toback='toreplace'></aheaders>
        <div class="newsdatails">

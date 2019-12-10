@@ -48,10 +48,11 @@ Vue.use(VueI18n) // 通过插件的形式挂载
 store.commit('setDefaultLang')
 
 let lanBase=localStorage.getItem('lanBase')
-if(lanBase=null)lanBase = 1
+if(lanBase==null)lanBase = 1
 
 const i18n = new VueI18n({
-    locale: lanBase=='1'?'zh-CN':'en-US',    // 语言标识
+  locale: lanBase=='1'?'zh-CN':'en-US', 
+    // locale: 'en-US',    // 语言标识
     //this.$i18n.locale // 通过切换locale的值来实现语言切换
     messages: {
       'zh-CN': require('./assets/lang/zh'),   // 中文语言包

@@ -1,5 +1,5 @@
 <template>
- <div class="order-detail" :style='getHeight'>
+ <div class="order-detail">
 <aheaders status='3' @toback='toreplace'></aheaders>
         <!-- 项目信息 -->
     <div class="order-detail01"> 

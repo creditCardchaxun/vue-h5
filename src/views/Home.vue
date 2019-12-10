@@ -258,26 +258,22 @@ export default {
         scrolltop > 0 ? (this.showbg = true) : (this.showbg = false);
     },
     changeLangEvent() {
-   
       if (this.lang == 'zh-CN') {
           this.lang = 'en-US'
-        //  this.lanBase='ZH'
       } else {
         this.lang = 'zh-CN'
-        // this.lanBase='EN'
       }
       this.$i18n.locale = this.lang; //关键语句
 
       this.$store.commit("changeLang", this.lang);
       $eventbus.$emit("changeLang", this.lang);
       localStorage.setItem('lanBase', this.lang == 'zh-CN' ? 1 : 4)
-
-        let lanBase =localStorage.getItem('lanBase')
-       if(lanBase==1){
+       let lanBase=localStorage.getItem('lanBase')
+        if(lanBase==1){
           this.lanBase='EN'
-       }else{
-         this.lanBase='ZH'
-       }
+        }else{
+          this.lanBase='ZH'
+        }
     },
     toloadMore() {
       this.showMore = !this.showMore
@@ -349,6 +345,7 @@ export default {
   },
   created() {
     //  this.getHomedata()
+    this.getallother(3362)
      let lanBase=localStorage.getItem('lanBase')
      if(lanBase==1){
       this.lanBase='EN'
@@ -365,9 +362,9 @@ export default {
     $eventbus.$on("changeLang", (res) => {
       this.getHomedata()
     });
-    this.$nextTick(() => {
-      this.getallother(3362)
-    })
+    // this.$nextTick(() => {
+    //   this.getallother(3362)
+    // })
 
     // let height= window.getComputedStyle(this.$refs.heightShow).height
     let height = window.getComputedStyle(this.$refs.heightShow).height

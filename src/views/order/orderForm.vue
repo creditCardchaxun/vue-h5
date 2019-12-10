@@ -1,7 +1,7 @@
 <template>
 <!-- :style='getHeight' -->
   <div class="myReserve" >
-    <div :style='getHeight' >
+    <div>
     <aheaders status="3" @toback='toreplace'></aheaders>
     <!-- <van-cell is-link @click="showPopup">项目</van-cell> -->
     <van-cell-group >

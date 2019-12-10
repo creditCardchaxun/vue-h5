@@ -1,5 +1,5 @@
 <template>
- <div class="hotel-detail" :style="getHeight">
+ <div class="hotel-detail">
     <aheaders status="2"></aheaders>
     <div class="banner-img">
          <div class="banner_top" @click='showStory'> <em>{{$t('m.hotelxq1')}}</em> 

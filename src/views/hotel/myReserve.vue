@@ -1,7 +1,7 @@
 <template>
  <div class="myReserve">
  <aheaders status='3' @toback='toreplace'></aheaders>
- <div class="myreserve" :style='getHeight'>
+ <div class="myreserve">
     <van-cell-group>
           <van-field 
             v-model="value"

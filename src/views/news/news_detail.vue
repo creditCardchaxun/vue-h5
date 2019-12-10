@@ -2,7 +2,7 @@
   <div class="newsdetail">
     <!-- <img src='../../assets/images/news-detail.png'/> -->
     <aheaders status='3' @toback='toreplace'></aheaders>
-       <div class="newsdatails" :style="newsHeight">
+       <div class="newsdatails">
        <h2>{{newsDetails.title}}</h2>
        <div class="date">{{newsDetails.inputtime}}</div>
         <div class="mains-new">
