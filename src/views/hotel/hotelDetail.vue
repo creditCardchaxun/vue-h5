@@ -4,10 +4,9 @@
     <div class="banner-img">
       <div class="banner_top" @click="showStory">
         <em>{{$t('m.hotelxq1')}}</em>
-        <div class="down">
-          <!-- <span></span> <span></span> -->
+        <!-- <div class="down">
           <img src="../../assets/images/more-icon01.jpg" alt style="width:0.2rem;height:0.2rem;" />
-        </div>
+        </div> -->
       </div>
       <div class="Project-imgs">
         <projectImg
