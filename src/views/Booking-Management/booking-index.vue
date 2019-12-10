@@ -1,6 +1,6 @@
 <template>
-  <div class="booking" id='bookings'>
-  <aheaders status='2'></aheaders>
+  <div class="bookings" id='bookings'>
+    <aheaders status='2'></aheaders>
     <div class="books" style='margin-top:0.2rem;'>
    <van-tabs v-model="active" line-width='7%' :border='false' @click="onClick">
 
@@ -447,7 +447,7 @@ showRight(id) {
 
 .van-tabs--line .van-tabs__wrap{ border-bottom: 1px solid #d9d9d9;}
 
-#booking{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
+.bookings{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
 .book-list{width:90%;height:auto;margin:0.2rem auto;}
 .book-list ul{width:100%;height:auto;margin:0 auto;}
 .book-list ul li{width:auto;height:auto;margin:0 auto;display: flex;align-items: flex-end;border-bottom:0.03rem solid #f1f1f1;padding:0.4rem 0;position: relative;}
