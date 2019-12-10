@@ -116,14 +116,14 @@ export default {
         var _this = this;
         var clipboard = new Clipboard(".getcopy"); //单页面引用
         clipboard.on("success", e => {
-         this.$toast('复制成功') 
+         this.$toast(this.$i18n.t('m.show3')) 
           // 释放内存
           clipboard.destroy();
         });
         clipboard.on("error", e => {
           // 不支持复制
           Message({
-            message: "该浏览器不支持自动复制",
+            message: this.$i18n.t('m.show4'),
             type: "warning"
           });
           // 释放内存

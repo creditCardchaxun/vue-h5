@@ -253,7 +253,6 @@ export default {
     bookHouses() {
       interfaces.bookHouse().then(res => {
         this.columns = res;
-        console.log(this.columns,'项目列表');
       });
     },
 
@@ -377,23 +376,23 @@ export default {
         return (inter2 = inter.substr(1));
       });
       if (!this.name) {
-        this.$toast("请填写姓名");
+        this.$toast(this.$i18n.t('m.show7'));
         return;
       }
       if (!this.radio) {
-        this.$toast("请选择性别");
+        this.$toast(this.$i18n.t('m.show8'));
         return;
       }
       if (!/^1[345678]\d{9}$/.test(this.phone) || !this.phone) {
-        this.$toast("请填写正确的手机号码");
+        this.$toast(this.$i18n.t('m.show9'));
         return;
       }
       if (!this.value2) {
-        this.$toast("请选择预约时间");
+        this.$toast(this.$i18n.t('m.show11'));
         return;
       }
       if (!inter2 && !this.message) {
-        this.$toast("请选择意向标签或填写意向信息");
+        this.$toast(this.$i18n.t('m.show12'));
         return;
       }
 

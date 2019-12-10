@@ -86,7 +86,7 @@
               </van-swipe>
 
               <div class="types-mianji">
-                <div class="yiju">{{$t('m.hotelxq10')}}:{{item.room_size}}/{{$t('m.hotelxq11')}}㎡</div>
+                <div class="yiju">{{$t('m.hotelxq10')}}:{{item.room_size}}/㎡</div>
                 <div class="yiju-img">
                   <img :src="item.house_type_pic" alt />
                 </div>
@@ -274,14 +274,14 @@ export default {
     let id = to.params.id;
     let status = to.params.status;
     console.log(status);
-    interfaces.getdetailhouse(id).then(function (res) {
+    interfaces.getdetailhouse(id).then(function(res) {
       next(vm => {
         vm.projectdetail = res;
         vm.detailId = res.id;
         var div = vm.$refs.tab1;
         if (from.name == "myOrder") {
           if (div) {
-            setTimeout(function () {
+            setTimeout(function() {
               console.log($(div).offset().top);
               // $('html,body').scrollTop($(div).offset().top - 43);
               $("html, body").animate(
@@ -300,13 +300,13 @@ export default {
     let status = to.params.status;
     console.log(to);
     var that = this;
-    interfaces.getdetailhouse(id).then(function (res) {
+    interfaces.getdetailhouse(id).then(function(res) {
       that.projectdetail = res;
       that.detailId = res.id;
       var div = that.$refs.tab1;
       if (from.name == "myOrder") {
         if (div) {
-          setTimeout(function () {
+          setTimeout(function() {
             console.log($(div).offset().top);
             // $('html,body').scrollTop($(div).offset().top - 43);
             $("html, body").animate(
@@ -320,7 +320,7 @@ export default {
     });
   },
   watch: {
-    scroll: function (newVal, oldVal) {
+    scroll: function(newVal, oldVal) {
       if (newVal > oldVal) {
         this.local = false;
       } else {
@@ -329,16 +329,13 @@ export default {
     }
   },
   methods: {
-    goHome() {
-      this.$router.push({ name: "home" });
-    },
     toAppraise() {
       this.$router.push({ name: "appraise", params: { id: this.detailId } });
     },
-    btn_pos: function (e) {
+    btn_pos: function(e) {
       this.setlocaltrue();
     },
-    setlocaltrue: _.debounce(function () {
+    setlocaltrue: _.debounce(function() {
       this.local = true;
     }, 1000),
 

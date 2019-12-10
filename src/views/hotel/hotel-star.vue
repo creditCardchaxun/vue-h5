@@ -28,7 +28,7 @@
           <div class="s4">
             <div class="left">
               <div class="city3" @click="togetAll" :class="{active:currentIndex==-1}">
-                <span>全部</span>
+                <span>{{$t('m.show5')}}</span>
               </div>
               <div
                 class="city3"
@@ -43,7 +43,7 @@
             </div>
             <div class="right" :class="{active:currentIndex!=-1}" v-show="tochina">
               <ul class="nihao">
-                <li @click="city3()">全部</li>
+                <li @click="city3()">{{$t('m.show5')}}</li>
                 <li
                   v-for="(i,ins) in alllistss"
                   :class="{active:ins===currentIndex3}"
@@ -57,7 +57,7 @@
         <div class="s2" v-show="toshowtype">
           <div class="right">
             <ul>
-              <li :class="{active:currentIndex2==-1}" @click="getName('','全部',-1)">全部</li>
+              <li :class="{active:currentIndex2==-1}" @click="getName('',$t('m.show5'),-1)">{{$t('m.show5')}}</li>
               <li
                 @click="getName(item.id,item.title,index)"
                 v-for="(item,index) in getHouseType"
@@ -202,7 +202,7 @@ export default {
 
     // 城市获取全部
     togetAll() {
-      this.cityName = '全部'
+      this.cityName = this.$i18n.t('m.show5')
       this.currentIndex = -1
       this.tochina = false
       let data = {};

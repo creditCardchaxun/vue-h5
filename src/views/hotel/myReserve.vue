@@ -251,23 +251,23 @@ export default {
         
         submitInfor(){
               if(!this.id ){
-               this.$toast('请选择项目')
+               this.$toast(this.$i18n.t('m.show6'))
                return;
               }
               if(!this.names ){
-               this.$toast('请输入姓名')
+               this.$toast(this.$i18n.t('m.show7'))
                return;
              }
                if(!this.radio){
-               this.$toast('请选择性别')
+               this.$toast(this.$i18n.t('m.show8'))
                return;
               }
               if(!/^1[345678]\d{9}$/.test(this.phone)||!this.phone){
-               this.$toast('请填写正确的手机号码')
+               this.$toast(this.$i18n.t('m.show9'))
                return;
               }
               if(!this.value2&&!this.value3){
-               this.$toast('请选择预订时间')
+               this.$toast(this.$i18n.t('m.show10'))
                return;
               }
 
@@ -304,13 +304,10 @@ export default {
         // 获取所有项目列表名称
            getListhouses(){
               interfaces.getxiecheng().then((res)=>{
-                console.log(res,'resdhdhjdfhj')
                   this.columns=res
-           })
-           }
-
-
-    },
+              })
+             }
+        },
    computed: {
       isClick() {
       if (!this.value||!this.value2||!this.names||!this.phone) return true;

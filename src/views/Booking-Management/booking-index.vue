@@ -12,7 +12,7 @@
           type="number" 
           maxlength="11"
         />
-     <button class='search' @click='togetnumber' v-if='noRearch'>搜索</button>
+     <button class='search' @click='togetnumber' v-if='noRearch'>{{$t('m.others16')}}</button>
     </div> 
      <!-- <p  v-if="!isShow">请输入正确的手机号</p> -->
       <div class="booking">
@@ -37,7 +37,7 @@
              </li>
            </ul>
             <!-- <div class="nolist" v-else>{{$t('m.others13')}}</div> -->
-            <div class="nolist" v-show='noMain'>暂无搜索结果</div>
+            <div class="nolist" v-show='noMain'>{{$t('m.others14')}}</div>
                  <van-popup v-model="show_right">
                 <div class="good">
                   <img src="../../assets/images/checkmark.png" alt style='width:1.05rem;height:0.95rem;' />
@@ -57,7 +57,7 @@
          type="number" 
          maxlength="11"
      />
-          <button class='search' @click='togetnumber2' v-if='noRearch2'>搜索</button>
+          <button class='search' @click='togetnumber2' v-if='noRearch2'>{{$t('m.others16')}}</button>
     </div> 
      <!-- <p  v-if="!isShow">请输入正确的手机号</p> -->
      <div class="booking">
@@ -83,7 +83,7 @@
              </li>
            </ul>
                <!-- <div class="nolist" v-else>{{$t('m.others13')}}</div> -->
-               <div class="nolist" v-if='noMain2'>暂无搜索结果</div>
+               <div class="nolist" v-if='noMain2'>{{$t('m.others14')}}</div>
                <div class="index-more" v-show='this.list2.length>6'><span>more</span> <img src="../../assets/images/more-icon.jpg" alt=""></div>
         </div>  
    </div>
@@ -97,14 +97,14 @@
          type="number" 
          maxlength="11"
      />
-      <button class='search' @click='togetnumber3' v-if='noRearch3'>搜索</button>
+      <button class='search' @click='togetnumber3' v-if='noRearch3'>{{$t('m.others16')}}</button>
     </div> 
      <!-- <p  v-if="!isShow">请输入正确的手机号</p> -->
       <div class="booking">
       <div class="book-list">
            <ul v-if="list3.length>0">
              <li v-for='(item,index) in list3' :key='index'>
-              <div class="date"><router-link :to="{name:'feedbackdetail',params:{id:item.id}}"><span>{{list3[index].date}}</span> <i>{{list3[index].moth}}月</i> </router-link></div>
+              <div class="date"><router-link :to="{name:'feedbackdetail',params:{id:item.id}}"><span>{{list3[index].date}}</span> <i>{{list3[index].moth}}{{$t('m.others15')}}</i> </router-link></div>
                <div class="date_02">
                   <router-link :to="{name:'feedbackdetail',params:{id:item.id}}">
                   <span class='date-icon'>{{item.name}}</span> 
@@ -121,7 +121,7 @@
 
            </ul>
            <!-- <div class="nolist" v-else>{{$t('m.others13')}}</div> -->
-           <div class="nolist" v-if='noMain3'>暂无搜索结果</div>
+           <div class="nolist" v-if='noMain3'>{{$t('m.others14')}}</div>
            <div class="index-more" v-show='this.list3.length>6'><span>more</span> <img src="../../assets/images/more-icon.jpg" alt=""></div>
         </div>  
    </div>
@@ -390,14 +390,14 @@ export default {
          })
 },
  onClick(index,title){
-        if(title=='未确认'&&index==0){
+        if(title==this.$i18n.t('m.others5')&&index==0){
            if(this.num==undefined){
             this.booklist1(1,0)
             // this.togetnumber(1,this.inputVal)
            }else{
              this.booklist1(this.num,this.active)
            }
-        }else if(title=='待看房'&&index==1){
+        }else if(title==this.$i18n.t('m.others6')&&index==1){
           console.log(this.num,this.active)
            if(this.num==undefined){
             this.booklist2(2,1)
@@ -405,7 +405,7 @@ export default {
            }else{
              this.booklist2(this.num,this.active)
            }
-        }else if(title=='已完成'&&index==2){
+        }else if(title==this.$i18n.t('m.others7')&&index==2){
           console.log(this.num,this.active)
             if(this.num==undefined){
             this.booklist3(3,2)

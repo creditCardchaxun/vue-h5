@@ -183,7 +183,7 @@ export default {
 .per_title{width:7.20rem;display:flex;align-items:left;flex-direction: column;justify-content: center;float:left;margin-top:0.33rem;}
 .per_title .per_h3{font-size:0.6rem;color:#000;font-weight: bold;}
 .isfase{color:#bfbfbf;font-size:0.4rem;margin-top:0.3rem;}
-.isfase2{color:#bfbfbf;font-size:0.4rem;margin-top:0.3rem;display:flex;align-items: center;justify-content:space-between;}
+.isfase2{width:100%;color:#bfbfbf;font-size:0.4rem;margin-top:0.3rem;display:flex;align-items: center;justify-content:space-between;}
 .isfase2 em{font-size:0.4rem;color:#5975a9;}
 .yu-m{width:8.20rem;height:auto;display:flex;align-items:center;margin:0.57rem auto 0.71rem;}
 .yu-m .yu_01{width:3.8rem;height:1.2rem;line-height:1.2rem;margin-right:10px;border:1px solid #000;text-align: center;display:flex;align-items:center;justify-content: center;border-radius: 6px;}
