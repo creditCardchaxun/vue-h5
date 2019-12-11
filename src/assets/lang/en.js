@@ -1,605 +1,598 @@
-export const m = { 
-     //页面标题
-     news:'NEWS',
-     news1:'NEWS',
-     news2:'Activity',
-     news3:'Activity',
-     news4:'Contact us',
-     news5:'Personal ',
-     news6:'Order',
-     news7:'Information',
-     news8:' My Order',
-     news9:'Evaluation',
-     news10:'baseLIVING',
-     news11:'Apartment Introduction',
-     news12:'Bookings',
-     news13:' Order Center',
-     news14:'Feedback',
-     news15:'Feedback',
-     news16:'HOME',
-          
+export const m = {
+  //页面标题
+  news: 'NEWS',
+  news1: 'NEWS',
+  news2: 'Activity',
+  news3: 'Activity',
+  news4: 'Contact us',
+  news5: 'Personal ',
+  news6: 'Order',
+  news7: 'Information',
+  news8: ' My Order',
+  news9: 'Evaluation',
+  news10: 'baseLIVING',
+  news11: 'Apartment Introduction',
+  news12: 'Bookings',
+  news13: ' Order Center',
+  news14: 'Feedback',
+  news15: 'Feedback',
+  news16: 'HOME',
+
   // 首页
-  home:'home',
-  ischeck:'No phone number verified',
-  changePhone:'change number',
+  home: 'home',
+  ischeck: 'No phone number verified',
+  changePhone: 'change number',
 
-  manage:'Management',
-  myorder:'My Bookings',
-  home1:'baseLIVING',
-  home2:'base News',
-  home3:'base activity',
-  home4:'about base',
-  home5:'connect us',
-  orderhouse:'Order table',
-  watch:'About to begin',
-  watch2:'You have seen',
-  server:'service',
+  manage: 'Management',
+  myorder: 'My Bookings',
+  home1: 'baseLIVING',
+  home2: 'base News',
+  home3: 'base activity',
+  home4: 'about base',
+  home5: 'connect us',
+  orderhouse: 'Order table',
+  watch: 'About to begin',
+  watch2: 'You have seen',
+  server: 'service',
 
-   //  客户预约列表
-   watch3:'Appointment date',
-   watch4:'consult a map',
-   watch5:"You haven't made an appointment yet. Please make an appointment",
-   watch6:'evaluation',
-   watch7:'Click to make an appointment',
-     // 客户预约详情
-  bookdetail1:'Thank you for coming.',
-  bookdetail2:'Your evaluation',
-  bookdetail3:'Contact service',
+  //  客户预约列表
+  watch3: 'Appointment date',
+  watch4: 'consult a map',
+  watch5: "You haven't made an appointment yet. Please make an appointment",
+  watch6: 'evaluation',
+  watch7: 'Click to make an appointment',
+  // 客户预约详情
+  bookdetail1: 'Thank you for coming.',
+  bookdetail2: 'Your evaluation',
+  bookdetail3: 'Contact service',
 
-    // 客户评价
-    appraise1:'Are you satisfied with this visit',
-    appraise2:'Click on the tag to quickly evaluate and write down your experience',
-    appraise3:'Please fill in the evaluation content',
-    appraise4:'Evaluated',
+  // 客户评价
+  appraise1: 'Are you satisfied with this visit',
+  appraise2: 'Click on the tag to quickly evaluate and write down your experience',
+  appraise3: 'Please fill in the evaluation content',
+  appraise4: 'Evaluated',
 
   // 底部
-  homebottom:'baseLIVING',
-    //  首页
-  news:'news',
-  activity:'activity',
-  models1:'Appointment time',
+  homebottom: 'baseLIVING',
+  //  首页
+  news: 'news',
+  activity: 'activity',
+  models1: 'Appointment time',
 
-   // 预约表单
-   house1:'apartment',
-   house2:'Time',
-   house3:'name',
-   house4:'Number',
-   house5:'Reservation intention',
-   house6:'Click the label to select quickly, and write down your specific intention',
-   house7:'Reservation intention',
-   house8:'Choosing an apartment',
-   house9:'Selection date',
-   house10:'Your name',
-   house11:'Fill in mobile number',
-   house12:'Fill in SMS verification',
-   house13:'Get SMS verification code',
-   orderform:'submit',
-   man:'male',
-   woman:'female',
-   submitSuccess:'Submit successfully',
-   other1:'Are you sure you want to exit the appointment?',
-   other2:'Edited content will not be saved after exiting',
-   other3:'Make sure to leave',
-   other4:'think about it again',
-   other5:'Successful appointment',
+  // 预约表单
+  house1: 'apartment',
+  house2: 'Time',
+  house3: 'name',
+  house4: 'Number',
+  house5: 'Reservation intention',
+  house6: 'Click the label to select quickly, and write down your specific intention',
+  house7: 'Reservation intention',
+  house8: 'Choosing an apartment',
+  house9: 'Selection date',
+  house10: 'Your name',
+  house11: 'Fill in mobile number',
+  house12: 'Fill in SMS verification',
+  house13: 'Get SMS verification code',
+  orderform: 'submit',
+  man: 'male',
+  woman: 'female',
+  submitSuccess: 'Submit successfully',
+  other1: 'Are you sure you want to exit the appointment?',
+  other2: 'Edited content will not be saved after exiting',
+  other3: 'Make sure to leave',
+  other4: 'think about it again',
+  other5: 'Successful appointment',
 
-  
+
   //  销售预约管理
-  others5:'Unconfirmed',
-  others6:'Room to be seen',
-  others7:'Completed',
-  others8:'Please input mobile number to find the record',
-  others9:'Contact',
-  others10:'Fill in feedback',
-  others11:'Accepting appointment',
-  others12:'Appointment accepted successfully',
-  others13:'No data',
-  others14:'No search results yet',
-  others15:'month',
-  others16:'search',
+  others5: 'Unconfirmed',
+  others6: 'Room to be seen',
+  others7: 'Completed',
+  others8: 'Please input mobile number to find the record',
+  others9: 'Contact',
+  others10: 'Fill in feedback',
+  others11: 'Accepting appointment',
+  others12: 'Appointment accepted successfully',
+  others13: 'No data',
+  others14: 'No search results yet',
+  others15: 'month',
+  others16: 'search',
 
-//  注册按钮
-  s1:'number',
-  s2:'authentication code',
-  s3:'get code',
-  s4:'submit',
-  s5:'enter number',
-  s6:'enter code',
-  s7:'countryCode',
-  
+  //  注册按钮
+  s1: 'number',
+  s2: 'authentication code',
+  s3: 'get code',
+  s4: 'submit',
+  s5: 'enter number',
+  s6: 'enter code',
+  s7: 'countryCode',
 
-    // 精品旅舍
-    hotel1:'Choice area',
-    hotel2:'Apartment',
-    hotel3:'city',
-    hotel4:'area',
+
+  // 精品旅舍
+  hotel1: 'Choice area',
+  hotel2: 'Apartment',
+  hotel3: 'city',
+  hotel4: 'area',
 
   // 精品旅社详情
-  hotelxq1:'project stories',
-  hotelxq2:'Apartment features',
-  hotelxq3:'Apartment display',
-  hotelxq4:'Apartment allocation',
-  hotelxq5:'Surrounding and transportation services',
-  hotelxq6:'Recommended apartment',
-  hotelxq7:'You have made an appointment. Please give us your valuable advice!',
-  hotelxq8:'Recommended apartment',
-  hotelxq9:'Reservation',
-  hotelxq10:'Apartment area',
-  hotelxq11:'area',
+  hotelxq1: 'project stories',
+  hotelxq2: 'Apartment features',
+  hotelxq3: 'Apartment display',
+  hotelxq4: 'Apartment allocation',
+  hotelxq5: 'Surrounding and transportation services',
+  hotelxq6: 'Recommended apartment',
+  hotelxq7: 'You have made an appointment. Please give us your valuable advice!',
+  hotelxq8: 'Recommended apartment',
+  hotelxq9: 'Reservation',
+  hotelxq10: 'Apartment area',
+  hotelxq11: 'area',
 
-     // 预定项目
-  bookName:'project',
-  bookName2:'choose project',
-  bookName3:'date',
-  bookName4:'Guest name',
+  // 预定项目
+  bookName: 'project',
+  bookName2: 'choose project',
+  bookName3: 'date',
+  bookName4: 'Guest name',
 
-   // 看房反馈  
-   feedback1:'Please fill in the feedback information of this visit',
-   feedback2:'status',
-   feedback3:'Feedback',
-   feedback4:'Please fill in the customer house information',
-   feedback5:'Submit feedback',
-   feedback6:'Feedback submitted successfully',
-   feedback7:'project',
-   feedback8:'Appointments',
-   feedback9:'phone number',
-   feedback10:'House date',
-   feedback11:'Reservation intention',
-   feedback20:'House appraisal',
-   feedback12:'Order No.',
-   feedback13:'Order time',
-   feedback14:'copy',
+  // 看房反馈  
+  feedback1: 'Please fill in the feedback information of this visit',
+  feedback2: 'status',
+  feedback3: 'Feedback',
+  feedback4: 'Please fill in the customer house information',
+  feedback5: 'Submit feedback',
+  feedback6: 'Feedback submitted successfully',
+  feedback7: 'project',
+  feedback8: 'Appointments',
+  feedback9: 'phone number',
+  feedback10: 'House date',
+  feedback11: 'Reservation intention',
+  feedback20: 'House appraisal',
+  feedback12: 'Order No.',
+  feedback13: 'Order time',
+  feedback14: 'copy',
 
 
-   feedback15:'Unable to accept this order',
-   feedback16:'Please fill in the reason for refusing to accept this form',
-   feedback17:"If you can't meet the needs of the guests, you can return this order to the headquarters",
- 
-   feedback18:'Feedback on house visit',
-    // 提示弹框
-    show1:'Please fill in the feedback',
-    show2:'Data cannot be empty',
-    show3:'Replication success',
-    show4:'The browser does not support automatic replication',
-    show5:'all',
-    show6:'Please select an item',
-    show7:'Please enter a name',
-    show8:'Please select gender',
-    show9:'Please fill in the correct mobile number',
-    show10:'Please select a booking time',
+  feedback15: 'Unable to accept this order',
+  feedback16: 'Please fill in the reason for refusing to accept this form',
+  feedback17: "If you can't meet the needs of the guests, you can return this order to the headquarters",
 
-    show11:'Please select an appointment time',
-    show12:'Please select the intention label or fill in the intention information',
-   
-    // 城市区号
-   selectCountry: {
-    optionsA: [
-      {
+  feedback18: 'Feedback on house visit',
+  // 提示弹框
+  show1: 'Please fill in the feedback',
+  show2: 'Data cannot be empty',
+  show3: 'Replication success',
+  show4: 'The browser does not support automatic replication',
+  show5: 'all',
+  show6: 'Please select an item',
+  show7: 'Please enter a name',
+  show8: 'Please select gender',
+  show9: 'Please fill in the correct mobile number',
+  show10: 'Please select a booking time',
+
+  show11: 'Please select an appointment time',
+  show12: 'Please select the intention label or fill in the intention information',
+
+  // 城市区号
+  selectCountry: {
+    optionsA: [{
         short: "AD",
         name: "Andorra",
-        id:"Andorra",
+        id: "Andorra",
         tel: "376"
       },
       {
         short: "AE",
         name: "UnitedArabEmirates",
-        id:"UnitedArabEmirates",
+        id: "UnitedArabEmirates",
         tel: "971"
       },
       {
         short: "AF",
         name: "Afghanistan",
         tel: "93",
-        id:'Afghanistan',
+        id: 'Afghanistan',
       },
       {
         short: "AG",
         name: "AntiguaandBarbuda",
         tel: "1268",
-        id:'AntiguaandBarbuda',
+        id: 'AntiguaandBarbuda',
       },
       {
         short: "AI",
         name: "Anguilla",
         tel: "1264",
-        id:'Anguilla'
+        id: 'Anguilla'
       },
       {
         short: "AL",
         name: "Albania",
         tel: "355",
-        id:'Albania',
+        id: 'Albania',
       },
       {
         short: "AM",
         name: "Armenia",
         tel: "374",
-        id:'Armenia',
+        id: 'Armenia',
       },
       {
         short: "AS",
         name: "Ascension",
         tel: "247",
-        id:'Ascension'
+        id: 'Ascension'
       },
       {
         short: "AO",
         name: "Angola",
         tel: "244",
-        id:'Angola'
+        id: 'Angola'
       },
       {
         short: "AR",
         name: "Argentina",
         tel: "54",
-        id:'Argentina'
+        id: 'Argentina'
       },
       {
         short: "AT",
         name: "Austria",
         tel: "43",
-        id:'Austria'
+        id: 'Austria'
       },
       {
         short: "AU",
         name: "Australia",
         tel: "61",
-        id:'Australia'
+        id: 'Australia'
       },
       {
         short: "AZ",
         name: "Azerbaijan",
         tel: "994",
-        id:'Azerbaijan'
+        id: 'Azerbaijan'
       }
       //ff
     ],
-    optionsB: [
-      {
+    optionsB: [{
         short: "BB",
         name: "Barbados",
         tel: "1246",
-        id:'Barbados',
+        id: 'Barbados',
       },
       {
         short: "BD",
         name: "Bangladesh",
         tel: "880",
-        id:'Bangladesh'
+        id: 'Bangladesh'
       },
       {
         short: "BE",
         name: "Belgium",
         tel: "32",
-        id:'Belgium'
+        id: 'Belgium'
       },
       {
         short: "BF",
         name: "Burkina-faso",
         tel: "226",
-        id:'Burkina-faso'
+        id: 'Burkina-faso'
       },
       {
         short: "BG",
         name: "Bulgaria",
         tel: "359",
-        id:'Bulgaria'
+        id: 'Bulgaria'
       },
       {
         short: "BH",
         name: "Bahrain",
         tel: "973",
-        id:'Bahrain'
+        id: 'Bahrain'
       },
       {
         short: "BI",
         name: "Burundi",
         tel: "257",
-        id:'Burundi'
+        id: 'Burundi'
       },
       {
         short: "BJ",
         name: "Benin",
         tel: "229",
-        id:'Benin'
+        id: 'Benin'
       },
       {
         short: "BL",
         name: "Palestine",
         tel: "970",
-        id:'Palestine'
+        id: 'Palestine'
       },
       {
         short: "BM",
         name: "BermudaIs.",
         tel: "1441",
-        id:'BermudaIs'
+        id: 'BermudaIs'
       },
       {
         short: "BN",
         name: "Brunei",
         tel: "673",
-        id:'Brunei'
+        id: 'Brunei'
       },
       {
         short: "BO",
         name: "Bolivia",
         tel: "591",
-        id:'Bolivia',
+        id: 'Bolivia',
       },
       {
         short: "BR",
         name: "Brazil",
         tel: "55",
-        id:'Brazil'
+        id: 'Brazil'
       },
       {
         short: "BS",
         name: "Bahamas",
         tel: "1242",
-        id:'Bahamas'
+        id: 'Bahamas'
       },
       {
         short: "BW",
         name: "Botswana",
         tel: "267",
-        id:'Botswana'
+        id: 'Botswana'
       },
       {
         short: "BY",
         name: "Belarus",
         tel: "375",
-        id:'Belarus'
+        id: 'Belarus'
       },
       {
         short: "BZ",
         name: "Belize",
         tel: "501",
-        id:'Belize'
+        id: 'Belize'
       }
     ],
-    optionsC: [
-      {
+    optionsC: [{
         short: "CA",
         name: "Canada",
         tel: "1",
-        id:'Canada',
+        id: 'Canada',
       },
       {
         short: "C",
         name: "CaymanIs.",
         tel: "1345",
-        id:'CaymanIs.'
+        id: 'CaymanIs.'
       },
       {
         short: "CF",
         name: "CentralAfricanRepublic",
         tel: "236",
-        id:'CentralAfricanRepublic'
+        id: 'CentralAfricanRepublic'
       },
       {
         short: "CG",
         name: "Congo",
         tel: "242",
-        id:'Congo'
+        id: 'Congo'
       },
       {
         short: "CH",
         name: "Switzerland",
         tel: "41",
-        id:'Switzerland'
+        id: 'Switzerland'
       },
       {
         short: "CK",
         name: "CookIs.",
         tel: "682",
-        id:'CookIs.'
+        id: 'CookIs.'
       },
       {
         short: "CL",
         name: "Chile",
         tel: "56",
-        id:'Chile'
+        id: 'Chile'
       },
       {
         short: "CM",
         name: "Cameroon",
         tel: "237",
-        id:'Cameroon'
+        id: 'Cameroon'
       },
       {
         short: "CN",
         name: "China",
         tel: "86",
-        id:'China',
+        id: 'China',
       },
       {
         short: "CO",
         name: "Colombia",
         tel: "57",
-        id:'Colombia'
+        id: 'Colombia'
       },
       {
         short: "CR",
         name: "CostaRica",
         tel: "506",
-        id:'CostaRica'
+        id: 'CostaRica'
       },
       {
         short: "CS",
         name: "Czech",
         tel: "420",
-        id:'Czech'
+        id: 'Czech'
       },
       {
         short: "CU",
         name: "Cuba",
         tel: "53",
-        id:'Cuba'
+        id: 'Cuba'
       },
       {
         short: "CY",
         name: "Cyprus",
         tel: "357",
-        id:'Cyprus'
+        id: 'Cyprus'
       },
       {
         short: "CZ",
         name: "CzechRepublic",
         tel: "420",
-        id:'CzechRepublic'
+        id: 'CzechRepublic'
       }
     ],
-    optionsD: [
-      {
+    optionsD: [{
         short: "DE",
         name: "Germany",
         tel: "49",
-        id:'Germany'
+        id: 'Germany'
       },
       {
         short: "DJ",
         name: "Djibouti",
         tel: "253",
-        id:'Djibouti'
+        id: 'Djibouti'
       },
       {
         short: "DK",
         name: "Denmark",
         tel: "45",
-        id:'Denmark'
+        id: 'Denmark'
       },
       {
         short: "DO",
         name: "DominicaRep.",
         tel: "1890",
-        id:'DominicaRep.'
+        id: 'DominicaRep.'
       },
       {
         short: "DZ",
         name: "Algeria",
         tel: "213",
-        id:'Algeria'
+        id: 'Algeria'
       }
     ],
-    optionsE: [
-      {
+    optionsE: [{
         short: "EC",
         name: "Ecuador",
         tel: "593",
-        id:'Ecuador'
+        id: 'Ecuador'
       },
       {
         short: "EE",
         name: "Estonia",
         tel: "372",
-        id:'Estonia'
+        id: 'Estonia'
       },
       {
         short: "EG",
         name: "Egypt",
         tel: "20",
-        id:'Egypt'
+        id: 'Egypt'
       },
       {
         short: "ES",
         name: "Spain",
         tel: "34",
-        id:'Spain'
+        id: 'Spain'
       },
       {
         short: "ET",
         name: "Ethiopia",
         tel: "251",
-        id:'Ethiopia'
+        id: 'Ethiopia'
       }
     ],
-    optionsF: [
-      {
+    optionsF: [{
         short: "FI",
         name: "Finland",
         tel: "358",
-        id:'Finland'
+        id: 'Finland'
       },
       {
         short: "FJ",
         name: "Fiji",
         tel: "679",
-        id:'Fiji'
+        id: 'Fiji'
       },
       {
         short: "FR",
         name: "France",
         tel: "33",
-        id:'France'
+        id: 'France'
       }
     ],
-    optionsG: [
-      {
+    optionsG: [{
         short: "GA",
         name: "Gabon",
         tel: "241",
-        id:'Gabon'
+        id: 'Gabon'
       },
       {
         short: "GB",
         name: "UnitedKiongdom",
         tel: "44",
-        id:'UnitedKiongdom'
+        id: 'UnitedKiongdom'
       },
       {
         short: "GD",
         name: "Grenada",
         tel: "1809",
-        id:'Grenada',
+        id: 'Grenada',
       },
       {
         short: "GE",
         name: "Georgia",
         tel: "995",
-        id:'Georgia'
+        id: 'Georgia'
       },
       {
         short: "GF",
         name: "FrenchGuiana",
         tel: "594",
-        id:'FrenchGuiana'
+        id: 'FrenchGuiana'
       },
       {
         short: "GH",
         name: "Ghana",
         tel: "233",
-        id:'Ghana'
+        id: 'Ghana'
       },
       {
         short: "GI",
         name: "Gibraltar",
         tel: "350",
-        id:'Gibraltar'
+        id: 'Gibraltar'
       },
       {
         short: "GM",
         name: "Gambia",
         tel: "220",
-        id:'Gambia'
+        id: 'Gambia'
       },
       {
         short: "GN",
         name: "Guinea",
         tel: "224",
-        id:'Guinea',
+        id: 'Guinea',
       },
       {
         short: "GR",
         name: "Greece",
         tel: "30",
-        id:'Greece'
+        id: 'Greece'
       },
       {
         short: "GT",
         name: "Guatemala",
         tel: "502",
-        id:'Guatemala'
+        id: 'Guatemala'
       },
       {
         short: "GU",
@@ -612,8 +605,7 @@ export const m = {
         tel: "592"
       }
     ],
-    optionsH: [
-      {
+    optionsH: [{
         short: "HK",
         name: "Hongkong",
         tel: "852"
@@ -634,8 +626,7 @@ export const m = {
         tel: "36"
       }
     ],
-    optionsI: [
-      {
+    optionsI: [{
         short: "ID",
         name: "Indonesia",
         tel: "62"
@@ -681,8 +672,7 @@ export const m = {
         tel: "225"
       }
     ],
-    optionsJ: [
-      {
+    optionsJ: [{
         short: "JM",
         name: "Jamaica",
         tel: "1876"
@@ -698,8 +688,7 @@ export const m = {
         tel: "81"
       }
     ],
-    optionsK: [
-      {
+    optionsK: [{
         short: "KE",
         name: "Kenya",
         tel: "254"
@@ -740,8 +729,7 @@ export const m = {
         tel: "327"
       }
     ],
-    optionsL: [
-      {
+    optionsL: [{
         short: "LA",
         name: "Laos",
         tel: "856"
@@ -797,8 +785,7 @@ export const m = {
         tel: "218"
       }
     ],
-    optionsM: [
-      {
+    optionsM: [{
         short: "MA",
         name: "Morocco",
         tel: "212"
@@ -889,8 +876,7 @@ export const m = {
         tel: "258"
       }
     ],
-    optionsN: [
-      {
+    optionsN: [{
         short: "NA",
         name: "Namibia",
         tel: "264"
@@ -941,15 +927,12 @@ export const m = {
         tel: "64"
       }
     ],
-    optionsO: [
-      {
-        short: "OM",
-        name: "Oman",
-        tel: "968"
-      }
-    ],
-    optionsP: [
-      {
+    optionsO: [{
+      short: "OM",
+      name: "Oman",
+      tel: "968"
+    }],
+    optionsP: [{
         short: "PA",
         name: "Panama",
         tel: "507"
@@ -1000,15 +983,12 @@ export const m = {
         tel: "595"
       }
     ],
-    optionsQ: [
-      {
-        short: "QA",
-        name: "Qatar",
-        tel: "974"
-      }
-    ],
-    optionsR: [
-      {
+    optionsQ: [{
+      short: "QA",
+      name: "Qatar",
+      tel: "974"
+    }],
+    optionsR: [{
         short: "R",
         name: "Reunion",
         tel: "262"
@@ -1024,8 +1004,7 @@ export const m = {
         tel: "7"
       }
     ],
-    optionsS: [
-      {
+    optionsS: [{
         short: "SA",
         name: "SaudiArabia",
         tel: "966"
@@ -1120,8 +1099,7 @@ export const m = {
         tel: "268"
       }
     ],
-    optionsT: [
-      {
+    optionsT: [{
         short: "TD",
         name: "Chad",
         tel: "235"
@@ -1177,8 +1155,7 @@ export const m = {
         tel: "255"
       }
     ],
-    optionsU: [
-      {
+    optionsU: [{
         short: "UA",
         name: "Ukraine",
         tel: "380"
@@ -1204,8 +1181,7 @@ export const m = {
         tel: "233"
       }
     ],
-    optionsV: [
-      {
+    optionsV: [{
         short: "VC",
         name: "SaintVincent",
         tel: "1784"
@@ -1223,8 +1199,7 @@ export const m = {
     ],
     optionsW: [],
     optionsX: [],
-    optionsY: [
-      {
+    optionsY: [{
         short: "YE",
         name: "Yemen",
         tel: "967"
@@ -1236,8 +1211,7 @@ export const m = {
       }
     ],
 
-    optionsZ: [
-      {
+    optionsZ: [{
         short: "ZA",
         name: "SouthAfrica",
         tel: "27"
@@ -1258,6 +1232,13 @@ export const m = {
         tel: "263"
       }
     ]
+  },
+  // 地图
+  map: {
+    open: 'open mobile app for better experience',
+    jiudian: 'Hotel',
+    meishi: 'Delicacy',
+    jingdian: 'Scenic ',
+    gouwu: 'Shopping'
   }
-  
 }

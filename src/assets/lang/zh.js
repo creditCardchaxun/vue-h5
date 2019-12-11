@@ -1,183 +1,182 @@
 export const m = {
-    //页面标题
-    news:'新闻',
-    news1:'新闻详情',
-    news2:'活动',
-    news3:'活动详情',
-    news4:'联系我们',
-    news5:'个人中心',
-    news6:'我的预约',
-    news7:'预约看房',
-    news8:'预约详情',
-    news9:'填写评价',
-    news10:'精品居舍',
-    news11:'精品居舍详情',
-    news12:'预订入住',
-    news13:'预约管理',
-    news14:'看房反馈',
-    news15:'反馈详情',
-    news16:'首页',
+  //页面标题
+  news: '新闻',
+  news1: '新闻详情',
+  news2: '活动',
+  news3: '活动详情',
+  news4: '联系我们',
+  news5: '个人中心',
+  news6: '我的预约',
+  news7: '预约看房',
+  news8: '预约详情',
+  news9: '填写评价',
+  news10: '精品居舍',
+  news11: '精品居舍详情',
+  news12: '预订入住',
+  news13: '预约管理',
+  news14: '看房反馈',
+  news15: '反馈详情',
+  news16: '首页',
 
-   // 首页
-   home:'首页',
+  // 首页
+  home: '首页',
   //  centerName:'姓名',
-   ischeck:'未验证手机号',
-   changePhone:'更换手机号',
-   manage:'预约管理',
-   myorder:'我的预约',
-   home1:'精品居舍 | baseLIVING',
-   home2:'base新闻',
-   home3:'base活动',
-   home4:'关于我们',
-   home5:'联系我们',
-   orderhouse:'预约看房',
-   watch:'即将开始',
-   watch2:'您已看过',
-   server:'在线客服',
+  ischeck: '未验证手机号',
+  changePhone: '更换手机号',
+  manage: '预约管理',
+  myorder: '我的预约',
+  home1: '精品居舍 | baseLIVING',
+  home2: 'base新闻',
+  home3: 'base活动',
+  home4: '关于我们',
+  home5: '联系我们',
+  orderhouse: '预约看房',
+  watch: '即将开始',
+  watch2: '您已看过',
+  server: '在线客服',
 
   //  客户预约列表
-  watch3:'预约看房日期:',
-  watch4:'查看地图',
-  watch5:'您还没预约订单,快去预约吧',
-  watch6:'立即评价',
-  watch7:'点击去预约',
+  watch3: '预约看房日期:',
+  watch4: '查看地图',
+  watch5: '您还没预约订单,快去预约吧',
+  watch6: '立即评价',
+  watch7: '点击去预约',
 
   // 客户预约详情
-  bookdetail1:'感谢光临',
-  bookdetail2:'您的评价',
-  bookdetail3:'联系客服',
+  bookdetail1: '感谢光临',
+  bookdetail2: '您的评价',
+  bookdetail3: '联系客服',
 
   // 客户评价
-  appraise1:'您对本次看房满意吗',
-  appraise2:'点击标签快速评价，还可以写下您的体验感受',
-  appraise3:'请填写评价内容',
-  appraise4:'已评价完成',
+  appraise1: '您对本次看房满意吗',
+  appraise2: '点击标签快速评价，还可以写下您的体验感受',
+  appraise3: '请填写评价内容',
+  appraise4: '已评价完成',
 
   //底部
-  homebottom:'精品居舍',
+  homebottom: '精品居舍',
 
   //  首页
-   news:'新闻',
-   activity:'活动',
-   models1:'预约看房时间',
- 
+  news: '新闻',
+  activity: '活动',
+  models1: '预约看房时间',
+
   // 预约表单
-   house1:'公寓',
-   house2:'预约时间',
-   house3:'姓名',
-   house4:'手机号',
-   house5:'预约意向',
-   house6:'点击标签快速选择，还可以写下您的具体意向',
-   house7:'预约意向',
-   house8:'选择公寓',
-   house9:'选择日期',
-   house10:'您的姓名',
-   house11:'填写手机号',
+  house1: '公寓',
+  house2: '预约时间',
+  house3: '姓名',
+  house4: '手机号',
+  house5: '预约意向',
+  house6: '点击标签快速选择，还可以写下您的具体意向',
+  house7: '预约意向',
+  house8: '选择公寓',
+  house9: '选择日期',
+  house10: '您的姓名',
+  house11: '填写手机号',
   //  house12:'填写短信验证',
   //  house13:'获取短信验证码',
-   orderform:'提交',
-   man:'男士',
-   woman:'女士',
-   submitSuccess:'提交成功',
+  orderform: '提交',
+  man: '男士',
+  woman: '女士',
+  submitSuccess: '提交成功',
 
-   other1:'确定要退出预约?',
-   other2:'退出后编辑过得内容将不保存',
-   other3:'确定离开',
-   other4:'我再想想',
-   other5:'预约成功',
-  
+  other1: '确定要退出预约?',
+  other2: '退出后编辑过得内容将不保存',
+  other3: '确定离开',
+  other4: '我再想想',
+  other5: '预约成功',
+
   //  销售预约管理
-  others5:'未确认',
-  others6:'待看房',
-  others7:'已完成',
-  others8:'请输入客户手机号查找记录',
-  others9:'联系客人',
-  others10:'填写反馈',
-  others11:'接受预约',
-  others12:'接受预约成功',
-  others13:'暂无数据',
-  others14:'暂无搜索结果',
-  others15:'月',
-  others16:'搜索',
-  
+  others5: '未确认',
+  others6: '待看房',
+  others7: '已完成',
+  others8: '请输入客户手机号查找记录',
+  others9: '联系客人',
+  others10: '填写反馈',
+  others11: '接受预约',
+  others12: '接受预约成功',
+  others13: '暂无数据',
+  others14: '暂无搜索结果',
+  others15: '月',
+  others16: '搜索',
+
   //  注册按钮
-  s1:'手机号',
-  s2:'短信验证码',
-  s3:'获取验证码',
-  s4:'提交',
-  s5:'请输入手机号',
-  s6:'输入短信验证码',
-  s7:'国家/区号',
+  s1: '手机号',
+  s2: '短信验证码',
+  s3: '获取验证码',
+  s4: '提交',
+  s5: '请输入手机号',
+  s6: '输入短信验证码',
+  s7: '国家/区号',
 
 
   // 精品旅舍
-  hotel1:'选择地区',
-  hotel2:'户型',
-  hotel3:'市',
-  hotel4:'区',
+  hotel1: '选择地区',
+  hotel2: '户型',
+  hotel3: '市',
+  hotel4: '区',
 
   // 精品旅社详情
-  hotelxq1:'查看项目故事',
-  hotelxq2:'公寓特色',
-  hotelxq3:'户型展示',
-  hotelxq4:'公寓配置',
-  hotelxq5:'周围及交通服务',
-  hotelxq6:'推荐公寓',
-  hotelxq7:'您已预约过了，请给我们留下宝贵意见吧！',
-  hotelxq8:'推荐公寓',
-  hotelxq9:'预订入住',
-  hotelxq10:'户型面积',
-  hotelxq11:'面积',
+  hotelxq1: '查看项目故事',
+  hotelxq2: '公寓特色',
+  hotelxq3: '户型展示',
+  hotelxq4: '公寓配置',
+  hotelxq5: '周围及交通服务',
+  hotelxq6: '推荐公寓',
+  hotelxq7: '您已预约过了，请给我们留下宝贵意见吧！',
+  hotelxq8: '推荐公寓',
+  hotelxq9: '预订入住',
+  hotelxq10: '户型面积',
+  hotelxq11: '面积',
 
 
   // 预定项目
-  bookName:'项目',
-  bookName2:'请选择项目',
-  bookName3:'入住日期',
-  bookName4:'住客姓名',
+  bookName: '项目',
+  bookName2: '请选择项目',
+  bookName3: '入住日期',
+  bookName4: '住客姓名',
 
   // 看房反馈  预约详情  反馈详情
-  feedback1:'请填写本次看房反馈信息',
-  feedback2:'状态',
-  feedback3:'反馈意见',
-  feedback4:'请填写客户看房信息',
-  feedback5:'提交反馈',
-  feedback6:'反馈提交成功',
-  feedback7:'项目',
-  feedback8:'预约人',
-  feedback9:'手机号',
-  feedback10:'看房日期',
-  feedback11:'预约意向',
-  feedback20:'看房评价',
-  feedback12:'预约单号',
-  feedback13:'下单时间',
-  feedback14:'复制',
+  feedback1: '请填写本次看房反馈信息',
+  feedback2: '状态',
+  feedback3: '反馈意见',
+  feedback4: '请填写客户看房信息',
+  feedback5: '提交反馈',
+  feedback6: '反馈提交成功',
+  feedback7: '项目',
+  feedback8: '预约人',
+  feedback9: '手机号',
+  feedback10: '看房日期',
+  feedback11: '预约意向',
+  feedback20: '看房评价',
+  feedback12: '预约单号',
+  feedback13: '下单时间',
+  feedback14: '复制',
 
-  feedback15:'无法受理此单',
-  feedback16:'请填写拒绝受理此单的原因',
-  feedback17:'如无法满足客人的看房需求，可将此订单退回总部',
+  feedback15: '无法受理此单',
+  feedback16: '请填写拒绝受理此单的原因',
+  feedback17: '如无法满足客人的看房需求，可将此订单退回总部',
 
-  feedback18:'看房反馈信息',
+  feedback18: '看房反馈信息',
 
   // 信息提示弹框
-  show1:'请填写反馈信息',
-  show2:'数据不能为空',
-  show3:'复制成功',
-  show4:'该浏览器不支持自动复制',
-  show5:'全部',
-  show6:'请选择项目',
-  show7:'请输入姓名',
-  show8:'请选择性别',
-  show9:'请填写正确的手机号码',
-  show10:'请选择预订时间',
+  show1: '请填写反馈信息',
+  show2: '数据不能为空',
+  show3: '复制成功',
+  show4: '该浏览器不支持自动复制',
+  show5: '全部',
+  show6: '请选择项目',
+  show7: '请输入姓名',
+  show8: '请选择性别',
+  show9: '请填写正确的手机号码',
+  show10: '请选择预订时间',
 
-  show11:'请选择预约时间',
-  show12:'请选择意向标签或填写意向信息',
+  show11: '请选择预约时间',
+  show12: '请选择意向标签或填写意向信息',
 
   // 国际区号
   selectCountry: {
-    optionsA: [
-      {
+    optionsA: [{
         short: "AD",
         name: "安道尔共和国",
         id: "Andorra",
@@ -257,8 +256,7 @@ export const m = {
       }
       //ff
     ],
-    optionsB: [
-      {
+    optionsB: [{
         short: "BB",
         name: "巴巴多斯",
         id: "Barbados",
@@ -361,8 +359,7 @@ export const m = {
         tel: "501"
       }
     ],
-    optionsC: [
-      {
+    optionsC: [{
         short: "CA",
         name: "加拿大",
         id: "Canada",
@@ -453,8 +450,7 @@ export const m = {
         tel: "420"
       }
     ],
-    optionsD: [
-      {
+    optionsD: [{
         short: "DE",
         name: "德国",
         id: "Germany",
@@ -485,8 +481,7 @@ export const m = {
         tel: "213"
       }
     ],
-    optionsE: [
-      {
+    optionsE: [{
         short: "EC",
         name: "厄瓜多尔",
         id: "Ecuador",
@@ -517,8 +512,7 @@ export const m = {
         tel: "251"
       }
     ],
-    optionsF: [
-      {
+    optionsF: [{
         short: "FI",
         name: "芬兰",
         id: "Finland",
@@ -537,8 +531,7 @@ export const m = {
         tel: "33"
       }
     ],
-    optionsG: [
-      {
+    optionsG: [{
         short: "GA",
         name: "加蓬",
         id: "Gabon",
@@ -617,8 +610,7 @@ export const m = {
         tel: "592"
       }
     ],
-    optionsH: [
-      {
+    optionsH: [{
         short: "HK",
         name: "香港特别行政区",
         id: "Hongkong",
@@ -643,8 +635,7 @@ export const m = {
         tel: "36"
       }
     ],
-    optionsI: [
-      {
+    optionsI: [{
         short: "ID",
         name: "印度尼西亚",
         id: "Indonesia",
@@ -699,8 +690,7 @@ export const m = {
         tel: "225"
       }
     ],
-    optionsJ: [
-      {
+    optionsJ: [{
         short: "JM",
         name: "牙买加",
         id: "Jamaica",
@@ -719,8 +709,7 @@ export const m = {
         tel: "81"
       }
     ],
-    optionsK: [
-      {
+    optionsK: [{
         short: "KE",
         name: "肯尼亚",
         id: "Kenya",
@@ -769,8 +758,7 @@ export const m = {
         tel: "327"
       }
     ],
-    optionsL: [
-      {
+    optionsL: [{
         short: "LA",
         name: "老挝",
         id: "Laos",
@@ -837,8 +825,7 @@ export const m = {
         tel: "218"
       }
     ],
-    optionsM: [
-      {
+    optionsM: [{
         short: "MA",
         name: "摩洛哥",
         id: "Morocco",
@@ -947,8 +934,7 @@ export const m = {
         tel: "258"
       }
     ],
-    optionsN: [
-      {
+    optionsN: [{
         short: "NA",
         name: "纳米比亚",
         id: "Namibia",
@@ -1009,16 +995,13 @@ export const m = {
         tel: "64"
       }
     ],
-    optionsO: [
-      {
-        short: "OM",
-        name: "阿曼",
-        id: "Oman",
-        tel: "968"
-      }
-    ],
-    optionsP: [
-      {
+    optionsO: [{
+      short: "OM",
+      name: "阿曼",
+      id: "Oman",
+      tel: "968"
+    }],
+    optionsP: [{
         short: "PA",
         name: "巴拿马",
         id: "Panama",
@@ -1079,16 +1062,13 @@ export const m = {
         tel: "595"
       }
     ],
-    optionsQ: [
-      {
-        short: "QA",
-        name: "卡塔尔",
-        id: "Qatar",
-        tel: "974"
-      }
-    ],
-    optionsR: [
-      {
+    optionsQ: [{
+      short: "QA",
+      name: "卡塔尔",
+      id: "Qatar",
+      tel: "974"
+    }],
+    optionsR: [{
         short: "R",
         name: "留尼旺",
         id: "Reunion",
@@ -1107,8 +1087,7 @@ export const m = {
         tel: "7"
       }
     ],
-    optionsS: [
-      {
+    optionsS: [{
         short: "SA",
         name: "沙特阿拉伯",
         id: "SaudiArabia",
@@ -1223,8 +1202,7 @@ export const m = {
         tel: "268"
       }
     ],
-    optionsT: [
-      {
+    optionsT: [{
         short: "TD",
         name: "乍得",
         id: "Chad",
@@ -1291,8 +1269,7 @@ export const m = {
         tel: "255"
       }
     ],
-    optionsU: [
-      {
+    optionsU: [{
         short: "UA",
         name: "乌克兰",
         id: "Ukraine",
@@ -1323,8 +1300,7 @@ export const m = {
         tel: "233"
       }
     ],
-    optionsV: [
-      {
+    optionsV: [{
         short: "VC",
         name: "圣文森特岛",
         id: "SaintVincent",
@@ -1345,8 +1321,7 @@ export const m = {
     ],
     optionsW: [],
     optionsX: [],
-    optionsY: [
-      {
+    optionsY: [{
         short: "YE",
         name: "也门",
         id: "Yemen",
@@ -1360,8 +1335,7 @@ export const m = {
       }
     ],
 
-    optionsZ: [
-      {
+    optionsZ: [{
         short: "ZA",
         name: "南非",
         id: "SouthAfrica",
@@ -1387,6 +1361,13 @@ export const m = {
         PY: "JBBW",
       }
     ]
+  },
+  // 地图
+  map: {
+    open: '打开手机APP以获得更好的体验',
+    jiudian: '酒店',
+    meishi: '美食',
+    jingdian: '景点',
+    gouwu: '购物'
   }
-  
 }

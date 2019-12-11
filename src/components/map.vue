@@ -52,12 +52,12 @@
           </div>
         </div>
         <div v-show="!fullScreen">
-          <div class="tip" @click="openapp">打开手机APP以获得更好的体验</div>
+          <div class="tip" @click="openapp">{{$t('m.map.open')}}</div>
           <ul class="recommend">
-            <li>酒店</li>
-            <li>美食</li>
-            <li>景点</li>
-            <li>购物</li>
+            <li data-type="酒店">{{$t('m.map.jiudian')}}</li>
+            <li data-type="美食">{{$t('m.map.meishi')}}</li>
+            <li data-type="景点">{{$t('m.map.jingdian')}}</li>
+            <li data-type="购物">{{$t('m.map.gouwu')}}</li>
           </ul>
         </div>
       </div>
@@ -171,7 +171,7 @@ export default {
       _this.mapCase = new AMap.Map('container', {
         resizeEnable: true,
         center: _this.mapCenter, //初始化地图中心点 
-        zoom: 11, //地图显示的缩放级别
+        zoom: 10, //地图显示的缩放级别
         lang: 'zh_cn',
         mapStyle: 'amap://styles/whitesmoke', //设置地图样式 远山黛.
         zoomEnable: true,
@@ -191,7 +191,7 @@ export default {
         icon: new AMap.Icon({
           image: require('../assets/images/markbig.png'),
           imageSize: new AMap.Size(19, 26),
-        }) 
+        })
       });
 
       //鼠标点击marker弹出自定义的信息窗体
@@ -599,7 +599,8 @@ export default {
           _this.addmarker(_this.selectProject);
           $(this).siblings("li").removeAttr('class');
           $(this).addClass("current_li");
-          var search = $(this).html();
+          // var search = $(this).html();
+          var search = $(this).data("type")
           var distance = 1000
           if (search == "美食") search = "餐饮";
           if (search == "购物") search = "超级市场";
@@ -680,6 +681,7 @@ export default {
   z-index: 999;
 }
 .maps {
+  background: white;
   .main-container {
     position: relative;
     width: 100%;
