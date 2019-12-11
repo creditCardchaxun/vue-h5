@@ -642,6 +642,15 @@ export default {
     closeInfo(index) {
       this.infoWindow[index].close()
     }
+  },
+  watch:{
+    '$store.state.lang':function (newVal,oldVal) { 
+      if (newVal === 'en-US') {
+        $('.info-button').text('到这里去')
+      }else{
+        $('.info-button').text('Go here')
+      }
+    }
   }
 }
 </script>
@@ -718,7 +727,7 @@ export default {
     // bottom: 0;
     // left: 0;
     width: 6.5rem;
-    height: 3.5rem;
+    height: 4.3rem;
     border-radius: 10px;
     padding-left: 0.4rem;
     padding-right: 0.4rem;
@@ -735,8 +744,8 @@ export default {
 
     h1 {
       font-size: 0.5rem;
-      padding-top: 0.6rem;
-      padding-bottom: 0.4rem;
+      padding-top: 0.8rem;
+      padding-bottom: 0.6rem;
       font-weight: bold;
     }
 
@@ -744,8 +753,9 @@ export default {
       font-size: 0.4rem;
       padding-left: 0.4rem;
       font-size: 0.4rem;
-      background: url("../assets/images/dingwei3.png") no-repeat left;
+      background: url("../assets/images/dingwei3.png") no-repeat top left ;
       background-size: 0.28rem auto;
+      line-height: 1.2;
     }
 
     .close {
