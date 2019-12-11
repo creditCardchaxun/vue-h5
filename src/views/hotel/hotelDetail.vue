@@ -97,7 +97,7 @@
         </van-tabs>
       </div>
 
-      <div class="desc" id="maps">
+      <div class="desc" id="maps" ref="tab1">
         <h3 style="margin-top:1.2rem;">{{$t('m.hotelxq4')}}</h3>
         <div class="toall-ul">
           <ul
@@ -276,12 +276,15 @@ export default {
     console.log("beforeRouteEnter");
     let id = to.params.id;
     let status = to.params.status;
-    console.log(status);
+    console.log('status');
+    console.log( status );
     interfaces.getdetailhouse(id).then(function(res) {
       next(vm => {
         vm.projectdetail = res;
         vm.detailId = res.id;
         var div = vm.$refs.tab1;
+        console.log('div');
+        console.log(div);
         if (from.name == "myOrder") {
           if (div) {
             setTimeout(function() {
