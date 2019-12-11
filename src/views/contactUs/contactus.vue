@@ -39,6 +39,7 @@
         <van-tab :title="$t('m.home4')">
           <div class="about-01" :ref="'brandHeight'+index" v-for='(item,index) in about' :key='index'>
             <div class="brand-01" :class='{activeHeight:about[index].showMore1}'>
+                 {{about[index].showMore1}}
                <h2 style='font-weight:bold;'>{{item.title}}</h2>
                <p v-html='item.content'>{{item.content}}</p>
             </div>
@@ -213,7 +214,7 @@ export default {
           if(indexs==index){
             console.log(indexs,index)
           this.about[index].showMore1 =!this.about[index].showMore1;
-          this.showMore1=this.about[index].showMore1
+          // this.showMore1=this.about[index].showMore1
            console.log(this.about[index].showMore1)
           // this.showMore1 =!this.about[index].showMore1;
           //  if(this.showMore1==true){

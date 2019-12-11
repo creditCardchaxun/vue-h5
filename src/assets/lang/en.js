@@ -54,6 +54,8 @@ export const m = {
 
   // 底部
   homebottom: 'baseLIVING',
+  homebottom2:'News',
+  homebottom3:'Event',
   //  首页
   news: 'news',
   activity: 'activity',
