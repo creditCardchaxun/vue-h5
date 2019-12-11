@@ -753,6 +753,7 @@ export default {
   overflow: hidden;
   padding-top: 1.51rem;
   padding-bottom: 0 !important;
+  // margin: 0 auto;
 }
 .map .alltag {
   display: flex;
