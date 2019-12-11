@@ -521,7 +521,7 @@ export default {
   width: 100%;
   height: 7.71rem;
   position: relative;
-  padding-top: 0.2rem;
+  // padding-top: 0.2rem;
 }
 .banner-img img {
   width: 100%;

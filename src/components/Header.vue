@@ -124,7 +124,7 @@ export default {
   /* margin:0 0 0 0.55rem; */
 }
 .empty {
-  height: 1.63rem;
+  height: 1.3rem;
 }
 .header .logo {
   width: 1.54rem;
