@@ -1,7 +1,7 @@
 <template>
   <div class="star">
     <!-- <img src='../../assets/images/jp.png'/> -->
-    <aheaders status="2"></aheaders>
+    <aheaders status="2" :showLan='true'></aheaders>
     <div class="top-hotel">
       <img src="../../assets/images/hotel-01.jpg" alt />
     </div>
@@ -20,30 +20,33 @@
             <van-icon name="arrow-up" v-show="toshowicon2" />
           </div>
         </div>
+        <!-- 市区标题 -->
         <div class="s2" v-show="toshowCity">
           <div class="s3">
             <span style="border-right: 1px solid #ddd;">{{$t('m.hotel3')}}</span>
             <span>{{$t('m.hotel4')}}</span>
           </div>
-          <div class="s4">
+
+          <!-- 城市筛选 -->
+          <div class="s4" >
             <div class="left">
-              <div class="city3" @click="togetAll" :class="{active:currentIndex==-1}">
+              <!-- <div class="city3" @click="togetAll" :class="{active:currentIndex==-1}">
                 <span>{{$t('m.show5')}}</span>
-              </div>
+              </div> -->
               <div
                 class="city3"
                 @click="city2(index,item)"
                 :class="{active:index==currentIndex}"
                 v-for="(item,index) in cityAll"
                 :key="index"
-              >
+                >
                 <span>{{item.name}}</span>
               </div>
               <!-- <span @click='getListhouses({})'> 全部</span>  -->
             </div>
             <div class="right" :class="{active:currentIndex!=-1}" v-show="tochina">
               <ul class="nihao">
-                <li @click="city3('全部',-1)">{{$t('m.show5')}}</li>
+                <!-- <li @click="city3('全部',-1)">{{$t('m.show5')}}</li> -->
                 <li
                   v-for="(i,ins) in alllistss"
                   :class="{active:ins===currentIndex3}"
@@ -54,6 +57,8 @@
             </div>
           </div>
         </div>
+
+        <!-- 户型标题 筛选 -->
         <div class="s2" v-show="toshowtype">
           <div class="right">
             <ul>
@@ -64,11 +69,12 @@
                 :key="index"
                 :class="{active:index==currentIndex2}"
               >{{item.title}}</li>
-              <!-- <li @click="getName(2,'二居')">二居</li> -->
             </ul>
           </div>
         </div>
       </div>
+
+      <!-- 项目列表数据 -->
       <div class="hotel_main" v-if="alllist.length>0">
         <ul>
           <li v-for="(item,index) in alllist" :key="index">
@@ -95,9 +101,9 @@
         class="nolist"
         style="margin:0.8rem 0;font-size:0.3rem;text-align:center;"
       >{{$t('m.others13')}}</div>
-      <div class="index-more" v-show="alllist.length>6">
+      <div class="index-more" v-if="showMore" @click='toloadMore' >
         <span>more</span>
-        <img src="../../assets/images/more-icon.jpg" alt />
+        <img src="../../assets/images/more-icon.jpg" alt/>
       </div>
     </div>
     <afooter></afooter>
@@ -148,8 +154,11 @@ export default {
       toshowicon: false,
       toshowicon2: false,
       status: '',
-      tochina: false
-
+      tochina: false,
+      showshengfen:true,
+       showMore:false,
+        page:1,
+        hideMore:true
 
     }
   },
@@ -170,39 +179,57 @@ export default {
         this.getHouseType = res
       })
     },
+    // 城市筛选
     city2(index, item) {
-      this.tochina = true;
+       let city
+       let area
+       let type
+       if(index!=0){
+       this.tochina=true;
+       city = item.linkageid
+       area = this.idsarea
+       type = this.houseId
+        }else if(index==0){
+          this.tochina=false
+          this.showshengfen=false;
+          this.toshowicon = false;
+          this.toshowCity=!this.toshowCity
+          city = ''
+          area = ''
+          type = ''
+       }
+      // this.tochina = true;
       this.alllistss = item.area
       this.cityName = item.name
       this.currentIndex = index
       this.currentIndex3 = -1
       this.cityid = item.linkageid
-      let city = item.linkageid
-      let area = this.idsarea
-      let type = this.houseId
+      // let city = item.linkageid
+      // let area = this.idsarea
+      // let type = this.houseId
       let data = { city, area, type }
       this.getcity(data)
     },
-    city3(title,index) {
-      // let city = ''
-      // let area = ''
-      // let type = ''
-    console.log(this.cityid,'全部1')
-    console.log(this.idsarea,'全部2')
-    console.log(this.houseId,'全部3')
-       if(this.idsarea!=''){
-         this.idsarea=''
-       }
-       this.cityName = title
-       this.currentIndex=index
-      this.toshowCity = false
-      this.toshowicon = false
-      let city = this.cityid
-      let area = this.idsarea
-      let type = this.houseId
-      let data = { city, area, type }
-      this.getcity(data)
-    },
+    // city3(title,index) {
+    //   // let city = ''
+    //   // let area = ''
+    //   // let type = ''
+    // console.log(this.cityid,'全部1')
+    // console.log(this.idsarea,'全部2')
+    // console.log(this.houseId,'全部3')
+    //    if(this.idsarea!=''){
+    //      this.idsarea=''
+    //    }
+    //    this.cityName = title
+    //    this.currentIndex=index
+    //   this.toshowCity = false
+    //   this.toshowicon = false
+    //   let city = this.cityid
+    //   let area = this.idsarea
+    //   let type = this.houseId
+    //   let data = { city, area, type }
+    //   this.getcity(data)
+    // },
     // 获取地区
     getcity(data) {
       interfaces.getListhouseAll(data).then((res) => {
@@ -212,29 +239,36 @@ export default {
     },
 
     // 城市获取全部
-    togetAll() {
-      this.cityName = this.$i18n.t('m.show5')
-      this.currentIndex = -1
-      this.tochina = false
-      let data = {};
-      this.getListhouses(data)
-      this.toshowCity = false
-      this.toshowicon = false
-    },
-
+    // togetAll() {
+    //   this.cityName = this.$i18n.t('m.show5')
+    //   this.currentIndex = -1
+    //   this.tochina = false
+    //   let data = {};
+    //   this.getListhouses(data)
+    //   this.toshowCity = false
+    //   this.toshowicon = false
+    // },
+  //  房屋类型
     typeHouse() {
       this.toshowtype = !this.toshowtype
       this.toshowicon2 = !this.toshowicon2
       this.toshowCity = false
     },
+    // 点击地区进行筛选
     getname(name, id, index) {
+      let area
+      if(index==0){
+         area =''
+      }else{
+        area = id
+      }
       this.currentIndex3= index
       this.cityName = name,
         this.idsarea = id
       this.toshowCity = false
       this.toshowicon = false
       let city = this.cityid
-      let area = id
+     
       let type = this.houseId
       let data = { city, area, type }
       //   this.getListhouses(data)
@@ -243,6 +277,7 @@ export default {
         console.log(res)
       })
     },
+    // 点击户型进行筛选
     getName(id, title, index) {
       this.currentIndex2 = index
       this.typehousename = title
@@ -253,22 +288,36 @@ export default {
       let area = this.idsarea
       let type = id
       let data = { type, city, area }
-
       interfaces.getListhouseAll(data).then((res) => {
         this.alllist = res
-        console.log(res)
       })
     },
+    // 获取房屋数据
     getListhouses(data) {
       interfaces.getListhouseAll(data).then((res) => {
         this.alllist = res
       })
     },
+    // 获取城市数据
     getcitys() {
       interfaces.getcity().then((res) => {
         this.cityAll = res
         console.log(res)
-      })
+       })
+    },
+    toloadMore(){
+       this.hideMore=!this.hideMore
+       this.page+=1;
+          interfaces.getListhouseAll({
+                    pagesize:this.page //请求页数
+                })
+                .then(res => {
+                    this.alllist = this.alllist.concat(res); //将请求回来的数据和上一次进行组合
+                })
+                // .catch(err => {
+                //     this.$toast.fail("系统开小差,请重试");
+                // });
+      
     },
 
     tohideModel() {
@@ -306,6 +355,10 @@ export default {
     interfaces.getListhouseAll(data).then(function (res) {
       next(vm => {
         vm.alllist = res
+        console.log(res.length,'liebiao')
+         if(res.length>=8){
+           vm.showMore=true
+         }
         vm.getcitys()
         vm.gethouseTypes()
       })
@@ -577,4 +630,5 @@ export default {
 .active span {
   border-left: 0.15rem solid #3c5896;
 }
+// .activeIcon{transform: rotate(180deg);}
 </style>

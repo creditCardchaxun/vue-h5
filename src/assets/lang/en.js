@@ -26,11 +26,11 @@ export const m = {
   manage:'Management',
   myorder:'My Bookings',
   home1:'baseLIVING',
-  home2:'base News',
-  home3:'base activity',
-  home4:'about base',
-  home5:'connect us',
-  orderhouse:'Order table',
+  home2:'News',
+  home3:'Event',
+  home4:'About base',
+  home5:'Contact us',
+  orderhouse:'Book',
   watch:'About to begin',
   watch2:'You have seen',
   server:'service',
@@ -54,9 +54,12 @@ export const m = {
 
   // 底部
   homebottom:'baseLIVING',
+  homebottom2:'News',
+  homebottom3:'Event',
+
     //  首页
-  news:'news',
-  activity:'activity',
+  news:'News',
+  activity:'Event',
   models1:'Appointment time',
 
    // 预约表单
@@ -68,7 +71,7 @@ export const m = {
    house6:'Click the label to select quickly, and write down your specific intention',
    house7:'Reservation intention',
    house8:'Choosing an apartment',
-   house9:'Selection date',
+   house9:'Select date',
    house10:'Your name',
    house11:'Fill in mobile number',
    house12:'Fill in SMS verification',

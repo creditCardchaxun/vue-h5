@@ -1,6 +1,6 @@
 <template>
   <div class="order-detail">
-    <aheaders status="3" @toback="toreplace"></aheaders>
+    <aheaders status="3" @toback="toreplace" :showLan='true'></aheaders>
     <!-- 项目信息 -->
     <div class="order-detail01">
       <div class="order-left" style="position:relative;">

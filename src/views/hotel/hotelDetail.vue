@@ -1,6 +1,6 @@
 <template>
   <div class="hotel-detail">
-    <aheaders status="3" @toback="goHome"></aheaders>
+    <aheaders status="3" @toback="goHome" :showLan='true'></aheaders>
     <div class="banner-img">
       <div class="banner_top" @click="showStory">
         <em>{{$t('m.hotelxq1')}}</em>
@@ -186,16 +186,13 @@
       <div class="bottom-phone">
         <van-icon name="phone-o" />
       </div>
-      <button @click="toServe(projectdetail.id,projectdetail.project_name)">
-        <!-- <router-link :to="{name:'myReserve', params:{id:projectdetail.id,name:projectdetail.project_name}}"> -->
+      <button @click="toServe(projectdetail.id,projectdetail.project_name)" v-if='projectdetail.xiecheng_id'>
         {{$t('m.hotelxq9')}}
-        <!-- </router-link> -->
       </button>
-      <button class="s1" @click="toshowModels(projectdetail.id,projectdetail.project_name)">
-        <!-- <router-link :to="{path:'/orderForm'}">  -->
+      <button class="s1" :class='{otherClass:!projectdetail.xiecheng_id}' @click="toshowModels(projectdetail.id,projectdetail.project_name)">
         {{$t('m.orderhouse')}}
-        <!-- </router-link> -->
       </button>
+
     </div>
 
     <submitBtn
@@ -378,7 +375,7 @@ export default {
     },
     toMap(e) {
       document.getElementById("maps").scrollIntoView();
-    },
+     },
     toloadMore() {
       this.showHeight = !this.showHeight;
       if (this.showHeight == true) {
@@ -944,4 +941,5 @@ export default {
   overflow: visible;
   transition: 0.4s ease;
 }
+.bottom-nav .otherClass{width:7.0rem;}
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="bookings" id='bookings'>
-    <aheaders status='2'></aheaders>
+    <aheaders status='2' :showLan='true'></aheaders>
     <div class="books" style='margin-top:0.2rem;'>
    <van-tabs v-model="active" line-width='7%' :border='false' @click="onClick">
 

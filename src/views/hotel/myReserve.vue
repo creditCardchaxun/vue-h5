@@ -1,6 +1,6 @@
 <template>
  <div class="myReserve">
- <aheaders status='3' @toback='toreplace'></aheaders>
+ <aheaders status='3' @toback='toreplace' :showLan='true'></aheaders>
  <div class="myreserve">
     <van-cell-group>
           <van-field 

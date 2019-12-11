@@ -2,7 +2,7 @@
 <!-- :style='getHeight' -->
   <div class="myReserve" >
     <div>
-    <aheaders status="3" @toback='toreplace'></aheaders>
+    <aheaders status="3" @toback='toreplace' :showLan='true'></aheaders>
     <!-- <van-cell is-link @click="showPopup">项目</van-cell> -->
     <van-cell-group >
        <!-- <div class="inputGroup" 
@@ -171,13 +171,13 @@ export default {
   },
 
   computed: {
+      // (!this.intention[0]&&!this.intention[1]&&!this.message)
     isClick() {
       if (
         !this.value ||
         !this.value2 ||
         !this.name ||
-        !this.phone ||
-        (!this.intention[0]&&!this.intention[1]&&!this.message)
+        !this.phone 
         // !this.intention ||
         // !this.message
       )return true;
@@ -413,7 +413,7 @@ export default {
         book_time,
         intention
       };
-      console.log(data);
+
       interfaces.bookSave(data).then(res => {
         if (res.code == 0) {
           this.show_right = true;
