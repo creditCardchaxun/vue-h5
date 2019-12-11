@@ -172,7 +172,7 @@ export default {
         resizeEnable: true,
         center: _this.mapCenter, //初始化地图中心点 
         zoom: 11, //地图显示的缩放级别
-        lang: 'zh-cn',
+        lang: 'zh_cn',
         mapStyle: 'amap://styles/whitesmoke', //设置地图样式 远山黛.
         zoomEnable: true,
         dragEnable: true,
@@ -188,8 +188,10 @@ export default {
       var markerend = new AMap.Marker({
         map: _this.mapCase,
         position: new AMap.LngLat(Number(item.longitude), Number(item.latitude)) || _this.positionpoint,
-        icon: require('../assets/images/mark.png'), //你需要更改成红色的图标
-        size: new AMap.Size(19, 33),  //图标大小
+        icon: new AMap.Icon({
+          image: require('../assets/images/markbig.png'),
+          imageSize: new AMap.Size(19, 26),
+        }) 
       });
 
       //鼠标点击marker弹出自定义的信息窗体
