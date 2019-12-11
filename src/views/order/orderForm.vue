@@ -59,7 +59,7 @@
             v-for="(item,index) in tags"
             :key="index"
             @click="chooseTag($event,tags[index])"
-            :class="{onstag:tags[index].checked}"
+            :class="{onstag:tags[index]&&tags[index].checked}"
           >{{item}}</span>
         </div>
         <textarea
@@ -259,7 +259,10 @@ export default {
     //  标签
     bookTag(id) {
       interfaces.bookTags(id).then(res => {
-        this.tags = res;
+         if(res!==null){
+           this.tags = res;
+         }
+           
       });
     },
 
@@ -267,9 +270,9 @@ export default {
       this.show = true;
     },
     onChange(Picker, value, index) {
-      this.value = value.project_name;
-      this.ids = value.id;
-      this.bookTag(this.ids);
+      // this.value = value.project_name;
+      // this.ids = value.id;
+      // this.bookTag(this.ids);
     },
     onCancel() {
       this.show = false;

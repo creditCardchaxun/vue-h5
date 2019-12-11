@@ -166,7 +166,7 @@ export default {
     //  this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
     minHeight() {
       return (window.outerHeight / window.outerWidth * 10.8 - 5.96) + 'rem'
-    }
+     }
   },
   methods: {
     city() {
@@ -368,13 +368,14 @@ export default {
   mounted: function () {
     window.addEventListener('scroll', this.handleScroll);
     $eventbus.$on("changeLang", (res) => {
+        this.cityName=this.$i18n.t('m.hotel1'),
+      this.typehousename=this.$i18n.t('m.hotel2'),
       this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
       let data = {}
       this.getListhouses(data)
       this.getcitys()
       this.gethouseTypes()
       this.getHeight.minHeight = window.innerHeight + 'px'
-
     })
   },
   //第四步：当再次进入（前进或者后退）时，只触发activated（注：只有在keep-alive加载时调用）
