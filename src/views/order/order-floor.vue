@@ -8,13 +8,9 @@
           <van-icon name="arrow-left" />
           <em>{{$t('m.home')}}</em>
         </div>
-        <span
-          class="remove-index"
-          style="position:absolute;top:12px;right:10px;"
-          @click.stop="toreplace"
-        >
-          <van-icon name="cross" style="width:100%;height:100%;" />
-        </span>
+        <div class="remove-index" @click.stop="toreplace">
+          <!-- <van-icon name="cross" style="width:100%;height:100%;" /> -->
+        </div>
       </div>
     </div>
     <div class="person-center">
@@ -52,7 +48,7 @@
               <img src="../../assets/images/2_03.jpg" alt />
               <i>{{$t('m.myorder')}}</i>
             </router-link>
-          </div> -->
+          </div>-->
         </div>
       </div>
       <div class="person_03">
@@ -210,7 +206,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 .order {
   width: 100%;
   height: auto;
@@ -266,8 +262,17 @@ export default {
   justify-content: flex-start;
 }
 
-/* .remove-index{position:absolute;top:12px;right:10px;width:auto;height:auto;}
-.remove-index i{width:0.6rem;height:0.6rem;} */
+.remove-index {
+  width: 1.6rem;
+  height: 1.6rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-align: center;
+  vertical-align: center;
+  background: url('../../assets/images/close22.png') no-repeat center center;
+  background-size: 30% 30%;
+}
 
 .person_02 {
   width: auto;

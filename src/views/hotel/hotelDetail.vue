@@ -86,7 +86,7 @@
               </van-swipe>
 
               <div class="types-mianji">
-                <div class="yiju">{{$t('m.hotelxq10')}}:{{item.room_size}}/㎡</div>
+                <div class="yiju">{{$t('m.hotelxq10')}}:{{item.room_size}}㎡</div>
                 <div class="yiju-img">
                   <img :src="item.house_type_pic" alt />
                 </div>
