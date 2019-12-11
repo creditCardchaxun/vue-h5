@@ -33,7 +33,7 @@
       <h3>{{story.catname}}</h3>
       <div class="brand-all" ref="heightShow" :class="{brandStory:showMore}">
         <!-- <p v-html='story.description'> 
-               {{story.description}}
+              {{story.description}}
         </p>-->
         <p v-for="(item,index) in story2" :key="index">{{item}}</p>
         <div class="story-img" v-if="story.image">
@@ -56,8 +56,7 @@
         <img src="../assets/images/index_03.jpg" alt />
       </div>-->
     </div>
-    <div class="logo1">
-    </div>
+    <div class="logo1"></div>
     <div :class="[showMore?'': 'yuyue']">
       <swiper :options="swiperOption">
         <swiper-slide v-for="(item,index) in project_list" :key="index">
@@ -71,7 +70,10 @@
             <div class="yu-name">
               <i>{{item.project_name}}</i>
               <!-- <router-link :to="{path:'/orderForm'}"> -->
-              <van-button type="info" @click="toOrderForm(item.id,item.project_name)">{{$t('m.orderhouse')}}</van-button>
+              <van-button
+                type="info"
+                @click="toOrderForm(item.id,item.project_name)"
+              >{{$t('m.orderhouse')}}</van-button>
               <!-- </router-link> -->
             </div>
           </div>
@@ -221,7 +223,7 @@ export default {
       Longid: '',
       LongName: '',
       status: '',
-      lanBase:'EN'
+      lanBase: 'EN'
     }
   },
 
@@ -254,11 +256,11 @@ export default {
     handleScrolls() {
       let scrolltop =
         document.documentElement.scrollTop || document.body.scrollTop;
-        scrolltop > 0 ? (this.showbg = true) : (this.showbg = false);
+      scrolltop > 0 ? (this.showbg = true) : (this.showbg = false);
     },
     changeLangEvent() {
       if (this.lang == 'zh-CN') {
-          this.lang = 'en-US'
+        this.lang = 'en-US'
       } else {
         this.lang = 'zh-CN'
       }
@@ -267,12 +269,12 @@ export default {
       this.$store.commit("changeLang", this.lang);
       $eventbus.$emit("changeLang", this.lang);
       localStorage.setItem('lanBase', this.lang == 'zh-CN' ? 1 : 4)
-       let lanBase=localStorage.getItem('lanBase')
-        if(lanBase==1){
-          this.lanBase='EN'
-        }else{
-          this.lanBase='ZH'
-        }
+      let lanBase = localStorage.getItem('lanBase')
+      if (lanBase == 1) {
+        this.lanBase = 'EN'
+      } else {
+        this.lanBase = 'ZH'
+      }
     },
     toloadMore() {
       this.showMore = !this.showMore
@@ -345,14 +347,14 @@ export default {
   created() {
     //  this.getHomedata()
     // this.getallother(3362)
-     let lanBase=localStorage.getItem('lanBase')
-     if(lanBase==1){
-      this.lanBase='EN'
-     }else if(lanBase==4){
-       this.lanBase='ZH'
-     }
-     this.getAllmap()
-     this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile
+    let lanBase = localStorage.getItem('lanBase')
+    if (lanBase == 1) {
+      this.lanBase = 'EN'
+    } else if (lanBase == 4) {
+      this.lanBase = 'ZH'
+    }
+    this.getAllmap()
+    this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
     //  this.couponSelected = this.allcityName[0].name;
   },
   mounted: function () {
@@ -361,9 +363,9 @@ export default {
     $eventbus.$on("changeLang", (res) => {
       this.getHomedata()
     });
-     this.$nextTick(() => {
+    this.$nextTick(() => {
       this.getallother(3362)
-     })
+    })
 
     // let height= window.getComputedStyle(this.$refs.heightShow).height
     let height = window.getComputedStyle(this.$refs.heightShow).height
@@ -393,14 +395,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 /* .map h3 select{width:2rem;height:1rem;overflow: hidden;background-color: #fff;border:transparent;}
 .map h3 select option{width:2rem;height:1rem;overflow: hidden;padding:0;height:1rem;min-height:1rem;} */
 
-.logo1{
+.logo1 {
   height: 1.5rem;
   width: 70%;
-  background: url('../assets/images/logo1.png') no-repeat;
+  background: url("../assets/images/logo1.png") no-repeat;
   background-size: 100% auto;
   margin: 0 auto;
   margin-top: 0.3rem;
@@ -409,6 +411,18 @@ export default {
 .brandimg2 {
   transform: rotate(180deg);
 }
+
+.showbgs {
+  width: 100%;
+  height: auto;
+  position: fixed !important;
+  background: rgba(255, 255, 255, 0.8);
+  /* padding: 0 10%; */
+  box-sizing: border-box;
+  margin: 0;
+  z-index: 99;
+}
+
 .header {
   width: 100%;
   height: auto;
@@ -421,11 +435,18 @@ export default {
   padding: 0 0.6rem;
   box-sizing: border-box;
   /* margin: 0 0 0 0.55rem; */
+  padding: 0 0.6rem;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
 }
 .header .logo {
   width: 1.54rem;
-  height: 1.09rem;
-  margin-top: 10px;
+  height: 0.9rem;
+  /* margin-top: 10px; */
+  img{
+    width: auto;
+    height: 100%;
+  }
 }
 .header .nav-lan {
   width: 2.37rem;
@@ -571,7 +592,7 @@ export default {
   right: 0;
   height: 0.85rem;
   line-height: 0.85rem;
-  background: rgba(0, 0, 0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   font-size: 0.34rem;
   color: #fff;
   padding: 0 0.6rem;
@@ -722,17 +743,6 @@ export default {
   height: auto;
 }
 
-.showbgs {
-  width: 100%;
-  height: auto;
-  position: fixed;
-  background: rgba(255, 255, 255, 0.8);
-  /* padding: 0 10%; */
-  padding: 0 0.6rem;
-  box-sizing: border-box;
-  margin: 0;
-  z-index: 99;
-}
 
 .map {
   /* width: auto; */
