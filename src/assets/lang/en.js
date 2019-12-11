@@ -1235,7 +1235,7 @@ export const m = {
   },
   // 地图
   map: {
-    open: 'open mobile app for better experience',
+    open: 'See the map on your App',
     jiudian: 'Hotel',
     meishi: 'Delicacy',
     jingdian: 'Scenic ',
