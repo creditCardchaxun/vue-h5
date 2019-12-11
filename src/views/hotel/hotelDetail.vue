@@ -533,7 +533,7 @@ export default {
   background: rgba(57, 58, 59);
   color: #fff;
   position: absolute;
-  top: 0.2rem;
+  top: 0rem;
   left: 50%;
   transform: translate(-50%, 0);
   z-index: 99;
