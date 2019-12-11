@@ -515,6 +515,8 @@ export default {
 }
 
 .brand-story h3 {
+  padding-left: 0.7rem;
+  padding-right: 0.7rem;
   line-height: 1.5;
   font-size: 0.6rem;
   color: #060606;
