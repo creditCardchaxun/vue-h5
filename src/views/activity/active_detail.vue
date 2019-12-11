@@ -1,7 +1,7 @@
 <template>
   <div class="activitydetail">
     <!-- <img src='../../assets/images/news-detail.png'/> -->
-    <aheaders status='3' @toback='toreplace'></aheaders>
+    <aheaders status='3' @toback='toreplace' :showLan='false'></aheaders>
        <div class="newsdatails">
        <h2>{{newsDetails.title}}</h2>
        <div class="date">{{newsDetails.inputtime}}</div>
@@ -101,7 +101,7 @@ export default {
 </script>
 
 <style scoped>
-.activitydetail{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
+.activitydetail{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;background-color: #fff;}
 .newsdetail{width:100%;margin:0 auto;}
 .newsdatails{width:90%;height:auto;margin:0.6rem auto 0;}
 .newsdatails h2{font-size:0.6rem;color:#2d2d2d;line-height: 0.87rem;max-height: 0.8rem;min-height:0.87rem;overflow: hidden;}

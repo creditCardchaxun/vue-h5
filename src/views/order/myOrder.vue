@@ -1,7 +1,7 @@
 <template>
   <div class="myorder">
     <!-- <img src='../assets/images/about.png'/> -->
-    <aheaders status="2"></aheaders>
+    <aheaders status="2" :showLan='true'></aheaders>
     <div class="order-list" :style="getHeight">
       <div class="myorder-list" v-if="orderList.length>0">
         <h2>{{$t('m.watch')}}</h2>

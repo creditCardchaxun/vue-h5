@@ -197,7 +197,7 @@ const routes = [
     component: hotelDetail,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title: '精品旅社详情',
+      title: '精品居舍详情',
       // this.$i18n.t('m.news11')
     }
   },

@@ -17,7 +17,7 @@
           <option value="zh-CN">中文</option>
           <option value="en-US">英文</option>
         </select>-->
-        <span @click="changeLangEvent">
+        <span @click="changeLangEvent" v-show="showLan">
           <!-- {{lang ==='zh-CN'?'EN':'ZH'}} -->
           {{lanBase}}
         </span>
@@ -40,13 +40,20 @@ export default {
   name: 'aheaders',
   props: {
     status: String,
-    where: String
+    where: String,
+    showLan: Boolean
   },
   data() {
     return {
       showbg: false,
       lang: store.state.lang,
       lanBase: 'EN'
+    }
+  },
+  computed: {
+    nav() {
+      if (this.iswx) return '';
+      return "width: 750px;transform: translate3d(0%, -4px, 10px);left: 22.21%;margin: 0px auto;padding: 0 5%;box-sizing: border-box;"
     }
   },
   computed: {
@@ -134,6 +141,54 @@ export default {
 .header .logo img {
   width: 1.54rem;
   height: 1.09rem;
+}
+.empty {
+  height: 1.63rem;
+}
+.header .logo {
+  width: 1.54rem;
+  height: 1.09rem;
+  margin-top: 10px;
+}
+.header .logo img {
+  width: 1.54rem;
+  height: 1.09rem;
+}
+
+.left {
+  width: auto;
+  height: auto;
+}
+.left .van-icon {
+  font-size: 0.7rem;
+}
+.header .nav-lan {
+  width: auto;
+  height: 0.59rem;
+}
+.nav-lan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-lan > span {
+  font-size: 0.44rem;
+  border-bottom: 1px solid #000;
+}
+.nav-lan .nav-menu {
+  width: 0.85rem;
+  height: 0.6rem;
+  margin-left: 0.7rem;
+}
+.nav-lan .nav-menu img {
+  width: 0.85rem;
+  height: 0.6rem;
+}
+.nav-lan .nav-menu a {
+  font-size: 0.4rem;
+  width: 0.85rem;
+  height: 0.6rem;
+  display: block;
 }
 
 .left {

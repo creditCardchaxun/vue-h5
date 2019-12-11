@@ -515,4 +515,24 @@ export default {
 .person-center {
   margin-bottom: 2rem;
 }
+
+@media screen and (min-width: 640px) {
+  /* body {
+    width: 100%;
+    height: 100%;
+    background-color: #000 !important;
+  } */
+.person_01 {
+  width: 750px;
+  height: 1.67rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin:0 auto;
+}
+}
 </style>

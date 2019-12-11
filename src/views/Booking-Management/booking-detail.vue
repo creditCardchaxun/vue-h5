@@ -1,6 +1,6 @@
 <template>
   <div class="bookingdetail">
-    <aheaders status='3' @toback='toreplace'></aheaders>
+    <aheaders status='3' @toback='toreplace' :showLan='true'></aheaders>
     <div class="detail">
       <ul>
         <li>

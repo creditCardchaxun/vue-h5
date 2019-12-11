@@ -1,6 +1,6 @@
 <template>
   <div class="appraise">
-    <aheaders status="3" @toback="toreplace"></aheaders>
+    <aheaders status="3" @toback="toreplace" :showLan='true'></aheaders>
     <div class="appraise-01">
       <h3>{{$t('m.appraise1')}}</h3>
       <van-rate v-model="value" :size="25" :change="valueChange(value,currentIndex)" />
@@ -71,8 +71,9 @@ export default {
     })
   },
  computed:{
+  //  (!this.user_content[0]&&!this.user_content[1]&&!this.user_desc)
    isclick(){
-      if(this.value==0||(!this.user_content[0]&&!this.user_content[1]&&!this.user_desc)) return true;
+      if(this.value==0) return true;
       else return false
     
 

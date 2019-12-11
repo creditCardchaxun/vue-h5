@@ -223,7 +223,7 @@ export default {
       Longid: '',
       LongName: '',
       status: '',
-      lanBase: 'EN'
+      lanBase:''
     }
   },
 
@@ -259,22 +259,28 @@ export default {
       scrolltop > 0 ? (this.showbg = true) : (this.showbg = false);
     },
     changeLangEvent() {
-      if (this.lang == 'zh-CN') {
-        this.lang = 'en-US'
-      } else {
+      console.log(this.lang)
+     if (this.lang == 'zh-CN') {
+          this.lang = 'en-US'
+          this.lanBase='ZH'
+          console.log('转换成英文')
+      } else if(this.lang == 'en-US') {
         this.lang = 'zh-CN'
+        this.lanBase='EN'
+        console.log('转换成中文')
       }
       this.$i18n.locale = this.lang; //关键语句
 
       this.$store.commit("changeLang", this.lang);
       $eventbus.$emit("changeLang", this.lang);
       localStorage.setItem('lanBase', this.lang == 'zh-CN' ? 1 : 4)
-      let lanBase = localStorage.getItem('lanBase')
-      if (lanBase == 1) {
-        this.lanBase = 'EN'
-      } else {
-        this.lanBase = 'ZH'
-      }
+       let lanBase=localStorage.getItem('lanBase')
+
+        if(lanBase == 1){
+          this.lanBase='EN'
+        }else if(this.lang == 4){
+          this.lanBase='ZH'
+        }
     },
     toloadMore() {
       this.showMore = !this.showMore
@@ -347,14 +353,16 @@ export default {
   created() {
     //  this.getHomedata()
     // this.getallother(3362)
-    let lanBase = localStorage.getItem('lanBase')
-    if (lanBase == 1) {
-      this.lanBase = 'EN'
-    } else if (lanBase == 4) {
-      this.lanBase = 'ZH'
-    }
-    this.getAllmap()
-    this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
+     console.log(this.lang)
+     let lanBase=localStorage.getItem('lanBase')
+     console.log(lanBase,'缓存语言')
+     if(lanBase==1){
+      this.lanBase='EN'
+     }else if(lanBase==4){
+       this.lanBase='ZH'
+     }
+     this.getAllmap()
+     this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile
     //  this.couponSelected = this.allcityName[0].name;
   },
   mounted: function () {
@@ -487,6 +495,7 @@ export default {
   padding-bottom: 5.96rem;
   box-sizing: border-box;
   position: relative;
+  background-color: #fff;
 }
 .home img {
   width: 100%;
@@ -603,7 +612,7 @@ export default {
   padding: 0.45rem 0.6rem 0.34rem;
   color: #000;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   box-shadow: 0px 2px 3px 3px #ededed;
 }
