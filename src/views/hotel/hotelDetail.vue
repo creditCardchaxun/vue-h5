@@ -158,7 +158,7 @@
               <div class="hotel-item" @click="toDetailxq(item.id)">
                 <img :src="item.pic" alt />
                 <div class="hotel-title">{{item.project_name}}</div>
-                <p>{{item.area_str}}</p>
+                <!-- <p>{{item.area_str}}</p> -->
                 <p>{{item.address}}</p>
               </div>
             </swiper-slide>

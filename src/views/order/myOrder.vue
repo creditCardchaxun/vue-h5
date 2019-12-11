@@ -21,7 +21,7 @@
               <h3>
                 <router-link :to="{name:'orderDetail', params:{id:item.id}}">{{item.project_name}}</router-link>
               </h3>
-              <p>{{$t('m.watch3')}}{{item.book_time}}</p>
+              <p>{{$t('m.watch3')}}:&nbsp;{{item.book_time}}</p>
               <em @click.stop.prevent="toMaps(item.projectid)">
                 <!-- <router-link :to="{name:'hotelDetail?#maps', params:{id:projectid}}"> -->
                 <span>{{$t('m.watch4')}}</span>
@@ -50,7 +50,7 @@
             <router-link :to="{name:'orderDetail',params:{id:item.id}}" style="width:6.45rem;">
               <div class="right">
                 <h3>{{item.project_name}}</h3>
-                <p>{{$t('m.watch3')}}{{item.book_time}}</p>
+                <p>{{$t('m.watch3')}}:&nbsp;{{item.book_time}}</p>
                 <div class="morder-t">
                   <em @click.stop.prevent="toMaps(item.projectid)">
                     <span style="padding-bottom:2px;">{{$t('m.watch4')}}</span>
@@ -275,6 +275,7 @@ export default {
   color: #fff;
   margin: 0.88rem 0 0 auto;
   border-radius: 3px;
+  white-space: nowrap;
 }
 .orderlist .right button a {
   color: #fff;

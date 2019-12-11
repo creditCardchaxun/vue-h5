@@ -115,9 +115,9 @@ export default{
     height:1rem;
     border-radius: 50%;
     position: fixed;
-    bottom: 5%;
+    bottom: 10%;
     right: 3%;
-    z-index:90;
+    z-index:120;
  }
 .scrolltop img{width:100%;height:auto;}
 .kefu{width:auto;height:1.18em;position:fixed;bottom:4.0rem;right:0px;background:rgba(0,0,0,1);border-top-left-radius:24px; border-bottom-left-radius:24px;z-index:90;}

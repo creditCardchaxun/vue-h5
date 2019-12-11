@@ -60,7 +60,7 @@ export const m = {
   homebottom3:'base活动',
 
   //  首页
-  news: '新闻',
+  // news: '新闻',
   activity: '活动',
   models1: '预约看房时间',
 
@@ -124,7 +124,7 @@ export const m = {
   hotelxq2: '公寓特色',
   hotelxq3: '户型展示',
   hotelxq4: '公寓配置',
-  hotelxq5: '周围及交通服务',
+  hotelxq5: '周边交通服务',
   hotelxq6: '推荐公寓',
   hotelxq7: '您已预约过了，请给我们留下宝贵意见吧！',
   hotelxq8: '推荐公寓',

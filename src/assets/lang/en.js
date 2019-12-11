@@ -1,6 +1,6 @@
 export const m = {
   //页面标题
-  news: 'NEWS',
+  news: 'News',
   news1: 'NEWS',
   news2: 'Activity',
   news3: 'Activity',
@@ -19,7 +19,7 @@ export const m = {
   news16: 'HOME',
 
   // 首页
-  home: 'home',
+  home: 'Home',
   ischeck: 'No phone number verified',
   changePhone: 'change number',
 
@@ -36,10 +36,10 @@ export const m = {
   server:'service',
 
   //  客户预约列表
-  watch3: 'Appointment date',
-  watch4: 'consult a map',
+  watch3: 'Date ',
+  watch4: 'View Map',
   watch5: "You haven't made an appointment yet. Please make an appointment",
-  watch6: 'evaluation',
+  watch6: 'Star Rating',
   watch7: 'Click to make an appointment',
   // 客户预约详情
   bookdetail1: 'Thank you for coming.',
@@ -57,8 +57,8 @@ export const m = {
   homebottom2:'News',
   homebottom3:'Event',
   //  首页
-  news: 'news',
-  activity: 'activity',
+  // news: 'news',
+  activity: 'Event',
   models1: 'Appointment time',
 
   // 预约表单
