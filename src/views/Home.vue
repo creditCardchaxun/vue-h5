@@ -223,7 +223,7 @@ export default {
       Longid: '',
       LongName: '',
       status: '',
-      lanBase:''
+      lanBase:'EN'
     }
   },
 
