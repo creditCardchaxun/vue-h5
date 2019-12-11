@@ -49,7 +49,7 @@ export const m = {
 
   // 客户评价
   appraise1: '您对本次看房满意吗',
-  appraise2: '点击标签快速评价，还可以写下您的体验感受',
+  appraise2: '填写您的看房感受，帮助我们更好的为您服务',
   appraise3: '请填写评价内容',
   appraise4: '已评价完成',
 
@@ -67,7 +67,7 @@ export const m = {
   house3: '姓名',
   house4: '手机号',
   house5: '预约意向',
-  house6: '点击标签快速选择，还可以写下您的具体意向',
+  house6: '如您还有其他看房要求，也可以写在这里',
   house7: '预约意向',
   house8: '选择公寓',
   house9: '选择日期',
