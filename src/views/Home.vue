@@ -217,7 +217,7 @@ export default {
       couponSelected: '',
       // 地图
       opens1: false,
-      openName: '上海',
+      openName: '上海市',
       alllongitude: null,
       allcityName: [],
       Longid: '',
