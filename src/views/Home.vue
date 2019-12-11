@@ -56,7 +56,7 @@
         <img src="../assets/images/index_03.jpg" alt />
       </div>-->
     </div>
-    <div class="logo1"></div>
+    <!-- <div class="logo1"></div> -->
     <div :class="[showMore?'': 'yuyue']">
       <swiper :options="swiperOption">
         <swiper-slide v-for="(item,index) in project_list" :key="index">
