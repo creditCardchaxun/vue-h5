@@ -442,7 +442,6 @@ export default {
   justify-content: space-between;
   padding: 0 0.6rem;
   box-sizing: border-box;
-  /* margin: 0 0 0 0.55rem; */
   padding: 0 0.6rem;
   padding-top: 0.15rem;
   padding-bottom: 0.15rem;
