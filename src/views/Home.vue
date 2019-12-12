@@ -252,7 +252,6 @@ export default {
     handleScroll() {
       this.scroll = $(window).height() + $(document).scrollTop();
     },
-
     handleScrolls() {
       let scrolltop =
         document.documentElement.scrollTop || document.body.scrollTop;
@@ -260,7 +259,7 @@ export default {
     },
     changeLangEvent() {
       console.log(this.lang)
-     if (this.lang == 'zh-CN') {
+      if (this.lang == 'zh-CN') {
           this.lang = 'en-US'
           this.lanBase='ZH'
           console.log('转换成英文')
@@ -324,6 +323,7 @@ export default {
     getallother(id) {
       interfaces.getCode(id).then((res) => {
         this.alllongitude = res
+        
         //  this.$store.dispatch("setLocation", res);
       })
     },
@@ -371,6 +371,7 @@ export default {
     $eventbus.$on("changeLang", (res) => {
       this.getHomedata()
       this.getAllmap()
+      this.getallother()
     });
     this.$nextTick(() => {
       this.getallother(3362)

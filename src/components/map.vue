@@ -578,8 +578,9 @@ export default {
       // _this.markerend.markOnAMAP({
       //   position: _this.markerend.getPosition()
       // })
-
-      WXsdk.openLocation(this.position, this.address)
+      if (this.selectProject) {
+        WXsdk.openLocation({ latitude: this.selectProject.latitude, longitude: this.selectProject.longitude }, this.selectProject.address)
+      }
     },
     bindSearch() {
       var _this = this
@@ -643,11 +644,11 @@ export default {
       this.infoWindow[index].close()
     }
   },
-  watch:{
-    '$store.state.lang':function (newVal,oldVal) { 
+  watch: {
+    '$store.state.lang': function (newVal, oldVal) {
       if (newVal === 'en-US') {
         $('.info-button').text('到这里去')
-      }else{
+      } else {
         $('.info-button').text('Go here')
       }
     }
@@ -753,7 +754,7 @@ export default {
       font-size: 0.4rem;
       padding-left: 0.4rem;
       font-size: 0.4rem;
-      background: url("../assets/images/dingwei3.png") no-repeat top left ;
+      background: url("../assets/images/dingwei3.png") no-repeat top left;
       background-size: 0.28rem auto;
       line-height: 1.2;
     }
