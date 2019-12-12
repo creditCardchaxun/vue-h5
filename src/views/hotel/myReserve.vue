@@ -369,10 +369,10 @@ export default {
     color: #fff;
     text-align: center;
     background-color: #5975a9;
-    font-size: 0.3rem;
+    font-size: 0.38rem;
     border: none;
     /* margin-left: 10%; */
-    border-radius: 0.1rem;
+    border-radius: 5px;
     margin: 1.2rem auto 1.64rem;}
 
  .btns-submit[disabled] {

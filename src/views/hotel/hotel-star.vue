@@ -2,7 +2,7 @@
   <div class="star">
     <!-- <img src='../../assets/images/jp.png'/> -->
     <aheaders status="2" :showLan='true'></aheaders>
-    <div class="top-hotel">
+    <div class="top-hotel" style='display:none'>
       <img src="../../assets/images/hotel-01.jpg" alt />
     </div>
 
@@ -410,6 +410,7 @@ export default {
   width: auto;
   height: auto;
   margin: 0 auto;
+  border-top:1px solid #f5f5f5;
 }
 .star .top-hotel {
   width: 100%;
@@ -423,6 +424,7 @@ export default {
 .star .choose-hotel {
   width: auto;
   height: auto;
+  margin-top: 0.4rem;
 }
 .hotel-01 {
   display: flex;
