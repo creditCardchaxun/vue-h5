@@ -60,12 +60,12 @@
     <div :class="[showMore?'': 'yuyue']">
       <swiper :options="swiperOption">
         <swiper-slide v-for="(item,index) in project_list" :key="index">
-          <div class="yu-item">
+          <div class="yu-item" @click='toHotelxq(item.id,item.project_name)'>
             <div class="yu-img">
-              <router-link :to="{name:'hotelDetail', params:{id:item.id,name:item.project_name}}">
+              <!-- <router-link :to="{name:'hotelDetail', params:{id:item.id,name:item.project_name}}"> -->
                 <img :src="item.pic" alt />
                 <div class="yu-title">{{item.address}}</div>
-              </router-link>
+              <!-- </router-link> -->
             </div>
             <div class="yu-name">
               <i>{{item.project_name}}</i>
@@ -331,6 +331,23 @@ export default {
       interfaces.getAllcity().then((res) => {
         this.allcityName = res
       })
+    },
+
+
+    // 项目详情
+    toHotelxq(id,name){
+      // this.tobrandImg(id)
+      //      interfaces.getbrandFirst(id).then((res)=>{
+      //      let ids=res.is_show_project_story
+      //      if(ids==1){
+      //        this.$router.push({name:'hotelDetail',params:{id:id,name:name}})
+      //      }else{
+
+      //      }
+      //  })
+
+      this.$router.push({name:'hotelDetail',params:{id:id,name:name}})
+       
     },
 
   },
