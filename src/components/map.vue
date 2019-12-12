@@ -172,7 +172,7 @@ export default {
         resizeEnable: true,
         center: _this.mapCenter, //初始化地图中心点 
         zoom: 10, //地图显示的缩放级别
-        lang: 'zh_cn',
+        lang: 'zh-cn',
         mapStyle: 'amap://styles/whitesmoke', //设置地图样式 远山黛.
         zoomEnable: true,
         dragEnable: true,
@@ -182,14 +182,14 @@ export default {
       });
       // this.lockMapBounds()
     },
-    lockMapBounds(){
+    lockMapBounds() {
       var bounds = this.mapCase.getBounds();
       console.log('bounds');
-      console.log( bounds );
+      console.log(bounds);
       this.mapCase.setLimitBounds(bounds);
       var limitBounds = this.mapCase.getLimitBounds();
       console.log('limitBounds');
-      console.log( limitBounds );
+      console.log(limitBounds);
     },
     unlockMapBounds() {
       this.mapCase.clearLimitBounds();
@@ -268,14 +268,11 @@ export default {
       info.appendChild(bottom);
       var button = document.createElement("button");
       button.className = "info-button";
-      button.innerHTML = "到这里去";
+      button.innerHTML = this.$i18n.locale === 'zh-CN'?"到这里去":"Go here";
       button.id = 'btngo';
       // button.onclick = _this.showfirst;
       button.onclick = _this.showNav1;
       button.addEventListener('click', () => {
-        // alert(123)
-        console.log('item')
-        console.log(item)
         this.bindSearch()
         this.selectProject = item
         _this.mapCase.clearMap();
@@ -662,6 +659,12 @@ export default {
         $('.info-button').text('到这里去')
       } else {
         $('.info-button').text('Go here')
+      }
+    },
+    dataArr(newVal, oldVal) {
+      if (JSON.stringify(newVal) !== JSON.stringify(oldVal)) {
+        this.mapCase.clearMap()
+        this.addAllmarker()
       }
     }
   }

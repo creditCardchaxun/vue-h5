@@ -223,7 +223,8 @@ export default {
       Longid: '',
       LongName: '',
       status: '',
-      lanBase:'EN'
+      lanBase:'EN',
+      cityArr: null
     }
   },
 
@@ -237,7 +238,6 @@ export default {
   methods: {
     getHomedata() {
       interfaces.getData().then((res) => {
-        console.log(res.data.project_list)
         this.bannerImg = res.data.banner
         this.story = res.data.story
         this.news_list = res.data.news_list
@@ -315,6 +315,7 @@ export default {
     },
     tochangecity(item) {
       //  this.opens1=!this.opens1
+      this.cityArr = item
       this.openName = item.name
       this.Longid = item.linkageid
       this.LongName = item.name
@@ -323,7 +324,6 @@ export default {
     getallother(id) {
       interfaces.getCode(id).then((res) => {
         this.alllongitude = res
-        
         //  this.$store.dispatch("setLocation", res);
       })
     },
@@ -332,8 +332,6 @@ export default {
         this.allcityName = res
       })
     },
-
-
     // 项目详情
     toHotelxq(id,name){
       // this.tobrandImg(id)
@@ -347,7 +345,7 @@ export default {
       //  })
 
       this.$router.push({name:'hotelDetail',params:{id:id,name:name}})
-       
+      
     },
 
   },
@@ -388,7 +386,8 @@ export default {
     $eventbus.$on("changeLang", (res) => {
       this.getHomedata()
       this.getAllmap()
-      this.getallother()
+      var id = 3362 || Number(this.cityArr.linkageid);
+      this.getallother(id)
     });
     this.$nextTick(() => {
       this.getallother(3362)
