@@ -654,7 +654,7 @@ export default {
 }
 .desc ul {
   width: auto;
-  height: 180px;
+  height: 4.4rem;
   overflow: hidden;
   margin: 0 0 0.6rem;
   transition: all 0.4s ease;
@@ -670,7 +670,8 @@ export default {
   flex-direction: column;
   width: 25%;
   float: left;
-  margin-top: 0.87rem;
+  margin-top: 0.8rem;
+  height: 1.4rem;
 }
 .desc ul li img {
   width: 1.3rem;
@@ -679,6 +680,7 @@ export default {
 .desc ul li span {
   font-size: 0.32rem;
   color: #000;
+  white-space: nowrap;
 }
 .types {
   width: 100%;
