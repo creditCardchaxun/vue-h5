@@ -104,10 +104,11 @@ export default {
         console.log(info);
       }
       if (info) {
-        window.$axios.get(`http://wxapi.itaojin.cn/weixin/action/toggle/transfer/${info.appid}/${info.openid}?checkToken=e8ae0f7dc2254090b618665340ec6dcd2ebf3d99d5ee4062a035e6c91003d0ef&flag=true`).then((res) => {
-          console.log('客服的回调');
-          console.log(res);
-        })
+        window.location.replace(`http://wxapi.itaojin.cn/weixin/action/toggle/transfer/${info.appid}/${info.openid}?checkToken=e8ae0f7dc2254090b618665340ec6dcd2ebf3d99d5ee4062a035e6c91003d0ef&flag=true`)
+        // window.$axios.get(`http://wxapi.itaojin.cn/weixin/action/toggle/transfer/${info.appid}/${info.openid}?checkToken=e8ae0f7dc2254090b618665340ec6dcd2ebf3d99d5ee4062a035e6c91003d0ef&flag=true`).then((res) => {
+        //   console.log('客服的回调');
+        //   console.log(res);
+        // })
       }
     }
   },
