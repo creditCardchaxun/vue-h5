@@ -37,50 +37,48 @@
           </div>
         </van-tab>
         <van-tab :title="$t('m.home4')">
-          <div
-            class="about-01"
-            :ref="'brandHeight'+index"
-            v-for="(item,index) in about"
-            :key="index"
-          >
-            <div class="brand-01" :class="{activeHeight:about[index].showMore1}">
-              <!-- {{about[index].showMore1}} -->
-              <h2 style="font-weight:bold;">{{item.title}}</h2>
-              <p v-html="item.content">{{item.content}}</p>
+          <!-- <div class="about-01" :ref="'brandHeight'+index" v-for='(item,index) in about' :key='index'>
+            <div class="brand-01" :class='{activeHeight:about[index].showMore1}'>
+              <h2 style='font-weight:bold;'>{{item.title}}</h2>
+              <p v-html='item.content'>{{item.content}}</p>
             </div>
-            <div class="index-more" v-show="'showMoress'+index" @click="moreLoad(index)">
-              <span v-if="IconMore1">more</span>
-              <img src="../../assets/images/more-icon.jpg" alt />
-            </div>
-          </div>
+          <div class="index-more" v-show="'showMoress'+index" @click='moreLoad(index)' ><span v-if='IconMore1'>more</span> <img src="../../assets/images/more-icon.jpg" alt=""></div>
+          </div>-->
 
-          <!-- <div class="about-01">
-            <div class="brand-01" ref="brandHeight" :class='{activeHeight:showMore1}'>
+          <div class="about-01">
+            <div class="brand-01" ref="brandHeight" :class="{activeHeight:showMore1}">
               <h2 style="font-weight:bold;">品牌背景</h2>
-              <p>base是盛煦存量地产 (Shanghai NOVA Real Estate Co., Ltd)旗下的一个创意地产品牌。盛煦存量地产成立于2014年，是一家专业性存量地产投资及资产管理公司。2016年，盛煦存量地产对存量地产改造及增值服务运营商翌成创意的股权进行收购，成为其控股股东，并共同发展旗下品牌base。</p>
-              <p>base秉承着国际化的视角和前瞻性的创新发展理念，专注于投资、开发及运营一体化经营的领域。而我们所做的，远不止于此，我们始终相信，建筑物并非盈盈独立的个体，而是灵感的聚集地，城市社群的据点，以此交织成城市的脉搏。对于生活在其中的人们，我们希望他们可以彼此联结，相互启发，发现无处不在的灵感。</p>
-              <p>目前base旗下所运营及改造中的项目已接近40个，总投资规模近120亿人民币，项目面积约达400,000平方米，覆盖上海、北京等一线城市。旗下运营品牌有base佰舍和Waterline盛溪，着力打造品牌联盟，以满足不同业态定位需求。我们的版图仍在不断扩大，我们将会把创新的理念带去更多的地方。</p>
+              <div>
+                <p>base是盛煦存量地产 (Shanghai NOVA Real Estate Co., Ltd)旗下的一个创意地产品牌。盛煦存量地产成立于2014年，是一家专业性存量地产投资及资产管理公司。2016年，盛煦存量地产对存量地产改造及增值服务运营商翌成创意的股权进行收购，成为其控股股东，并共同发展旗下品牌base。</p>
+                <p>base秉承着国际化的视角和前瞻性的创新发展理念，专注于投资、开发及运营一体化经营的领域。而我们所做的，远不止于此，我们始终相信，建筑物并非盈盈独立的个体，而是灵感的聚集地，城市社群的据点，以此交织成城市的脉搏。对于生活在其中的人们，我们希望他们可以彼此联结，相互启发，发现无处不在的灵感。</p>
+                <p>目前base旗下所运营及改造中的项目已接近40个，总投资规模近120亿人民币，项目面积约达400,000平方米，覆盖上海、北京等一线城市。旗下运营品牌有base佰舍和Waterline盛溪，着力打造品牌联盟，以满足不同业态定位需求。我们的版图仍在不断扩大，我们将会把创新的理念带去更多的地方。</p>
+              </div>
             </div>
             <div class="index-more" v-if="showMoress" @click="moreLoad">
-              <span v-if='IconMore1'>more</span>
+              <span v-if="IconMore1">more</span>
               <img src="../../assets/images/more-icon.jpg" alt :class="{brandimg1:showMore1}" />
             </div>
           </div>
 
           <div class="about-01">
-            <div class="brand-01" id='brandImg' ref="brandHeight2" :class='{activeHeight:showMore2}'>
+            <div
+              class="brand-01"
+              id="brandImg"
+              ref="brandHeight2"
+              :class="{activeHeight:showMore2}"
+            >
               <h2 style="font-weight:bold;">品牌精神</h2>
               <p>我们始于生活, 着眼未来，让人们在有形的空间中彼此联结，在交流中获得启发、突破创新，</p>
               <p>—— 这是base的品牌精神。</p>
             </div>
             <div class="index-more" v-if="showMoress2" @click="moreLoad2">
-              <span v-if='IconMore2'>more</span>
+              <span v-if="IconMore2">more</span>
               <img src="../../assets/images/more-icon.jpg" alt :class="{brandimg2:showMore2}" />
             </div>
           </div>
 
           <div class="about-01">
-            <div class="brand-01" ref="brandHeight3" :class='{activeHeight:showMore3}'>
+            <div class="brand-01" ref="brandHeight3" :class="{activeHeight:showMore3}">
               <h2 style="font-weight:bold;">品牌故事</h2>
               <p>base 源于2012年，但我们的故事和上海的老旧社区生活有着难解情缘。</p>
               <p>老旧社区见证着上海的发展进程，为每一位居民构筑出属于自己的生活天地，也凝聚了这座都市悠久的人文情怀。</p>
@@ -91,10 +89,10 @@
               <p>我们以老旧社区与人的关系为灵感，主张在废旧建筑开放式的格局基础上，以现代空间美学理念为其重新赋予新生活力，重新连接人与人之间的亲密关系，营造焕然一新的社群生活。</p>
             </div>
             <div class="index-more" v-if="showMoress3" @click="moreLoad3">
-              <span v-if='IconMore3'>more</span>
-              <img src="../../assets/images/more-icon.jpg" alt :class="{brandimg3:showMore3}" /> 
+              <span v-if="IconMore3">more</span>
+              <img src="../../assets/images/more-icon.jpg" alt :class="{brandimg3:showMore3}" />
             </div>
-          </div>-->
+          </div>
         </van-tab>
       </van-tabs>
       <afooters></afooters>
@@ -126,9 +124,9 @@ export default {
       showMore: false,
       heightImg: "",
       heightOther2: 200,
-      showMoress: false,
-      showMoress2: false,
-      showMoress3: false,
+      showMoress: true,
+      showMoress2: true,
+      showMoress3: true,
       active: 0,
       listheight: "",
       getHeight: {
@@ -159,9 +157,9 @@ export default {
       (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
     this.active = this.$route.params.active;
     if (this.active == 0) {
-      this.contacts();
+      // this.contacts();
     } else {
-      this.abouts()
+      //  this.abouts()
     }
   },
   beforeRouteEnter(to, from, next) {
@@ -217,22 +215,19 @@ export default {
     toCallPhone() {
       window.location.href = "tel://400 700 6608";
     },
-    moreLoad(indexs) {
-      this.about.forEach((item, index) => {
-        if (indexs == index) {
-          console.log(indexs, index)
-          this.about[index].showMore1 = !this.about[index].showMore1;
-          // this.showMore1=this.about[index].showMore1
-          console.log(this.about[index].showMore1)
-          // this.showMore1 =!this.about[index].showMore1;
-          //  if(this.showMore1==true){
-          //     this.IconMore1=false
-          //   }else{
-          //     this.IconMore1=true
-          //   }
-        }
-
-      })
+    moreLoad() {
+      // this.about.forEach((item,index)=>{
+      //     if(indexs==index){
+      //   console.log(indexs,index)
+      // this.about[index].showMore1 =!this.about[index].showMore1;
+      this.showMore1 = !this.showMore1;
+      if (this.showMore1 == true) {
+        this.IconMore1 = false
+      } else {
+        this.IconMore1 = true
+      }
+      //     }
+      // })
 
     },
     moreLoad2() {
@@ -266,23 +261,23 @@ export default {
       });
     },
 
-    abouts() {
-      interfaces.aboutus().then((res) => {
-        this.about = res
-        res.forEach((item, index) => {
-          let abouts = item.content
-          res[index].showMore1 = this.showMore1
-          console.log(res[index].showMore1)
-        })
-      })
-    },
+    //  abouts(){
+    //      interfaces.aboutus().then((res)=>{
+    //        this.about=res
+    //        res.forEach((item,index)=>{
+    //           let abouts=item.content
+    //         res[index].showMore1=this.showMore1
+    //         console.log(res[index].showMore1)
+    //        })
+    //     })
+    // },
 
     onClick(name, title) {
       if (title == "联系我们") {
         this.contacts();
       } else if (title == "关于我们") {
         // this.$router.push({ name: "contact", params: { active: 1 } });
-        this.abouts()
+        // this.abouts()
       }
     },
     handleScroll() {
@@ -345,33 +340,20 @@ export default {
   watch: {
     active(newa, olda) {
       if (newa === 1) {
-        for (let i in this.about) {
-          this.$nextTick(() => {
-            console.log(this.$refs["brandHeight" + i][0])
-            //  console.log(this.$refs["brandHeight" + i][1])
-            //  console.log(this.$refs["brandHeight" + i][2])
-
-            let height2 = window.getComputedStyle(this.$refs["brandHeight" + i][0]).height;
-            // let height3 = window.getComputedStyle(this.$refs["brandHeight" + i][1]).height;
-            // let height4 = window.getComputedStyle(this.$refs["brandHeight" + i][2]).height;
-
-            console.log(height2)
-            // console.log(height3)
-            // console.log(height4)
-            //  }
-            if (height2 > 180 + "px") {
-              this.showMoress = true;
-            }
-            //    if (height3 > 180 + "px") {
-            //   this.showMoress2 = true;
-            // }
-            //    if (height4 > 180 + "px") {
-            //   this.showMoress3= true;
-            // }
-
-
-          })
-        }
+        this.$nextTick(() => {
+          // let height2 = window.getComputedStyle(this.$refs.brandHeight).height;
+          // let height3 = window.getComputedStyle(this.$refs.brandHeight2).height;
+          // let height4 = window.getComputedStyle(this.$refs.brandHeight3).height;
+          // if (height2 > 180 + "px") {
+          //   this.showMoress = true;
+          // }
+          // if (height3 > 180 + "px") {
+          //   this.showMoress2 = true;
+          // }
+          // if (height4 > 180 + "px") {
+          //   this.showMoress3 = true;
+          // }
+        })
 
       }
 

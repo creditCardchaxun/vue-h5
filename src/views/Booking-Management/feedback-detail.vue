@@ -150,13 +150,13 @@ width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: bo
   justify-content: space-between;
   margin: 0 0 0 0.55rem;
 }
+
 .top .logo {
   width: 0.54rem;
   height: 0.65rem;
   text-align: center;
 }
 .top .logo img {
-  /* display: inline-block; */
   width: 75%;
   height: auto;
 }
