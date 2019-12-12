@@ -18,6 +18,20 @@ getuserInfo(){
 	});
   },  
 
+// 品牌故事首次展示
+getbrandFirst(id){
+	return axios.get( domain + `index.php?m=api&c=project&a=show_project_story&id=${id}`)
+	.then(function (response) {
+		console.log(response,'我第一次点击')
+		return response.data.data
+	  
+	})
+	.catch(function (error) {
+	return error
+	});
+  },  
+
+
 //   首页数据
 	getData(){
 		return axios.get( domain + "index.php?m=api&c=pagehome")
