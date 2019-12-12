@@ -180,7 +180,19 @@ export default {
       var auto = new AMap.Autocomplete({
         input: "secondtxt"
       });
-
+      // this.lockMapBounds()
+    },
+    lockMapBounds(){
+      var bounds = this.mapCase.getBounds();
+      console.log('bounds');
+      console.log( bounds );
+      this.mapCase.setLimitBounds(bounds);
+      var limitBounds = this.mapCase.getLimitBounds();
+      console.log('limitBounds');
+      console.log( limitBounds );
+    },
+    unlockMapBounds() {
+      this.mapCase.clearLimitBounds();
     },
     addmarker(item) {
       var _this = this
@@ -657,6 +669,16 @@ export default {
 </script>
 
 <style lang="less">
+.zhezhao {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  // background: red;
+  z-index: 1111;
+}
+
 .flex-row {
   display: flex;
   flex-direction: row;
