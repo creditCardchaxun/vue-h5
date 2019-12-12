@@ -93,7 +93,7 @@ export const m = {
   others8: 'Please input mobile number to find the record',
   others9: 'Contact',
   others10: 'Fill in feedback',
-  others11: 'Accepting appointment',
+  others11: 'Accept appointment',
   others12: 'Appointment accepted successfully',
   others13: 'No data',
   others14: 'No search results yet',
@@ -101,7 +101,7 @@ export const m = {
   others16: 'search',
 
   //  注册按钮
-  s1: 'number',
+  s1: 'Mobile',
   s2: 'authentication code',
   s3: 'get code',
   s4: 'submit',
@@ -117,7 +117,7 @@ export const m = {
   hotel4: 'area',
 
   // 精品旅社详情
-  hotelxq1: 'project stories',
+  hotelxq1: 'project story',
   hotelxq2: 'Apartment features',
   hotelxq3: 'Apartment display',
   hotelxq4: 'Apartment allocation',
@@ -130,10 +130,10 @@ export const m = {
   hotelxq11: 'area',
 
   // 预定项目
-  bookName: 'project',
+  bookName: 'Project',
   bookName2: 'choose project',
-  bookName3: 'date',
-  bookName4: 'Guest name',
+  bookName3: 'Date',
+  bookName4: 'Name',
 
   // 看房反馈  
   feedback1: 'Please fill in the feedback information of this visit',

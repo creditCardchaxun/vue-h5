@@ -108,7 +108,7 @@
                   <img :src="i.fileurl" alt class="hotel-msg" />
                 </van-swipe-item>
                 <!-- <van-swipe-item><img src="../../assets/images/hotel-02.jpg" alt="" class='hotel-msg'></van-swipe-item> -->
-                <div class="custom-indicator" slot="indicator">{{ current + 1 }}/2</div>
+                <div class="custom-indicator" slot="indicator">{{ current + 1 }}/{{projectdetail.house_type.length}}</div>
               </van-swipe>
 
               <div class="types-mianji">
@@ -289,7 +289,8 @@ export default {
       showJiao: false,
       showLoadMore: false,
       totalLength: "",
-      video_url: false
+      video_url: false,
+      brandStory:''
     };
   },
   created() {
@@ -299,6 +300,7 @@ export default {
       (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
     // this.getdetailhouses(id)
     this.showBrandImg(id)
+    this.storyImg(id)
   },
   beforeRouteEnter(to, from, next) {
     let id = to.params.id;
@@ -360,6 +362,12 @@ export default {
     }
   },
   methods: {
+    // 项目故事
+    storyImg(id) {
+      interfaces.getbrandstory(id).then(res => {
+         this.brandStory=res
+      });
+    },
     toshowVR(length) {
       this.totalLength = length;
       this.hideVR = true;
@@ -395,7 +403,6 @@ export default {
       showBrandImg(id){ 
         interfaces.getbrandFirst(id).then((res)=>{
           let storyId=res.is_show_project_story
-          console.log(storyId,'hfhhhfhhhhfff')
            if(storyId==1){
              this.showImgAll=false;
            }else{
@@ -417,7 +424,12 @@ export default {
     }, 1000),
 
     showStory() {
-      this.showImgAll = true;
+      if(this.brandStory==null){
+        this.$toast('暂无项目故事')
+        return;
+      }else{
+        this.showImgAll = true;
+      }
     },
     toshowModels(id, name) {
       this.status = 1;
@@ -944,7 +956,7 @@ export default {
   overflow: hidden;
 }
 .hot-hotel .hotel-some .hotel-item .hotel-title {
-  padding-left: 0.2rem;
+  // padding-left: 0.2rem;
   font-size: 0.36rem;
   color: #212121;
   line-height: 0.54rem;
@@ -952,7 +964,7 @@ export default {
   font-weight: bold;
 }
 .hot-hotel .hotel-some .hotel-item p {
-  padding-left: 0.2rem;
+  // padding-left: 0.2rem;
   font-size: 0.32rem;
   color: #212121;
   line-height: 0.42rem;
@@ -983,12 +995,12 @@ export default {
   height: 0.98rem;
   line-height: 0.98rem;
   color: #fff;
-  font-size: 0.4rem;
+  font-size: 0.38rem;
   border: 1px solid #5975a9;
   background-color: #fff;
   color: #5975a9;
   padding: 0;
-  border-radius: 6px;
+  border-radius: 5px;
 }
 .bottom-nav .s1 {
   background-color: #5975a9;

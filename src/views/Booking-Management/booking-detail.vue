@@ -39,7 +39,7 @@
           <div class="box">
             <!-- <input type="text" placeholder="请填写拒绝受理此单的原因" /> -->
             <textarea cols="15" rows="5" v-model='desc' :placeholder="$t('m.feedback16')"></textarea>
-            <van-button type="primary" color="#dddddd" @click="closePopup">{{$t('m.s4')}}</van-button>
+            <van-button class='box-btn' :disabled="isclick" @click="closePopup">{{$t('m.s4')}}</van-button>
               <img src="../../assets/images/remove.png" alt="" class='img_remove'  @click="tohideModel">
               <!-- <van-icon name="close" /> -->
           </div>
@@ -87,7 +87,8 @@ export default {
       listInfo:{},
       getHeight:{
         minHeight:''
-      }
+      },
+      disabled:false
     };
   },
   components: {
@@ -95,6 +96,10 @@ export default {
     footers
   },
      computed:{
+       isclick(){
+          if(!this.desc)return true
+          else return false;
+       },
     //  this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
       //  minHeight(){
       //   return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
@@ -252,18 +257,32 @@ width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: bo
 .box textarea {
   width: 8rem;
   height: auto;
-  margin: 0.4rem 0.8rem;
+  margin: 1rem 0.75rem;
   font-size: 0.4rem;
   border: none;
 }
-.box .van-button {
+.box .box-btn {
   width: 90%;
   height: auto;
-  margin: 1rem 0.5rem;
+  margin: 0.2rem auto 0.4rem;
+  display: block;
+  background: rgb(89, 117, 169);
+  color:#fff;
 }
-.box .van-button .van-button__text {
+
+.box .box-btn[disabled]{
+    width: 90%;
+  height: auto;
+  margin: 0.2rem auto 0.4rem;
+  display: block;
+  color:#333;
+   background-color: #dddddd;
+}
+
+/* .box .van-button .van-button__text {
       color:#000;
-}
+} */
+
 .good {
   width: 7.7rem;
   height: 4rem;

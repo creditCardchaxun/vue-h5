@@ -60,7 +60,7 @@
     <div :class="[showMore?'': 'yuyue']">
       <swiper :options="swiperOption">
         <swiper-slide v-for="(item,index) in project_list" :key="index">
-          <div class="yu-item" @click='toHotelxq(item.id,item.project_name)'>
+          <div class="yu-item" @click.stop.prevent='toHotelxq(item.id,item.project_name)'>
             <div class="yu-img">
               <!-- <router-link :to="{name:'hotelDetail', params:{id:item.id,name:item.project_name}}"> -->
                 <img :src="item.pic" alt />
@@ -72,7 +72,7 @@
               <!-- <router-link :to="{path:'/orderForm'}"> -->
               <van-button
                 type="info"
-                @click="toOrderForm(item.id,item.project_name)"
+                @click.stop.prevent="toOrderForm(item.id,item.project_name)"
               >{{$t('m.orderhouse')}}</van-button>
               <!-- </router-link> -->
             </div>
@@ -646,7 +646,7 @@ export default {
 }
 .yu-name button {
   background-color: #5975a9;
-  border-radius: 4px;
+  border-radius: 5px;
   color: #fff;
   /* height: 35px; */
   /* line-height: 35px; */

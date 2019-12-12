@@ -18,8 +18,6 @@ var wxinfoApi = 'http://shengxi-test.iyunfish.com/index.php?m=api&c=weixin&a=get
 var getAccessTokenByCodeApi = 'http://shengxi-test.iyunfish.com/index.php?m=api&c=weixin&a=callBack&code='
 // var useidApi='http://shengxi-test.iyunfish.com/index.php?m=api&c=pagehome&a=getwx_user'
 
-
-
 var accessToken
 var userinfo
 var config = {sysType:1}
