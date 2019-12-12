@@ -1,12 +1,12 @@
 <template>
   <div class="hotel-detail">
-    <aheaders status="3" @toback="goHome" :showLan='true'></aheaders>
+    <aheaders status="3" @toback="goHome" :showLan="true"></aheaders>
     <div class="banner-img">
       <div class="banner_top" @click="showStory">
         <em>{{$t('m.hotelxq1')}}</em>
         <!-- <div class="down">
           <img src="../../assets/images/more-icon01.jpg" alt style="width:0.2rem;height:0.2rem;" />
-        </div> -->
+        </div>-->
       </div>
       <div class="Project-imgs">
         <projectImg
@@ -26,7 +26,6 @@
           <img :src="item.focusurls_url" alt />
           <video :src="projectdetail.video_url"></video>
         </van-swipe-item>
-
         <!-- <van-swipe-item><img src="../../assets/images/hotel-02.jpg" alt=""></van-swipe-item> -->
         <div class="custom-indicator" slot="indicator">{{ current + 1 }}/2</div>
       </van-swipe>
@@ -48,7 +47,6 @@
         <van-icon name="arrow" />
       </div>
     </div>
-
     <div class="desc">
       <h3>{{$t('m.hotelxq2')}}</h3>
       <div class="desc02" v-if="projectdetail.desc!=''" ref="desc" :class="{brandStory:showMore}">
@@ -65,7 +63,6 @@
         />
       </div>
     </div>
-
     <div class="types">
       <div class="types-nav">
         <h3>{{$t('m.hotelxq3')}}</h3>
@@ -84,7 +81,6 @@
                 <!-- <van-swipe-item><img src="../../assets/images/hotel-02.jpg" alt="" class='hotel-msg'></van-swipe-item> -->
                 <div class="custom-indicator" slot="indicator">{{ current + 1 }}/2</div>
               </van-swipe>
-
               <div class="types-mianji">
                 <div class="yiju">{{$t('m.hotelxq10')}}:{{item.room_size}}㎡</div>
                 <div class="yiju-img">
@@ -96,7 +92,6 @@
           <!-- <van-tab title="二居"> <p style='font-size:0.3rem;margin:0.3rem 0;'>暂无详细信息</p>   </van-tab> -->
         </van-tabs>
       </div>
-
       <div class="desc" id="maps" ref="tab1">
         <h3 style="margin-top:1.2rem;">{{$t('m.hotelxq4')}}</h3>
         <div class="toall-ul">
@@ -126,7 +121,6 @@
         </div>
         <!-- <div class="nolist" v-else style='font-size:0.35rem;text-align:center;margin:0.3rem 0;'>暂无公寓配置详细信息</div> -->
       </div>
-
       <div class="map">
         <div class="map01">
           <!-- <img src="../../assets/images/map01.jpg" alt=""> -->
@@ -149,7 +143,6 @@
           <p><b>附近地铁:</b>2号线</p>-->
         </div>
       </div>
-
       <div class="hot-hotel">
         <h3>{{$t('m.hotelxq6')}}</h3>
         <div class="hotel-some" v-if="projectdetail.recommend_list!=''">
@@ -167,7 +160,6 @@
         <div class="nolist" v-else style="font-size:0.35rem;text-align:center;">{{$t('m.others13')}}</div>
       </div>
     </div>
-
     <afooter></afooter>
     <!-- <div class="empty" style='height:1.44rem;'></div> -->
     <div
@@ -186,15 +178,16 @@
       <div class="bottom-phone">
         <van-icon name="phone-o" />
       </div>
-      <button @click="toServe(projectdetail.id,projectdetail.project_name)" v-if='projectdetail.xiecheng_id'>
-        {{$t('m.hotelxq9')}}
-      </button>
-      <button class="s1" :class='{otherClass:!projectdetail.xiecheng_id}' @click="toshowModels(projectdetail.id,projectdetail.project_name)">
-        {{$t('m.orderhouse')}}
-      </button>
-
+      <button
+        @click="toServe(projectdetail.id,projectdetail.project_name)"
+        v-if="projectdetail.xiecheng_id"
+      >{{$t('m.hotelxq9')}}</button>
+      <button
+        class="s1"
+        :class="{otherClass:!projectdetail.xiecheng_id}"
+        @click="toshowModels(projectdetail.id,projectdetail.project_name)"
+      >{{$t('m.orderhouse')}}</button>
     </div>
-
     <submitBtn
       v-if="hideModel"
       :id="idss"
@@ -218,7 +211,6 @@ import submitBtn from "@/components/submitBtn";
 import afooter from "@/components/Footer";
 import projectImg from "@/components/projectImg";
 import interfaces from "@/utils/api.js";
-
 export default {
   name: "hotelDetail",
   data() {
@@ -252,7 +244,7 @@ export default {
       },
       hideIcon: true,
       showMore: false,
-      showMore01: false,
+      showMore01: true,
       showJiao: false,
       showLoadMore: false
     };
@@ -260,13 +252,13 @@ export default {
   created() {
     // this.mobileLocal=localStorage.getItem('mobile')
     this.mobileLocal = JSON.parse(localStorage.getItem("userinfo")).mobile;
-    if(this.mobileLocal==null){
-       this.showImgAll = true
-    }else{
+    if (this.mobileLocal == null) {
+      this.showImgAll = true
+    } else {
       this.showImgAll = false
     }
     let id = this.$route.params.id;
-    this.getHeight.minHeight =(window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
+    this.getHeight.minHeight = (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
     // this.getdetailhouses(id)
   },
   beforeRouteEnter(to, from, next) {
@@ -274,8 +266,8 @@ export default {
     let id = to.params.id;
     let status = to.params.status;
     console.log('status');
-    console.log( status );
-    interfaces.getdetailhouse(id).then(function(res) {
+    console.log(status);
+    interfaces.getdetailhouse(id).then(function (res) {
       next(vm => {
         vm.projectdetail = res;
         vm.detailId = res.id;
@@ -284,7 +276,7 @@ export default {
         console.log(div);
         if (from.name == "myOrder") {
           if (div) {
-            setTimeout(function() {
+            setTimeout(function () {
               console.log($(div).offset().top);
               // $('html,body').scrollTop($(div).offset().top - 43);
               $("html, body").animate(
@@ -303,13 +295,13 @@ export default {
     let status = to.params.status;
     console.log(to);
     var that = this;
-    interfaces.getdetailhouse(id).then(function(res) {
+    interfaces.getdetailhouse(id).then(function (res) {
       that.projectdetail = res;
       that.detailId = res.id;
       var div = that.$refs.tab1;
       if (from.name == "myOrder") {
         if (div) {
-          setTimeout(function() {
+          setTimeout(function () {
             console.log($(div).offset().top);
             // $('html,body').scrollTop($(div).offset().top - 43);
             $("html, body").animate(
@@ -323,7 +315,7 @@ export default {
     });
   },
   watch: {
-    scroll: function(newVal, oldVal) {
+    scroll: function (newVal, oldVal) {
       if (newVal > oldVal) {
         this.local = false;
       } else {
@@ -332,19 +324,18 @@ export default {
     }
   },
   methods: {
-    goHome(){
+    goHome() {
       this.$router.go(-1)
     },
     toAppraise() {
       this.$router.push({ name: "appraise", params: { id: this.detailId } });
     },
-    btn_pos: function(e) {
+    btn_pos: function (e) {
       this.setlocaltrue();
     },
-    setlocaltrue: _.debounce(function() {
+    setlocaltrue: _.debounce(function () {
       this.local = true;
     }, 1000),
-
     showStory() {
       this.showImgAll = true;
     },
@@ -378,7 +369,7 @@ export default {
     },
     toMap(e) {
       document.getElementById("maps").scrollIntoView();
-     },
+    },
     toloadMore() {
       this.showHeight = !this.showHeight;
       if (this.showHeight == true) {
@@ -426,12 +417,10 @@ export default {
     tohideModel() {
       this.hideModel = false;
     },
-
     tohideList() {
       this.showImgAll = false;
     }
   },
-
   mounted() {
     //  let id=this.$route.params.status
     // var hash = window.location.hash;
@@ -450,14 +439,12 @@ export default {
     //     }, 500);
     //    }
     //   }
-
     window.addEventListener("scroll", this.handleScroll);
     window.addEventListener("scroll", this.btn_pos);
     this.$nextTick(() => {
       // let height= window.getComputedStyle(this.$refs.heightShow).height
       let height2 = window.getComputedStyle(this.$refs.desc).height;
       let height3 = window.getComputedStyle(this.$refs.jiaotong).height;
-
       //  alert(height2)
       if (height3 > 80 + "px") {
         this.showJiao = true;
@@ -497,7 +484,6 @@ export default {
   }
 };
 </script>
-
 <style lang="less" scoped>
 .desc .desc02 {
   height: 2.3rem;
@@ -508,7 +494,6 @@ export default {
   overflow: visible;
   transition: 0.4s ease;
 }
-
 .hotel-detail {
   width: 100%;
   margin: 0 auto;
@@ -568,7 +553,6 @@ export default {
   align-items: center;
   justify-content: center;
 }
-
 .Project-imgs .van-popup {
   border-radius: none !important;
 }
@@ -581,7 +565,6 @@ export default {
   font-size: 12px;
   background: rgba(0, 0, 0, 0.1);
 }
-
 .hotel-some .swiper-slide {
   width: 47%;
 }
@@ -650,7 +633,6 @@ export default {
   display: flex;
   align-items: center;
 }
-
 .desc {
   width: auto;
   height: auto;
@@ -697,7 +679,6 @@ export default {
   font-size: 0.32rem;
   color: #000;
 }
-
 .types {
   width: 100%;
   height: auto;
@@ -761,7 +742,6 @@ export default {
   justify-content: center;
   margin: 0.85rem 0;
 }
-
 .map {
   width: 100%;
   height: auto;
@@ -839,7 +819,6 @@ export default {
 .van-swipe-item {
   float: left;
 }
-
 .bottom-nav {
   width: 100%;
   height: 1.44rem;
@@ -884,7 +863,6 @@ export default {
 .bottom-nav .s1 a {
   color: #fff;
 }
-
 @keyframes bounce-down {
   25% {
     transform: translateY(-3px);
@@ -899,7 +877,6 @@ export default {
     transform: translateY(0);
   }
 }
-
 .down img {
   -webkit-animation: bounce-down 1s linear infinite;
   animation: bounce-down 1s linear infinite;
@@ -938,11 +915,12 @@ export default {
 .brandimg2 {
   transform: rotate(180deg);
 }
-
 .map .map01 .jiaoActive {
   height: auto;
   overflow: visible;
   transition: 0.4s ease;
 }
-.bottom-nav .otherClass{width:7.0rem;}
+.bottom-nav .otherClass {
+  width: 7rem;
+}
 </style>
