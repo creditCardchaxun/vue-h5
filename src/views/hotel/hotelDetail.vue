@@ -1,12 +1,12 @@
 <template>
   <div class="hotel-detail">
-    <aheaders status="3" @toback="goHome" :showLan='true'></aheaders>
+    <aheaders status="3" @toback="goHome" :showLan="true"></aheaders>
     <div class="banner-img">
       <div class="banner_top" @click="showStory">
         <em>{{$t('m.hotelxq1')}}</em>
         <!-- <div class="down">
           <img src="../../assets/images/more-icon01.jpg" alt style="width:0.2rem;height:0.2rem;" />
-        </div> -->
+        </div>-->
       </div>
       <div class="Project-imgs">
         <projectImg
@@ -16,20 +16,44 @@
           @tohideList="tohideList"
         ></projectImg>
       </div>
+
+      <!--轮播图  -->
+      
       <van-swipe @change="onChange">
-        <template v-if="projectdetail.pic">
-          <van-swipe-item v-for="(item,index) in projectdetail.pic" :key="index">
-            <img :src="item.focusurls_url" alt />
+           <!-- <div v-if=" projectdetail.pic"> -->
+            <!-- <van-swipe-item v-for="(item,index) in projectdetail.pic[0].img" :key="index" v-show='hideImg'>
+                <img :src="item" alt />
+            </van-swipe-item>
+               <van-swipe-item v-if="projectdetail.pic[1].video" v-show='hideVR'>
+               <img :src="projectdetail.pic[1].video.video_pic" alt  v-if="projectdetail.pic.video_pic"/>
+            <video :src="projectdetail.pic[1].video.video_url" v-if="projectdetail.pic.video_url"></video>
+            </van-swipe-item>
+               <van-swipe-item v-if="projectdetail.pic[2].VR" v-show='hideVideo'>
+                 <img :src="projectdetail.pic[2].VR.ar_pic" alt />
+            </van-swipe-item>
+          </div>
+  -->
+        <template v-if='hideImg'>
+          <van-swipe-item v-for="(item,index) in projectdetail.pic.img" :key="index">
+            <img :src="item" alt />
           </van-swipe-item>
         </template>
-        <van-swipe-item v-if="projectdetail.video_pic">
-          <img :src="item.focusurls_url" alt />
-          <video :src="projectdetail.video_url"></video>
-        </van-swipe-item>
+          <van-swipe-item v-if="hideVR">
+            <img :src="projectdetail.pic.VR.ar_pic" alt />
+          </van-swipe-item>
 
-        <!-- <van-swipe-item><img src="../../assets/images/hotel-02.jpg" alt=""></van-swipe-item> -->
-        <div class="custom-indicator" slot="indicator">{{ current + 1 }}/2</div>
+          <van-swipe-item v-if="hideVideo">
+            <img :src="projectdetail.pic.video_pic" alt  v-if="projectdetail.pic.video_pic"/>
+            <!-- <video :src="projectdetail.pic.video_url" v-if="projectdetail.pic.video_url"></video> -->
+          </van-swipe-item>
+     
+        <div class="custom-indicator" slot="indicator">{{ current + 1 }}/{{totalLength}}</div>
       </van-swipe>
+      <p class="swiper-title">
+        <span  @click='toshowVR(1)'>VR</span>
+        <span  @click='toshowIMG(projectdetail.pic.img.length)'>图片</span>
+        <span  @click='toshowVideo(1)'>视频</span>
+      </p>
     </div>
     <div class="main-content">
       <h3>
@@ -186,13 +210,15 @@
       <div class="bottom-phone">
         <van-icon name="phone-o" />
       </div>
-      <button @click="toServe(projectdetail.id,projectdetail.project_name)" v-if='projectdetail.xiecheng_id'>
-        {{$t('m.hotelxq9')}}
-      </button>
-      <button class="s1" :class='{otherClass:!projectdetail.xiecheng_id}' @click="toshowModels(projectdetail.id,projectdetail.project_name)">
-        {{$t('m.orderhouse')}}
-      </button>
-
+      <button
+        @click="toServe(projectdetail.id,projectdetail.project_name)"
+        v-if="projectdetail.xiecheng_id"
+      >{{$t('m.hotelxq9')}}</button>
+      <button
+        class="s1"
+        :class="{otherClass:!projectdetail.xiecheng_id}"
+        @click="toshowModels(projectdetail.id,projectdetail.project_name)"
+      >{{$t('m.orderhouse')}}</button>
     </div>
 
     <submitBtn
@@ -223,6 +249,10 @@ export default {
   name: "hotelDetail",
   data() {
     return {
+      hideVideo:false,
+      hideVR:false,
+      hideImg:false,
+
       current: 0,
       scroll: 0,
       swiperOption: {
@@ -254,33 +284,35 @@ export default {
       showMore: false,
       showMore01: false,
       showJiao: false,
-      showLoadMore: false
+      showLoadMore: false,
+      totalLength:''
     };
   },
   created() {
     // this.mobileLocal=localStorage.getItem('mobile')
     this.mobileLocal = JSON.parse(localStorage.getItem("userinfo")).mobile;
-    if(this.mobileLocal==null){
-       this.showImgAll = true
-    }else{
-      this.showImgAll = false
+    if (this.mobileLocal == null) {
+      this.showImgAll = true;
+    } else {
+      this.showImgAll = false;
     }
     let id = this.$route.params.id;
-    this.getHeight.minHeight =(window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
+    this.getHeight.minHeight =
+      (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
     // this.getdetailhouses(id)
   },
   beforeRouteEnter(to, from, next) {
     console.log("beforeRouteEnter");
     let id = to.params.id;
     let status = to.params.status;
-    console.log('status');
-    console.log( status );
+    console.log("status");
+    console.log(status);
     interfaces.getdetailhouse(id).then(function(res) {
       next(vm => {
         vm.projectdetail = res;
         vm.detailId = res.id;
         var div = vm.$refs.tab1;
-        console.log('div');
+        console.log("div");
         console.log(div);
         if (from.name == "myOrder") {
           if (div) {
@@ -332,8 +364,31 @@ export default {
     }
   },
   methods: {
-    goHome(){
-      this.$router.go(-1)
+    toshowVR(length){
+      this.totalLength=length
+      this.hideVR=true
+      this.hideImg=false
+      this.hideVideo=false
+      console.log('我点击了vr')
+    },
+      toshowIMG(length){
+        this.totalLength=length
+      this.hideImg=true
+      this.hideVR=false
+      this.hideVideo=false
+      console.log('点击了图片')
+    },
+      toshowVideo(length){
+        this.totalLength=length
+      this.hideVideo=true
+      this.hideVR=false
+      this.hideImg=false
+      console.log('点击了视频')
+    },
+
+
+    goHome() {
+      this.$router.go(-1);
     },
     toAppraise() {
       this.$router.push({ name: "appraise", params: { id: this.detailId } });
@@ -378,7 +433,7 @@ export default {
     },
     toMap(e) {
       document.getElementById("maps").scrollIntoView();
-     },
+    },
     toloadMore() {
       this.showHeight = !this.showHeight;
       if (this.showHeight == true) {
@@ -499,6 +554,29 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.swiper-title {
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 0.2rem;
+  left: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.swiper-title span {
+  width: 1.45rem;
+  height: 0.58rem;
+  line-height: 0.58rem;
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  color: rgba(255, 255,255, 0.5);
+  font-size: 0.35rem;
+  border-right:1px solid rgba(255, 255,255, 0.5);
+}
+.swiper-title span:last-child{ border-right:none;}
+
 .desc .desc02 {
   height: 2.3rem;
   overflow: hidden;
@@ -944,5 +1022,7 @@ export default {
   overflow: visible;
   transition: 0.4s ease;
 }
-.bottom-nav .otherClass{width:7.0rem;}
+.bottom-nav .otherClass {
+  width: 7rem;
+}
 </style>

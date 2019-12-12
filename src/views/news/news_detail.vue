@@ -11,7 +11,7 @@
                    <p> 中国城市发展已迈入存量更新时代，城市更新既是建筑规划的时代更迭，是科技人文的发展需求，也是经济民生的新方向。“中国城
      中国城市发展已迈入存量更新时代，城市更新既是建筑规划的时代更迭，是科技人文的发展需求，也是经济民生的新方向。“中国城
       </p>  -->
-          <p v-html="newsDetails.description">{{newsDetails.description}}</p> 
+          <!-- <p v-html="newsDetails.description">{{newsDetails.description}}</p>  -->
            <div v-html="newsDetails.content" class='content'>
              {{newsDetails.content}} 
              </div>

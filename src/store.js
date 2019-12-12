@@ -14,14 +14,16 @@ export default new Vuex.Store({
   },
   mutations: {
     setDefaultLang() {
-      //  let lanBase=localStorage.getItem('lanBase')
-      //  if(lanBase)
-
-      if (window.navigator && window.navigator.language.includes('zh')) {
+       let lanBase=localStorage.getItem('lanBase')
+       if(lanBase){
+        this.commit('changeLang',lanBase==1?'zh-CN':'en-US') 
+       }else{
+         if (window.navigator && window.navigator.language.includes('zh')) {
         this.commit('changeLang','zh-CN') 
-      } else {
+       } else {
         this.commit('changeLang','en-US') 
-      }
+       }
+     }
     },
     changeLang(state,playload){
       state.lang = playload

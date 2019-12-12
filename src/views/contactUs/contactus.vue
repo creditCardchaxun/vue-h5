@@ -37,16 +37,15 @@
           </div>
         </van-tab>
         <van-tab :title="$t('m.home4')">
-          <div class="about-01" :ref="'brandHeight'+index" v-for='(item,index) in about' :key='index'>
+          <!-- <div class="about-01" :ref="'brandHeight'+index" v-for='(item,index) in about' :key='index'>
             <div class="brand-01" :class='{activeHeight:about[index].showMore1}'>
-                 <!-- {{about[index].showMore1}} -->
                <h2 style='font-weight:bold;'>{{item.title}}</h2>
                <p v-html='item.content'>{{item.content}}</p>
             </div>
            <div class="index-more" v-show="'showMoress'+index" @click='moreLoad(index)' ><span v-if='IconMore1'>more</span> <img src="../../assets/images/more-icon.jpg" alt=""></div>
-          </div>
+          </div> -->
 
-          <!-- <div class="about-01">
+          <div class="about-01">
             <div class="brand-01" ref="brandHeight" :class='{activeHeight:showMore1}'>
               <h2 style="font-weight:bold;">品牌背景</h2>
               <p>base是盛煦存量地产 (Shanghai NOVA Real Estate Co., Ltd)旗下的一个创意地产品牌。盛煦存量地产成立于2014年，是一家专业性存量地产投资及资产管理公司。2016年，盛煦存量地产对存量地产改造及增值服务运营商翌成创意的股权进行收购，成为其控股股东，并共同发展旗下品牌base。</p>
@@ -86,7 +85,7 @@
               <span v-if='IconMore3'>more</span>
               <img src="../../assets/images/more-icon.jpg" alt :class="{brandimg3:showMore3}" /> 
             </div>
-          </div> -->
+          </div>
         </van-tab>
       </van-tabs>
       <afooters></afooters>
@@ -151,9 +150,9 @@ export default {
       (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
     this.active = this.$route.params.active;
     if (this.active == 0) {
-      this.contacts();
+      // this.contacts();
     } else {
-       this.abouts()
+      //  this.abouts()
     }
   },
   beforeRouteEnter(to, from, next) {
@@ -209,22 +208,19 @@ export default {
     toCallPhone() {
       window.location.href = "tel://400 700 6608";
     },
-    moreLoad(indexs) {
-      this.about.forEach((item,index)=>{
-          if(indexs==index){
-            console.log(indexs,index)
-          this.about[index].showMore1 =!this.about[index].showMore1;
-          // this.showMore1=this.about[index].showMore1
-           console.log(this.about[index].showMore1)
-          // this.showMore1 =!this.about[index].showMore1;
-          //  if(this.showMore1==true){
-          //     this.IconMore1=false
-          //   }else{
-          //     this.IconMore1=true
-          //   }
-          }
-     
-      })
+    moreLoad() {
+      // this.about.forEach((item,index)=>{
+      //     if(indexs==index){
+          //   console.log(indexs,index)
+          // this.about[index].showMore1 =!this.about[index].showMore1;
+          this.showMore1 =!this.showMore1;
+           if(this.showMore1==true){
+              this.IconMore1=false
+            }else{
+              this.IconMore1=true
+            }
+      //     }
+      // })
   
     },
       moreLoad2() {
@@ -258,23 +254,23 @@ export default {
       });
     },
 
-     abouts(){
-         interfaces.aboutus().then((res)=>{
-           this.about=res
-           res.forEach((item,index)=>{
-              let abouts=item.content
-            res[index].showMore1=this.showMore1
-            console.log(res[index].showMore1)
-           })
-        })
-    },
+    //  abouts(){
+    //      interfaces.aboutus().then((res)=>{
+    //        this.about=res
+    //        res.forEach((item,index)=>{
+    //           let abouts=item.content
+    //         res[index].showMore1=this.showMore1
+    //         console.log(res[index].showMore1)
+    //        })
+    //     })
+    // },
 
     onClick(name, title) {
       if (title == "联系我们") {
         this.contacts();
       } else if (title == "关于我们") {
         // this.$router.push({ name: "contact", params: { active: 1 } });
-        this.abouts()
+        // this.abouts()
       }
     },
     handleScroll() {
@@ -337,34 +333,22 @@ export default {
   watch: {
     active(newa, olda) {
       if (newa === 1) {
-          for(let i in this.about){
               this.$nextTick(() => {
-             console.log(this.$refs["brandHeight" + i][0])
-            //  console.log(this.$refs["brandHeight" + i][1])
-            //  console.log(this.$refs["brandHeight" + i][2])
-
-          let height2 = window.getComputedStyle(this.$refs["brandHeight" + i][0]).height;
-          // let height3 = window.getComputedStyle(this.$refs["brandHeight" + i][1]).height;
-          // let height4 = window.getComputedStyle(this.$refs["brandHeight" + i][2]).height;
-
-            console.log(height2)
-            // console.log(height3)
-            // console.log(height4)
-          //  }
+          let height2 = window.getComputedStyle(this.$refs.brandHeight).height;
+          let height3 = window.getComputedStyle(this.$refs.brandHeight2).height;
+          let height4 = window.getComputedStyle(this.$refs.brandHeight3).height;
            if (height2 > 180 + "px") {
             this.showMoress = true;
           }
-          //    if (height3 > 180 + "px") {
-          //   this.showMoress2 = true;
-          // }
-          //    if (height4 > 180 + "px") {
-          //   this.showMoress3= true;
-          // }
-
+             if (height3 > 180 + "px") {
+            this.showMoress2 = true;
+          }
+             if (height4 > 180 + "px") {
+            this.showMoress3= true;
+          }
                
         })
-      }
- 
+
       }
       
     }
