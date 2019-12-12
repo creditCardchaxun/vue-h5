@@ -2,7 +2,7 @@
   <div class="contact">
     <!-- <img src='../../assets/images/contact.png'/> -->
     <!-- 关于我们 联系我们 -->
-    <aheaders status="2" :showLan='true'></aheaders>
+    <aheaders status="2" :showLan="true"></aheaders>
     <div class="about">
       <img src="../../assets/images/about-banner.jpg" alt style="width:100%;height:6.08rem" />
 
@@ -37,13 +37,21 @@
           </div>
         </van-tab>
         <van-tab :title="$t('m.home4')">
-          <div class="about-01" :ref="'brandHeight'+index" v-for='(item,index) in about' :key='index'>
-            <div class="brand-01" :class='{activeHeight:about[index].showMore1}'>
-                 <!-- {{about[index].showMore1}} -->
-               <h2 style='font-weight:bold;'>{{item.title}}</h2>
-               <p v-html='item.content'>{{item.content}}</p>
+          <div
+            class="about-01"
+            :ref="'brandHeight'+index"
+            v-for="(item,index) in about"
+            :key="index"
+          >
+            <div class="brand-01" :class="{activeHeight:about[index].showMore1}">
+              <!-- {{about[index].showMore1}} -->
+              <h2 style="font-weight:bold;">{{item.title}}</h2>
+              <p v-html="item.content">{{item.content}}</p>
             </div>
-           <div class="index-more" v-show="'showMoress'+index" @click='moreLoad(index)' ><span v-if='IconMore1'>more</span> <img src="../../assets/images/more-icon.jpg" alt=""></div>
+            <div class="index-more" v-show="'showMoress'+index" @click="moreLoad(index)">
+              <span v-if="IconMore1">more</span>
+              <img src="../../assets/images/more-icon.jpg" alt />
+            </div>
           </div>
 
           <!-- <div class="about-01">
@@ -86,7 +94,7 @@
               <span v-if='IconMore3'>more</span>
               <img src="../../assets/images/more-icon.jpg" alt :class="{brandimg3:showMore3}" /> 
             </div>
-          </div> -->
+          </div>-->
         </van-tab>
       </van-tabs>
       <afooters></afooters>
@@ -126,12 +134,12 @@ export default {
       getHeight: {
         minHeight: ""
       },
-      showMore1:false,
-      showMore2:false,
-      showMore3:false,
-      IconMore1:true,
-      IconMore2:true,
-      IconMore3:true
+      showMore1: false,
+      showMore2: false,
+      showMore3: false,
+      IconMore1: true,
+      IconMore2: true,
+      IconMore3: true
     };
   },
   components: {
@@ -153,11 +161,11 @@ export default {
     if (this.active == 0) {
       this.contacts();
     } else {
-       this.abouts()
+      this.abouts()
     }
   },
   beforeRouteEnter(to, from, next) {
-    interfaces.contactus().then(function(res) {
+    interfaces.contactus().then(function (res) {
       next(vm => {
         if (res != undefined) {
           vm.contact = res;
@@ -171,19 +179,19 @@ export default {
       });
     });
 
-    interfaces.aboutus().then((res)=>{
-      next(vm=>{
-          vm.about=res
-          forEach((item,index)=>{
-            res[index].showMore1=this.showMore1
-            console.log(res[index].showMore1)
-          })
+    interfaces.aboutus().then((res) => {
+      next(vm => {
+        vm.about = res
+        forEach((item, index) => {
+          res[index].showMore1 = this.showMore1
+          console.log(res[index].showMore1)
+        })
       })
     })
   },
 
   methods: {
-    copy: function() {
+    copy: function () {
       var _this = this;
       var clipboard = new Clipboard(".getcopy"); //单页面引用
       clipboard.on("success", e => {
@@ -210,40 +218,40 @@ export default {
       window.location.href = "tel://400 700 6608";
     },
     moreLoad(indexs) {
-      this.about.forEach((item,index)=>{
-          if(indexs==index){
-            console.log(indexs,index)
-          this.about[index].showMore1 =!this.about[index].showMore1;
+      this.about.forEach((item, index) => {
+        if (indexs == index) {
+          console.log(indexs, index)
+          this.about[index].showMore1 = !this.about[index].showMore1;
           // this.showMore1=this.about[index].showMore1
-           console.log(this.about[index].showMore1)
+          console.log(this.about[index].showMore1)
           // this.showMore1 =!this.about[index].showMore1;
           //  if(this.showMore1==true){
           //     this.IconMore1=false
           //   }else{
           //     this.IconMore1=true
           //   }
-          }
-     
+        }
+
       })
-  
+
     },
-      moreLoad2() {
+    moreLoad2() {
       this.showMore2 = !this.showMore2;
-       if(this.showMore2==true){
-         this.IconMore2=false
-      }else{
-         this.IconMore2=true
+      if (this.showMore2 == true) {
+        this.IconMore2 = false
+      } else {
+        this.IconMore2 = true
       }
     },
-      moreLoad3() {
+    moreLoad3() {
       this.showMore3 = !this.showMore3;
-       if(this.showMore3==true){
-         this.IconMore3=false
-      }else{
-         this.IconMore3=true
+      if (this.showMore3 == true) {
+        this.IconMore3 = false
+      } else {
+        this.IconMore3 = true
       }
     },
-    
+
     contacts() {
       interfaces.contactus().then(res => {
         if (res != undefined) {
@@ -258,15 +266,15 @@ export default {
       });
     },
 
-     abouts(){
-         interfaces.aboutus().then((res)=>{
-           this.about=res
-           res.forEach((item,index)=>{
-              let abouts=item.content
-            res[index].showMore1=this.showMore1
-            console.log(res[index].showMore1)
-           })
+    abouts() {
+      interfaces.aboutus().then((res) => {
+        this.about = res
+        res.forEach((item, index) => {
+          let abouts = item.content
+          res[index].showMore1 = this.showMore1
+          console.log(res[index].showMore1)
         })
+      })
     },
 
     onClick(name, title) {
@@ -295,7 +303,7 @@ export default {
     //   }
   },
 
-  updated() {},
+  updated() { },
   mounted() {
     // let that = this;
     // that.$nextTick(() => {
@@ -337,36 +345,36 @@ export default {
   watch: {
     active(newa, olda) {
       if (newa === 1) {
-          for(let i in this.about){
-              this.$nextTick(() => {
-             console.log(this.$refs["brandHeight" + i][0])
+        for (let i in this.about) {
+          this.$nextTick(() => {
+            console.log(this.$refs["brandHeight" + i][0])
             //  console.log(this.$refs["brandHeight" + i][1])
             //  console.log(this.$refs["brandHeight" + i][2])
 
-          let height2 = window.getComputedStyle(this.$refs["brandHeight" + i][0]).height;
-          // let height3 = window.getComputedStyle(this.$refs["brandHeight" + i][1]).height;
-          // let height4 = window.getComputedStyle(this.$refs["brandHeight" + i][2]).height;
+            let height2 = window.getComputedStyle(this.$refs["brandHeight" + i][0]).height;
+            // let height3 = window.getComputedStyle(this.$refs["brandHeight" + i][1]).height;
+            // let height4 = window.getComputedStyle(this.$refs["brandHeight" + i][2]).height;
 
             console.log(height2)
             // console.log(height3)
             // console.log(height4)
-          //  }
-           if (height2 > 180 + "px") {
-            this.showMoress = true;
-          }
-          //    if (height3 > 180 + "px") {
-          //   this.showMoress2 = true;
-          // }
-          //    if (height4 > 180 + "px") {
-          //   this.showMoress3= true;
-          // }
+            //  }
+            if (height2 > 180 + "px") {
+              this.showMoress = true;
+            }
+            //    if (height3 > 180 + "px") {
+            //   this.showMoress2 = true;
+            // }
+            //    if (height4 > 180 + "px") {
+            //   this.showMoress3= true;
+            // }
 
-               
-        })
+
+          })
+        }
+
       }
- 
-      }
-      
+
     }
   }
 }
@@ -436,19 +444,23 @@ export default {
   margin-right: 0.3rem;
 }
 
-.contact .activeHeight{height:auto;overflow: visible;}
+.contact .activeHeight {
+  height: auto;
+  overflow: visible;
+}
 .brand-01 {
   width: auto;
   height: 5.5rem;
   overflow: hidden;
 }
-#brandImg{height: 4.5rem;}
+#brandImg {
+  height: 4.5rem;
+}
 .about-01 {
   width: 90%;
   height: auto;
   margin: 0.64rem auto 1rem;
   overflow: hidden;
-
 }
 .about-01 h2 {
   font-size: 0.4rem;
