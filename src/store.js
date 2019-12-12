@@ -14,6 +14,9 @@ export default new Vuex.Store({
   },
   mutations: {
     setDefaultLang() {
+      //  let lanBase=localStorage.getItem('lanBase')
+      //  if(lanBase)
+
       if (window.navigator && window.navigator.language.includes('zh')) {
         this.commit('changeLang','zh-CN') 
       } else {

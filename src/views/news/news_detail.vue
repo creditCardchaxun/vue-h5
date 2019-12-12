@@ -1,5 +1,5 @@
 <template>
-  <div class="newsdetail">
+  <!-- <div class="newsdetail"> -->
     <div class="news">
     <!-- <img src='../../assets/images/news-detail.png'/> -->
     <aheaders status='3' @toback='toreplace' :showLan='false' ></aheaders>
@@ -19,7 +19,7 @@
        </div>
      <afooter></afooter>
    </div>
-  </div>
+  <!-- </div> -->
 
 
 
@@ -56,9 +56,7 @@ export default {
         })
     })
   },
-   computed(){
-     this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
-    },
+
    methods:{
      newsDetail(id){
        interfaces.newsDetail(id).then((res)=>{

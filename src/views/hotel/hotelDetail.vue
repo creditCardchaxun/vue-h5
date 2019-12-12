@@ -260,11 +260,11 @@ export default {
   created() {
     // this.mobileLocal=localStorage.getItem('mobile')
     this.mobileLocal = JSON.parse(localStorage.getItem("userinfo")).mobile;
-    if(this.mobileLocal==null){
-       this.showImgAll = true
-    }else{
-      this.showImgAll = false
-    }
+    // if(this.mobileLocal==null){
+    //    this.showImgAll = true
+    // }else{
+    //   this.showImgAll = false
+    // }
     let id = this.$route.params.id;
     this.getHeight.minHeight =(window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
     // this.getdetailhouses(id)
