@@ -158,7 +158,7 @@
               <div class="hotel-item" @click="toDetailxq(item.id)">
                 <img :src="item.pic" alt />
                 <div class="hotel-title">{{item.project_name}}</div>
-                <p>{{item.area_str}}</p>
+                <!-- <p>{{item.area_str}}</p> -->
                 <p>{{item.address}}</p>
               </div>
             </swiper-slide>
@@ -260,11 +260,11 @@ export default {
   created() {
     // this.mobileLocal=localStorage.getItem('mobile')
     this.mobileLocal = JSON.parse(localStorage.getItem("userinfo")).mobile;
-    // if(this.mobileLocal==null){
-    //    this.showImgAll = true
-    // }else{
-    //   this.showImgAll = false
-    // }
+    if(this.mobileLocal==null){
+       this.showImgAll = true
+    }else{
+      this.showImgAll = false
+    }
     let id = this.$route.params.id;
     this.getHeight.minHeight =(window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
     // this.getdetailhouses(id)

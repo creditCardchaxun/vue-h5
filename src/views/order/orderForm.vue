@@ -552,7 +552,7 @@ export default {
   width: 97%;
   margin: 0.5rem auto 0;
   border: none;
-  border-bottom: 1px solid #ddd;
+  /* border-bottom: 1px solid #ddd; */
   font-size: 0.3rem;
   line-height: 0.5rem;
 }

@@ -1,7 +1,7 @@
 .home .van-tabs .van-tab{flex:none;width:20%;  position: relative;
-  left: -0.3rem;}
+  left: -0.1rem;}
 .home .van-tabs .van-tab span{font-size:0.44rem;font-weight: bold;}
-/* .news{padding-top:1.48rem;position:relative;width:90%;margin:0 auto;} */
+.news{padding-top:1.48rem;position:relative;width:90%;margin:0 auto;}
 .van-tabs .van-tabs__line {
     position: absolute;
     bottom: 15px;

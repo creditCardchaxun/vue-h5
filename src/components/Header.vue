@@ -107,7 +107,7 @@ export default {
 
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 /* .header {width:100%;height:auto;display:flex;align-items: center;position:absolute;top:0;left:0;justify-content:space-around}
 .header .logo{width:20%;height:auto;margin-top:10px;}
 .header .nav-lan{width:37%;height:auto;}
@@ -117,15 +117,29 @@ export default {
 
 .header {
   width: 100%;
-  padding: 0 0.6rem;
-  height: 1.3rem;
+  height: auto;
   display: flex;
-  box-sizing: border-box;
   align-items: center;
-  justify-content: space-between;
   position: fixed;
   top: 0;
   left: 0;
+  justify-content: space-between;
+  padding: 0 0.6rem;
+  box-sizing: border-box;
+  padding: 0 0.6rem;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+
+  // width: 100%;
+  // padding: 0 0.6rem;
+  // height: 1.3rem;
+  // display: flex;
+  // box-sizing: border-box;
+  // align-items: center;
+  // justify-content: space-between;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
   background: rgba(255, 255, 255, 0.8);
   z-index: 99;
   /* margin:0 0 0 0.55rem; */
@@ -135,24 +149,13 @@ export default {
 }
 .header .logo {
   width: 1.54rem;
-  height: 1.09rem;
-  margin-top: 10px;
-}
-.header .logo img {
-  width: 1.54rem;
-  height: 1.09rem;
-}
-.empty {
-  height: 1.63rem;
-}
-.header .logo {
-  width: 1.54rem;
-  height: 1.09rem;
-  margin-top: 10px;
-}
-.header .logo img {
-  width: 1.54rem;
-  height: 1.09rem;
+  height: 0.9rem;
+  
+  /* margin-top: 10px; */
+  img{
+    width: auto;
+    height: 100%;
+  }
 }
 
 .left {
