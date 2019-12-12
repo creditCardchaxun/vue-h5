@@ -486,7 +486,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .desc .desc02 {
-  height: 2.3rem;
+  height: 2.4rem;
   overflow: hidden;
 }
 .desc .brandStory {
@@ -640,6 +640,7 @@ export default {
 }
 .desc h3 {
   margin-top: 0.85rem;
+  margin-bottom: 0.4rem;
   font-size: 0.42rem;
   color: #060606;
   font-weight: bold;
@@ -649,7 +650,7 @@ export default {
   color: #000;
   line-height: 0.6rem;
   color: #0d0d0d;
-  margin-top: 0.44rem;
+  // margin-top: 0.44rem;
 }
 .desc ul {
   width: auto;
