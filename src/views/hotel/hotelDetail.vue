@@ -32,7 +32,7 @@
             <img src="../../assets/images/VR.png" alt class="VR" />
           </div>
         </van-swipe-item>
-       <!-- 视频轮播 -->
+      <!-- 视频轮播 -->
         <van-swipe-item v-if="hideVideo">
           <img
             :src="projectdetail.pic.video.video_pic"
