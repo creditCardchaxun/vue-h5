@@ -140,7 +140,7 @@
 
     <div class="map">
       <div class="alltag" @click="toopencity">
-        <span>{{openName}}</span>
+        <span>{{$t('m.map.defaultName')}}</span>
         <div class="alltags" v-show="opens1">
           <span
             v-for="(item,index) in allcityName"
@@ -370,6 +370,7 @@ export default {
     window.addEventListener("scroll", this.handleScrolls, true);
     $eventbus.$on("changeLang", (res) => {
       this.getHomedata()
+      this.getAllmap()
     });
     this.$nextTick(() => {
       this.getallother(3362)
@@ -806,6 +807,7 @@ export default {
   font-size: 0.38rem;
   color: #0e0e0e;
   display: block;
+  text-align: center;
 }
 
 @media screen and (min-width: 640px) {

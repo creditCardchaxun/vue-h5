@@ -1241,6 +1241,7 @@ export const m = {
     jiudian: 'Hotel',
     meishi: 'Delicacy',
     jingdian: 'Scenic ',
-    gouwu: 'Shopping'
+    gouwu: 'Shopping',
+    defaultName: 'shanghai'
   }
 }
