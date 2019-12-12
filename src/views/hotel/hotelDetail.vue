@@ -49,7 +49,7 @@
     </div>
     <div class="desc">
       <h3>{{$t('m.hotelxq2')}}</h3>
-      <div class="desc02" v-if="projectdetail.desc!=''" ref="desc" :class="{brandStory:showMore}">
+      <div ref="desc" class="desc02" v-if="projectdetail.desc!=''"  :class="{brandStory:showMore}">
         <p>{{projectdetail.desc}}</p>
       </div>
       <div class="nolist" v-else style="font-size:0.35rem;text-align:center;">{{$t('m.others13')}}</div>
@@ -245,7 +245,7 @@ export default {
       hideIcon: true,
       showMore: false,
       showMore01: true,
-      showJiao: false,
+      showJiao: true,
       showLoadMore: false
     };
   },
@@ -442,26 +442,28 @@ export default {
     window.addEventListener("scroll", this.handleScroll);
     window.addEventListener("scroll", this.btn_pos);
     this.$nextTick(() => {
+      // let remPx = document.body.clientWidth / 10;
+      
+      // let height2 = parseFloat(window.getComputedStyle(this.$refs.desc).height);
+      
+      // let more1 = height2/remPx;
+      // let height3 = window.getComputedStyle(this.$refs.jiaotong).height;
+      // if (height3 > 80 + "px") {
+      //   this.showJiao = true;
+      // }
+      // if (height2 > this.defaultheight2 + "px") {
+      //   this.showMore01 = true;
+      // }
+    })
+    $eventbus.$on("changeLang", res => {
+      this.mobileLocal = localStorage.getItem("mobile");
+      let id = this.$route.params.id;
+      this.getdetailhouses(id);
       // let height= window.getComputedStyle(this.$refs.heightShow).height
-      let height2 = window.getComputedStyle(this.$refs.desc).height;
-      let height3 = window.getComputedStyle(this.$refs.jiaotong).height;
-      //  alert(height2)
-      if (height3 > 80 + "px") {
-        this.showJiao = true;
-      }
-      if (height2 > this.defaultheight2 + "px") {
-        this.showMore01 = true;
-      }
-    }),
-      $eventbus.$on("changeLang", res => {
-        this.mobileLocal = localStorage.getItem("mobile");
-        let id = this.$route.params.id;
-        this.getdetailhouses(id);
-        // let height= window.getComputedStyle(this.$refs.heightShow).height
-        // if(height>defaultheight+'px'){
-        //     this.showHeight=true
-        //   }
-      });
+      // if(height>defaultheight+'px'){
+      //     this.showHeight=true
+      //   }
+    });
   },
   //第四步：当再次进入（前进或者后退）时，只触发activated（注：只有在keep-alive加载时调用）
   activated() {
