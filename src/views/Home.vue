@@ -31,16 +31,12 @@
 
     <div class="brand-story">
       <h3>{{story.catname}}</h3>
-      <div class="brand-all" ref="heightShow" :class="{brandStory:showMore}">
-        <!-- <p v-html='story.description'> 
-              {{story.description}}
-        </p>-->
+      <!-- <div class="brand-all" ref="heightShow" :class="{brandStory:showMore}">
         <p v-for="(item,index) in story2" :key="index">{{item}}</p>
         <div class="story-img" v-if="story.image">
           <img :src="story.image" alt />
         </div>
       </div>
-
       <div class="index-more" @click="toloadMore" style="margin:0 auto;">
         <div class="mas" v-show="toshows">
           <span>more</span>
@@ -49,12 +45,8 @@
         <div class="mas" v-show="toshows2" :class="{brandimg2:showMore}">
           <img src="../assets/images/more-icon.jpg" alt />
         </div>
-      </div>
-      <!-- <div class='index-more' ></div> -->
-
-      <!-- <div class="active-img">
-        <img src="../assets/images/index_03.jpg" alt />
-      </div>-->
+      </div> -->
+      <showmorenew v-if="story2&&story2.length" :pageType="'shouye'" :htmlstr="story2" ></showmorenew>
     </div>
     <!-- <div class="logo1"></div> -->
     <div :class="[showMore?'': 'yuyue']">
@@ -172,6 +164,7 @@ import footers from "@/components/Footer";
 import store from "../store";
 import maps from "@/components/map";
 import submitBtn from "@/components/submitBtn";
+import showmorenew from "@/components/ShowMoreNew";
 
 import { Swipe, SwipeItem, Tab, Tabs } from "vant";
 
@@ -396,11 +389,11 @@ export default {
     })
 
     // let height= window.getComputedStyle(this.$refs.heightShow).height
-    let height = window.getComputedStyle(this.$refs.heightShow).height
+    // let height = window.getComputedStyle(this.$refs.heightShow).height
     //  console.log(height,'px')
-    if (height > this.storyHeight + 'px') {
-      this.toshows = true;
-    }
+    // if (height > this.storyHeight + 'px') {
+    //   this.toshows = true;
+    // }
   },
   //第四步：当再次进入（前进或者后退）时，只触发activated（注：只有在keep-alive加载时调用）
   activated() {
@@ -418,7 +411,8 @@ export default {
     // aheaders,
     footers,
     maps,
-    submitBtn
+    submitBtn,
+    showmorenew
   }
 };
 </script>

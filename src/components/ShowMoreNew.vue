@@ -2,7 +2,21 @@
 <template>
   <div class="showmore">
     <!-- :class='{showonep:ishide&&shoumore}' -->
-    <div :class="['text',moreType.className]" v-html="htmlstr" :style="textstyle" ref="textdom"></div>
+    <div
+      v-if="typeof htmlstr === 'string'"
+      :class="['text',moreType.className]"
+      v-html="htmlstr"
+      :style="textstyle"
+      ref="textdom"
+    ></div>
+    <div
+      v-show="typeof htmlstr !== 'string'"
+      :class="['shouye',moreType.className]"
+      :style="textstyle"
+      ref="textdomArr"
+    >
+      <p v-for="(item,index) in htmlstr" :key="index">{{item}}</p>
+    </div>
     <div class="index-more" v-show="shoumore" @click="moreLoad()">
       <span v-if="ishide">more</span>
       <img class="more-icon" :class="{down:!ishide}" src="../assets/images/more-icon.jpg" alt />
@@ -14,10 +28,13 @@
 // lianxi 联系我们页面
 // hotal-gypp  公寓详情公寓品牌
 // hotal-zbjt  公寓详情周边交通
+// shouye 首页
 export default {
   name: 'showmore',
   props: {
-    htmlstr: String,
+    htmlstr: {
+      required: true
+    },
     lineNum: {
       default: 4,
       type: Number
@@ -37,8 +54,16 @@ export default {
   },
   mounted() {
     var rem = localStorage.getItem('lcRem')
-    if (this.$refs.textdom.offsetHeight > rem * this.moreType.lineHeight * this.lineNum) {
-      this.shoumore = true
+    if (typeof (this.htmlstr) === 'string') {
+      if (this.$refs.textdom.offsetHeight > rem * this.moreType.lineHeight * this.lineNum) {
+        this.shoumore = true
+      }
+    } else {
+      this.$nextTick(() => {
+        if (this.$refs.textdomArr.offsetHeight > rem * this.moreType.lineHeight * this.lineNum) {
+          this.shoumore = true
+        }
+      })
     }
   },
   computed: {
@@ -61,6 +86,12 @@ export default {
           obj = {
             lineHeight: 0.6,
             className: 'hotal-zbjt'
+          }
+          break;
+        case 'shouye':
+          obj = {
+            lineHeight: 0.68,
+            className: 'shouye'
           }
           break;
         default:
@@ -126,6 +157,16 @@ export default {
 }
 .showonep.text >>> p:nth-child(1) {
   display: block;
+}
+
+.shouye {
+  overflow: hidden;
+}
+
+.shouye p {
+  font-size: 0.34rem;
+  color: #060606;
+  line-height: 0.68rem;
 }
 
 .more-icon {
