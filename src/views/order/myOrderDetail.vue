@@ -33,11 +33,11 @@
         <span>{{$t('m.feedback10')}}</span>
         <em>{{bookarr.book_time}}</em>
       </p>
-      <p v-if="!feedbackarr.user_content">
+      <p v-if="!feedbackarr.user_score&&bookarr.intention">
         <span>{{$t('m.feedback11')}}</span>
         <em>{{bookarr.intention}}</em>
       </p>
-      <p v-if="feedbackarr.user_content">
+      <p v-if="feedbackarr.user_content&&feedbackarr.user_score" >
         <span>{{$t('m.feedback20')}}</span>
         <em>{{feedbackarr.user_content}}</em>
       </p>

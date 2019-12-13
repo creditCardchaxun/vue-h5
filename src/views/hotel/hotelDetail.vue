@@ -2,7 +2,7 @@
   <div class="hotel-detail">
     <aheaders status="3" @toback="goHome" :showLan="true"></aheaders>
     <div class="banner-img">
-      <div class="banner_top" @click="showStory" v-if="brandStory">
+      <div class="banner_top" @click="showStory" v-show='hideBannerTop'>
         <em>{{$t('m.hotelxq1')}}</em>
         <!-- <div class="down">
           <img src="../../assets/images/more-icon01.jpg" alt style="width:0.2rem;height:0.2rem;" />
@@ -11,6 +11,7 @@
       <div class="Project-imgs">
         <projectImg
           v-if="showImgAll"
+           :imgAll='imgAll'
           :showImgAll="showImgAll"
           :idss="detailId"
           @tohideList="tohideList"
@@ -301,7 +302,9 @@ export default {
       video_url: false,
       brandStory:'',
       houseTypeLength:0,
-      lanBase: null
+      lanBase: null,
+      imgAll:[],
+      hideBannerTop:true
     };
   },
   created() {
@@ -309,7 +312,6 @@ export default {
     let id = this.$route.params.id;
     this.getHeight.minHeight = (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
     this.getdetailhouses(id)
-    this.showBrandImg(id)
     this.storyImg(id)
     this.getLan()
 
@@ -322,7 +324,6 @@ export default {
     interfaces.getdetailhouse(id).then(function(res) {
       to.meta[i18n.locale] = res.project_name
       next(vm => {
-        console.log('111', res);
         vm.projectdetail = res;
         vm.detailId = res.id;
         var div = vm.$refs.tab1;
@@ -340,8 +341,6 @@ export default {
         }
       });
     });
-
-  
   },
   beforeRouteUpdate(to, from, next) {
     console.log("beforeRouteUpdate");
@@ -435,16 +434,27 @@ export default {
       this.video_url = !this.video_url;
     },
           //  品牌故事第一次点击
-      showBrandImg(id){ 
-        interfaces.getbrandFirst(id).then((res)=>{
-          let storyId=res.is_show_project_story
-           if(storyId==1){
-             this.showImgAll=false;
-           }else{
-             this.showImgAll=true;
-           }
-       })
-     },   
+    //   showBrandImg(id){ 
+    //     interfaces.getbrandFirst(id).then((res)=>{
+    //       let storyId=res.is_show_project_story
+    //        if(storyId==1){
+    //          this.showImgAll=false;
+    //        }else{
+    //          this.showImgAll=true;
+    //        }
+    //    })
+    //  },   
+    //  加载品牌故事
+     storyImg(id) {
+      let projectlist = [];
+      interfaces.getbrandstory(id).then(res => {
+        if (res != null) {
+          this.imgAll = res;
+        }else{
+         this. hideBannerTop=false
+        }
+      });
+    },
     goHome() {
       this.$router.go(-1)
     },
@@ -458,12 +468,9 @@ export default {
       this.local = true;
     }, 1000),
     showStory() {
-      if(this.brandStory==null){
-        this.$toast('暂无项目故事')
-        return;
-      }else{
-        this.showImgAll = true;
-      }
+       if(this.hideBannerTop){
+         this.showImgAll = true;
+       }
     },
     toshowModels(id, name) {
       this.status = 1;
@@ -532,8 +539,14 @@ export default {
          if(this.projectdetail.house_type){
           this.houseTypeLength=this.projectdetail.house_type[0].pic.length
               //  console.log(this.projectdetail.house_type[0].pic.length)
-
-       }
+          }
+          if(this.projectdetail.is_show_project_story){
+              if(this.projectdetail.is_show_project_story==2){
+                  this.showImgAll = true;
+              }else{
+                this.showImgAll = false;
+              }
+          }
          
       });
     },
