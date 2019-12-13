@@ -2,6 +2,8 @@
 <template>
   <div class="showmore">
     <!-- :class='{showonep:ishide&&shoumore}' -->
+    <div class='testhight' ref='en-US'>A<br>A<br>A<br>A<br></div>
+    <div class='testhight' ref='zh-CN'>啊<br>啊<br>啊<br>啊<br></div>
     <div
       v-if="typeof htmlstr === 'string'"
       :class="['text',moreType.className]"
@@ -47,24 +49,20 @@ export default {
   data() {
     return {
       shoumore: false,
-      ishide: true
+      ishide: true,
+      textlang:'',cnH:123,enH:123
     }
   },
   created() {
+    this.textlang = this.$store.state.lang
   },
   mounted() {
-    var rem = localStorage.getItem('lcRem')
-    if (typeof (this.htmlstr) === 'string') {
-      if (this.$refs.textdom.offsetHeight - 6 > rem * this.moreType.lineHeight * this.lineNum) {
-        this.shoumore = true
-      }
-    } else {
-      this.$nextTick(() => {
-        if (this.$refs.textdomArr.offsetHeight - 6 > rem * this.moreType.lineHeight * this.lineNum) {
-          this.shoumore = true
-        }
-      })
-    }
+    // var enH = this.$refs.textdom.offsetHeight
+    // var cnH = this.$refs.textdom.offsetHeight
+    // 'zh-CN': require('./assets/lang/zh'),   
+    //   'en-US': require('./assets/lang/en')  
+    // debugger
+    this.init()
   },
   computed: {
     moreType() {
@@ -100,12 +98,53 @@ export default {
       return obj
     },
     textstyle() {
+      // console.log(this.$refs[this.textlang]);
       if (!this.shoumore) return 'height:auto;';
-      if (this.ishide) return `height:${this.moreType.lineHeight * this.lineNum - 0.2 }rem;`;
+      // if (this.ishide) return `height:${this.moreType.lineHeight * this.lineNum - 0.2 }rem;`;
+      if (this.ishide) return `height:${this.$refs[this.textlang].offsetHeight}px;`;
       return 'height:auto;';
     }
   },
+  watch:{
+    htmlstr:function(){
+        this.textlang = this.$store.state.lang
+        if(this.cnH!==123&&this.textlang==='zh-CN'){
+          this.shoumore = !!this.cnH
+          return
+        }
+        if(this.enH !== 123&&this.textlang==='en-US'){
+          this.shoumore = !!this.enH
+          return
+        }
+        this.shoumore = false
+        setTimeout(()=>{
+          this.init()
+        },10)
+    }
+  },
   methods: {
+    init(){
+      var rem = localStorage.getItem('lcRem')
+      if (typeof (this.htmlstr) === 'string') {
+        console.log(this.$refs.textdom.scrollHeight,rem * this.moreType.lineHeight * this.lineNum);
+        if (this.$refs.textdom.scrollHeight - 6 > rem * this.moreType.lineHeight * this.lineNum) {
+          
+        console.log(1);
+          this.shoumore = true
+        }else{
+          
+        console.log(0);
+          this.shoumore = false
+          }
+          this.textlang==='zh-CN'?this.cnH=!!this.shoumore:this.enH=!!this.shoumore
+      } else {
+        this.$nextTick(() => {
+          if (this.$refs.textdomArr.scrollHeight - 6 > rem * this.moreType.lineHeight * this.lineNum) {
+            this.shoumore = true
+          }else{this.shoumore = false}
+        })
+      }
+    },
     moreLoad() {
       this.ishide = !this.ishide
     }
@@ -115,6 +154,10 @@ export default {
 </script>
 
 <style scoped>
+.testhight{
+  position: absolute;
+  left: 30rem;
+}
 .text {
   width: 90%;
   height: auto;
