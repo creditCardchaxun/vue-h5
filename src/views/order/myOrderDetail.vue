@@ -127,7 +127,7 @@ export default {
   },
   methods: {
     toreplace() {
-      this.$router.go(-1)
+      this.$router.push({name:'myOrder'})
     },
     bookdetails(id) {
       interfaces.bookDetail(id).then((res) => {
