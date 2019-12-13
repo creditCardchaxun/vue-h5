@@ -36,7 +36,7 @@ export default {
   },
   mounted() {
     var rem = localStorage.getItem('lcRem')
-    if (this.$refs.textdom.offsetHeight > rem * 0.81 * this.lineNum) {
+    if (this.$refs.textdom.offsetHeight > rem * this.moreType.lineHeight * this.lineNum) {
       this.shoumore = true
     }
   },
@@ -63,7 +63,7 @@ export default {
     },
     textstyle() {
       if (!this.shoumore) return 'height:auto;';
-      if (this.ishide) return `height:${0.81 * this.lineNum}rem;`;
+      if (this.ishide) return `height:${this.moreType.lineHeight * this.lineNum}rem;`;
       return 'height:auto;';
     }
   },
@@ -95,8 +95,10 @@ export default {
   font-size: 0.34rem;
 }
 .hotal-gypp {
+  width: 100%;
   line-height: 0.6rem;
   font-size: 0.34rem;
+  margin-bottom: 0.3rem;
 }
 
 /* .text >>> p {

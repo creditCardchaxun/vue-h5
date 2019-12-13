@@ -11,7 +11,7 @@
       <div class="Project-imgs">
         <projectImg
           v-if="showImgAll"
-           :imgAll='imgAll'
+          :imgAll='imgAll'
           :showImgAll="showImgAll"
           :idss="detailId"
           @tohideList="tohideList"
@@ -81,7 +81,7 @@
     </div>
     <div class="desc">
       <h3>{{$t('m.hotelxq2')}}</h3>
-      <div ref="desc" class="desc02" v-if="projectdetail.desc!=''"  :class="{brandStory:showMore}">
+      <!-- <div ref="desc" class="desc02" v-if="projectdetail.desc!=''"  :class="{brandStory:showMore}">
         <p>{{projectdetail.desc}}</p>
       </div>
       <div class="nolist" v-else style="font-size:0.35rem;text-align:center;">{{$t('m.others13')}}</div>
@@ -93,8 +93,8 @@
           style="margin-top: 0.1rem;"
           :class="{brandimg2:showMore}"
         />
-      </div>
-      <!-- <showmorenew :pageType="'hotal-gypp'" v-if="projectdetail.desc" :htmlstr="projectdetail.desc"></showmorenew> -->
+      </div> -->
+      <showmorenew :pageType="'hotal-gypp'" v-if="projectdetail.desc" :htmlstr="projectdetail.desc"></showmorenew>
     </div>
     <div class="types">
       <div class="types-nav">
