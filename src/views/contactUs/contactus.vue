@@ -38,27 +38,30 @@
         </van-tab>
         <van-tab :title="$t('m.home4')">
 
-          <!-- <showmore v-if='showmoretextdemo' :htmlstr='showmoretextdemo'></showmore>
+          <!-- <showmore v-if='showmoretextdemo' :htmlstr='showmoretextdemo'></showmore> -->
           <div
             class="about-01"
             :ref="'brandHeight'+index"
             v-for="(item,index) in about"
             :key="index"
           >
-            <div class="brand-01" :class="{activeHeight:about[index].showMore1}">
-              {{about[index].showMore1}}
+            <h2 style="font-weight:bold;">{{item.title}}</h2>
+          <showmore v-if='item.content' :htmlstr='item.content'></showmore>
+            <!-- <div class="brand-01" :class="{activeHeight:about[index].showMore1}">
+              
               <h2 style="font-weight:bold;">{{item.title}}</h2>
-              <p v-html="item.content">{{item.content}}</p> -->
+              <p v-html="item.content">{{item.content}}</p>
 
-          <!-- <div class="about-01" :ref="'brandHeight'+index" v-for='(item,index) in about' :key='index'>
+          <div class="about-01" :ref="'brandHeight'+index" v-for='(item,index) in about' :key='index'>
             <div class="brand-01" :class='{activeHeight:about[index].showMore1}'>
               <h2 style='font-weight:bold;'>{{item.title}}</h2>
               <p v-html='item.content'>{{item.content}}</p>
             </div>
           <div class="index-more" v-show="'showMoress'+index" @click='moreLoad(index)' ><span v-if='IconMore1'>more</span> <img src="../../assets/images/more-icon.jpg" alt=""></div>
-          </div>-->
+           -->
+          </div>
 
-          <div class="about-01">
+          <!-- <div class="about-01">
             <div class="brand-01" ref="brandHeight" :class="{activeHeight:showMore1}">
               <h2 style="font-weight:bold;">品牌背景</h2>
               <div>
@@ -105,7 +108,7 @@
               <span v-if="IconMore3">more</span>
               <img src="../../assets/images/more-icon.jpg" alt :class="{brandimg3:showMore3}" />
             </div>
-          </div>
+          </div> -->
         </van-tab>
       </van-tabs>
       <afooters></afooters>
@@ -169,7 +172,7 @@ export default {
   },
   created() {
     // this.contacts()
-    // this.abouts()
+    this.abouts()
     this.getHeight.minHeight =
       (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
     this.active = this.$route.params.active;
@@ -197,10 +200,10 @@ export default {
     interfaces.aboutus().then((res) => {
       next(vm => {
         vm.about = res
-        forEach((item, index) => {
-          res[index].showMore1 = this.showMore1
-          console.log(res[index].showMore1)
-        })
+        // forEach((item, index) => {
+        //   res[index].showMore1 = this.showMore1
+        //   console.log(res[index].showMore1)
+        // })
       })
     })
   },
@@ -278,16 +281,16 @@ export default {
       });
     },
 
-    //  abouts(){
-    //      interfaces.aboutus().then((res)=>{
-    //        this.about=res
-    //        res.forEach((item,index)=>{
-    //           let abouts=item.content
-    //         res[index].showMore1=this.showMore1
-    //         console.log(res[index].showMore1)
-    //        })
-    //     })
-    // },
+     abouts(){
+         interfaces.aboutus().then((res)=>{
+           this.about=res
+           res.forEach((item,index)=>{
+              let abouts=item.content
+            res[index].showMore1=this.showMore1
+            console.log(res[index].showMore1)
+           })
+        })
+    },
 
     onClick(name, title) {
       if (title == "联系我们") {

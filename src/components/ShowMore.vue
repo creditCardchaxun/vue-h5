@@ -4,8 +4,8 @@
     <div class="text" v-html="htmlstr" :style='textstyle' ref='textdom'></div>
   
     <div class="index-more" v-show="shoumore" @click="moreLoad()">
-      <span>more</span>
-      <img class="more-icon" src="../assets/images/more-icon.jpg" alt />
+      <span v-if="ishide">more</span>
+      <img class="more-icon" :class='{down:!ishide}' src="../assets/images/more-icon.jpg" alt />
     </div> 
   </div>
 </template>
@@ -26,7 +26,7 @@
     },
     mounted(){
       var rem = localStorage.getItem('lcRem')
-        if(this.$refs.textdom.offsetHeight>rem*0.81*4){
+        if(this.$refs.textdom.offsetHeight>rem*0.81*5){
           this.shoumore = true
         }
     },
@@ -56,13 +56,20 @@
     height: auto;
     margin: 0.64rem auto 1rem;
     overflow: hidden;
+    transition: 1s;
   }
   .text >>> p{
     line-height: .81rem;
     font-size: .36rem;
-    margin-top: .5rem;
+    margin-top: .81rem;
   }
   .more-icon{
     margin-top:0.02rem;
+    transform: rotate(0deg);
+    transition: 0.5s;
+  }
+  .down{
+    transform: rotate(180deg);
+    transition: 0.5s;
   }
 </style>
