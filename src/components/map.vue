@@ -279,7 +279,7 @@ export default {
       info.appendChild(bottom);
       var button = document.createElement("button");
       button.className = "info-button";
-      button.innerHTML = this.$i18n.locale === 'zh-CN' ? "到这里去" : "Go here";
+      button.innerHTML = this.$i18n.locale === 'zh-CN' ? "到这里去" : "Directions";
       button.id = 'btngo';
       // button.onclick = _this.showfirst;
       button.onclick = _this.showNav1;
@@ -677,7 +677,7 @@ export default {
       if (newVal === 'en-US') {
         $('.info-button').text('到这里去')
       } else {
-        $('.info-button').text('Go here')
+        $('.info-button').text('Directions')
       }
     },
     dataArr(newVal, oldVal) {

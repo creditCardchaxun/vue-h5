@@ -31,7 +31,7 @@ export const m = {
   home4:'About base',
   home5:'Contact us',
   orderhouse:'Book',
-  watch:'About to begin',
+  watch:'Upcoming',
   watch2:'You have seen',
   server:'service',
 
