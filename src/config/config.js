@@ -2,17 +2,19 @@ var config
 
 let configTest = {
   BASEURL: 'http://shengxi.iyunfish.com' || process.env.BASE_URL,
-  shareIcon: '',
+  shareIcon: 'https://wanda-h5.bdideal.com/shengxi-test/icon/fx.png',
   shareLink: 'https://wanda-h5.bdideal.com/shengxi-test/index.html',
-  shareTitle: ['致敬70年光辉岁月！刚刚，我为她献上了最美的祝福', '今天，我把最美的话送给她', '我是第xxx位为新中国成立70周年送祝福的人'],
+  shareTitle: 'baseLIVING精品居舍',
+  shareContent:'为城市社群打造充满灵感的生活空间',
   sysType: 1
 }
 
 let configProduction = {
   BASEURL: 'http://shengxi.iyunfish.com' || process.env.BASE_URL,
-  shareIcon: '',
+  shareIcon: 'https://wanda-h5.bdideal.com/shengxi/icon/fx.png',
   shareLink: 'https://wanda-h5.bdideal.com/shengxi/index.html',
-  shareTitle: ['致敬70年光辉岁月！刚刚，我为她献上了最美的祝福', '今天，我把最美的话送给她', '我是第xxx位为新中国成立70周年送祝福的人'],
+  shareTitle: 'baseLIVING精品居舍',
+  shareContent:'为城市社群打造充满灵感的生活空间',
   sysType: 1
 }
 

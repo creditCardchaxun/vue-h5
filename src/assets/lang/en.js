@@ -67,7 +67,7 @@ export const m = {
   house3: 'Name',
   house4: 'Mobile',
   house5: 'Requirement',
-  house6: 'if you have any requirement,please write down here.',
+  house6: 'If you have any requirement,please write down here.',
   house7: 'Requirement',
   house8: 'Select an apartment',
   house9: 'Select date',
@@ -158,6 +158,7 @@ export const m = {
   feedback17: "If you can't meet the needs of the guests, you can return this order to the headquarters",
 
   feedback18: 'Feedback on house visit',
+  feedback19: "I'm your exclusive housekeeper. If you have any questions about this appointment, please contact me in time",
   // 提示弹框
   show1: 'Please fill in the feedback',
   show2: 'Data cannot be empty',

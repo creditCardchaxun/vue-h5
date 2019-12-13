@@ -54,7 +54,7 @@
 
       <div class="yixiang">
         <p>{{$t('m.house7')}}</p>
-        <div class="all-p">
+        <div class="all-p" v-show="tags.length">
           <span
             v-for="(item,index) in tags"
             :key="index"

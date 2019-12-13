@@ -516,7 +516,7 @@ export default {
 }
 .home img {
   width: 100%;
-  height: auto;
+  // height: auto;
 }
 .van-sidebar {
   position: fixed;
@@ -623,10 +623,14 @@ export default {
   background: rgba(0, 0, 0, 0.4);
   font-size: 0.34rem;
   color: #fff;
-  padding: 0 0.6rem;
+  padding: 0 0.54rem;
 }
 .yu-name {
-  padding: 0.45rem 0.6rem 0.34rem;
+  // padding: 0.45rem 0.6rem 0.34rem;
+  padding-top: 0.45rem;
+  padding-bottom: 0.6rem;
+  padding-right: 0.54rem;
+  padding-left: 0.54rem;
   color: #000;
   display: flex;
   align-items: center;
@@ -712,6 +716,14 @@ export default {
 .news-img {
   /* margin: 0.4rem 0; */
   margin: 0.2rem 0;
+  // border: 1px solid black;
+  height: 6.4rem;
+  overflow: hidden;
+  // img {
+  //   width: auto;
+  //   height: 100%;
+  //   margin: 0 auto;
+  // }
 }
 .van-tabs .van-tab {
   flex: none;
