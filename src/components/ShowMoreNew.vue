@@ -13,6 +13,7 @@
 <script>
 // lianxi 联系我们页面
 // hotal-gypp  公寓详情公寓品牌
+// hotal-zbjt  公寓详情周边交通
 export default {
   name: 'showmore',
   props: {
@@ -56,6 +57,12 @@ export default {
             className: 'hotal-gypp'
           }
           break;
+        case 'hotal-zbjt':
+          obj = {
+            lineHeight: 0.6,
+            className: 'hotal-zbjt'
+          }
+          break;
         default:
           break;
       }
@@ -90,6 +97,15 @@ export default {
   font-size: 0.36rem;
 }
 
+.hotal-zbjt {
+  margin-bottom: 0;
+}
+
+.hotal-zbjt >>> p {
+  line-height: 0.6rem;
+  font-size: 0.34rem;
+}
+
 .hotal-gypp >>> p {
   line-height: 0.6rem;
   font-size: 0.34rem;
@@ -116,6 +132,8 @@ export default {
   margin-top: 0.02rem;
   transform: rotate(0deg);
   transition: 0.5s;
+  position: relative;
+  top: 0.03rem;
 }
 .down {
   transform: rotate(180deg);

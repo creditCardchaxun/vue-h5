@@ -2,7 +2,7 @@
   <div class="hotel-detail">
     <aheaders status="3" @toback="goHome" :showLan="true"></aheaders>
     <div class="banner-img">
-      <div class="banner_top" @click="showStory" v-show='hideBannerTop'>
+      <div class="banner_top" @click="showStory" v-show="hideBannerTop">
         <em>{{$t('m.hotelxq1')}}</em>
         <!-- <div class="down">
           <img src="../../assets/images/more-icon01.jpg" alt style="width:0.2rem;height:0.2rem;" />
@@ -11,7 +11,7 @@
       <div class="Project-imgs">
         <projectImg
           v-if="showImgAll"
-          :imgAll='imgAll'
+          :imgAll="imgAll"
           :showImgAll="showImgAll"
           :idss="detailId"
           @tohideList="tohideList"
@@ -21,7 +21,7 @@
       <!--轮播图  -->
       <van-swipe @change="onChanges" :show-indicators="true" :loop="true">
         <!-- 图片轮播 -->
-        <template v-if="hideImg&&projectdetail.pic"  >
+        <template v-if="hideImg&&projectdetail.pic">
           <van-swipe-item v-for="(item,index) in projectdetail.pic.img" :key="index">
             <img :src="item" alt />
           </van-swipe-item>
@@ -33,7 +33,7 @@
             <img src="../../assets/images/VR.png" alt class="VR" />
           </div>
         </van-swipe-item>
-      <!-- 视频轮播 -->
+        <!-- 视频轮播 -->
         <van-swipe-item v-if="hideVideo">
           <div class="VR-img">
             <img
@@ -48,18 +48,30 @@
         <div
           class="custom-indicator"
           slot="indicator"
-          v-if='projectdetail.pic'
+          v-if="projectdetail.pic"
         >{{ currentBanner + 1 }}/{{hideImg?projectdetail.pic.img.length:totalLength}}</div>
       </van-swipe>
-      <p class="swiper-title"  v-if='projectdetail.pic'>
-        <span v-show='projectdetail.pic.VR.ar_pic||projectdetail.pic.video.video_pic' @click="toshowIMG(projectdetail.pic.img.length)" :class='{activeTitle:hideImg}'>图片</span>
-        <span v-show="projectdetail.pic.VR.ar_pic!=''" @click="toshowVR(1)" :class='{activeTitle:hideVR}'>VR</span>
-        <span v-show="projectdetail.pic.video.video_pic!=''" @click="toshowVideo(1)" :class='{activeTitle:hideVideo}'>视频</span>
+      <p class="swiper-title" v-if="projectdetail.pic">
+        <span
+          v-show="projectdetail.pic.VR.ar_pic||projectdetail.pic.video.video_pic"
+          @click="toshowIMG(projectdetail.pic.img.length)"
+          :class="{activeTitle:hideImg}"
+        >图片</span>
+        <span
+          v-show="projectdetail.pic.VR.ar_pic!=''"
+          @click="toshowVR(1)"
+          :class="{activeTitle:hideVR}"
+        >VR</span>
+        <span
+          v-show="projectdetail.pic.video.video_pic!=''"
+          @click="toshowVideo(1)"
+          :class="{activeTitle:hideVideo}"
+        >视频</span>
       </p>
     </div>
-<!-- 视频播放 -->
+    <!-- 视频播放 -->
     <div class="video-model" v-if="video_url" @click="tohideVideo">
-      <video :src="projectdetail.pic.video.video_url" autoplay controls width='100%' height='400'></video>
+      <video :src="projectdetail.pic.video.video_url" autoplay controls width="100%" height="400"></video>
     </div>
 
     <div class="main-content">
@@ -93,7 +105,7 @@
           style="margin-top: 0.1rem;"
           :class="{brandimg2:showMore}"
         />
-      </div> -->
+      </div>-->
       <showmorenew :pageType="'hotal-gypp'" v-if="projectdetail.desc" :htmlstr="projectdetail.desc"></showmorenew>
     </div>
     <div class="types">
@@ -109,7 +121,7 @@
           <div class="class" v-for="(item,index) in projectdetail.house_type" :key="index">
             <van-tab :title="item.typename">
               <van-swipe @change="onChange" :ref="'detailSwiper' + index">
-                <van-swipe-item v-for="(i,ins) in item.pic" :key="ins" >
+                <van-swipe-item v-for="(i,ins) in item.pic" :key="ins">
                   <img :src="i.fileurl" alt class="hotel-msg" />
                 </van-swipe-item>
                 <!-- <van-swipe-item><img src="../../assets/images/hotel-02.jpg" alt="" class='hotel-msg'></van-swipe-item> -->
@@ -139,11 +151,12 @@
               <span>{{item.title}}</span>
             </li>
           </ul>
-          <ul 
+          <ul
             class="ul2"
             :class="{activeLi2:showHeight}"
             ref="heightShow"
-            v-if="projectdetail.project_setting!=null && lanBase == 'ZH'">
+            v-if="projectdetail.project_setting!=null && lanBase == 'ZH'"
+          >
             <li v-for="(item,index) in projectdetail.project_setting" :key="index">
               <img :src="item.image" alt />
               <span>{{item.title}}</span>
@@ -170,7 +183,7 @@
           <!-- <img src="../../assets/images/map01.jpg" alt=""> -->
           <maps v-if="projectdetail.address" :dataArr="projectdetail"></maps>
           <h3>{{$t('m.hotelxq5')}}</h3>
-          <div class="map_mains" ref="jiaotong" :class="{jiaoActive:showLoadMore}">
+          <!-- <div class="map_mains" ref="jiaotong" :class="{jiaoActive:showLoadMore}">
             <p v-html="projectdetail.content">projectdetail.content</p>
           </div>
           <div class="index-more" v-if="showJiao" @click="toloadMoreJiao" style="margin:0.3rem 0;">
@@ -181,10 +194,8 @@
               style="margin-top: 0.1rem;"
               :class="{brandimg2:showLoadMore}"
             />
-          </div>
-          <!-- <p><b>周围商圈:</b>浦东新区xxx大道</p>
-                    <p><b>附近机场:</b>浦东机场 虹桥机场</p>
-          <p><b>附近地铁:</b>2号线</p>-->
+          </div> -->
+          <showmorenew :pageType="'hotal-zbjt'" v-if="projectdetail.content" :htmlstr="projectdetail.content"></showmorenew>
         </div>
       </div>
       <div class="hot-hotel">
@@ -225,7 +236,7 @@
       <button
         @click="toServe(projectdetail.id,projectdetail.project_name)"
         v-if="projectdetail.xiecheng_id!=0 && projectdetail.xiecheng_id!=''"
-       >{{$t('m.hotelxq9')}}</button>
+      >{{$t('m.hotelxq9')}}</button>
       <button
         class="s1"
         :class="{otherClass:!projectdetail.xiecheng_id||projectdetail.xiecheng_id==0}"
@@ -266,7 +277,7 @@ export default {
       hideImg: true,
 
       current: 0,
-      currentBanner:0,
+      currentBanner: 0,
       scroll: 0,
       swiperOption: {
         slidesPerView: "auto",
@@ -300,11 +311,11 @@ export default {
       showLoadMore: false,
       totalLength: "",
       video_url: false,
-      brandStory:'',
-      houseTypeLength:0,
+      brandStory: '',
+      houseTypeLength: 0,
       lanBase: null,
-      imgAll:[],
-      hideBannerTop:true
+      imgAll: [],
+      hideBannerTop: true
     };
   },
   created() {
@@ -316,12 +327,12 @@ export default {
     this.getLan()
 
     $eventbus.$on("changeStyle", this.changeStyle);
-    
+
   },
   beforeRouteEnter(to, from, next) {
     let id = to.params.id;
     let status = to.params.status;
-    interfaces.getdetailhouse(id).then(function(res) {
+    interfaces.getdetailhouse(id).then(function (res) {
       to.meta[i18n.locale] = res.project_name
       next(vm => {
         vm.projectdetail = res;
@@ -334,7 +345,7 @@ export default {
               // $('html,body').scrollTop($(div).offset().top - 43);
               $("html, body").animate(
                 { scrollTop: $(div).offset().top - 43 },
-                  500
+                500
               );
             }, 500);
           }
@@ -389,7 +400,7 @@ export default {
         this.lanBase = 'ZH'
       }
 
-      if(!lanBase) this.lanBase = 'EN'
+      if (!lanBase) this.lanBase = 'EN'
     },
 
     changeStyle(e) {
@@ -399,7 +410,7 @@ export default {
     // 项目故事
     storyImg(id) {
       interfaces.getbrandstory(id).then(res => {
-         this.brandStory=res
+        this.brandStory = res
       });
     },
     toshowVR(length) {
@@ -433,7 +444,7 @@ export default {
     tohideVideo() {
       this.video_url = !this.video_url;
     },
-          //  品牌故事第一次点击
+    //  品牌故事第一次点击
     //   showBrandImg(id){ 
     //     interfaces.getbrandFirst(id).then((res)=>{
     //       let storyId=res.is_show_project_story
@@ -445,13 +456,13 @@ export default {
     //    })
     //  },   
     //  加载品牌故事
-     storyImg(id) {
+    storyImg(id) {
       let projectlist = [];
       interfaces.getbrandstory(id).then(res => {
         if (res != null) {
           this.imgAll = res;
-        }else{
-         this. hideBannerTop=false
+        } else {
+          this.hideBannerTop = false
         }
       });
     },
@@ -468,9 +479,9 @@ export default {
       this.local = true;
     }, 1000),
     showStory() {
-       if(this.hideBannerTop){
-         this.showImgAll = true;
-       }
+      if (this.hideBannerTop) {
+        this.showImgAll = true;
+      }
     },
     toshowModels(id, name) {
       this.status = 1;
@@ -536,33 +547,33 @@ export default {
       interfaces.getdetailhouse(id).then(res => {
         this.projectdetail = res;
         this.detailId = res.id;
-         if(this.projectdetail.house_type){
-          this.houseTypeLength=this.projectdetail.house_type[0].pic.length
-              //  console.log(this.projectdetail.house_type[0].pic.length)
+        if (this.projectdetail.house_type) {
+          this.houseTypeLength = this.projectdetail.house_type[0].pic.length
+          //  console.log(this.projectdetail.house_type[0].pic.length)
+        }
+        if (this.projectdetail.is_show_project_story) {
+          if (this.projectdetail.is_show_project_story == 2) {
+            this.showImgAll = true;
+          } else {
+            this.showImgAll = false;
           }
-          if(this.projectdetail.is_show_project_story){
-              if(this.projectdetail.is_show_project_story==2){
-                  this.showImgAll = true;
-              }else{
-                this.showImgAll = false;
-              }
-          }
-         
+        }
+
       });
     },
     onChange(index) {
       this.current = index;
     },
-     onChanges(index) {
+    onChanges(index) {
       this.currentBanner = index;
     },
-    onchangeTab(index,title){
-      try{
-        for(let i = 0; i < this.projectdetail.house_type.length; i++) {
+    onchangeTab(index, title) {
+      try {
+        for (let i = 0; i < this.projectdetail.house_type.length; i++) {
           let temp = 'detailSwiper' + i
           this.$refs[temp][0].swipeTo(0)
         }
-      }catch(e) {}
+      } catch (e) { }
       this.houseTypeLength = this.projectdetail.house_type[index].pic.length
       this.current = 0;
       // this.projectdetail.house_type.forEach((item,index)=>{
@@ -604,9 +615,9 @@ export default {
     window.addEventListener("scroll", this.btn_pos);
     this.$nextTick(() => {
       // let remPx = document.body.clientWidth / 10;
-      
+
       // let height2 = parseFloat(window.getComputedStyle(this.$refs.desc).height);
-      
+
       // let more1 = height2/remPx;
       // let height3 = window.getComputedStyle(this.$refs.jiaotong).height;
       // if (height3 > 80 + "px") {
@@ -675,7 +686,9 @@ export default {
   width: 1.93rem;
   height: 2.08rem;
 }
-.swiper-title .activeTitle{color:#fff;}
+.swiper-title .activeTitle {
+  color: #fff;
+}
 .swiper-title {
   width: auto;
   height: auto;
