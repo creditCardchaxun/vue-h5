@@ -211,11 +211,11 @@
       </div>
       <button
         @click="toServe(projectdetail.id,projectdetail.project_name)"
-        v-if="projectdetail.xiecheng_id"
-      >{{$t('m.hotelxq9')}}</button>
+        v-if="projectdetail.xiecheng_id!=0 && projectdetail.xiecheng_id!=''"
+       >{{$t('m.hotelxq9')}}</button>
       <button
         class="s1"
-        :class="{otherClass:!projectdetail.xiecheng_id}"
+        :class="{otherClass:!projectdetail.xiecheng_id||projectdetail.xiecheng_id==0}"
         @click="toshowModels(projectdetail.id,projectdetail.project_name)"
       >{{$t('m.orderhouse')}}</button>
     </div>
