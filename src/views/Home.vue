@@ -74,7 +74,7 @@
     </div>
 
     <div class="news">
-      <van-tabs v-model="active" line-width="7%" :border="false" :ellipsis="false">
+      <van-tabs v-model="activeName" line-width="7%" :border="false" :ellipsis="false">
         <van-tab :title="$t('m.news')">
           <ul>
             <li v-for="(item,index) in news_list" :key="index">
@@ -184,7 +184,7 @@ export default {
       toshows: false,
       toshows2: false,
       showMore: false,
-      active: 0,
+      activeName: 0,
       showImgs: false,
       scroll: 0,
       showbg: false,
@@ -255,12 +255,10 @@ export default {
       console.log(this.lang)
       if (this.lang == 'zh-CN') {
           this.lang = 'en-US'
-          this.lanBase='ZH'
-          console.log('转换成英文')
+          this.lanBase='中'
       } else if(this.lang == 'en-US') {
         this.lang = 'zh-CN'
         this.lanBase='EN'
-        console.log('转换成中文')
       }
       this.$i18n.locale = this.lang; //关键语句
 
@@ -766,13 +764,13 @@ export default {
   color: #bfbfbf;
 }
 
-.van-tabs .van-tab--active {
-  color: #000;
-  font-weight: 500;
-}
-.van-tabs .van-tab--active span {
-  color: #000;
-}
+// .van-tabs .van-tab--active {
+//   color: #000;
+//   font-weight: 500;
+// }
+// .van-tabs .van-tab--active span {
+//   color: #000;
+// }
 
 .scrolltop {
   width: 0.99rem;

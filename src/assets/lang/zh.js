@@ -129,6 +129,7 @@ export const m = {
   hotelxq7: '您已预约过了，请给我们留下宝贵意见吧！',
   hotelxq8: '推荐公寓',
   hotelxq9: '预订入住',
+  hotelxq12: '预约看房',
   hotelxq10: '户型面积',
   hotelxq11: '面积',
 
@@ -138,6 +139,20 @@ export const m = {
   bookName2: '请选择项目',
   bookName3: '入住日期',
   bookName4: '住客姓名',
+  // 我的预定预定时间
+  startdate1:'开始时间',
+  startdate2:'结束时间',
+  startdate3:'上一月',
+  startdate4:'下一月',
+  startdate5:'年',
+  startdate6:'月',
+  startdate7:'星期日',
+  startdate8:'星期一',
+  startdate9:'星期二',
+  startdate10:'星期三',
+  startdate11:'星期四',
+  startdate12:'星期五',
+  startdate13:'星期六',
 
   // 看房反馈  预约详情  反馈详情
   feedback1: '请填写本次看房反馈信息',
@@ -177,6 +192,10 @@ export const m = {
 
   show11: '请选择预约时间',
   show12: '请选择意向标签或填写意向信息',
+
+  // 时间插件
+  date1:'确认',
+  date2:'取消',
 
   // 国际区号
   selectCountry: {

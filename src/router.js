@@ -168,7 +168,7 @@ const routes = [
     }
   },
 
-  // 精品旅社
+  // 精品居舍
 
   {
     path: '/hotel',
@@ -182,7 +182,7 @@ const routes = [
       // this.$i18n.t('m.news10')
     },
   },
-  // 精品旅社详情
+  // 精品居舍详情
   {
     path: `/hotelDetail/:id`,
     name: 'hotelDetail',

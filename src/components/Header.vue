@@ -83,11 +83,11 @@ export default {
       $eventbus.$emit("changeLang", this.lang);
       localStorage.setItem('lanBase', this.lang == 'zh-CN' ? 1 : 4)
       let lanBase = localStorage.getItem('lanBase')
-
+      
       if (lanBase == 1) {
         this.lanBase = 'EN'
       } else {
-        this.lanBase = 'ZH'
+        this.lanBase = '中'
       }
 
       $eventbus.$emit("changeStyle", this.lanBase);
@@ -104,7 +104,7 @@ export default {
     if (lanBase == 1) {
       this.lanBase = 'EN'
     } else {
-      this.lanBase = 'ZH'
+      this.lanBase = '中'
     }
 
     if(!lanBase) this.lanBase = 'EN'

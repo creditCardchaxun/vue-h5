@@ -62,7 +62,7 @@
         <div class="s2" v-show="toshowtype">
           <div class="right">
             <ul>
-              <li :class="{active:currentIndex2==-1}" @click="getName('',$t('m.show5'),-1)">{{$t('m.show5')}}</li>
+              <!-- <li :class="{active:currentIndex2==-1}" @click="getName('',$t('m.show5'),-1)">{{$t('m.show5')}}</li> -->
               <li
                 @click="getName(item.id,item.title,index)"
                 v-for="(item,index) in getHouseType"
@@ -137,7 +137,7 @@ export default {
       toshowtype: false,
       cityAll: [],
       currentIndex: 0,
-      currentIndex2: -1,
+      currentIndex2: 0,
       currentIndex3: -1,
       alllistss: [],
       cityName: this.$i18n.t('m.hotel1'),
@@ -280,17 +280,22 @@ export default {
     },
     // 点击户型进行筛选
     getName(id, title, index) {
-         let type
-        if(index==-1){
-          type = ''
-        }else{
-          type = id
-        }
+       console.log(index)
+        //  let type
+        //  let area
+        // if(index==-1){
+        //   type = ''
+        //   area = ''
+        // }else{
+        //   type = id
+        //   area = this.idsarea
+        // }
       this.currentIndex2 = index
       this.typehousename = title
       this.houseId = id
       this.toshowtype = false
       this.toshowicon2 = false
+      let type = id
       let city = this.cityid
       let area = this.idsarea
     

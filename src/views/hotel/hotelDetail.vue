@@ -245,7 +245,7 @@
         class="s1"
         :class="{otherClass:!projectdetail.xiecheng_id||projectdetail.xiecheng_id==0}"
         @click="toshowModels(projectdetail.id,projectdetail.project_name)"
-      >{{$t('m.orderhouse')}}</button>
+      >{{$t('m.hotelxq12')}}</button>
     </div>
     <submitBtn
       v-if="hideModel"
@@ -315,7 +315,7 @@ export default {
       showLoadMore: false,
       totalLength: "",
       video_url: false,
-      brandStory: '',
+      brandStory: "",
       houseTypeLength: 0,
       lanBase: null,
       imgAll: [],
@@ -325,26 +325,26 @@ export default {
   created() {
     this.mobileLocal = JSON.parse(localStorage.getItem("userinfo")).mobile;
     let id = this.$route.params.id;
-    this.getHeight.minHeight = (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
-    this.getdetailhouses(id)
-    this.storyImg(id)
-    this.getLan()
+    this.getHeight.minHeight =
+      (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
+    this.getdetailhouses(id);
+    this.storyImg(id);
+    this.getLan();
 
     $eventbus.$on("changeStyle", this.changeStyle);
-
   },
   beforeRouteEnter(to, from, next) {
     let id = to.params.id;
     let status = to.params.status;
-    interfaces.getdetailhouse(id).then(function (res) {
-      to.meta[i18n.locale] = res.project_name
+    interfaces.getdetailhouse(id).then(function(res) {
+      to.meta[i18n.locale] = res.project_name;
       next(vm => {
         vm.projectdetail = res;
         vm.detailId = res.id;
         var div = vm.$refs.tab1;
         if (from.name == "myOrder") {
           if (div) {
-            setTimeout(function () {
+            setTimeout(function() {
               console.log($(div).offset().top);
               // $('html,body').scrollTop($(div).offset().top - 43);
               $("html, body").animate(
@@ -363,15 +363,15 @@ export default {
     let status = to.params.status;
     console.log(to);
     var that = this;
-    interfaces.getdetailhouse(id).then(function (res) {
-      to.meta[i18n.locale] = res.project_name
+    interfaces.getdetailhouse(id).then(function(res) {
+      to.meta[i18n.locale] = res.project_name;
       console.log(22222222);
       that.projectdetail = res;
       that.detailId = res.id;
       var div = that.$refs.tab1;
       if (from.name == "myOrder") {
         if (div) {
-          setTimeout(function () {
+          setTimeout(function() {
             console.log($(div).offset().top);
             // $('html,body').scrollTop($(div).offset().top - 43);
             $("html, body").animate(
@@ -385,7 +385,7 @@ export default {
     });
   },
   watch: {
-    scroll: function (newVal, oldVal) {
+    scroll: function(newVal, oldVal) {
       if (newVal > oldVal) {
         this.local = false;
       } else {
@@ -396,25 +396,25 @@ export default {
   methods: {
     // 获取当前语言
     getLan() {
-      let lanBase = localStorage.getItem('lanBase')
+      let lanBase = localStorage.getItem("lanBase");
 
       if (lanBase == 1) {
-        this.lanBase = 'EN'
+        this.lanBase = "EN";
       } else {
-        this.lanBase = 'ZH'
+        this.lanBase = "ZH";
       }
 
-      if (!lanBase) this.lanBase = 'EN'
+      if (!lanBase) this.lanBase = "EN";
     },
 
     changeStyle(e) {
-      this.lanBase = e
+      this.lanBase = e;
     },
 
     // 项目故事
     storyImg(id) {
       interfaces.getbrandstory(id).then(res => {
-        this.brandStory = res
+        this.brandStory = res;
       });
     },
     toshowVR(length) {
@@ -449,7 +449,7 @@ export default {
       this.video_url = !this.video_url;
     },
     //  品牌故事第一次点击
-    //   showBrandImg(id){ 
+    //   showBrandImg(id){
     //     interfaces.getbrandFirst(id).then((res)=>{
     //       let storyId=res.is_show_project_story
     //        if(storyId==1){
@@ -458,7 +458,7 @@ export default {
     //          this.showImgAll=true;
     //        }
     //    })
-    //  },   
+    //  },
     //  加载品牌故事
     storyImg(id) {
       let projectlist = [];
@@ -466,20 +466,20 @@ export default {
         if (res != null) {
           this.imgAll = res;
         } else {
-          this.hideBannerTop = false
+          this.hideBannerTop = false;
         }
       });
     },
     goHome() {
-      this.$router.go(-1)
+      this.$router.go(-1);
     },
     toAppraise() {
       this.$router.push({ name: "appraise", params: { id: this.detailId } });
     },
-    btn_pos: function (e) {
+    btn_pos: function(e) {
       this.setlocaltrue();
     },
-    setlocaltrue: _.debounce(function () {
+    setlocaltrue: _.debounce(function() {
       this.local = true;
     }, 1000),
     showStory() {
@@ -552,7 +552,7 @@ export default {
         this.projectdetail = res;
         this.detailId = res.id;
         if (this.projectdetail.house_type) {
-          this.houseTypeLength = this.projectdetail.house_type[0].pic.length
+          this.houseTypeLength = this.projectdetail.house_type[0].pic.length;
           //  console.log(this.projectdetail.house_type[0].pic.length)
         }
         if (this.projectdetail.is_show_project_story) {
@@ -562,7 +562,6 @@ export default {
             this.showImgAll = false;
           }
         }
-
       });
     },
     onChange(index) {
@@ -574,11 +573,11 @@ export default {
     onchangeTab(index, title) {
       try {
         for (let i = 0; i < this.projectdetail.house_type.length; i++) {
-          let temp = 'detailSwiper' + i
-          this.$refs[temp][0].swipeTo(0)
+          let temp = "detailSwiper" + i;
+          this.$refs[temp][0].swipeTo(0);
         }
-      } catch (e) { }
-      this.houseTypeLength = this.projectdetail.house_type[index].pic.length
+      } catch (e) {}
+      this.houseTypeLength = this.projectdetail.house_type[index].pic.length;
       this.current = 0;
       // this.projectdetail.house_type.forEach((item,index)=>{
       //      if(item.typename==title){
@@ -619,9 +618,7 @@ export default {
     window.addEventListener("scroll", this.btn_pos);
     this.$nextTick(() => {
       // let remPx = document.body.clientWidth / 10;
-
       // let height2 = parseFloat(window.getComputedStyle(this.$refs.desc).height);
-
       // let more1 = height2/remPx;
       // let height3 = window.getComputedStyle(this.$refs.jiaotong).height;
       // if (height3 > 80 + "px") {
@@ -630,15 +627,13 @@ export default {
       // if (height2 > this.defaultheight2 + "px") {
       //   this.showMore01 = true;
       // }
-    })
+    });
     $eventbus.$on("changeLang", res => {
-      this.mobileLocal = JSON.parse(localStorage.getItem("userinfo")).mobile
+      this.mobileLocal = JSON.parse(localStorage.getItem("userinfo")).mobile;
       let id = this.$route.params.id;
       this.getdetailhouses(id);
-      // let height= window.getComputedStyle(this.$refs.heightShow).height
-      // if(height>defaultheight+'px'){
-      //     this.showHeight=true
-      //   }
+      this.storyImg(id);
+      this.getLan();
     });
   },
   //第四步：当再次进入（前进或者后退）时，只触发activated（注：只有在keep-alive加载时调用）
