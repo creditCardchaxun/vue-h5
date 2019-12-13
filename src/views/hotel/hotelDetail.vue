@@ -51,8 +51,8 @@
         >{{ currentBanner + 1 }}/{{hideImg?projectdetail.pic.img.length:totalLength}}</div>
       </van-swipe>
       <p class="swiper-title">
-        <span v-show='projectdetail.pic.VR.ar_pic||projectdetail.pic.video.video_pic' @click="toshowIMG(projectdetail.pic.img.length)" :class='{activeTitle:hideImg}'>图片</span>
         <span v-show="projectdetail.pic.VR.ar_pic!=''" @click="toshowVR(1)" :class='{activeTitle:hideVR}'>VR</span>
+        <span v-show='projectdetail.pic.VR.ar_pic||projectdetail.pic.video.video_pic' @click="toshowIMG(projectdetail.pic.img.length)" :class='{activeTitle:hideImg}'>图片</span>
         <span v-show="projectdetail.pic.video.video_pic!=''" @click="toshowVideo(1)" :class='{activeTitle:hideVideo}'>视频</span>
       </p>
     </div>
@@ -127,11 +127,11 @@
       <div class="desc" id="maps" ref="tab1">
         <h3 style="margin-top:1.2rem;">{{$t('m.hotelxq4')}}</h3>
         <div class="toall-ul">
-          <ul
+            <ul
             :class="{activeLi:showHeight}"
             ref="heightShow"
             v-if="projectdetail.project_setting!=null"
-          >
+            >
             <li v-for="(item,index) in projectdetail.project_setting" :key="index">
               <img :src="item.image" alt />
               <span>{{item.title}}</span>
@@ -141,7 +141,7 @@
             class="index-more"
             v-if="projectdetail.project_setting!=null&&projectdetail.project_setting.length>8"
             @click="toloadMore"
-          >
+            >
             <span v-show="hideIcon">more</span>
             <img
               src="../../assets/images/more-icon.jpg"
@@ -640,7 +640,7 @@ export default {
   margin: 0 auto;
   position: absolute;
   bottom: 0.2rem;
-  left: 30%;
+  left: 38%;
   display: flex;
   align-items: center;
   justify-content: center;

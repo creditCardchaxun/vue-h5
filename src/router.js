@@ -24,20 +24,6 @@ import orderDetail from '@/views/order/myOrderDetail.vue'
 
 import appraise from '@/views/order/appraise.vue'
 
-// Vue.use(VueI18n)
-
-// let lanBase=localStorage.getItem('lanBase')
-// if(lanBase==null)lanBase = 1
-
-// const i18n = new VueI18n({
-//    locale: lanBase=='1'?'zh-CN':'en-US', 
-//     // locale: 'en-US',    // 语言标识
-//     //this.$i18n.locale // 通过切换locale的值来实现语言切换
-//     messages: {
-//       'zh-CN': require('./assets/lang/zh'),   // 中文语言包
-//       'en-US': require('./assets/lang/en')    // 英文语言包
-//     }
-// })
 Vue.use(VueRouter)
 console.log(Home)
 const routes = [
@@ -48,22 +34,11 @@ const routes = [
     meta: {
       keepalive: false,// 组件是否需要被保存
       title:'首页',
-      'en-US': 'HOME',
+      'en-US': 'base',
       'zh-CN': '首页',
-      // this.$i18n.t('m.news16')
     }
   },
 
-  // // 关于我们
-  // {
-  //   path: '/about',
-  //   name: 'about',
-  //   component:About,
-  //   meta: {
-  //     keepalive: false, // 组件是否需要被保存
-  //     title:'关于我们'
-  //    }
-  // },
 
   // 新闻列表
   {
@@ -73,9 +48,8 @@ const routes = [
     meta: {
       keepalive: false, // 组件是否需要被保存
       title: '新闻列表',
-      'en-US': 'NEWS',
+      'en-US': 'News',
       'zh-CN': '新闻列表',
-      // this.$i18n.t('m.news')
     }
   },
   // 新闻详情
@@ -86,9 +60,8 @@ const routes = [
     meta: {
       keepalive: false, // 组件是否需要被保存
       title: '新闻详情',
-      'en-US': 'NEWS',
+      'en-US': 'News',
       'zh-CN': 'base新闻',
-      // this.$i18n.t('m.news1')
     }
   },
   // 活动列表
@@ -99,9 +72,9 @@ const routes = [
     meta: {
       keepalive: false, // 组件是否需要被保存
       title: '活动列表',
-      'en-US': 'ActiveList',
+      'en-US': 'Event',
       'zh-CN': '活动列表',
-      // this.$i18n.t('m.news2')
+
     }
   },
   // 活动详情
@@ -114,7 +87,6 @@ const routes = [
       title: '活动详情',
       'en-US': 'Active',
       'zh-CN': '活动详情',
-      // this.$i18n.t('m.news3')
     }
   },
   // 联系我们
@@ -125,9 +97,8 @@ const routes = [
     meta: {
       keepalive: false, // 组件是否需要被保存
       title: '联系我们',
-      'en-US': 'contactUs',
+      'en-US': 'About base',
       'zh-CN': '联系我们',
-      // this.$i18n.t('m.news4')
     }
   },
 
@@ -139,9 +110,8 @@ const routes = [
     meta: {
       keepalive: false, // 组件是否需要被保存
       title: '个人中心',
-      'en-US': 'usrCenter',
+      'en-US': 'User center',
       'zh-CN': '个人中心',
-      // this.$i18n.t('m.news5')
     }
 
   },
@@ -153,9 +123,8 @@ const routes = [
     meta: {
       keepalive: false, // 组件是否需要被保存
       title: '我的预约',
-      'en-US': 'myOrder',
+      'en-US': 'my appointment',
       'zh-CN': '我的预约',
-      // this.$i18n.t('m.news6')
     }
   },
 
@@ -166,10 +135,9 @@ const routes = [
     component: orderForm,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title: '我的预约',
-      'en-US': 'myOrder',
-      'zh-CN': '我的预约',
-      // this.$i18n.t('m.news7')
+      title: '预约看房',
+      'en-US': 'appointment',
+      'zh-CN': '预约看房',
     }
   },
 
@@ -181,9 +149,9 @@ const routes = [
     meta: {
       keepalive: false, // 组件是否需要被保存
       title: '预约详情',
-      'en-US': 'orderDetail',
+      'en-US': 'Appointment details',
       'zh-CN': '预约详情',
-      // this.$i18n.t('m.news8')
+
     }
   },
   // 评价
@@ -194,7 +162,7 @@ const routes = [
     meta: {
       keepalive: false, // 组件是否需要被保存
       title: '评价详情',
-      'en-US': 'appraise',
+      'en-US': 'Evaluation details',
       'zh-CN': '评价详情',
       // this.$i18n.t('m.news9')
     }
@@ -208,9 +176,9 @@ const routes = [
     component: hotelStar,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title: '精品旅社',
-      'en-US': 'hotelStar',
-      'zh-CN': '精品旅社',
+      title: '精品居舍',
+      'en-US': 'baseLIVING',
+      'zh-CN': '精品居舍',
       // this.$i18n.t('m.news10')
     },
   },
@@ -236,7 +204,7 @@ const routes = [
     meta: {
       keepalive: false, // 组件是否需要被保存
       title: '我的预订',
-      'en-US': 'myReserve',
+      'en-US': 'My Bookings',
       'zh-CN': '我的预订',
       // this.$i18n.t('m.news12')
     }
@@ -251,8 +219,8 @@ const routes = [
     meta: {
       keepalive: false, // 组件是否需要被保存
       title: '预约管理',
-      'en-US': 'bookings',
-      'zh-CN': 'v',
+      'en-US': 'Management',
+      'zh-CN': '预约管理',
       // this.$i18n.t('m.news13')
     }
   },
@@ -278,7 +246,7 @@ const routes = [
     meta: {
       keepalive: false, // 组件是否需要被保存
       title: '看房反馈',
-      'en-US': 'feedback',
+      'en-US': 'Feedback',
       'zh-CN': '看房反馈',
       // this.$i18n.t('m.news14')
     }
@@ -291,7 +259,7 @@ const routes = [
     meta: {
       keepalive: false, // 组件是否需要被保存
       title: '看房反馈详情',
-      'en-US': 'feedback',
+      'en-US': 'Feedback details',
       'zh-CN': '看房反馈',
       // this.$i18n.t('m.news15')
     }
