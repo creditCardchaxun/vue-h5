@@ -72,7 +72,14 @@
         <button @click="toOrder">{{$t('m.watch7')}}</button>
       </div>
     </div>
-    <!-- </div> -->
+
+         <!-- 预约弹框 -->
+      <submitBtn
+        v-if="hideModel"
+        @tohideModel="tohideModel"
+        :status="status"
+        @update1="getPhones111"
+      ></submitBtn>
 
     <afooter></afooter>
   </div>
@@ -81,6 +88,8 @@
 import aheaders from "@/components/Header";
 import afooter from "@/components/Footer";
 import interfaces from "@/utils/api.js";
+import submitBtn from "@/components/submitBtn";
+
 export default {
   name: "myorder",
   data() {
@@ -90,7 +99,9 @@ export default {
       getHeight: {
         minHeight: ""
       },
-      showBtn: false
+      showBtn: false,
+      hideModel:false,
+      status:''
     };
   },
   computed: {
@@ -103,15 +114,22 @@ export default {
     $eventbus.$on("changeLang", res => {
       let id = JSON.parse(localStorage.getItem("userinfo")).id;
       this.booklists();
-    });
+     });
   },
   created() {
     let id = JSON.parse(localStorage.getItem("userinfo")).id;
+    this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
     this.booklists();
-    this.getHeight.minHeight =
-      (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
-  },
+    // this.getHeight.minHeight =
+    //   (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
+   },
   methods: {
+    tohideModel(){
+      this.hideModel=false
+    },
+     getPhones111(data) {
+      this.phone = data;
+     },
     toMaps(id) {
       this.$router.push({
         name: "hotelDetail",
@@ -146,12 +164,20 @@ export default {
       this.$router.push({ name: "appraise", params: { id: id } });
     },
     toOrder() {
-      this.$router.push({ name: "orderForm" });
+      // this.$router.push({ name: "orderForm" });
+     if (this.mobileLocal) {
+        this.hideModel = false
+        this.$router.push({ name: 'orderForm', params: { mobile: this.mobileLocal } })
+      } else {
+        this.hideModel = true
+        this.status = 1
+      }
     }
   },
   components: {
     aheaders,
-    afooter
+    afooter,
+    submitBtn
   }
 };
 </script>

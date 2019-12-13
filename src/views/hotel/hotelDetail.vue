@@ -51,17 +51,17 @@
           v-if="projectdetail.pic"
         >{{ currentBanner + 1 }}/{{hideImg?projectdetail.pic.img.length:totalLength}}</div>
       </van-swipe>
-      <p class="swiper-title" v-if="projectdetail.pic">
-        <span
-          v-show="projectdetail.pic.VR.ar_pic||projectdetail.pic.video.video_pic"
-          @click="toshowIMG(projectdetail.pic.img.length)"
-          :class="{activeTitle:hideImg}"
-        >图片</span>
+      <p class="swiper-title">
         <span
           v-show="projectdetail.pic.VR.ar_pic!=''"
           @click="toshowVR(1)"
           :class="{activeTitle:hideVR}"
         >VR</span>
+        <span
+          v-show="projectdetail.pic.VR.ar_pic||projectdetail.pic.video.video_pic"
+          @click="toshowIMG(projectdetail.pic.img.length)"
+          :class="{activeTitle:hideImg}"
+        >图片</span>
         <span
           v-show="projectdetail.pic.video.video_pic!=''"
           @click="toshowVideo(1)"
@@ -194,8 +194,12 @@
               style="margin-top: 0.1rem;"
               :class="{brandimg2:showLoadMore}"
             />
-          </div> -->
-          <showmorenew :pageType="'hotal-zbjt'" v-if="projectdetail.content" :htmlstr="projectdetail.content"></showmorenew>
+          </div>-->
+          <showmorenew
+            :pageType="'hotal-zbjt'"
+            v-if="projectdetail.content"
+            :htmlstr="projectdetail.content"
+          ></showmorenew>
         </div>
       </div>
       <div class="hot-hotel">
@@ -695,7 +699,7 @@ export default {
   margin: 0 auto;
   position: absolute;
   bottom: 0.2rem;
-  left: 30%;
+  left: 38%;
   display: flex;
   align-items: center;
   justify-content: center;

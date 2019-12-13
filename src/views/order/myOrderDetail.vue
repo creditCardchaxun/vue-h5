@@ -49,7 +49,7 @@
         <div class="yi_02">
           <h3>{{sales.realname}}</h3>
           <!-- <p>{{sales.sale_desc}}</p> -->
-          <p>我是您的专属看房管家 您对本次预约有任何问题，请及时跟我联系</p>
+          <p>{{$t('m.feedback19')}}</p>
         </div>
       </div>
 

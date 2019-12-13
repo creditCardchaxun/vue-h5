@@ -21,7 +21,7 @@ export const m = {
   // 首页
   home: 'Home',
   ischeck: 'No phone number verified',
-  changePhone: 'change number',
+  changePhone: 'Edit',
 
   manage:'Management',
   myorder:'My Bookings',
@@ -79,11 +79,11 @@ export const m = {
   man: 'male',
   woman: 'female',
   submitSuccess: 'Submit successfully',
-  other1: 'Are you sure you want to exit the appointment?',
-  other2: 'Edited content will not be saved after exiting',
-  other3: 'Make sure to leave',
-  other4: 'think about it again',
-  other5: 'Successful appointment',
+  other1: 'Are you sure you want to quit?',
+  other2: 'Once you quit, the content will not be saved.',
+  other3: 'Quit',
+  other4: 'Cancel',
+  other5: 'Successful booking',
 
 
   //  销售预约管理
@@ -111,8 +111,8 @@ export const m = {
 
 
   // 精品旅舍
-  hotel1: 'Choice area',
-  hotel2: 'Apartment',
+  hotel1: 'Area City ',
+  hotel2: 'District',
   hotel3: 'city',
   hotel4: 'area',
 
