@@ -623,10 +623,14 @@ export default {
   background: rgba(0, 0, 0, 0.4);
   font-size: 0.34rem;
   color: #fff;
-  padding: 0 0.6rem;
+  padding: 0 0.54rem;
 }
 .yu-name {
-  padding: 0.45rem 0.6rem 0.34rem;
+  // padding: 0.45rem 0.6rem 0.34rem;
+  padding-top: 0.45rem;
+  padding-bottom: 0.6rem;
+  padding-right: 0.54rem;
+  padding-left: 0.54rem;
   color: #000;
   display: flex;
   align-items: center;
