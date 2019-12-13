@@ -150,7 +150,7 @@ export default {
       var clipboard = new Clipboard(".getcopy"); //单页面引用
       clipboard.on("success", e => {
         this.$toast(this.$i18n.t('m.show3'))
-        // 释放内存
+        // 释放内存 
         clipboard.destroy();
       });
       clipboard.on("error", e => {
@@ -228,53 +228,14 @@ export default {
   height: 100%;
 }
 
-.yijiedan {
-  width: auto;
-  height: 3.15rem;
-  border-bottom: 0.2rem solid #f5f5f5;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 0.6rem;
-}
-.yijiedan .yi-01 {
-  width: auto;
-  height: auto;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-.yijiedan .yi-01 img {
-  width: 1.24rem;
-  height: 1.24rem;
-  border-radius: 50%;
-}
-.yijiedan .yi_02 {
-  display: flex;
-  align-items: left;
-  flex-direction: column;
-  width: 3.9rem;
-  margin-left: 1rem;
-}
-.yijiedan .yi_02 h3 {
-  font-size: 0.4rem;
-  color: #000;
-}
-.yijiedan .yi_02 p {
-  font-size: 0.3rem;
-  color: #929292;
-  margin-top: 0.2rem;
-  line-height: 0.5rem;
-}
-.yijiedan .yi_03 {
-  width: auto;
-  height: auto;
-}
-.yijiedan .yi_03 img {
-  width: 0.68rem;
-  height: 0.68rem;
-}
+/* .yijiedan{width:auto;height:3.15rem;border-bottom:0.2rem solid #f5f5f5;display: flex;align-items:center;justify-content:space-between;padding:0 0.6rem;}
+.yijiedan .yi-01{width:auto;height:auto;border-radius: 50%;display: flex;align-items:center;justify-content:space-around;}
+.yijiedan .yi-01 img{width:1.24rem;height:1.24rem;border-radius: 50%;}
+.yijiedan .yi_02{display: flex;align-items: left;flex-direction: column;width: 5.5rem;margin-left: 1rem;}
+.yijiedan .yi_02 h3{font-size:0.4rem;color:#000;} 
+.yijiedan .yi_02 p{font-size:0.3rem;color:#929292;margin-top:0.2rem;line-height: 0.5rem;} 
+.yijiedan .yi_03{width:auto;height:auto;}
+.yijiedan .yi_03 img{width:0.68rem;height:0.68rem;} */
 
 .yijiedan {
   width: auto;
