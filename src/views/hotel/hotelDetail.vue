@@ -539,7 +539,7 @@ export default {
       // }
     })
     $eventbus.$on("changeLang", res => {
-      this.mobileLocal = localStorage.getItem("mobile");
+      this.mobileLocal = JSON.parse(localStorage.getItem("userinfo")).mobile
       let id = this.$route.params.id;
       this.getdetailhouses(id);
       // let height= window.getComputedStyle(this.$refs.heightShow).height
