@@ -32,7 +32,7 @@
             <img src="../../assets/images/VR.png" alt class="VR" />
           </div>
         </van-swipe-item>
-       <!-- 视频轮播 -->
+      <!-- 视频轮播 -->
         <van-swipe-item v-if="hideVideo">
           <img
             :src="projectdetail.pic.video.video_pic"
@@ -74,10 +74,9 @@
         <van-icon name="arrow" />
       </div>
     </div>
-
     <div class="desc">
       <h3>{{$t('m.hotelxq2')}}</h3>
-      <div class="desc02" v-if="projectdetail.desc!=''" ref="desc" :class="{brandStory:showMore}">
+      <div ref="desc" class="desc02" v-if="projectdetail.desc!=''"  :class="{brandStory:showMore}">
         <p>{{projectdetail.desc}}</p>
       </div>
       <div class="nolist" v-else style="font-size:0.35rem;text-align:center;">{{$t('m.others13')}}</div>
@@ -91,7 +90,6 @@
         />
       </div>
     </div>
-
     <div class="types">
       <div class="types-nav">
         <h3>{{$t('m.hotelxq3')}}</h3>
@@ -110,7 +108,6 @@
                 <!-- <van-swipe-item><img src="../../assets/images/hotel-02.jpg" alt="" class='hotel-msg'></van-swipe-item> -->
                 <div class="custom-indicator" slot="indicator">{{ current + 1 }}/{{projectdetail.house_type.length}}</div>
               </van-swipe>
-
               <div class="types-mianji">
                 <div class="yiju">{{$t('m.hotelxq10')}}:{{item.room_size}}㎡</div>
                 <div class="yiju-img">
@@ -122,7 +119,6 @@
           <!-- <van-tab title="二居"> <p style='font-size:0.3rem;margin:0.3rem 0;'>暂无详细信息</p>   </van-tab> -->
         </van-tabs>
       </div>
-
       <div class="desc" id="maps" ref="tab1">
         <h3 style="margin-top:1.2rem;">{{$t('m.hotelxq4')}}</h3>
         <div class="toall-ul">
@@ -152,7 +148,6 @@
         </div>
         <!-- <div class="nolist" v-else style='font-size:0.35rem;text-align:center;margin:0.3rem 0;'>暂无公寓配置详细信息</div> -->
       </div>
-
       <div class="map">
         <div class="map01">
           <!-- <img src="../../assets/images/map01.jpg" alt=""> -->
@@ -175,7 +170,6 @@
           <p><b>附近地铁:</b>2号线</p>-->
         </div>
       </div>
-
       <div class="hot-hotel">
         <h3>{{$t('m.hotelxq6')}}</h3>
         <div class="hotel-some" v-if="projectdetail.recommend_list!=''">
@@ -193,7 +187,6 @@
         <div class="nolist" v-else style="font-size:0.35rem;text-align:center;">{{$t('m.others13')}}</div>
       </div>
     </div>
-
     <afooter></afooter>
     <!-- <div class="empty" style='height:1.44rem;'></div> -->
     <div
@@ -222,7 +215,6 @@
         @click="toshowModels(projectdetail.id,projectdetail.project_name)"
       >{{$t('m.orderhouse')}}</button>
     </div>
-
     <submitBtn
       v-if="hideModel"
       :id="idss"
@@ -247,7 +239,6 @@ import submitBtn from "@/components/submitBtn";
 import afooter from "@/components/Footer";
 import projectImg from "@/components/projectImg";
 import interfaces from "@/utils/api.js";
-
 export default {
   name: "hotelDetail",
   data() {
@@ -285,8 +276,8 @@ export default {
       },
       hideIcon: true,
       showMore: false,
-      showMore01: false,
-      showJiao: false,
+      showMore01: true,
+      showJiao: true,
       showLoadMore: false,
       totalLength: "",
       video_url: false,
@@ -296,8 +287,7 @@ export default {
   created() {
     this.mobileLocal = JSON.parse(localStorage.getItem("userinfo")).mobile;
     let id = this.$route.params.id;
-    this.getHeight.minHeight =
-      (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
+    this.getHeight.minHeight = (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
     // this.getdetailhouses(id)
     this.showBrandImg(id)
     this.storyImg(id)
@@ -312,7 +302,7 @@ export default {
         var div = vm.$refs.tab1;
         if (from.name == "myOrder") {
           if (div) {
-            setTimeout(function() {
+            setTimeout(function () {
               console.log($(div).offset().top);
               // $('html,body').scrollTop($(div).offset().top - 43);
               $("html, body").animate(
@@ -333,13 +323,13 @@ export default {
     let status = to.params.status;
     console.log(to);
     var that = this;
-    interfaces.getdetailhouse(id).then(function(res) {
+    interfaces.getdetailhouse(id).then(function (res) {
       that.projectdetail = res;
       that.detailId = res.id;
       var div = that.$refs.tab1;
       if (from.name == "myOrder") {
         if (div) {
-          setTimeout(function() {
+          setTimeout(function () {
             console.log($(div).offset().top);
             // $('html,body').scrollTop($(div).offset().top - 43);
             $("html, body").animate(
@@ -353,7 +343,7 @@ export default {
     });
   },
   watch: {
-    scroll: function(newVal, oldVal) {
+    scroll: function (newVal, oldVal) {
       if (newVal > oldVal) {
         this.local = false;
       } else {
@@ -411,18 +401,17 @@ export default {
        })
      },   
     goHome() {
-      this.$router.go(-1);
+      this.$router.go(-1)
     },
     toAppraise() {
       this.$router.push({ name: "appraise", params: { id: this.detailId } });
     },
-    btn_pos: function(e) {
+    btn_pos: function (e) {
       this.setlocaltrue();
     },
-    setlocaltrue: _.debounce(function() {
+    setlocaltrue: _.debounce(function () {
       this.local = true;
     }, 1000),
-
     showStory() {
       if(this.brandStory==null){
         this.$toast('暂无项目故事')
@@ -509,12 +498,10 @@ export default {
     tohideModel() {
       this.hideModel = false;
     },
-
     tohideList() {
       this.showImgAll = false;
     }
   },
-
   mounted() {
     //  let id=this.$route.params.status
     // var hash = window.location.hash;
@@ -533,32 +520,31 @@ export default {
     //     }, 500);
     //    }
     //   }
-
     window.addEventListener("scroll", this.handleScroll);
     window.addEventListener("scroll", this.btn_pos);
     this.$nextTick(() => {
+      // let remPx = document.body.clientWidth / 10;
+      
+      // let height2 = parseFloat(window.getComputedStyle(this.$refs.desc).height);
+      
+      // let more1 = height2/remPx;
+      // let height3 = window.getComputedStyle(this.$refs.jiaotong).height;
+      // if (height3 > 80 + "px") {
+      //   this.showJiao = true;
+      // }
+      // if (height2 > this.defaultheight2 + "px") {
+      //   this.showMore01 = true;
+      // }
+    })
+    $eventbus.$on("changeLang", res => {
+      this.mobileLocal = localStorage.getItem("mobile");
+      let id = this.$route.params.id;
+      this.getdetailhouses(id);
       // let height= window.getComputedStyle(this.$refs.heightShow).height
-      let height2 = window.getComputedStyle(this.$refs.desc).height;
-      let height3 = window.getComputedStyle(this.$refs.jiaotong).height;
-
-      //  alert(height2)
-      if (height3 > 80 + "px") {
-        this.showJiao = true;
-      }
-      if (height2 > this.defaultheight2 + "px") {
-        this.showMore01 = true;
-      }
-    }),
-      $eventbus.$on("changeLang", res => {
-        this.mobileLocal = localStorage.getItem("mobile");
-        let id = this.$route.params.id;
-        this.getdetailhouses(id);
-        // this.tobrandImg(id)
-        // let height= window.getComputedStyle(this.$refs.heightShow).height
-        // if(height>defaultheight+'px'){
-        //     this.showHeight=true
-        //   }
-      });
+      // if(height>defaultheight+'px'){
+      //     this.showHeight=true
+      //   }
+    });
   },
   //第四步：当再次进入（前进或者后退）时，只触发activated（注：只有在keep-alive加载时调用）
   activated() {
@@ -581,7 +567,6 @@ export default {
   }
 };
 </script>
-
 <style lang="less" scoped>
 .video-model {
   width: 100%;
@@ -635,7 +620,7 @@ export default {
 }
 
 .desc .desc02 {
-  height: 2.3rem;
+  height: 2.4rem;
   overflow: hidden;
 }
 .desc .brandStory {
@@ -643,7 +628,6 @@ export default {
   overflow: visible;
   transition: 0.4s ease;
 }
-
 .hotel-detail {
   width: 100%;
   margin: 0 auto;
@@ -703,7 +687,6 @@ export default {
   align-items: center;
   justify-content: center;
 }
-
 .Project-imgs .van-popup {
   border-radius: none !important;
 }
@@ -716,7 +699,6 @@ export default {
   font-size: 12px;
   background: rgba(0, 0, 0, 0.1);
 }
-
 .hotel-some .swiper-slide {
   width: 47%;
 }
@@ -785,7 +767,6 @@ export default {
   display: flex;
   align-items: center;
 }
-
 .desc {
   width: auto;
   height: auto;
@@ -793,6 +774,7 @@ export default {
 }
 .desc h3 {
   margin-top: 0.85rem;
+  margin-bottom: 0.4rem;
   font-size: 0.42rem;
   color: #060606;
   font-weight: bold;
@@ -802,11 +784,11 @@ export default {
   color: #000;
   line-height: 0.6rem;
   color: #0d0d0d;
-  margin-top: 0.44rem;
+  // margin-top: 0.44rem;
 }
 .desc ul {
   width: auto;
-  height: 180px;
+  height: 4.4rem;
   overflow: hidden;
   margin: 0 0 0.6rem;
   transition: all 0.4s ease;
@@ -822,7 +804,8 @@ export default {
   flex-direction: column;
   width: 25%;
   float: left;
-  margin-top: 0.87rem;
+  margin-top: 0.8rem;
+  height: 1.4rem;
 }
 .desc ul li img {
   width: 1.3rem;
@@ -831,8 +814,8 @@ export default {
 .desc ul li span {
   font-size: 0.32rem;
   color: #000;
+  white-space: nowrap;
 }
-
 .types {
   width: 100%;
   height: auto;
@@ -896,7 +879,6 @@ export default {
   justify-content: center;
   margin: 0.85rem 0;
 }
-
 .map {
   width: 100%;
   height: auto;
@@ -974,7 +956,6 @@ export default {
 .van-swipe-item {
   float: left;
 }
-
 .bottom-nav {
   width: 100%;
   height: 1.44rem;
@@ -1019,7 +1000,6 @@ export default {
 .bottom-nav .s1 a {
   color: #fff;
 }
-
 @keyframes bounce-down {
   25% {
     transform: translateY(-3px);
@@ -1034,7 +1014,6 @@ export default {
     transform: translateY(0);
   }
 }
-
 .down img {
   -webkit-animation: bounce-down 1s linear infinite;
   animation: bounce-down 1s linear infinite;
@@ -1073,7 +1052,6 @@ export default {
 .brandimg2 {
   transform: rotate(180deg);
 }
-
 .map .map01 .jiaoActive {
   height: auto;
   overflow: visible;

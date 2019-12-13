@@ -123,7 +123,7 @@ export const m = {
   hotelxq4: 'Apartment allocation',
   hotelxq5: 'Surrounding and transportation services',
   hotelxq6: 'Recommended apartment',
-  hotelxq7: 'You have made an appointment. Please give us your valuable advice!',
+  hotelxq7: 'You have made an appointment, please tell us your feedback.',
   hotelxq8: 'Recommended apartment',
   hotelxq9: 'Reservation',
   hotelxq10: 'Apartment area',
@@ -1241,6 +1241,7 @@ export const m = {
     jiudian: 'Hotel',
     meishi: 'Delicacy',
     jingdian: 'Scenic ',
-    gouwu: 'Shopping'
+    gouwu: 'Shopping',
+    defaultName: 'shanghai'
   }
 }
