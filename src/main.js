@@ -70,7 +70,6 @@ if (process.env.VUE_APP_BUILD_TYPE && process.env.VUE_APP_BUILD_TYPE === 'test')
 import jquery from 'jquery'
 window.$ = jquery
 import axios from 'axios'
-import { get } from 'http'
 window.$axios = axios
 
 
