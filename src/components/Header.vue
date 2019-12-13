@@ -206,10 +206,10 @@ export default {
 .left .van-icon {
   font-size: 0.7rem;
 }
-.header .nav-lan {
-  width: 2.37rem;
-  height: 0.59rem;
-}
+// .header .nav-lan {
+//   width: 2.37rem;
+//   height: 0.59rem;
+// }
 .nav-lan {
   display: flex;
   align-items: center;
