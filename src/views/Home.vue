@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" v-show="showHome">
     <van-swipe :autoplay="3000" indicator-color="white" class="swiperImg">
       <van-swipe-item v-for="(item,index) in bannerImg" :key="index">
         <img :src="item.thumb" alt />
@@ -217,7 +217,8 @@ export default {
       LongName: '',
       status: '',
       lanBase:'EN',
-      cityArr: null
+      cityArr: null,
+      showHome: false
     }
   },
 
@@ -273,7 +274,7 @@ export default {
       }else if(this.lang == 4){
         this.lanBase='ZH'
       }
-      
+
       $eventbus.$emit("changeStyle", this.lanBase);
     },
     toloadMore() {
@@ -347,7 +348,6 @@ export default {
   beforeRouteEnter(to, from, next) {
     interfaces.getData().then(function (res) {
       next(vm => {
-        console.log(res.data.project_list)
         vm.bannerImg = res.data.banner
         vm.story = res.data.story
         vm.news_list = res.data.news_list
@@ -356,7 +356,7 @@ export default {
 
         let story = res.data.story.description
         vm.story2 = story.split('。')
-        console.log(res.data)
+        vm.showHome = true
       })
     })
   },
@@ -417,8 +417,11 @@ export default {
 };
 </script>
 <style lang="less">
+.mint-indicator-wrapper{
+  z-index: 10;
+}
 .mint-indicator-mask{
-  background: #ffffff;
+  background: #ffffff !important;
 }
   
 </style>

@@ -358,7 +358,7 @@ export default {
 }
 
 .pingjia {
-  width: auto;
+  width: 100%;
   height: 0.5rem;
   display: flex;
   align-items: center;
