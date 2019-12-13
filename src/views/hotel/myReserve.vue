@@ -77,7 +77,6 @@
      
        <button class='btns-submit' type='submit' :disabled="isClick" @click='submitInfor'>{{$t('m.s4')}}</button>
      </div>
-     
         <submitBtn v-if='hideModel' @tohideModel='tohideModel'></submitBtn>
   <afooter></afooter> 
     </div>

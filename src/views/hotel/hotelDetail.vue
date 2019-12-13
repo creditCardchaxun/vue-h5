@@ -18,7 +18,7 @@
       </div>
 
       <!--轮播图  -->
-      <van-swipe @change="onChange" :show-indicators="true" :loop="true">
+      <van-swipe @change="onChanges" :show-indicators="true" :loop="true">
         <!-- 图片轮播 -->
         <template v-if="hideImg">
           <van-swipe-item v-for="(item,index) in projectdetail.pic.img" :key="index">
@@ -34,22 +34,25 @@
         </van-swipe-item>
       <!-- 视频轮播 -->
         <van-swipe-item v-if="hideVideo">
-          <img
-            :src="projectdetail.pic.video.video_pic"
-            v-if="projectdetail.pic.video.video_pic"
-            @click="showVideoplay"
-          />
+          <div class="VR-img">
+            <img
+              :src="projectdetail.pic.video.video_pic"
+              v-if="projectdetail.pic.video.video_pic"
+              @click="showVideoplay"
+            />
+            <img src="../../assets/images/stop.png" alt class="VR" />
+          </div>
         </van-swipe-item>
 
         <div
           class="custom-indicator"
           slot="indicator"
-        >{{ current + 1 }}/{{hideImg?projectdetail.pic.img.length:totalLength}}</div>
+        >{{ currentBanner + 1 }}/{{hideImg?projectdetail.pic.img.length:totalLength}}</div>
       </van-swipe>
       <p class="swiper-title">
-        <span v-show='projectdetail.pic.VR.ar_pic||projectdetail.pic.video.video_pic' @click="toshowIMG(projectdetail.pic.img.length)">图片</span>
-        <span v-show="projectdetail.pic.VR.ar_pic!=''" @click="toshowVR(1)">VR</span>
-        <span v-show="projectdetail.pic.video.video_pic!=''" @click="toshowVideo(1)">视频</span>
+        <span v-show='projectdetail.pic.VR.ar_pic||projectdetail.pic.video.video_pic' @click="toshowIMG(projectdetail.pic.img.length)" :class='{activeTitle:hideImg}'>图片</span>
+        <span v-show="projectdetail.pic.VR.ar_pic!=''" @click="toshowVR(1)" :class='{activeTitle:hideVR}'>VR</span>
+        <span v-show="projectdetail.pic.video.video_pic!=''" @click="toshowVideo(1)" :class='{activeTitle:hideVideo}'>视频</span>
       </p>
     </div>
 <!-- 视频播放 -->
@@ -98,6 +101,7 @@
           :border="false"
           :ellipsis="false"
           v-if="projectdetail.house_type!=''"
+          @change="onchangeTab"
         >
           <div class="class" v-for="(item,index) in projectdetail.house_type" :key="index">
             <van-tab :title="item.typename">
@@ -106,7 +110,7 @@
                   <img :src="i.fileurl" alt class="hotel-msg" />
                 </van-swipe-item>
                 <!-- <van-swipe-item><img src="../../assets/images/hotel-02.jpg" alt="" class='hotel-msg'></van-swipe-item> -->
-                <div class="custom-indicator" slot="indicator">{{ current + 1 }}/{{projectdetail.house_type.length}}</div>
+                <div class="custom-indicator" slot="indicator">{{ current + 1 }}/{{houseTypeLength}}</div>
               </van-swipe>
               <div class="types-mianji">
                 <div class="yiju">{{$t('m.hotelxq10')}}:{{item.room_size}}㎡</div>
@@ -248,6 +252,7 @@ export default {
       hideImg: true,
 
       current: 0,
+      currentBanner:0,
       scroll: 0,
       swiperOption: {
         slidesPerView: "auto",
@@ -281,14 +286,15 @@ export default {
       showLoadMore: false,
       totalLength: "",
       video_url: false,
-      brandStory:''
+      brandStory:'',
+      houseTypeLength:0
     };
   },
   created() {
     this.mobileLocal = JSON.parse(localStorage.getItem("userinfo")).mobile;
     let id = this.$route.params.id;
     this.getHeight.minHeight = (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
-    // this.getdetailhouses(id)
+    this.getdetailhouses(id)
     this.showBrandImg(id)
     this.storyImg(id)
   },
@@ -308,7 +314,7 @@ export default {
               // $('html,body').scrollTop($(div).offset().top - 43);
               $("html, body").animate(
                 { scrollTop: $(div).offset().top - 43 },
-                500
+                  500
               );
             }, 500);
           }
@@ -486,14 +492,28 @@ export default {
       interfaces.getdetailhouse(id).then(res => {
         this.projectdetail = res;
         this.detailId = res.id;
+         if(this.projectdetail.house_type){
+          this.houseTypeLength=this.projectdetail.house_type[0].pic.length
+              //  console.log(this.projectdetail.house_type[0].pic.length)
+
+       }
+         
       });
     },
     onChange(index) {
       this.current = index;
     },
-    //  onClick(name, title) {
-    //   // this.$toast(title);
-    // },
+     onChanges(index) {
+      this.currentBanner = index;
+    },
+    onchangeTab(index,title){
+      this.projectdetail.house_type.forEach((item,index)=>{
+           if(item.typename==title){
+             this.houseTypeLength=item.pic.length
+           }
+       })
+    },
+
     handleScroll() {
       this.scroll = $(window).height() + $(document).scrollTop();
     },
@@ -596,6 +616,7 @@ export default {
   width: 1.93rem;
   height: 2.08rem;
 }
+.swiper-title .activeTitle{color:#fff;}
 .swiper-title {
   width: auto;
   height: auto;

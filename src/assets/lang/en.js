@@ -67,7 +67,7 @@ export const m = {
   house3: 'Name',
   house4: 'Mobile',
   house5: 'Requirement',
-  house6: 'if you have any requirement,please write down here.',
+  house6: 'If you have any requirement,please write down here.',
   house7: 'Requirement',
   house8: 'Select an apartment',
   house9: 'Select date',
