@@ -8,11 +8,11 @@
         <van-swipe-item v-for='(item,index) in imgAll' :key='index'>
             <div class="pro-item">
                 <div class="pro-items">
-                      <img v-if='item.fileurl' :src="item.fileurl" alt="" class='big-img' style='width:100%;height:100%;position:absolute;top:0;left:0;z-index:-1' >
-                      <img v-if='item.video_pic' :src="item.video_pic" alt="" class='big-img' style='width:100%;height:100%;position:absolute;top:0;left:0;z-index:-1' >
+                      <img v-if='item.fileurl' :src="item.fileurl" alt="" class='big-img' style='width:100%;height:100%;position:absolute;top:0;left:0;z-index:-1' v-lazy="item.fileurl">
+                      <!-- <img v-if='item.video_pic' :src="item.video_pic" alt="" class='big-img' style='width:100%;height:100%;position:absolute;top:0;left:0;z-index:-1'  v-lazy="image"> -->
                     <div class="project-img">
                       <!-- 视频添加 -->
-                       <video v-if='item.video_url'  src="item.video_url" width=100%></video>  
+                       <!-- <video v-if='item.video_url'  src="item.video_url" width=100%></video>   -->
                       <div class="pro-img"><img src="../assets/images/project-logo.png" alt=""></div>
                         <div class="main-other">
                           <div class="pro-main">
@@ -25,9 +25,9 @@
                           <p v-if='item.project_name'>
                             {{item.project_name}}  
                           </p>
-                           <p v-if='item.video_desc' >
+                           <!-- <p v-if='item.video_desc' >
                             {{item.video_desc}}  
-                          </p>
+                          </p> -->
                     </div>
                 </div>
             </div>
@@ -47,8 +47,10 @@
 import interfaces from "@/utils/api.js";
 import Vue from 'vue';
 import { Swipe, SwipeItem } from 'vant';
+import { Lazyload } from 'vant';
 import { Popup } from 'vant';
 Vue.use(Popup);
+Vue.use(Lazyload);
 Vue.use(Swipe).use(SwipeItem);
 
 export default {
@@ -83,14 +85,22 @@ export default {
           this.imgAll=res
           })
          },
-       tohideLists(){
-         this.$emit('tohideList')
-        }
+           tohideLists(){
+      this.$emit('tohideList')
+      //   interfaces.getbrandFirst(id).then((res)=>{
+      // this.imgAll=res
+      // })
+    }
      },
 
      mounted(){
           　this.getheight()
             this.storyImg(this.idss)
+              $eventbus.$on("changeLang", (res) => {
+              this.storyImg(this.idss) 
+              // this.tohideLists(this.idss)
+              this.getheight()
+            });
          }
       }
 </script>

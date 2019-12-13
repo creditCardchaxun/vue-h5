@@ -271,7 +271,6 @@ width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: bo
   text-align: center;
 }
 .top .logo img {
-  /* display: inline-block; */
   width: 75%;
   height: auto;
 }

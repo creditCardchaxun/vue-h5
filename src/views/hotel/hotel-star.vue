@@ -136,7 +136,7 @@ export default {
       toshowCity: false,
       toshowtype: false,
       cityAll: [],
-      currentIndex: -1,
+      currentIndex: 0,
       currentIndex2: -1,
       currentIndex3: -1,
       alllistss: [],

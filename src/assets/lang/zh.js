@@ -19,8 +19,8 @@ export const m = {
   news16: '首页',
 
 
-   // 首页
-   home:'首页',
+  // 首页
+  home: '首页',
   //  centerName:'姓名',
   ischeck: '未验证手机号',
   changePhone: '更换手机号',
@@ -55,9 +55,9 @@ export const m = {
   appraise4: '已评价完成',
 
   //底部
-  homebottom:'精品居舍',
-  homebottom2:'base新闻',
-  homebottom3:'base活动',
+  homebottom: '精品居舍',
+  homebottom2: 'base新闻',
+  homebottom3: 'base活动',
 
   //  首页
   // news: '新闻',
@@ -1371,6 +1371,7 @@ export const m = {
     jiudian: '酒店',
     meishi: '美食',
     jingdian: '景点',
-    gouwu: '购物'
+    gouwu: '购物',
+    defaultName: '上海'
   }
 }

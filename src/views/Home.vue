@@ -60,12 +60,12 @@
     <div :class="[showMore?'': 'yuyue']">
       <swiper :options="swiperOption">
         <swiper-slide v-for="(item,index) in project_list" :key="index">
-          <div class="yu-item">
+          <div class="yu-item" @click='toHotelxq(item.id,item.project_name)'>
             <div class="yu-img">
-              <router-link :to="{name:'hotelDetail', params:{id:item.id,name:item.project_name}}">
+              <!-- <router-link :to="{name:'hotelDetail', params:{id:item.id,name:item.project_name}}"> -->
                 <img :src="item.pic" alt />
                 <div class="yu-title">{{item.address}}</div>
-              </router-link>
+              <!-- </router-link> -->
             </div>
             <div class="yu-name">
               <i>{{item.project_name}}</i>
@@ -140,7 +140,7 @@
 
     <div class="map">
       <div class="alltag" @click="toopencity">
-        <span>{{openName}}</span>
+        <span>{{$t('m.map.defaultName')}}</span>
         <div class="alltags" v-show="opens1">
           <span
             v-for="(item,index) in allcityName"
@@ -223,7 +223,8 @@ export default {
       Longid: '',
       LongName: '',
       status: '',
-      lanBase:'EN'
+      lanBase:'EN',
+      cityArr: null
     }
   },
 
@@ -237,7 +238,6 @@ export default {
   methods: {
     getHomedata() {
       interfaces.getData().then((res) => {
-        console.log(res.data.project_list)
         this.bannerImg = res.data.banner
         this.story = res.data.story
         this.news_list = res.data.news_list
@@ -252,7 +252,6 @@ export default {
     handleScroll() {
       this.scroll = $(window).height() + $(document).scrollTop();
     },
-
     handleScrolls() {
       let scrolltop =
         document.documentElement.scrollTop || document.body.scrollTop;
@@ -260,7 +259,7 @@ export default {
     },
     changeLangEvent() {
       console.log(this.lang)
-     if (this.lang == 'zh-CN') {
+      if (this.lang == 'zh-CN') {
           this.lang = 'en-US'
           this.lanBase='ZH'
           console.log('转换成英文')
@@ -316,6 +315,7 @@ export default {
     },
     tochangecity(item) {
       //  this.opens1=!this.opens1
+      this.cityArr = item
       this.openName = item.name
       this.Longid = item.linkageid
       this.LongName = item.name
@@ -331,6 +331,21 @@ export default {
       interfaces.getAllcity().then((res) => {
         this.allcityName = res
       })
+    },
+    // 项目详情
+    toHotelxq(id,name){
+      // this.tobrandImg(id)
+      //      interfaces.getbrandFirst(id).then((res)=>{
+      //      let ids=res.is_show_project_story
+      //      if(ids==1){
+      //        this.$router.push({name:'hotelDetail',params:{id:id,name:name}})
+      //      }else{
+
+      //      }
+      //  })
+
+      this.$router.push({name:'hotelDetail',params:{id:id,name:name}})
+      
     },
 
   },
@@ -370,6 +385,9 @@ export default {
     window.addEventListener("scroll", this.handleScrolls, true);
     $eventbus.$on("changeLang", (res) => {
       this.getHomedata()
+      this.getAllmap()
+      var id = 3362 || Number(this.cityArr.linkageid);
+      this.getallother(id)
     });
     this.$nextTick(() => {
       this.getallother(3362)
@@ -806,6 +824,7 @@ export default {
   font-size: 0.38rem;
   color: #0e0e0e;
   display: block;
+  text-align: center;
 }
 
 @media screen and (min-width: 640px) {

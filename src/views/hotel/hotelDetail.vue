@@ -16,20 +16,47 @@
           @tohideList="tohideList"
         ></projectImg>
       </div>
-      <van-swipe @change="onChange">
-        <template v-if="projectdetail.pic">
-          <van-swipe-item v-for="(item,index) in projectdetail.pic" :key="index">
-            <img :src="item.focusurls_url" alt />
+
+      <!--轮播图  -->
+      <van-swipe @change="onChange" :show-indicators="true" :loop="true">
+        <!-- 图片轮播 -->
+        <template v-if="hideImg">
+          <van-swipe-item v-for="(item,index) in projectdetail.pic.img" :key="index">
+            <img :src="item" alt />
           </van-swipe-item>
         </template>
-        <van-swipe-item v-if="projectdetail.video_pic">
-          <img :src="item.focusurls_url" alt />
-          <video :src="projectdetail.video_url"></video>
+        <!-- VR轮播 -->
+        <van-swipe-item v-if="hideVR">
+          <div class="VR-img" @click="toVRurl(projectdetail.pic.VR.url)">
+            <img :src="projectdetail.pic.VR.ar_pic" alt />
+            <img src="../../assets/images/VR.png" alt class="VR" />
+          </div>
         </van-swipe-item>
-        <!-- <van-swipe-item><img src="../../assets/images/hotel-02.jpg" alt=""></van-swipe-item> -->
-        <div class="custom-indicator" slot="indicator">{{ current + 1 }}/2</div>
+      <!-- 视频轮播 -->
+        <van-swipe-item v-if="hideVideo">
+          <img
+            :src="projectdetail.pic.video.video_pic"
+            v-if="projectdetail.pic.video.video_pic"
+            @click="showVideoplay"
+          />
+        </van-swipe-item>
+
+        <div
+          class="custom-indicator"
+          slot="indicator"
+        >{{ current + 1 }}/{{hideImg?projectdetail.pic.img.length:totalLength}}</div>
       </van-swipe>
+      <p class="swiper-title">
+        <span v-show='projectdetail.pic.VR.ar_pic||projectdetail.pic.video.video_pic' @click="toshowIMG(projectdetail.pic.img.length)">图片</span>
+        <span v-show="projectdetail.pic.VR.ar_pic!=''" @click="toshowVR(1)">VR</span>
+        <span v-show="projectdetail.pic.video.video_pic!=''" @click="toshowVideo(1)">视频</span>
+      </p>
     </div>
+<!-- 视频播放 -->
+    <div class="video-model" v-if="video_url" @click="tohideVideo">
+      <video :src="projectdetail.pic.video.video_url" autoplay controls width='100%' height='400'></video>
+    </div>
+
     <div class="main-content">
       <h3>
         <em>{{projectdetail.project_name}}</em>
@@ -205,6 +232,7 @@ Vue.use(Swipe)
   .use(Icon)
   .use(Tab)
   .use(Tabs);
+
 import maps from "@/components/map";
 import aheaders from "@/components/Header";
 import submitBtn from "@/components/submitBtn";
@@ -215,6 +243,10 @@ export default {
   name: "hotelDetail",
   data() {
     return {
+      hideVideo: false,
+      hideVR: false,
+      hideImg: true,
+
       current: 0,
       scroll: 0,
       swiperOption: {
@@ -246,34 +278,26 @@ export default {
       showMore: false,
       showMore01: true,
       showJiao: true,
-      showLoadMore: false
+      showLoadMore: false,
+      totalLength: "",
+      video_url: false
     };
   },
   created() {
-    // this.mobileLocal=localStorage.getItem('mobile')
     this.mobileLocal = JSON.parse(localStorage.getItem("userinfo")).mobile;
-    if (this.mobileLocal == null) {
-      this.showImgAll = true
-    } else {
-      this.showImgAll = false
-    }
     let id = this.$route.params.id;
     this.getHeight.minHeight = (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
     // this.getdetailhouses(id)
+    this.showBrandImg(id)
   },
   beforeRouteEnter(to, from, next) {
-    console.log("beforeRouteEnter");
     let id = to.params.id;
     let status = to.params.status;
-    console.log('status');
-    console.log(status);
-    interfaces.getdetailhouse(id).then(function (res) {
+    interfaces.getdetailhouse(id).then(function(res) {
       next(vm => {
         vm.projectdetail = res;
         vm.detailId = res.id;
         var div = vm.$refs.tab1;
-        console.log('div');
-        console.log(div);
         if (from.name == "myOrder") {
           if (div) {
             setTimeout(function () {
@@ -288,6 +312,8 @@ export default {
         }
       });
     });
+
+  
   },
   beforeRouteUpdate(to, from, next) {
     console.log("beforeRouteUpdate");
@@ -324,6 +350,49 @@ export default {
     }
   },
   methods: {
+    toshowVR(length) {
+      this.totalLength = length;
+      this.hideVR = true;
+      this.hideImg = false;
+      this.hideVideo = false;
+      console.log("我点击了VR");
+    },
+    toshowIMG(length) {
+      this.totalLength = length;
+      this.hideImg = true;
+      this.hideVR = false;
+      this.hideVideo = false;
+      console.log("点击了图片");
+    },
+    toshowVideo(length) {
+      this.totalLength = length;
+      this.hideVideo = true;
+      this.hideVR = false;
+      this.hideImg = false;
+      console.log("点击了视频");
+    },
+    toVRurl(url) {
+      window.location.href = url;
+    },
+    showVideoplay() {
+      this.video_url = true;
+      // this.play()
+    },
+    tohideVideo() {
+      this.video_url = !this.video_url;
+    },
+          //  品牌故事第一次点击
+      showBrandImg(id){ 
+        interfaces.getbrandFirst(id).then((res)=>{
+          let storyId=res.is_show_project_story
+          console.log(storyId,'hfhhhfhhhhfff')
+           if(storyId==1){
+             this.showImgAll=false;
+           }else{
+             this.showImgAll=true;
+           }
+       })
+     },   
     goHome() {
       this.$router.go(-1)
     },
@@ -487,6 +556,57 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.video-model {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+}
+.video-model video {
+  width: 100%;
+  height: auto;
+  margin-top: 50%;
+}
+.VR-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.VR-img .VR {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  width: 1.93rem;
+  height: 2.08rem;
+}
+.swiper-title {
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 0.2rem;
+  left: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.swiper-title span {
+  width: 1.45rem;
+  height: 0.58rem;
+  line-height: 0.58rem;
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.35rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+.swiper-title span:last-child {
+  border-right: none;
+}
+
 .desc .desc02 {
   height: 2.4rem;
   overflow: hidden;
