@@ -11,7 +11,7 @@
         <van-icon name="arrow-left" />
       </div>
       <!-- toback(where) -->
-      <div class="nav-lan">
+      <div class="nav-lan" v-show="showNav">
         <!-- <span value="zh-CN">EN</span> -->
         <!-- <select id="sex" v-model="lang" @change="changeLangEvent">
           <option value="zh-CN">中文</option>
@@ -41,7 +41,11 @@ export default {
   props: {
     status: String,
     where: String,
-    showLan: Boolean
+    showLan: Boolean,
+    showNav: {
+      default: true,
+      type: Boolean
+    }
   },
   data() {
     return {

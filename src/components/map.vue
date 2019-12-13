@@ -1,7 +1,10 @@
 <template>
   <div ref="maps" :class="['maps', fullScreen? 'window-screen':'full-screen']">
     <div class="main-container">
-      <div :class="['button',fullScreen?'window-button':'full-button']" @click="changeFullScreen"></div>
+      <!-- <div :class="['button',fullScreen?'window-button':'full-button']" @click="changeFullScreen"></div> -->
+      <div v-show="fullScreen" :class="['button','window-button']" @click="changeFullScreen"></div>
+      <div v-show="!fullScreen" :class="['button','full-button']" @click="openapp"></div>
+      <aheaders v-if="!fullScreen" status="3" @toback="toreplace" :showNav="false" :showLan="true"></aheaders>
       <div id="container"></div>
       <div class="map-info" v-show="!fullScreen">
         <div id="firstdiv">
@@ -52,7 +55,7 @@
           </div>
         </div>
         <div v-show="!fullScreen">
-          <div class="tip" @click="openapp">{{$t('m.map.open')}}</div>
+          <!-- <div class="tip" @click="openapp">{{$t('m.map.open')}}</div> -->
           <ul class="recommend">
             <li data-type="酒店">{{$t('m.map.jiudian')}}</li>
             <li data-type="美食">{{$t('m.map.meishi')}}</li>
@@ -68,6 +71,7 @@
 <script>
 import $ from 'jquery';
 import { WXsdk } from '../utils/wxShare';
+import aheaders from '../components/Header';
 
 export default {
   props: {
@@ -183,7 +187,14 @@ export default {
       var auto = new AMap.Autocomplete({
         input: "secondtxt"
       });
-      // this.lockMapBounds()
+
+      _this.mapCase.on('click', (e) => {
+        // alert(123)
+        if (this.fullScreen) {
+          this.changeFullScreen()
+        }
+        // e.preventDefault()
+      })
     },
     lockMapBounds() {
       var bounds = this.mapCase.getBounds();
@@ -315,7 +326,6 @@ export default {
       });
     },
     shownav(text) {
-
       // alert(123)
       setTimeout(() => {
         var _this = this
@@ -591,6 +601,7 @@ export default {
       $("#secondtxt").val("");
       // $("#secondtxtend").val("");
       // $("#firstdiv").show();
+      $("#secondfirst").hide()
       this.selectProject = null
     },
     openapp() {
@@ -670,7 +681,11 @@ export default {
         console.log(1111111111111)
         e.preventDefault();
       })
-    }
+    },
+    toreplace() {
+      console.log(123);
+      this.changeFullScreen()
+    },
   },
   watch: {
     '$store.state.lang': function (newVal, oldVal) {
@@ -686,6 +701,9 @@ export default {
         this.addAllmarker()
       }
     }
+  },
+  components: {
+    aheaders
   }
 }
 </script>
@@ -746,8 +764,8 @@ export default {
     height: 100%;
   }
   .button {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.2rem;
+    height: 1.2rem;
     position: absolute;
     right: 0.3rem;
     z-index: 80;
@@ -760,9 +778,10 @@ export default {
   }
 
   .full-button {
-    background: url("../assets/images/window.png") no-repeat;
+    // background: url("../assets/images/window.png") no-repeat;
+    background: url("../assets/images/window.jpg") no-repeat;
     background-size: 100% 100%;
-    bottom: 2.6rem;
+    bottom: 2.1rem;
   }
 }
 
