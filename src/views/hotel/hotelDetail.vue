@@ -20,13 +20,13 @@
       <!--轮播图  -->
       <van-swipe @change="onChange" :show-indicators="true" :loop="true">
         <!-- 图片轮播 -->
-        <template v-if="hideImg">
+        <template v-if="hideImg&&projectdetail.pic"  >
           <van-swipe-item v-for="(item,index) in projectdetail.pic.img" :key="index">
             <img :src="item" alt />
           </van-swipe-item>
         </template>
         <!-- VR轮播 -->
-        <van-swipe-item v-if="hideVR">
+        <van-swipe-item v-if="hideVR&&projectdetail.pic">
           <div class="VR-img" @click="toVRurl(projectdetail.pic.VR.url)">
             <img :src="projectdetail.pic.VR.ar_pic" alt />
             <img src="../../assets/images/VR.png" alt class="VR" />
@@ -44,9 +44,10 @@
         <div
           class="custom-indicator"
           slot="indicator"
+          v-if='projectdetail.pic'
         >{{ current + 1 }}/{{hideImg?projectdetail.pic.img.length:totalLength}}</div>
       </van-swipe>
-      <p class="swiper-title">
+      <p class="swiper-title" v-if="projectdetail.pic">
         <span v-show='projectdetail.pic.VR.ar_pic||projectdetail.pic.video.video_pic' @click="toshowIMG(projectdetail.pic.img.length)">图片</span>
         <span v-show="projectdetail.pic.VR.ar_pic!=''" @click="toshowVR(1)">VR</span>
         <span v-show="projectdetail.pic.video.video_pic!=''" @click="toshowVideo(1)">视频</span>
