@@ -20,7 +20,7 @@ export const m = {
 
   // 首页
   home: 'Home',
-  ischeck: 'No phone number verified',
+  ischeck: 'No phone verified',
   changePhone: 'Edit',
 
   manage:'Management',
@@ -33,7 +33,7 @@ export const m = {
   orderhouse:'Book',
   watch:'Upcoming',
   watch2:'Completed',
-  server:'service',
+  server:'Need help',
 
   //  客户预约列表
   watch3: 'Date ',
@@ -42,14 +42,14 @@ export const m = {
   watch6: 'Star Rating',
   watch7: 'Click to make an appointment',
   // 客户预约详情
-  bookdetail1: 'Thank you for coming.',
-  bookdetail2: 'Your evaluation',
-  bookdetail3: 'Contact service',
+  bookdetail1: 'Thanks for coming.',
+  bookdetail2: 'Review',
+  bookdetail3: 'Customer services',
 
   // 客户评价
   appraise1: 'Are you satisfied with this visit',
   appraise2: 'Click on the tag to quickly evaluate and write down your experience',
-  appraise3: 'Please fill in the evaluation content',
+  appraise3: 'Please fill in the Review content',
   appraise4: 'Evaluated',
 
   // 底部
@@ -65,14 +65,14 @@ export const m = {
   house1: 'Apartment',
   house2: 'Date',
   house3: 'Name',
-  house4: 'Mobile',
+  house4: 'Phone',
   house5: 'Requirement',
   house6: 'If you have any requirement,please write down here.',
   house7: 'Requirement',
   house8: 'Select an apartment',
   house9: 'Select date',
   house10: 'Your name',
-  house11: 'Fill in mobile number',
+  house11: 'Fill in Phone number',
   house12: 'Fill in SMS verification',
   house13: 'Get SMS verification code',
   orderform: 'submit',
@@ -90,7 +90,7 @@ export const m = {
   others5: 'Unconfirmed',
   others6: 'Room to be seen',
   others7: 'Completed',
-  others8: 'Please input mobile number to find the record',
+  others8: 'Please input Phone number to find the record',
   others9: 'Contact',
   others10: 'Fill in feedback',
   others11: 'Accept appointment',
@@ -101,7 +101,7 @@ export const m = {
   others16: 'search',
 
   //  注册按钮
-  s1: 'Mobile',
+  s1: 'Phone',
   s2: 'authentication code',
   s3: 'get code',
   s4: 'submit',
@@ -125,7 +125,8 @@ export const m = {
   hotelxq6: 'Recommended apartment',
   hotelxq7: 'You have made an appointment, please tell us your feedback.',
   hotelxq8: 'Recommended apartment',
-  hotelxq9: 'Reservation',
+  hotelxq9: 'Book a room ',  //点击预订
+  hotelxq12: 'Book a visit',  //点击预约
   hotelxq10: 'Apartment area',
   hotelxq11: 'area',
 
@@ -134,6 +135,21 @@ export const m = {
   bookName2: 'choose project',
   bookName3: 'Date',
   bookName4: 'Name',
+
+    // 我的预定预定时间
+    startdate1:'start time',
+    startdate2:'end of time',
+    startdate3:'prev',
+    startdate4:'Next month',
+    startdate5:'years',
+    startdate6:'month',
+    startdate7:'Sun',
+    startdate8:'Mon',
+    startdate9:'Tue',
+    startdate10:'Wed',
+    startdate11:'Thu',
+    startdate12:'Fri',
+    startdate13:'Sat',
 
   // 看房反馈  
   feedback1: 'Please fill in the feedback information of this visit',
@@ -144,7 +160,7 @@ export const m = {
   feedback6: 'Feedback submitted successfully',
   feedback7: 'project',
   feedback8: 'Name',
-  feedback9: 'Mobile',
+  feedback9: 'Phone',
   feedback10: 'Date',
   feedback11: 'Requirement',
   feedback20: 'Appraisal',
@@ -158,7 +174,7 @@ export const m = {
   feedback17: "If you can't meet the needs of the guests, you can return this order to the headquarters",
 
   feedback18: 'Feedback on house visit',
-  feedback19: "I'm your exclusive housekeeper. If you have any questions about this appointment, please contact me in time",
+  feedback19: "Any questions with this visit, please contact me at any time!",
   // 提示弹框
   show1: 'Please fill in the feedback',
   show2: 'Data cannot be empty',
@@ -168,11 +184,15 @@ export const m = {
   show6: 'Please select an item',
   show7: 'Please enter a name',
   show8: 'Please select gender',
-  show9: 'Please fill in the correct mobile number',
+  show9: 'Please fill in the correct Phone number',
   show10: 'Please select a booking time',
 
   show11: 'Please select an appointment time',
   show12: 'Please select the intention label or fill in the intention information',
+
+    // 时间插件
+    date1:'confirm',
+    date2:'cancel',
 
   // 城市区号
   selectCountry: {

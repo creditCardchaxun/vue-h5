@@ -93,6 +93,8 @@
            type="date"
           :min-date="minDate"
           :max-date="maxDate"
+          :confirm-button-text="$t('m.date1')"
+          :cancel-button-text="$t('m.date2')"
           @confirm="confirmPicker"
           @cancel='cancelPicker'
           @change="onChanges"

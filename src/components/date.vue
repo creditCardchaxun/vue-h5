@@ -6,24 +6,24 @@
  
     <div class="mobile-top">
       <div class="sel-time">
-        <p>开始时间</p>
+        <p>{{$t('m.startdate1')}}</p>
         <p class="start-date">{{starttime}}</p>
       </div>
       <div class="unsel-time">
-        <p>结束时间</p>
+        <p>{{$t('m.startdate2')}}</p>
         <p class="end-date">{{endtime==''?'请选择结束日期':endtime}}</p>
       </div>
     </div>
  
     <div class="title">
       <div class="btn" @click="last()" 
-       :class="(month<=nowmonth)&&(Year<=nowYear)?'noclick':'' ">上一月</div>
-      <div class="text">{{Year}}年{{month}}月</div>
-      <div class="btn" @click="next()">下一月</div>
+       :class="(month<=nowmonth)&&(Year<=nowYear)?'noclick':'' ">{{$t('m.startdate3')}}</div>
+      <div class="text">{{Year}}{{$t('m.startdate5')}}{{month}}{{$t('m.startdate6')}}</div>
+      <div class="btn" @click="next()">{{$t('m.startdate4')}}</div>
     </div>
  
     <div class="head">
-      <div class="days" v-for="(item,index) in ['星期日','星期一','星期二','星期三','星期四','星期五','星期六']" :key="index">
+      <div class="days" v-for="(item,index) in arrList" :key="index">
         {{item}}
       </div>
     </div>
@@ -37,8 +37,8 @@
     </div>
  
     <div class="bottombtn">
-      <button class="cancle-btn" @click='cancle()'>取消</button>
-      <button class="sure-btn" @click='firm()'>确定</button>
+      <button class="cancle-btn" @click='cancle()'>{{$t('m.date2')}}</button>
+      <button class="sure-btn" @click='firm()'>{{$t('m.date1')}}</button>
     </div>
   </div>
 </template>
@@ -53,7 +53,7 @@
     data() {
       return {
         nowtime: '', //当前日期的时间戳
- 
+        arrList:[this.$i18n.t('m.startdate7'),this.$i18n.t('m.startdate8'),this.$i18n.t('m.startdate9'),this.$i18n.t('m.startdate10'),this.$i18n.t('m.startdate11'),this.$i18n.t('m.startdate12'),this.$i18n.t('m.startdate13')],
         clickitem: 0, //点击的时间戳
         clickcount: 0, //点击次数
         starttime: '', //开始时间 数字   默认选中当天日期
