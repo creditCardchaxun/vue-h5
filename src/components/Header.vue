@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <div class="empty"></div>
+    <div class="empty" v-show="showEmpty" ></div>
   </div>
 </template>
 <script>
@@ -43,6 +43,10 @@ export default {
     where: String,
     showLan: Boolean,
     showNav: {
+      default: true,
+      type: Boolean
+    },
+    showEmpty:{
       default: true,
       type: Boolean
     }

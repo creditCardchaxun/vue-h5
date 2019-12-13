@@ -1,7 +1,9 @@
 <template>
   <div class="star">
-    <!-- <img src='../../assets/images/jp.png'/> -->
-    <aheaders status="2" :showLan="true"></aheaders>
+    <div class="img-wrap">
+      <img v-if="topImage" :src="topImage" />
+    </div>
+    <aheaders status="2" :showLan="true" :showEmpty="false"></aheaders>
     <div class="top-hotel" style="display:none">
       <img src="../../assets/images/hotel-01.jpg" alt />
     </div>
@@ -159,7 +161,8 @@ export default {
       showMore: false,
       page: 1,
       hideMore: true,
-      currentItem: null
+      currentItem: null,
+      topImage: null
     }
   },
   computed: {
@@ -170,6 +173,7 @@ export default {
   },
   methods: {
     city() {
+      console.log('3333');
       this.toshowCity = !this.toshowCity
       this.toshowicon = !this.toshowicon
       this.toshowtype = false
@@ -197,7 +201,7 @@ export default {
         this.tochina = false
         this.showshengfen = false;
         this.toshowicon = false;
-        this.toshowCity = !this.toshowCity
+        // this.toshowCity = !this.toshowCity
         city = ''
         area = ''
         type = ''
@@ -372,6 +376,15 @@ export default {
     getAllCity() {
       let data = {}
       this.getListhouses(data)
+    },
+    // 获取即将开业图片
+    getHotalListImage() {
+      interfaces.getHotalListImage().then((res) => {
+        console.log('图片')
+        console.log(res);
+        console.log(res.data.pic)
+        this.topImage = res.data.pic
+      })
     }
   },
   created() {
@@ -381,6 +394,7 @@ export default {
     // this.getcitys()
     // this.gethouseTypes()
     // this.getHeight.minHeight=window.innerHeight+'px'
+    this.getHotalListImage()
   },
 
   beforeRouteEnter(to, from, next) {
@@ -401,16 +415,18 @@ export default {
   },
 
   mounted: function () {
+
     window.addEventListener('scroll', this.handleScroll);
     $eventbus.$on("changeLang", (res) => {
       this.getcitys()
+      this.getHotalListImage()
       this.cityName = this.$i18n.t('m.hotel1'),
-      this.typehousename = this.$i18n.t('m.hotel2'),
-      this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
+        this.typehousename = this.$i18n.t('m.hotel2'),
+        this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
       let data = {}
       this.city2(this.currentIndex, this.currentItem)
       this.getListhouses(data)
-      
+
       this.gethouseTypes(this.cityid, this.idsarea)
       this.getHeight.minHeight = window.innerHeight + 'px'
     })
@@ -435,6 +451,13 @@ export default {
 </script>
 
 <style lang="less">
+.img-wrap {
+  padding-top: 1.6rem;
+  img {
+    width: 100%;
+  }
+}
+
 .star {
   width: 100%;
   margin: 0 auto;
