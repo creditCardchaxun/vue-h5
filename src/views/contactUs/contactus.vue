@@ -483,7 +483,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0.5rem 0;
+  margin: 0.3rem 0;
 }
 .about-01 .index-more span {
   font-size: 0.35rem;

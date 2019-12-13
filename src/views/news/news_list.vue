@@ -160,8 +160,8 @@ export default {
   overflow: hidden;
 }
 .news_main .news_01 img {
-  height: 100%;
-  vertical-align: center;
+  width: 100%;
+  vertical-align: middle;
   margin: 0 auto;
 }
 .news_main .news_01 h3 {

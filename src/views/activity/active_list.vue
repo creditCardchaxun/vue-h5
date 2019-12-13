@@ -4,7 +4,9 @@
     <div class="news_main">
       <div class="news_01" v-if="topList">
         <router-link :to="{name:'activitydetail',params:{id:topList.id}}">
-          <img :src="topList.thumb" alt />
+          <div class="img-wrap">
+            <img :src="topList.thumb" alt />
+          </div>
           <h3>{{topList.title}}</h3>
           <p>{{topList.description}}</p>
           <div class="date">{{topList.inputtime}}</div>
@@ -146,9 +148,17 @@ export default {
   height: auto;
   border-bottom: 1px solid #e5e5e5;
 }
+
+.news_main .img-wrap {
+  width: 9.5rem;
+  height: 6.78rem;
+  overflow: hidden;
+}
+
 .news_main .news_01 img {
   width: 100%;
-  height: auto;
+  vertical-align: middle;
+  margin: 0 auto;
 }
 .news_main .news_01 h3 {
   font-size: 0.44rem;

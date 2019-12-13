@@ -1,104 +1,105 @@
 <template>
   <div class="order">
-    <div class="person_01">
-      <div class="person-arr" style="position:relative;">
-        <div class="person-arr1" @click.stop="toback">
-          <van-icon name="arrow-left" />
-          <em>{{$t('m.home')}}</em>
-        </div>
-        <div class="remove-index" @click.stop="toreplace">
+    <div>
+      <div class="person_01">
+        <div class="person-arr" style="position:relative;">
+          <div class="person-arr1" @click.stop="toback">
+            <van-icon name="arrow-left" />
+            <em>{{$t('m.home')}}</em>
+          </div>
+          <div class="remove-index" @click.stop="toreplace"></div>
         </div>
       </div>
-    </div>
-    <div class="person-center">
-      <div class="person_02">
-        <div class="person_05">
-          <div class="per-msg">
-            <img :src="avater" alt style="width:2.2rem;height:2.2rem;border-radius:50%;" />
-          </div>
-          <div class="per_title">
-            <div class="per_h3">{{nickname}}</div>
-            <div class="isfase" v-if="ischeckPhone" @click="toshowModel">{{$t('m.ischeck')}}</div>
-            <div class="isfase2" v-if="!ischeckPhone">
-              <span>{{mobileLocal}}</span>
-              <em @click="getShowModel">{{$t('m.changePhone')}}</em>
+      <div class="person-center">
+        <div class="person_02">
+          <div class="person_05">
+            <div class="per-msg">
+              <img :src="avater" alt style="width:2.2rem;height:2.2rem;border-radius:50%;" />
             </div>
-            <!-- {{mobileLocal}} -->
+            <div class="per_title">
+              <div class="per_h3">{{nickname}}</div>
+              <div class="isfase" v-if="ischeckPhone" @click="toshowModel">{{$t('m.ischeck')}}</div>
+              <div class="isfase2" v-if="!ischeckPhone">
+                <span>{{mobileLocal}}</span>
+                <em @click="getShowModel">{{$t('m.changePhone')}}</em>
+              </div>
+              <!-- {{mobileLocal}} -->
+            </div>
+          </div>
+
+          <div class="yu-m">
+            <div class="yu_01" style="margin-right:0.6rem;" v-if="iskehu==1">
+              <router-link :to="{name:'booking',params:{active:0}}">
+                <img src="../../assets/images/2_06.png" alt />
+                <i>{{$t('m.manage')}}</i>
+              </router-link>
+            </div>
+            <div class="yu_01" v-if="iskehu==1">
+              <router-link :to="{name:'myOrder'}">
+                <img src="../../assets/images/2_03.jpg" alt />
+                <i>{{$t('m.myorder')}}</i>
+              </router-link>
+            </div>
+            <div class="yu_01" v-if="iskehu==0" :class="{xiaoshou:iskehuClass}">
+              <router-link :to="{name:'myOrder'}">
+                <img src="../../assets/images/2_03.jpg" alt />
+                <i>{{$t('m.myorder')}}</i>
+              </router-link>
+            </div>
           </div>
         </div>
-
-        <div class="yu-m">
-          <div class="yu_01" style="margin-right:0.6rem;" v-if="iskehu==1">
-            <router-link :to="{name:'booking',params:{active:0}}">
-              <img src="../../assets/images/2_06.png" alt />
-              <i>{{$t('m.manage')}}</i>
-            </router-link>
-          </div>
-          <div class="yu_01" v-if="iskehu==1">
-            <router-link :to="{name:'myOrder'}">
-              <img src="../../assets/images/2_03.jpg" alt />
-              <i>{{$t('m.myorder')}}</i>
-            </router-link>
-          </div>
-          <div class="yu_01" v-if="iskehu==0" :class="{xiaoshou:iskehuClass}">
-            <router-link :to="{name:'myOrder'}">
-              <img src="../../assets/images/2_03.jpg" alt />
-              <i>{{$t('m.myorder')}}</i>
-            </router-link>
-          </div>
+        <div class="person_03">
+          <ul>
+            <li>
+              <router-link :to="{path:'/hotel'}">
+                <img src="../../assets/images/2_11.png" alt />
+                <i>{{$t('m.home1')}}</i>
+              </router-link>
+            </li>
+            <li>
+              <router-link :to="{path:'/news'}">
+                <img src="../../assets/images/2_14.png" alt />
+                <i>{{$t('m.home2')}}</i>
+              </router-link>
+            </li>
+            <li>
+              <router-link :to="{path:'/activity'}">
+                <img src="../../assets/images/2_16.png" alt />
+                <i>{{$t('m.home3')}}</i>
+              </router-link>
+            </li>
+            <li>
+              <router-link :to="{name:'contact',params:{active:1}}">
+                <img src="../../assets/images/2_18.png" alt />
+                <i>{{$t('m.home4')}}</i>
+              </router-link>
+            </li>
+          </ul>
+          <ul style="border-top:10px solid #f1f1f1;">
+            <li>
+              <router-link :to="{name:'contact',params:{active:0}}">
+                <img src="../../assets/images/2_20.png" alt />
+                <i>{{$t('m.home5')}}</i>
+              </router-link>
+            </li>
+            <li @click="callPhone">
+              <router-link to>
+                <img src="../../assets/images/2_22.png" alt />
+                <i>400-700-6008</i>
+              </router-link>
+            </li>
+          </ul>
         </div>
-      </div>
-      <div class="person_03">
-        <ul>
-          <li>
-            <router-link :to="{path:'/hotel'}">
-              <img src="../../assets/images/2_11.png" alt />
-              <i>{{$t('m.home1')}}</i>
-            </router-link>
-          </li>
-          <li>
-            <router-link :to="{path:'/news'}">
-              <img src="../../assets/images/2_14.png" alt />
-              <i>{{$t('m.home2')}}</i>
-            </router-link>
-          </li>
-          <li>
-            <router-link :to="{path:'/activity'}">
-              <img src="../../assets/images/2_16.png" alt />
-              <i>{{$t('m.home3')}}</i>
-            </router-link>
-          </li>
-          <li>
-            <router-link :to="{name:'contact',params:{active:1}}">
-              <img src="../../assets/images/2_18.png" alt />
-              <i>{{$t('m.home4')}}</i>
-            </router-link>
-          </li>
-        </ul>
-        <ul style="border-top:10px solid #f1f1f1;">
-          <li>
-            <router-link :to="{name:'contact',params:{active:0}}">
-              <img src="../../assets/images/2_20.png" alt />
-              <i>{{$t('m.home5')}}</i>
-            </router-link>
-          </li>
-          <li @click="callPhone">
-            <router-link to>
-              <img src="../../assets/images/2_22.png" alt />
-              <i>400-700-6008</i>
-            </router-link>
-          </li>
-        </ul>
-      </div>
-      <van-button type="info" class="submits" @click="toshowModel">{{$t('m.orderhouse')}}</van-button>
+        <van-button type="info" class="submits" @click="toshowModel">{{$t('m.orderhouse')}}</van-button>
 
-      <!-- 预约弹框 -->
-      <submitBtn
-        v-if="!hideModel"
-        @tohideModel="tohideModel"
-        :status="status"
-        @update1="getPhones111"
-      ></submitBtn>
+        <!-- 预约弹框 -->
+        <submitBtn
+          v-if="!hideModel"
+          @tohideModel="tohideModel"
+          :status="status"
+          @update1="getPhones111"
+        ></submitBtn>
+      </div>
     </div>
   </div>
 </template>
@@ -183,10 +184,20 @@ export default {
 
   },
   mounted() {
-    this.iskehu = JSON.parse(localStorage.getItem('userinfo')).type
-    this.avater = JSON.parse(localStorage.getItem('userinfo')).avater
-    this.nickname = JSON.parse(localStorage.getItem('userinfo')).nickname
-    this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
+    console.log(typeof localStorage.getItem('userinfo'));
+    console.log(localStorage.getItem('userinfo'));
+    var obj = JSON.parse(localStorage.getItem('userinfo'))
+    console.log('obj');
+    console.log(obj);
+
+
+    this.iskehu = obj.type
+    this.avater = obj.avater
+    this.nickname = obj.nickname
+    this.mobileLocal = obj.mobile
+
+    console.log('this.nickname');
+    console.log( this.nickname );
     // this.mobileLocal=localStorage.getItem('mobile')
     if (this.mobileLocal) {
       this.ischeckPhone = false
@@ -267,7 +278,7 @@ export default {
   top: 0;
   text-align: center;
   vertical-align: center;
-  background: url('../../assets/images/close22.png') no-repeat center center;
+  background: url("../../assets/images/close22.png") no-repeat center center;
   background-size: 30% 30%;
 }
 
@@ -519,17 +530,17 @@ export default {
     height: 100%;
     background-color: #000 !important;
   } */
-.person_01 {
-  width: 750px;
-  height: 1.67rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: white;
-  position: fixed;
-  left: 0;
-  right: 0;
-  margin:0 auto;
-}
+  .person_01 {
+    width: 750px;
+    height: 1.67rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
 }
 </style>

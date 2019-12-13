@@ -55,12 +55,12 @@ export default {
   mounted() {
     var rem = localStorage.getItem('lcRem')
     if (typeof (this.htmlstr) === 'string') {
-      if (this.$refs.textdom.offsetHeight > rem * this.moreType.lineHeight * this.lineNum) {
+      if (this.$refs.textdom.offsetHeight - 6 > rem * this.moreType.lineHeight * this.lineNum) {
         this.shoumore = true
       }
     } else {
       this.$nextTick(() => {
-        if (this.$refs.textdomArr.offsetHeight > rem * this.moreType.lineHeight * this.lineNum) {
+        if (this.$refs.textdomArr.offsetHeight - 6 > rem * this.moreType.lineHeight * this.lineNum) {
           this.shoumore = true
         }
       })
@@ -101,7 +101,7 @@ export default {
     },
     textstyle() {
       if (!this.shoumore) return 'height:auto;';
-      if (this.ishide) return `height:${this.moreType.lineHeight * this.lineNum}rem;`;
+      if (this.ishide) return `height:${this.moreType.lineHeight * this.lineNum - 0.2 }rem;`;
       return 'height:auto;';
     }
   },
@@ -121,6 +121,10 @@ export default {
   margin: 0.64rem auto 1rem;
   overflow: hidden;
   transition: 1s;
+}
+
+.lianxi{
+  margin-bottom: 0;
 }
 
 .lianxi >>> p {
