@@ -16,15 +16,17 @@
     border-bottom: 1px solid #d9d9d9;
 }
 .van-tabs .van-tab span {
-    font-size: 0.4rem;
+    font-size: 13px;
     color:#bfbfbf;
 }
 
 .van-tabs .van-tab--active {
-    color: #000;
+    /* color: #000; */
     font-weight: 500;
 }
-.van-tabs .van-tab--active span{color: #000;font-weight: bold;}
+.van-tabs .van-tab--active span{
+    /* color: #000; */
+    font-weight: bold;}
 
 .scrolltop{
     width: 1rem;

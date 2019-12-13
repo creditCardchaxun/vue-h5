@@ -11,7 +11,7 @@
         <van-icon name="arrow-left" />
       </div>
       <!-- toback(where) -->
-      <div class="nav-lan">
+      <div class="nav-lan" v-show="showNav">
         <!-- <span value="zh-CN">EN</span> -->
         <!-- <select id="sex" v-model="lang" @change="changeLangEvent">
           <option value="zh-CN">中文</option>
@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <div class="empty"></div>
+    <div class="empty" v-show="showEmpty" ></div>
   </div>
 </template>
 <script>
@@ -41,7 +41,15 @@ export default {
   props: {
     status: String,
     where: String,
-    showLan: Boolean
+    showLan: Boolean,
+    showNav: {
+      default: true,
+      type: Boolean
+    },
+    showEmpty:{
+      default: true,
+      type: Boolean
+    }
   },
   data() {
     return {
@@ -83,11 +91,11 @@ export default {
       $eventbus.$emit("changeLang", this.lang);
       localStorage.setItem('lanBase', this.lang == 'zh-CN' ? 1 : 4)
       let lanBase = localStorage.getItem('lanBase')
-
+      
       if (lanBase == 1) {
         this.lanBase = 'EN'
       } else {
-        this.lanBase = 'ZH'
+        this.lanBase = '中'
       }
 
       $eventbus.$emit("changeStyle", this.lanBase);
@@ -104,7 +112,7 @@ export default {
     if (lanBase == 1) {
       this.lanBase = 'EN'
     } else {
-      this.lanBase = 'ZH'
+      this.lanBase = '中'
     }
 
     if(!lanBase) this.lanBase = 'EN'

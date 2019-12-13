@@ -9,7 +9,7 @@
                       <!-- {{$t('m.selectCountry.'+codeLettet+'.'+findArrIndex('m.selectCountry.'+codeLettet,codeId))}}  -->
                    </div>
                    <div class="right">
-                       <input class="numCode" placeholder='手机号/区号'   @click="toshowRegion" v-model="numCode" />
+                       <input class="numCode"  @click="toshowRegion" v-model="numCode" />
                    </div>
                   
                 </div>
@@ -45,7 +45,7 @@
           <van-popup v-model="show_right">
           <div class="good">
             <img src="../assets/images/checkmark.png" alt style='width:1.05rem;height:0.95rem;' />
-            <p style='color:#000;font-size:0.4rem;'>提交成功</p>
+            <p style='color:#000;font-size:0.4rem;'>{{$t('m.submitSuccess')}}</p>
           </div>
         </van-popup>
 
