@@ -1,8 +1,7 @@
 
 <template>
   <div class="showmore">
-    <div class="text" v-html="htmlstr" :style='textstyle' ref='textdom'></div>
-  
+    <div class="text" v-html="htmlstr" :class='{showonep:ishide&&shoumore}' :style='textstyle' ref='textdom'></div>
     <div class="index-more" v-show="shoumore" @click="moreLoad()">
       <span v-if="ishide">more</span>
       <img class="more-icon" :class='{down:!ishide}' src="../assets/images/more-icon.jpg" alt />
@@ -63,6 +62,13 @@
     font-size: .36rem;
     margin-top: .81rem;
   }
+  .showonep.text >>> p{
+    display: none;
+  }
+  .showonep.text >>> p:nth-child(1){
+    display: block;
+  }
+  
   .more-icon{
     margin-top:0.02rem;
     transform: rotate(0deg);
