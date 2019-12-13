@@ -12,7 +12,7 @@
 
 <script>
 // lianxi 联系我们页面
-// 
+// hotal-gypp  公寓详情公寓品牌
 export default {
   name: 'showmore',
   props: {
@@ -50,11 +50,15 @@ export default {
             className: 'lianxi'
           }
           break;
-
+        case 'hotal-gypp':
+          obj = {
+            lineHeight: 0.6,
+            className: 'hotal-gypp'
+          }
+          break;
         default:
           break;
       }
-
       return obj
     },
     textstyle() {
@@ -63,15 +67,11 @@ export default {
       return 'height:auto;';
     }
   },
-
   methods: {
     moreLoad() {
       this.ishide = !this.ishide
     }
-
-
   }
-
 }
 
 </script>
@@ -88,6 +88,15 @@ export default {
 .lianxi >>> p {
   line-height: 0.81rem;
   font-size: 0.36rem;
+}
+
+.hotal-gypp >>> p {
+  line-height: 0.6rem;
+  font-size: 0.34rem;
+}
+.hotal-gypp {
+  line-height: 0.6rem;
+  font-size: 0.34rem;
 }
 
 /* .text >>> p {

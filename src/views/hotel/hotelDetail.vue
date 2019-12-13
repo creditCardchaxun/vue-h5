@@ -93,6 +93,7 @@
           :class="{brandimg2:showMore}"
         />
       </div>
+      <!-- <showmorenew :pageType="'hotal-gypp'" v-if="projectdetail.desc" :htmlstr="projectdetail.desc"></showmorenew> -->
     </div>
     <div class="types">
       <div class="types-nav">
@@ -232,6 +233,7 @@
 <script>
 import Vue from "vue";
 import { Swipe, SwipeItem, Icon, Tab, Tabs } from "vant";
+import showmorenew from "@/components/ShowMoreNew";
 Vue.use(Swipe)
   .use(SwipeItem)
   .use(Icon)
@@ -595,7 +597,8 @@ export default {
     afooter,
     projectImg,
     submitBtn,
-    maps
+    maps,
+    showmorenew
   }
 };
 </script>
