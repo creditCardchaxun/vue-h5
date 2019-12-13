@@ -6,9 +6,11 @@
     if (!clientWidth) return
      if(clientWidth>=640){
           docEl.style.fontSize ='50px'
+          localStorage.setItem('lcRem',50)
      }else{
         //  docEl.style.fontSize = 50 * (clientWidth / 540) + 'px'
          docEl.style.fontSize = clientWidth / 10.8 + 'px'
+         localStorage.setItem('lcRem', clientWidth / 10.8 )
      }
     
     }

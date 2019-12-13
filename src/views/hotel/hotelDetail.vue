@@ -296,6 +296,7 @@ export default {
     let id = to.params.id;
     let status = to.params.status;
     interfaces.getdetailhouse(id).then(function(res) {
+      to.meta[i18n.locale] = res.project_name
       next(vm => {
         vm.projectdetail = res;
         vm.detailId = res.id;
@@ -324,6 +325,7 @@ export default {
     console.log(to);
     var that = this;
     interfaces.getdetailhouse(id).then(function (res) {
+      to.meta[i18n.locale] = res.project_name
       that.projectdetail = res;
       that.detailId = res.id;
       var div = that.$refs.tab1;
