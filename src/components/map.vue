@@ -1,5 +1,5 @@
 <template>
-  <div :class="['maps', fullScreen? 'window-screen':'full-screen']">
+  <div ref="maps" :class="['maps', fullScreen? 'window-screen':'full-screen']">
     <div class="main-container">
       <div :class="['button',fullScreen?'window-button':'full-button']" @click="changeFullScreen"></div>
       <div id="container"></div>
@@ -153,6 +153,8 @@ export default {
     init() {
       var _this = this
 
+      this.destroyMap()
+
       this.createMap();
       // console.log(123);
 
@@ -160,6 +162,7 @@ export default {
       this.addAllmarker()
       // this.addmarker();
 
+      // this.preventTouch()
 
       // 点击搜索结果，直接搜索
       // this.bindSearch()
@@ -175,7 +178,7 @@ export default {
         lang: 'zh-cn',
         mapStyle: 'amap://styles/whitesmoke', //设置地图样式 远山黛.
         zoomEnable: true,
-        dragEnable: true,
+        dragEnable: !_this.fullScreen,
       });
       var auto = new AMap.Autocomplete({
         input: "secondtxt"
@@ -217,7 +220,15 @@ export default {
       _this.infoWindow.push(infoWindow)
 
       AMap.event.addListener(markerend, 'click', function () {
-        infoWindow.open(_this.mapCase, markerend.getPosition());
+        if (!_this.fullScreen) {
+
+          infoWindow.open(_this.mapCase, markerend.getPosition());
+        }else{
+          _this.fullScreen = false
+          setTimeout(() => {
+            _this.init()
+          });
+        }
       });
     },
     createInfoWindow(item) {
@@ -268,7 +279,7 @@ export default {
       info.appendChild(bottom);
       var button = document.createElement("button");
       button.className = "info-button";
-      button.innerHTML = this.$i18n.locale === 'zh-CN'?"到这里去":"Go here";
+      button.innerHTML = this.$i18n.locale === 'zh-CN' ? "到这里去" : "Go here";
       button.id = 'btngo';
       // button.onclick = _this.showfirst;
       button.onclick = _this.showNav1;
@@ -651,6 +662,14 @@ export default {
     },
     closeInfo(index) {
       this.infoWindow[index].close()
+    },
+    preventTouch() {
+      var dom = this.$refs.maps
+      console.log(dom);
+      dom.addEventListener('touchmove', (e) => {
+        console.log(1111111111111)
+        e.preventDefault();
+      })
     }
   },
   watch: {
@@ -672,6 +691,10 @@ export default {
 </script>
 
 <style lang="less">
+.prevent {
+  pointer-events: none;
+}
+
 .zhezhao {
   position: absolute;
   top: 0;
