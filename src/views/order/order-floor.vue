@@ -1,15 +1,12 @@
 <template>
   <div class="order">
     <div class="person_01">
-      <!-- <van-nav-bar title="首页" left-text="返回" left-arrow  @click='toback'>
-      </van-nav-bar>-->
       <div class="person-arr" style="position:relative;">
         <div class="person-arr1" @click.stop="toback">
           <van-icon name="arrow-left" />
           <em>{{$t('m.home')}}</em>
         </div>
         <div class="remove-index" @click.stop="toreplace">
-          <!-- <van-icon name="cross" style="width:100%;height:100%;" /> -->
         </div>
       </div>
     </div>

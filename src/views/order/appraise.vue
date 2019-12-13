@@ -152,7 +152,7 @@ export default {
             message: this.$i18n.t('m.appraise4'),
             icon: 'passed'
           });
-          console.log(this.ids)
+          // console.log(this.ids)
           this.$router.push({ name: 'orderDetail', params: { id: this.ids } })
         }
       })
@@ -163,7 +163,6 @@ export default {
       interfaces.orderIcon(id).then((res) => {
         console.log(res)
         this.iconList = res
-
       })
     }
   },

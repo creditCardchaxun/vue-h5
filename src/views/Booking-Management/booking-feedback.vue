@@ -37,7 +37,7 @@
           <span class='times02'>
 
             <label v-for='(item,index) in feedback.state' :key='index'>
-              <input name="item" v-model='statusIcon' type="radio" :value='item'  />{{item}}
+              <input name="item" v-model='statusIcon' type="radio" :value='item'/>{{item}}
             </label>
           </span>
         </li>
