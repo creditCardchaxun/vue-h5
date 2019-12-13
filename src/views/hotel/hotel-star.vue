@@ -259,6 +259,7 @@ export default {
       let area
       if(index==0){
          area =''
+
       }else{
         area = id
       }
@@ -279,6 +280,12 @@ export default {
     },
     // 点击户型进行筛选
     getName(id, title, index) {
+         let type
+        if(index==-1){
+          type = ''
+        }else{
+          type = id
+        }
       this.currentIndex2 = index
       this.typehousename = title
       this.houseId = id
@@ -286,7 +293,7 @@ export default {
       this.toshowicon2 = false
       let city = this.cityid
       let area = this.idsarea
-      let type = id
+    
       let data = { type, city, area }
       interfaces.getListhouseAll(data).then((res) => {
         this.alllist = res
@@ -317,8 +324,7 @@ export default {
                 // .catch(err => {
                 //     this.$toast.fail("系统开小差,请重试");
                 // });
-      
-    },
+       },
 
     tohideModel() {
       this.hideModel = false

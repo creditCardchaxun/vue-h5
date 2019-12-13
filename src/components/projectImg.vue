@@ -63,11 +63,12 @@ export default {
   name: "projectImg",
   props: {
     showImgAll: Boolean,
-    idss: String
+    idss: String,
+    imgAll:Array
   },
   data() {
     return {
-      imgAll: [],
+      // imgAll: [],
       getheights: {
         height: ""
       }
@@ -85,15 +86,15 @@ export default {
     getheight() {
       this.getheights.height = window.innerHeight + "px";
     },
-    storyImg(id) {
-      let projectlist = [];
-      interfaces.getbrandstory(id).then(res => {
-        console.log(res);
-        if (res != null) {
-          this.imgAll = res;
-        }
-      });
-    },
+    // storyImg(id) {
+    //   let projectlist = [];
+    //   interfaces.getbrandstory(id).then(res => {
+    //     console.log(res);
+    //     if (res != null) {
+    //       this.imgAll = res;
+    //     }
+    //   });
+    // },
     tohideLists() {
       this.$emit("tohideList");
     }
@@ -101,9 +102,9 @@ export default {
 
   mounted() {
     this.getheight();
-    this.storyImg(this.idss);
+    // this.storyImg(this.idss);
     $eventbus.$on("changeLang", res => {
-      this.storyImg(this.idss);
+      // this.storyImg(this.idss);
       // this.tohideLists(this.idss)
       this.getheight();
     });

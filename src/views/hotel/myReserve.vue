@@ -158,9 +158,9 @@ export default {
               this.value=name
               this.id=id
               this.getListhouses()
+              console.log(res)
           })
        },
-    
     methods:{
          toreplace(){
               Dialog.confirm({
@@ -285,12 +285,8 @@ export default {
              interfaces.bookSave2(data).then((res)=>{
                console.log(res)
                   if(res.code==0){
-                    // this.$toast('预定信息成功')
                    let xiecheng_id=res.data.xiecheng_id
-                    //  this.value2=''
-                    //  this.value3='' 
-                    //  this.names =''  
-                    //https://m.ctrip.com/webapp/hotel/hoteldetail/552537.html?atime=20200101&days=2
+                   
                     setTimeout(()=>{
                     window.location.href = ('https://m.ctrip.com/webapp/hotel/hoteldetail/'+xiecheng_id+'.html?atime='+date2 +'&days='+this.DateDiff(this.value2, this.value3))
                     },1000)
@@ -307,12 +303,12 @@ export default {
               })
              }
         },
-   computed: {
-      isClick() {
-      if (!this.value||!this.value2||!this.names||!this.phone) return true;
-      else return false;
-    }
-  },
+      computed: {
+          isClick() {
+          if (!this.value||!this.value2||!this.names||!this.phone) return true;
+          else return false;
+        }
+      },
     components:{
     aheaders,
     afooter,
