@@ -118,6 +118,7 @@ export const m = {
   hotel2: '户型',
   hotel3: '市',
   hotel4: '区',
+  hotel5: '全部',
 
   // 精品旅社详情
   hotelxq1: '查看项目故事',

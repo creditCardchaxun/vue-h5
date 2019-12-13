@@ -115,6 +115,7 @@ export const m = {
   hotel2: 'District',
   hotel3: 'city',
   hotel4: 'area',
+  hotel5: 'All',
 
   // 精品旅社详情
   hotelxq1: 'project story',
