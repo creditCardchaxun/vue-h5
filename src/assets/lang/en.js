@@ -1243,6 +1243,6 @@ export const m = {
     meishi: 'Delicacy',
     jingdian: 'Scenic ',
     gouwu: 'Shopping',
-    defaultName: 'shanghai'
+    defaultName: 'Shanghai'
   }
 }
