@@ -32,7 +32,11 @@ export const m = {
   home5:'Contact us',
   orderhouse:'Book',
   watch:'Upcoming',
+<<<<<<< HEAD
   watch2:'You have seen',
+=======
+  watch2:'Completed',
+>>>>>>> 48a756972df11e17422fe88b9a7cc9496424714e
   server:'service',
 
   //  客户预约列表
