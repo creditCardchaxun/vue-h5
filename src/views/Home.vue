@@ -516,7 +516,7 @@ export default {
 }
 .home img {
   width: 100%;
-  height: auto;
+  // height: auto;
 }
 .van-sidebar {
   position: fixed;
@@ -716,6 +716,14 @@ export default {
 .news-img {
   /* margin: 0.4rem 0; */
   margin: 0.2rem 0;
+  // border: 1px solid black;
+  height: 6.4rem;
+  overflow: hidden;
+  // img {
+  //   width: auto;
+  //   height: 100%;
+  //   margin: 0 auto;
+  // }
 }
 .van-tabs .van-tab {
   flex: none;

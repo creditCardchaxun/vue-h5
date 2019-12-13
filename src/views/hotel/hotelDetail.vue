@@ -105,8 +105,8 @@
         >
           <div class="class" v-for="(item,index) in projectdetail.house_type" :key="index">
             <van-tab :title="item.typename">
-              <van-swipe @change="onChange">
-                <van-swipe-item v-for="(i,ins) in item.pic" :key="ins">
+              <van-swipe @change="onChange" :ref="'detailSwiper' + index">
+                <van-swipe-item v-for="(i,ins) in item.pic" :key="ins" >
                   <img :src="i.fileurl" alt class="hotel-msg" />
                 </van-swipe-item>
                 <!-- <van-swipe-item><img src="../../assets/images/hotel-02.jpg" alt="" class='hotel-msg'></van-swipe-item> -->
@@ -304,6 +304,7 @@ export default {
     interfaces.getdetailhouse(id).then(function(res) {
       to.meta[i18n.locale] = res.project_name
       next(vm => {
+        console.log('111', res);
         vm.projectdetail = res;
         vm.detailId = res.id;
         var div = vm.$refs.tab1;
@@ -507,11 +508,19 @@ export default {
       this.currentBanner = index;
     },
     onchangeTab(index,title){
-      this.projectdetail.house_type.forEach((item,index)=>{
-           if(item.typename==title){
-             this.houseTypeLength=item.pic.length
-           }
-       })
+      try{
+        for(let i = 0; i < this.projectdetail.house_type.length; i++) {
+          let temp = 'detailSwiper' + i
+          this.$refs[temp][0].swipeTo(0)
+        }
+      }catch(e) {}
+      this.houseTypeLength = this.projectdetail.house_type[index].pic.length
+      this.current = 0;
+      // this.projectdetail.house_type.forEach((item,index)=>{
+      //      if(item.typename==title){
+      //        this.houseTypeLength=item.pic.length
+      //      }
+      //  })
     },
 
     handleScroll() {
@@ -559,7 +568,7 @@ export default {
       // }
     })
     $eventbus.$on("changeLang", res => {
-      this.mobileLocal = localStorage.getItem("mobile");
+      this.mobileLocal = JSON.parse(localStorage.getItem("userinfo")).mobile
       let id = this.$route.params.id;
       this.getdetailhouses(id);
       // let height= window.getComputedStyle(this.$refs.heightShow).height
