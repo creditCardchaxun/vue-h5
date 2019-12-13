@@ -47,7 +47,9 @@ const routes = [
     component: Home,
     meta: {
       keepalive: false,// 组件是否需要被保存
-      title:'首页'
+      title:'首页',
+      'en-US': 'HOME',
+      'zh-CN': '首页',
       // this.$i18n.t('m.news16')
     }
   },

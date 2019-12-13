@@ -4,7 +4,7 @@
     <!-- <keep-alive>
 		    <router-view v-if="$route.meta.keepalive" v-wechat-title='$route.meta.title'></router-view>
     </keep-alive> v-if="!$route.meta.keepalive"  :key='$route.fillPath'-->
-    <router-view v-wechat-title="$route.meta.title"></router-view>
+    <router-view v-wechat-title="$route.meta[this.$i18n.locale]"></router-view>
 
     <!-- 评价弹框 -->
 
