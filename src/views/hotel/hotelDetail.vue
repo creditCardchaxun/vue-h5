@@ -2,7 +2,7 @@
   <div class="hotel-detail">
     <aheaders status="3" @toback="goHome" :showLan="true"></aheaders>
     <div class="banner-img">
-      <div class="banner_top" @click="showStory">
+      <div class="banner_top" @click="showStory" v-if="brandStory">
         <em>{{$t('m.hotelxq1')}}</em>
         <!-- <div class="down">
           <img src="../../assets/images/more-icon01.jpg" alt style="width:0.2rem;height:0.2rem;" />
@@ -129,8 +129,18 @@
           <ul
             :class="{activeLi:showHeight}"
             ref="heightShow"
-            v-if="projectdetail.project_setting!=null"
+            v-if="projectdetail.project_setting!=null && lanBase == 'EN'"
           >
+            <li v-for="(item,index) in projectdetail.project_setting" :key="index">
+              <img :src="item.image" alt />
+              <span>{{item.title}}</span>
+            </li>
+          </ul>
+          <ul 
+            class="ul2"
+            :class="{activeLi2:showHeight}"
+            ref="heightShow"
+            v-if="projectdetail.project_setting!=null && lanBase == 'ZH'">
             <li v-for="(item,index) in projectdetail.project_setting" :key="index">
               <img :src="item.image" alt />
               <span>{{item.title}}</span>
@@ -287,7 +297,8 @@ export default {
       totalLength: "",
       video_url: false,
       brandStory:'',
-      houseTypeLength:0
+      houseTypeLength:0,
+      lanBase: null
     };
   },
   created() {
@@ -297,6 +308,10 @@ export default {
     this.getdetailhouses(id)
     this.showBrandImg(id)
     this.storyImg(id)
+    this.getLan()
+
+    $eventbus.$on("changeStyle", this.changeStyle);
+    
   },
   beforeRouteEnter(to, from, next) {
     let id = to.params.id;
@@ -333,6 +348,7 @@ export default {
     var that = this;
     interfaces.getdetailhouse(id).then(function (res) {
       to.meta[i18n.locale] = res.project_name
+      console.log(22222222);
       that.projectdetail = res;
       that.detailId = res.id;
       var div = that.$refs.tab1;
@@ -361,6 +377,23 @@ export default {
     }
   },
   methods: {
+    // 获取当前语言
+    getLan() {
+      let lanBase = localStorage.getItem('lanBase')
+
+      if (lanBase == 1) {
+        this.lanBase = 'EN'
+      } else {
+        this.lanBase = 'ZH'
+      }
+
+      if(!lanBase) this.lanBase = 'EN'
+    },
+
+    changeStyle(e) {
+      this.lanBase = e
+    },
+
     // 项目故事
     storyImg(id) {
       interfaces.getbrandstory(id).then(res => {
@@ -829,12 +862,27 @@ export default {
   width: auto;
   height: auto;
 }
+.desc .activeLi2 {
+  width: auto;
+  height: auto;
+}
 .desc ul li {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   width: 25%;
+  float: left;
+  margin-top: 0.8rem;
+  height: 1.4rem;
+}
+.desc ul.ul2 li {
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  flex-direction: row;
+  width: 50%;
   float: left;
   margin-top: 0.8rem;
   height: 1.4rem;

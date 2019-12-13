@@ -609,10 +609,12 @@ export default {
   text-align: left;
 }
 .s2 ul li {
-  font-size: 0.37rem;
+  font-weight: bold;
   color: #0e0e0e;
-  line-height: 0.85rem;
   text-align: center;
+  font-size: 0.37rem;
+  height: 1rem;
+  line-height: 1rem;
 }
 .s2 .right {
   width: 100%;

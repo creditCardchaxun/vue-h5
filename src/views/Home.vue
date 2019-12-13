@@ -273,13 +273,15 @@ export default {
       this.$store.commit("changeLang", this.lang);
       $eventbus.$emit("changeLang", this.lang);
       localStorage.setItem('lanBase', this.lang == 'zh-CN' ? 1 : 4)
-       let lanBase=localStorage.getItem('lanBase')
+      let lanBase=localStorage.getItem('lanBase')
 
-        if(lanBase == 1){
-          this.lanBase='EN'
-        }else if(this.lang == 4){
-          this.lanBase='ZH'
-        }
+      if(lanBase == 1){
+        this.lanBase='EN'
+      }else if(this.lang == 4){
+        this.lanBase='ZH'
+      }
+      
+      $eventbus.$emit("changeStyle", this.lanBase);
     },
     toloadMore() {
       this.showMore = !this.showMore
@@ -420,7 +422,12 @@ export default {
   }
 };
 </script>
-
+<style lang="less">
+.mint-indicator-mask{
+  background: #ffffff;
+}
+  
+</style>
 <style lang="less" scoped>
 /* .map h3 select{width:2rem;height:1rem;overflow: hidden;background-color: #fff;border:transparent;}
 .map h3 select option{width:2rem;height:1rem;overflow: hidden;padding:0;height:1rem;min-height:1rem;} */
