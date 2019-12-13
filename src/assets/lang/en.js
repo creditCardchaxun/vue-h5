@@ -31,8 +31,8 @@ export const m = {
   home4:'About base',
   home5:'Contact us',
   orderhouse:'Book',
-  watch:'About to begin',
-  watch2:'You have seen',
+  watch:'Upcoming',
+  watch2:'Completed',
   server:'service',
 
   //  客户预约列表

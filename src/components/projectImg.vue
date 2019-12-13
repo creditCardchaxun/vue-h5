@@ -19,7 +19,7 @@
               <div class="project-img">
                 <!-- 视频添加 -->
                 <!-- <video v-if='item.video_url'  src="item.video_url" width=100%></video>   -->
-                <div class="pro-img">
+                <div class="pro-img" style='display:none;'>
                   <img src="../assets/images/project-logo.png" alt />
                 </div>
                 <div class="main-other">
