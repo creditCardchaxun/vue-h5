@@ -189,11 +189,9 @@ export default {
       });
 
       _this.mapCase.on('click', (e) => {
-        // alert(123)
         if (this.fullScreen) {
           this.changeFullScreen()
         }
-        // e.preventDefault()
       })
     },
     lockMapBounds() {
