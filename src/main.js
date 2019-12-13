@@ -50,7 +50,7 @@ store.commit('setDefaultLang')
 let lanBase=localStorage.getItem('lanBase')
 if(lanBase==null ||lanBase==undefined)lanBase = 1;
 // locale: lanBase==1?'zh-CN':'en-US', 
-const i18n = new VueI18n({
+window.i18n = new VueI18n({
     locale: lanBase=='1'?'zh-CN':'en-US',     // 语言标识
     //this.$i18n.locale // 通过切换locale的值来实现语言切换
     messages: {

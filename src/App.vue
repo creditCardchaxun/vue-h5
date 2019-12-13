@@ -4,7 +4,7 @@
     <!-- <keep-alive>
 		    <router-view v-if="$route.meta.keepalive" v-wechat-title='$route.meta.title'></router-view>
     </keep-alive> v-if="!$route.meta.keepalive"  :key='$route.fillPath'-->
-    <router-view v-wechat-title="$route.meta[this.$i18n.locale]"></router-view>
+    <router-view v-wechat-title="settitle"></router-view>
 
     <!-- 评价弹框 -->
 
@@ -75,6 +75,9 @@ export default {
     // 评价弹框123
   },
   computed: {
+    settitle(){
+      return this.$route.meta[this.$i18n.locale]
+    },
     style() {
       if (this.iswx) return '';
       return "width:750px;margin:0 auto;position:relative;background-color: #fff;"

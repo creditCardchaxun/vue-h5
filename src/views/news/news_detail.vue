@@ -50,6 +50,7 @@ export default {
   beforeRouteEnter (to, from, next) {
     let id=to.params.id
     interfaces.newsDetail(id).then(function (res) {
+      to.meta[i18n.locale] = res.title
       next(vm=>
          {
           vm.newsDetails=res
