@@ -55,12 +55,14 @@ export default {
   mounted() {
     var rem = localStorage.getItem('lcRem')
     if (typeof (this.htmlstr) === 'string') {
-      if (this.$refs.textdom.offsetHeight > rem * this.moreType.lineHeight * this.lineNum) {
+      console.log('this.$refs.textdom.offsetHeight');
+      console.log( this.$refs.textdom.offsetHeight );
+      if (this.$refs.textdom.offsetHeight - 4 > rem * this.moreType.lineHeight * this.lineNum) {
         this.shoumore = true
       }
     } else {
       this.$nextTick(() => {
-        if (this.$refs.textdomArr.offsetHeight > rem * this.moreType.lineHeight * this.lineNum) {
+        if (this.$refs.textdomArr.offsetHeight - 4 > rem * this.moreType.lineHeight * this.lineNum) {
           this.shoumore = true
         }
       })
