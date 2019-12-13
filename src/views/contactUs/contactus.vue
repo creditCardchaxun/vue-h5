@@ -37,7 +37,6 @@
           </div>
         </van-tab>
         <van-tab :title="$t('m.home4')">
-
           <!-- <showmore v-if='showmoretextdemo' :htmlstr='showmoretextdemo'></showmore> -->
           <div
             class="about-01"
@@ -46,7 +45,7 @@
             :key="index"
           >
             <h2 style="font-weight:bold;">{{item.title}}</h2>
-          <showmore v-if='item.content' :htmlstr='item.content'></showmore>
+            <showmorenew v-if="item.content" :htmlstr="item.content"></showmorenew>
             <!-- <div class="brand-01" :class="{activeHeight:about[index].showMore1}">
               
               <h2 style="font-weight:bold;">{{item.title}}</h2>
@@ -58,7 +57,7 @@
               <p v-html='item.content'>{{item.content}}</p>
             </div>
           <div class="index-more" v-show="'showMoress'+index" @click='moreLoad(index)' ><span v-if='IconMore1'>more</span> <img src="../../assets/images/more-icon.jpg" alt=""></div>
-           -->
+            -->
           </div>
 
           <!-- <div class="about-01">
@@ -108,7 +107,7 @@
               <span v-if="IconMore3">more</span>
               <img src="../../assets/images/more-icon.jpg" alt :class="{brandimg3:showMore3}" />
             </div>
-          </div> -->
+          </div>-->
         </van-tab>
       </van-tabs>
       <afooters></afooters>
@@ -127,13 +126,13 @@ Vue.use(Tab)
 import interfaces from "@/utils/api.js";
 import aheaders from "@/components/Header";
 import afooters from "@/components/Footer";
-import showmore from "@/components/ShowMore";
+import showmorenew from "@/components/ShowMoreNew";
 export default {
   name: "contact",
   data() {
     return {
-      showmoretextdemo1:"123",
-      showmoretextdemo:'<p>base是盛煦存量地产 (Shanghai NOVA Real Estate Co., Ltd)旗下的一个创意地产品牌。盛煦存量地产成立于2014年，是一家专业性存量地产投资及资产管理公司。2016年，盛煦存量地产对存量地产改造及增值服务运营商翌成创意的股权进行收购，成为其控股股东，并共同发展旗下品牌base。</p><p>base秉承着国际化的视角和前瞻性的创新发展理念，专注于投资、开发及运营一体化经营的领域。而我们所做的，远不止于此，我们始终相信，建筑物并非盈盈独立的个体，而是灵感的聚集地，城市社群的据点，以此交织成城市的脉搏。对于生活在其中的人们，我们希望他们可以彼此联结，相互启发，发现无处不在的灵感。</p><p>目前base旗下所运营及改造中的项目已接近40个，总投资规模近120亿人民币，项目面积约达400,000平方米，覆盖上海、北京等一线城市。旗下运营品牌有base佰舍和Waterline盛溪，着力打造品牌联盟，以满足不同业态定位需求。我们的版图仍在不断扩大，我们将会把创新的理念带去更多的地方。</p>',
+      showmoretextdemo1: "123",
+      showmoretextdemo: '<p>base是盛煦存量地产 (Shanghai NOVA Real Estate Co., Ltd)旗下的一个创意地产品牌。盛煦存量地产成立于2014年，是一家专业性存量地产投资及资产管理公司。2016年，盛煦存量地产对存量地产改造及增值服务运营商翌成创意的股权进行收购，成为其控股股东，并共同发展旗下品牌base。</p><p>base秉承着国际化的视角和前瞻性的创新发展理念，专注于投资、开发及运营一体化经营的领域。而我们所做的，远不止于此，我们始终相信，建筑物并非盈盈独立的个体，而是灵感的聚集地，城市社群的据点，以此交织成城市的脉搏。对于生活在其中的人们，我们希望他们可以彼此联结，相互启发，发现无处不在的灵感。</p><p>目前base旗下所运营及改造中的项目已接近40个，总投资规模近120亿人民币，项目面积约达400,000平方米，覆盖上海、北京等一线城市。旗下运营品牌有base佰舍和Waterline盛溪，着力打造品牌联盟，以满足不同业态定位需求。我们的版图仍在不断扩大，我们将会把创新的理念带去更多的地方。</p>',
       scroll: 0,
       contact: {},
       about: [],
@@ -160,7 +159,7 @@ export default {
     };
   },
   components: {
-    showmore,
+    showmorenew,
     aheaders,
     afooters
   },
@@ -281,15 +280,15 @@ export default {
       });
     },
 
-     abouts(){
-         interfaces.aboutus().then((res)=>{
-           this.about=res
-           res.forEach((item,index)=>{
-              let abouts=item.content
-            res[index].showMore1=this.showMore1
-            console.log(res[index].showMore1)
-           })
+    abouts() {
+      interfaces.aboutus().then((res) => {
+        this.about = res
+        res.forEach((item, index) => {
+          let abouts = item.content
+          res[index].showMore1 = this.showMore1
+          console.log(res[index].showMore1)
         })
+      })
     },
 
     onClick(name, title) {
