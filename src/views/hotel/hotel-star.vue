@@ -611,6 +611,7 @@ export default {
 .s2 ul li {
   font-size: 0.37rem;
   color: #0e0e0e;
+  font-weight:bold;
   line-height: 0.85rem;
   text-align: center;
 }

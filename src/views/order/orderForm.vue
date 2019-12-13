@@ -260,7 +260,7 @@ export default {
     bookTag(id) {
       interfaces.bookTags(id).then(res => {
           console.log(res)
-         if(res!==null){
+         if(res!=null){
            this.tags = res;
          } 
       });
