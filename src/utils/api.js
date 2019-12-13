@@ -307,8 +307,11 @@ getbrandFirst(id){
 	 
 	  
 	//  户型获取
-	gethouseType(){
-		return axios.get( domain + 'index.php?m=api&c=project&a=house_type')
+	gethouseType(city,area){
+		return axios.post( domain + 'index.php?m=api&c=project&a=house_type',{
+      city: city,
+      area: area
+    })
 		.then(function (response) {
 		  return response.data.data
 		 })
