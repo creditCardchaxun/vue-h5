@@ -67,7 +67,7 @@ export default {
   },
 
   created() {
-        this.getUserInfo()  //获取个人信息
+    this.getUserInfo()  //获取个人信息
     // apitest.te st() 
     // 通过url中是否含有shareId来判断是否是分享出去的详情页，再由路由推向对应详情页
 
@@ -75,7 +75,7 @@ export default {
     // 评价弹框123
   },
   computed: {
-    settitle(){
+    settitle() {
       return this.$route.meta[this.$i18n.locale]
     },
     style() {
@@ -93,7 +93,7 @@ export default {
     console.log(config)
     console.log('accessToken')
     console.log(localStorage.getItem('accessToken'))
-    WXsdk.getShare('盛熙', '分享测试', config.shareIcon, config.shareLink)
+    WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink)
 
     let accessToken = localStorage.getItem('accessToken')
     let userinfo = JSON.parse(localStorage.getItem('userinfo'))
@@ -151,18 +151,19 @@ export default {
       this.$router.push({ name: 'appraise', params: { id: id } })
       localStorage.setItem('appraiseId', id)
     },
-        getUserInfo(){
-        interfaces.getuserInfo().then(res => {
-          this.userinfo=res
-          localStorage.setItem('userinfo',JSON.stringify(res))
-        });
-     },
+    getUserInfo() {
+      interfaces.getuserInfo().then(res => {
+        this.userinfo = res
+        localStorage.setItem('userinfo', JSON.stringify(res))
+      });
+    },
   }
 }
 </script>
 
 <style>
-html,body{
+html,
+body {
   height: 100%;
 }
 

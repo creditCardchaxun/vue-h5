@@ -1,6 +1,6 @@
 <template>
   <div class="order-detail">
-    <aheaders status="3" @toback="toreplace" :showLan='true'></aheaders>
+    <aheaders status="3" @toback="toreplace" :showLan="true"></aheaders>
     <!-- 项目信息 -->
     <div class="order-detail01">
       <div class="order-left" style="position:relative;">
@@ -21,7 +21,7 @@
         <em>{{$t('m.bookdetail2')}}</em>
         <van-rate v-model="value" readonly />
       </div>
-      <p style='margin-top:0.5rem'>
+      <p style="margin-top:0.5rem">
         <span>{{$t('m.feedback8')}}</span>
         <em>{{bookarr.name}}</em>
       </p>
@@ -75,7 +75,7 @@
       </p>
     </div>
 
-    <div class="kefu">
+    <div class="kefu" @click="openServe">
       <img src="../../assets/images/kefu2.png" alt />
       <span>{{$t('m.bookdetail3')}}</span>
     </div>
@@ -126,7 +126,7 @@ export default {
   },
   methods: {
     toreplace() {
-      this.$router.push({name:'myOrder'})
+      this.$router.push({ name: 'myOrder' })
     },
     bookdetails(id) {
       interfaces.bookDetail(id).then((res) => {
@@ -163,6 +163,19 @@ export default {
         clipboard.destroy();
       });
     },
+    openServe() {
+      console.log('测试客服');
+      // http://wxapi.itaojin.cn/weixin/action/toggle/transfer/${appId}/${userId}?checkToken=e8ae0f7dc2254090b618665340ec6dcd2ebf3d99d5ee4062a035e6c91003d0ef&flag=true
+      var info = null
+      if (localStorage.getItem('userinfo')) {
+        info = JSON.parse(localStorage.getItem('userinfo'))
+        console.log('info');
+        console.log(info);
+      }
+      if (info) {
+        window.location.href = `http://wxapi.itaojin.cn/weixin/action/toggle/transfer/${info.appid}/${info.openid}?checkToken=e8ae0f7dc2254090b618665340ec6dcd2ebf3d99d5ee4062a035e6c91003d0ef&flag=true`
+      }
+    }
   },
   components: {
     aheaders,
@@ -215,14 +228,53 @@ export default {
   height: 100%;
 }
 
-/* .yijiedan{width:auto;height:3.15rem;border-bottom:0.2rem solid #f5f5f5;display: flex;align-items:center;justify-content:space-between;padding:0 0.6rem;}
-.yijiedan .yi-01{width:auto;height:auto;border-radius: 50%;display: flex;align-items:center;justify-content:space-around;}
-.yijiedan .yi-01 img{width:1.24rem;height:1.24rem;border-radius: 50%;}
-.yijiedan .yi_02{display: flex;align-items: left;flex-direction: column;width: 5.5rem;margin-left: 1rem;}
-.yijiedan .yi_02 h3{font-size:0.4rem;color:#000;} 
-.yijiedan .yi_02 p{font-size:0.3rem;color:#929292;margin-top:0.2rem;line-height: 0.5rem;} 
-.yijiedan .yi_03{width:auto;height:auto;}
-.yijiedan .yi_03 img{width:0.68rem;height:0.68rem;} */
+.yijiedan {
+  width: auto;
+  height: 3.15rem;
+  border-bottom: 0.2rem solid #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.6rem;
+}
+.yijiedan .yi-01 {
+  width: auto;
+  height: auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.yijiedan .yi-01 img {
+  width: 1.24rem;
+  height: 1.24rem;
+  border-radius: 50%;
+}
+.yijiedan .yi_02 {
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+  width: 3.9rem;
+  margin-left: 1rem;
+}
+.yijiedan .yi_02 h3 {
+  font-size: 0.4rem;
+  color: #000;
+}
+.yijiedan .yi_02 p {
+  font-size: 0.3rem;
+  color: #929292;
+  margin-top: 0.2rem;
+  line-height: 0.5rem;
+}
+.yijiedan .yi_03 {
+  width: auto;
+  height: auto;
+}
+.yijiedan .yi_03 img {
+  width: 0.68rem;
+  height: 0.68rem;
+}
 
 .yijiedan {
   width: auto;
@@ -271,8 +323,8 @@ export default {
   width: 0.68rem;
   height: 0.68rem;
 }
-.order-detail02{
-      width: auto;
+.order-detail02 {
+  width: auto;
   height: auto;
   display: flex;
   align-items: left;
@@ -281,22 +333,22 @@ export default {
   justify-content: center;
   border-bottom: 0.2rem solid #f5f5f5;
 }
-.order-detail02 p{
-    font-size: 0.35rem;
-    line-height: 1rem;
-    color: #060606;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
+.order-detail02 p {
+  font-size: 0.35rem;
+  line-height: 1rem;
+  color: #060606;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
 }
-.order-detail02 p span{
- color: #929292;
+.order-detail02 p span {
+  color: #929292;
   width: 2.3rem;
 }
 
