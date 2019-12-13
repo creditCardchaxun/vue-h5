@@ -148,6 +148,7 @@ export default {
         if (Object.prototype.toString.call(this.dataArr) !== '[object Array]') {
           this.selectProject = this.dataArr
         }
+        this.init()
       }
     },
     init() {
@@ -155,19 +156,18 @@ export default {
 
       this.destroyMap()
 
-      this.createMap();
-      // console.log(123);
+      setTimeout(() => {
+        this.createMap();
 
+        this.addAllmarker()
+        // this.addmarker();
+        // this.preventTouch()
+        // 点击搜索结果，直接搜索
+        // this.bindSearch()
+        // 搜索周边
+        this.searchArround()
+      });
 
-      this.addAllmarker()
-      // this.addmarker();
-
-      // this.preventTouch()
-
-      // 点击搜索结果，直接搜索
-      // this.bindSearch()
-      // 搜索周边
-      this.searchArround()
     },
     createMap() {
       var _this = this
@@ -177,7 +177,7 @@ export default {
         zoom: 10, //地图显示的缩放级别
         lang: 'zh-cn',
         mapStyle: 'amap://styles/whitesmoke', //设置地图样式 远山黛.
-        zoomEnable: true,
+        zoomEnable: false,
         dragEnable: !_this.fullScreen,
       });
       var auto = new AMap.Autocomplete({
@@ -223,7 +223,7 @@ export default {
         if (!_this.fullScreen) {
 
           infoWindow.open(_this.mapCase, markerend.getPosition());
-        }else{
+        } else {
           _this.fullScreen = false
           setTimeout(() => {
             _this.init()
