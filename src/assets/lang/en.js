@@ -158,6 +158,7 @@ export const m = {
   feedback17: "If you can't meet the needs of the guests, you can return this order to the headquarters",
 
   feedback18: 'Feedback on house visit',
+  feedback19: "I'm your exclusive housekeeper. If you have any questions about this appointment, please contact me in time",
   // 提示弹框
   show1: 'Please fill in the feedback',
   show2: 'Data cannot be empty',
