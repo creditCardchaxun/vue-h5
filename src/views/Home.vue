@@ -719,11 +719,11 @@ export default {
   // border: 1px solid black;
   height: 6.4rem;
   overflow: hidden;
-  img {
-    width: auto;
-    height: 100%;
-    margin: 0 auto;
-  }
+  // img {
+  //   width: auto;
+  //   height: 100%;
+  //   margin: 0 auto;
+  // }
 }
 .van-tabs .van-tab {
   flex: none;
