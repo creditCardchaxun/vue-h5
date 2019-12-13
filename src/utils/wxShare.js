@@ -89,6 +89,10 @@ class _WXsdk {
 
         // window.wx.onMenuShareAppMessage(tar.shapeShareAppMessage(data2));
         window.wx.onMenuShareAppMessage(data2);
+
+        window.wx.showMenuItems({
+          menuList: ['menuItem:share:appMessage', 'menuItem:share:timeline'] // 要显示的菜单项，所有menu项见附录3
+        });
       })
     })
   }
