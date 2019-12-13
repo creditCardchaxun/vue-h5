@@ -150,7 +150,7 @@ export default {
       var clipboard = new Clipboard(".getcopy"); //单页面引用
       clipboard.on("success", e => {
         this.$toast(this.$i18n.t('m.show3'))
-        // 释放内存
+        // 释放内存 
         clipboard.destroy();
       });
       clipboard.on("error", e => {
