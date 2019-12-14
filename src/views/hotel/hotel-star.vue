@@ -454,8 +454,12 @@ export default {
 <style lang="less">
 .img-wrap {
   padding-top: 1.6rem;
+  height: 4.2rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
   img {
-    width: 100%;
+    height: 100%;
   }
 }
 
