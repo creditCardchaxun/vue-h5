@@ -1,8 +1,9 @@
 <template>
   <div class="star">
-    <div class="img-wrap">
-      <img v-if="topImage" :src="topImage" />
+    <div class="img-wrap" v-if="topImage">
+      <img :src="topImage" />
     </div>
+    <div v-else class="img-wrap-pol"></div>
     <aheaders status="2" :showLan="true" :showEmpty="false"></aheaders>
     <div class="top-hotel" style="display:none">
       <img src="../../assets/images/hotel-01.jpg" alt />
@@ -206,7 +207,7 @@ export default {
         area = ''
         type = this.houseId
       }
-      
+
       this.currentIndex = index
       this.currentItem = item
       // this.tochina = true;
@@ -248,7 +249,7 @@ export default {
     getcity(data) {
       interfaces.getListhouseAll(data).then((res) => {
         this.alllist = res
-        console.log(8888,res)
+        console.log(8888, res)
       })
     },
     // 城市获取全部
@@ -366,7 +367,7 @@ export default {
     toDetails(id, name) {
       this.status = 1
       if (this.mobileLocal) {
-        this.$router.push({ name: 'orderForm', params: {id: id, name: name, mobile: this.mobileLocal } })
+        this.$router.push({ name: 'orderForm', params: { id: id, name: name, mobile: this.mobileLocal } })
       } else {
         this.hideModel = true
       }
@@ -461,6 +462,10 @@ export default {
   img {
     height: 100%;
   }
+}
+
+.img-wrap-pol {
+  padding-top: 1.6rem;
 }
 
 .star {
