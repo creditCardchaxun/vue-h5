@@ -70,6 +70,7 @@ window.i18n = new VueI18n({
   }
 })
 
+
 /* 
  *公共库引用
  */
