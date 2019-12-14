@@ -1098,8 +1098,8 @@ export default {
       // border-top: 1px #ccc solid;
       height: 0.8rem;
       line-height: 0.8rem;
-      padding-bottom: 0.2rem;
-      padding-top: 0.2rem;
+      margin-bottom: 0.2rem;
+      margin-top: 0.2rem;
       // margin-top: 5px;
       display: flex;
       flex-direction: row;
