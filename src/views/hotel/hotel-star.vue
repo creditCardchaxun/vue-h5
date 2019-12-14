@@ -211,8 +211,8 @@ export default {
       this.currentItem = item
       // this.tochina = true;
       this.alllistss = item.area
-      // console.log('this.alllistss');
-      // console.log(this.alllistss);
+      console.log('this.alllistss');
+      console.log(this.alllistss);
       // console.log(this.$store.state.lang );
       this.cityName = this.$store.state.lang === 'en-US' ? item.name_en : item.name
       // this.cityName = item.name
@@ -249,7 +249,7 @@ export default {
     getcity(data) {
       interfaces.getListhouseAll(data).then((res) => {
         this.alllist = res
-        console.log(8888, res)
+        console.log(8888,res)
       })
     },
     // 城市获取全部
@@ -332,8 +332,8 @@ export default {
     getcitys() {
       // alert('获取所有城市数据')
       interfaces.getcity().then((res) => {
-        // console.log('获取所有城市数据');
-        // console.log(res)
+        console.log('获取所有城市数据');
+        console.log(res)
         this.cityAll = res
         // if (this.cityName === 'All' || this.cityName === '全部') {
         //   this.cityName = this.$i18n.t('m.hotel5')
@@ -367,7 +367,7 @@ export default {
     toDetails(id, name) {
       this.status = 1
       if (this.mobileLocal) {
-        this.$router.push({ name: 'orderForm', params: { id: id, name: name, mobile: this.mobileLocal } })
+        this.$router.push({ name: 'orderForm', params: {id: id, name: name, mobile: this.mobileLocal } })
       } else {
         this.hideModel = true
       }
@@ -419,7 +419,6 @@ export default {
     window.addEventListener('scroll', this.handleScroll);
     $eventbus.$on("changeLang", (res) => {
       this.getcitys()
-      this.getcity()
       this.getHotalListImage()
       this.cityName = this.$i18n.t('m.hotel1'),
         this.typehousename = this.$i18n.t('m.hotel2'),

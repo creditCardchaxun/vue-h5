@@ -19,10 +19,18 @@ Vue.use(rem);
 Vue.use(router);
 
 window.$eventbus = new Vue()
-// 动态改变页面标题
-import VueWechatTitle from 'vue-wechat-title'
-Vue.use(VueWechatTitle)
-
+// 动态改变页面标题  
+// import VueWechatTitle from 'vue-wechat-title' //ios 有卡死的bug
+// Vue.use(VueWechatTitle)
+Vue.directive('wechat-title', function (el, binding) {
+  var setWechatTitle = function (title, img) {
+    if (title === undefined || window.document.title === title) {
+      return
+    }
+    document.title = title
+  }
+  setWechatTitle(binding.value, el.getAttribute('img-set') || null)
+})
 
 import {
   Toast
@@ -79,7 +87,7 @@ window.$axios = axios
 // // 微信授权
 if (process.env.NODE_ENV === 'development' && !process.env.VUE_APP_BUILD_TYPE) {
   // 调试开发，替换这里token
-  let testToken = 'T1m72dvWnLTCX0jWyOZgm0TZ5Hm7RK2IUZwAe92A'
+  let testToken = 'Mkz2Y2TM8g5JftnXx8XSSYMH8LjFnBvavCiskRVj'
   // let userinfo={"id":"2","nickname":"","realname":"","avater":"","sex":"0","mobile":'18911793350',"type":"0","openid":"","siteid":"1"}
   axios.defaults.headers.common['systype'] = 1
   axios.defaults.headers.common['accesstoken'] = testToken
@@ -112,6 +120,22 @@ if (ua.match(/MicroMessenger/i) == "micromessenger") {
 Vue.prototype.iswx = iswx
 window.$router = router
 router.beforeEach((from, to, next) => {
+  var mobile = navigator.userAgent.toLowerCase()
+  if (/iphone|ipad|ipod/.test(mobile)) {
+    var iframe = document.createElement('iframe')
+    iframe.style.display = 'none'
+    // 替换成站标favicon路径或者任意存在的较小的图片即可
+    iframe.setAttribute('src', 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')
+    var iframeCallback = function () {
+      setTimeout(function () {
+        iframe.removeEventListener('load', iframeCallback)
+        document.body.removeChild(iframe)
+        // next()
+      }, 0)
+    }
+    iframe.addEventListener('load', iframeCallback)
+    document.body.appendChild(iframe)
+  }
   next()
 })
 

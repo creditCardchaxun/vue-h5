@@ -110,7 +110,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .newsdetail{width:100%;height:auto;}
 .news{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
 .newsdatails{width:90%;height:auto;margin:0.6rem auto 0;overflow: hidden;}

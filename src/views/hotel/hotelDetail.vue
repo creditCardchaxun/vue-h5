@@ -53,17 +53,17 @@
       </van-swipe>
       <p class="swiper-title">
         <span
-          v-show="projectdetail.pic.VR.ar_pic!=''"
+          v-if="projectdetail.pic&&projectdetail.pic.VR.ar_pic"
           @click="toshowVR(1)"
           :class="{activeTitle:hideVR}"
         >VR</span>
         <span
-          v-show="projectdetail.pic.VR.ar_pic||projectdetail.pic.video.video_pic"
+          v-if="projectdetail.pic&&projectdetail.pic.VR.ar_pic"
           @click="toshowIMG(projectdetail.pic.img.length)"
           :class="{activeTitle:hideImg}"
         >图片</span>
         <span
-          v-show="projectdetail.pic.video.video_pic!=''"
+          v-if="projectdetail.pic&&projectdetail.pic.video.video_pic"
           @click="toshowVideo(1)"
           :class="{activeTitle:hideVideo}"
         >视频</span>
@@ -144,24 +144,24 @@
           <ul
             :class="{activeLi:showHeight}"
             ref="heightShow"
-            v-if="projectdetail.project_setting!=null && lanBase == 'EN'"
+            v-if="projectdetail.project_setting!=null"
           >
             <li v-for="(item,index) in projectdetail.project_setting" :key="index">
               <img :src="item.image" alt />
               <span>{{item.title}}</span>
             </li>
           </ul>
-          <ul
+          <!-- <ul
             class="ul2"
             :class="{activeLi2:showHeight}"
             ref="heightShow"
-            v-if="projectdetail.project_setting!=null && lanBase == 'ZH'"
+            v-if="projectdetail.project_setting!=null && lanBase == '中'"
           >
             <li v-for="(item,index) in projectdetail.project_setting" :key="index">
               <img :src="item.image" alt />
               <span>{{item.title}}</span>
             </li>
-          </ul>
+          </ul> -->
           <div
             class="index-more"
             v-if="projectdetail.project_setting!=null&&projectdetail.project_setting.length>8"
@@ -195,11 +195,13 @@
               :class="{brandimg2:showLoadMore}"
             />
           </div>-->
-          <showmorenew
-            :pageType="'hotal-zbjt'"
-            v-if="projectdetail.content"
-            :htmlstr="projectdetail.content"
-          ></showmorenew>
+          <div class="more-div" style='padding-left:0.2rem;'>
+            <showmorenew
+              :pageType="'hotal-zbjt'"
+              v-if="projectdetail.content"
+              :htmlstr="projectdetail.content"
+            ></showmorenew>
+          </div>
         </div>
       </div>
       <div class="hot-hotel">
@@ -322,7 +324,6 @@ export default {
     };
   },
   created() {
-
     this.mobileLocal = JSON.parse(localStorage.getItem("userinfo")).mobile;
     let id = this.$route.params.id;
     this.getHeight.minHeight =
@@ -330,7 +331,6 @@ export default {
     this.getdetailhouses(id);
     this.storyImg(id);
     this.getLan();
-    
     $eventbus.$on("changeStyle", this.changeStyle);
   },
   beforeRouteEnter(to, from, next) {
@@ -399,8 +399,6 @@ export default {
   },
   methods: {
     judgeHaveVR() {
-      console.log(111111);
-      console.log(this.projectdetail);
       if (this.projectdetail.pic.VR.ar_pic) {
         this.toshowVR(1)
       }
@@ -412,7 +410,7 @@ export default {
       if (lanBase == 1) {
         this.lanBase = "EN";
       } else {
-        this.lanBase = "ZH";
+        this.lanBase = "中";
       }
 
       if (!lanBase) this.lanBase = "EN";
@@ -459,17 +457,7 @@ export default {
     tohideVideo() {
       this.video_url = !this.video_url;
     },
-    //  品牌故事第一次点击
-    //   showBrandImg(id){
-    //     interfaces.getbrandFirst(id).then((res)=>{
-    //       let storyId=res.is_show_project_story
-    //        if(storyId==1){
-    //          this.showImgAll=false;
-    //        }else{
-    //          this.showImgAll=true;
-    //        }
-    //    })
-    //  },
+
     //  加载品牌故事
     storyImg(id) {
       let projectlist = [];
@@ -561,18 +549,19 @@ export default {
     getdetailhouses(id) {
       interfaces.getdetailhouse(id).then(res => {
         this.projectdetail = res;
+        console.log(8989898989,res)
         this.detailId = res.id;
         if (this.projectdetail.house_type) {
           this.houseTypeLength = this.projectdetail.house_type[0].pic.length;
           //  console.log(this.projectdetail.house_type[0].pic.length)
         }
-        if (this.projectdetail.is_show_project_story) {
+        // if (this.projectdetail.is_show_project_story) {
           if (this.projectdetail.is_show_project_story == 2) {
             this.showImgAll = true;
           } else {
             this.showImgAll = false;
           }
-        }
+        // }
       });
     },
     onChange(index) {
@@ -596,7 +585,6 @@ export default {
       //      }
       //  })
     },
-
     handleScroll() {
       this.scroll = $(window).height() + $(document).scrollTop();
     },
@@ -1045,7 +1033,7 @@ export default {
 .hot-hotel h3 {
   font-size: 0.42rem;
   color: #060606;
-  margin: 0.75rem 5% 0.36rem;
+  margin: 0.75rem 0 0.36rem 0.67rem;
   font-weight: bold;
 }
 .hot-hotel .hotel-some {
@@ -1144,7 +1132,7 @@ export default {
   animation: bounce-down 1s linear infinite;
 }
 .bottomMessage {
-  width: 90%;
+  width: 100%;
   padding: 0 0.6rem;
   display: flex;
   align-items: center;

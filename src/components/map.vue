@@ -697,7 +697,7 @@ export default {
     },
     dataArr(newVal, oldVal) {
       if (JSON.stringify(newVal) !== JSON.stringify(oldVal)) {
-        this.mapCase.clearMap()
+        this.mapCase&&this.mapCase.clearMap()
         this.addAllmarker()
       }
     }

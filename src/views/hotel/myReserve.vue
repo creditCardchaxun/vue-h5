@@ -156,17 +156,22 @@ export default {
       mounted(){
            $eventbus.$on("changeLang", (res)=>{
               let id=this.$route.params.id
-              let name=this.$route.params.name
-              this.value=name
+              // let name=this.$route.params.name
+              // this.value=name
+              this.getdetailhouses(id)
               this.id=id
               this.getListhouses()
-              console.log(this.$route)
               console.log(res)
           })
        },
     methods:{
+        getdetailhouses(id) {
+          interfaces.getdetailhouse(id).then(res => {
+            this.value = res.project_name
+          });
+        },
          toreplace(){
-              Dialog.confirm({
+          Dialog.confirm({
             title: this.$i18n.t('m.other1'),
             message: this.$i18n.t('m.other2'),
             confirmButtonText:this.$i18n.t('m.other4'),
