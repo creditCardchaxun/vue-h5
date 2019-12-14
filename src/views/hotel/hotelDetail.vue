@@ -171,7 +171,7 @@
             <img
               src="../../assets/images/more-icon.jpg"
               alt
-              style="margin-top: 0.1rem;"
+              style="margin-top: -0.02rem;"
               :class="{brandimg2:showHeight}"
             />
           </div>

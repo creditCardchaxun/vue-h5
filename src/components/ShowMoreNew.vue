@@ -232,7 +232,7 @@ export default {
   transform: rotate(0deg);
   transition: 0.5s;
   position: relative;
-  top: 0.03rem;
+  top: -0.02rem;
 }
 .down {
   transform: rotate(180deg);

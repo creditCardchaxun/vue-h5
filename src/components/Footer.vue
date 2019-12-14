@@ -125,7 +125,7 @@ export default {
 .footer {
   height: 5.96rem;
   position: absolute;
-  bottom: 0;
+  bottom: -0.02rem;
   width: 100%;
 }
 .foot-nav {
