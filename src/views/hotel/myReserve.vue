@@ -160,6 +160,7 @@ export default {
               this.value=name
               this.id=id
               this.getListhouses()
+              console.log(this.$route)
               console.log(res)
           })
        },
