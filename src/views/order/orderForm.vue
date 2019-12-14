@@ -214,6 +214,7 @@ export default {
         this.phone = JSON.parse(localStorage.getItem("userinfo")).mobile;
       }
       if (this.ids) {
+        this.getdetailhouses(this.ids)
         this.bookTag(this.ids);
       }
     });
@@ -287,9 +288,18 @@ export default {
           this.value2 = res.data.book_time;
         });
     },
-
-
-
+    getdetailhouses(id) {
+      interfaces.getdetailhouse(id).then(res => {
+        console.log(88888888,res)
+        this.value = res.project_name
+      });
+    },
+    //  filters(type, options) {
+    //   if (type === 'month') {
+    //     return options.filter(option => option % 2 === 0)
+    //    }
+    //     return options;
+    //   },
     // 返回上一页
     toreplace() {
       Dialog.confirm({
