@@ -27,6 +27,10 @@
                 <span>{{$t('m.watch4')}}</span>
                 <!-- </router-link>  -->
               </em>
+                <button
+                    v-show="item.book_status==0"
+                    @click.stop.prevent="orderDetail(item.id)"
+                  >{{$t('m.watch6')}}</button>
             </div>
           </div>
         </div>

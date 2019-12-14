@@ -188,7 +188,7 @@ export default {
       // alert('城市筛选')
       console.log('城市筛选');
       console.log(index, item);
-
+      
       let city
       let area
       let type
@@ -209,11 +209,7 @@ export default {
 
       this.currentIndex = index
       this.currentItem = item
-      // this.tochina = true;
       this.alllistss = item.area
-      console.log('this.alllistss');
-      console.log(this.alllistss);
-      // console.log(this.$store.state.lang );
       this.cityName = this.$store.state.lang === 'en-US' ? item.name_en : item.name
       // this.cityName = item.name
 
@@ -225,43 +221,15 @@ export default {
       let data = { city, area, type }
       this.getcity(data)
     },
-    // city3(title,index) {
-    //   // let city = ''
-    //   // let area = ''
-    //   // let type = ''
-    // console.log(this.cityid,'全部1')
-    // console.log(this.idsarea,'全部2')
-    // console.log(this.houseId,'全部3')
-    //    if(this.idsarea!=''){
-    //      this.idsarea=''
-    //    }
-    //    this.cityName = title
-    //    this.currentIndex=index
-    //   this.toshowCity = false
-    //   this.toshowicon = false
-    //   let city = this.cityid
-    //   let area = this.idsarea
-    //   let type = this.houseId
-    //   let data = { city, area, type }
-    //   this.getcity(data)
-    // },
-    // 获取地区
+
+    // 获取项目列表
     getcity(data) {
       interfaces.getListhouseAll(data).then((res) => {
         this.alllist = res
         console.log(res)
       })
     },
-    // 城市获取全部
-    // togetAll() {
-    //   this.cityName = this.$i18n.t('m.show5')
-    //   this.currentIndex = -1
-    //   this.tochina = false
-    //   let data = {};
-    //   this.getListhouses(data)
-    //   this.toshowCity = false
-    //   this.toshowicon = false
-    // },
+
     //  房屋类型
     typeHouse() {
       this.toshowtype = !this.toshowtype
@@ -270,14 +238,6 @@ export default {
     },
     // 点击地区进行筛选
     getname(name, id, index) {
-      // alert('sss')
-      let area
-      if (index == 0) {
-        area = ''
-
-      } else {
-        area = id
-      }
       this.currentIndex3 = index
       this.cityName = name,
         this.idsarea = id
@@ -285,7 +245,7 @@ export default {
       this.toshowicon = false
       this.typehousename = this.$i18n.t('m.hotel2')
       let city = this.cityid
-
+      let area=id
       let type = this.houseId
       let data = { city, area, type }
       //   this.getListhouses(data)
@@ -298,24 +258,24 @@ export default {
     },
     // 点击户型进行筛选
     getName(id, title, index) {
-      console.log(index)
-      //  let type
-      //  let area
-      // if(index==-1){
-      //   type = ''
-      //   area = ''
-      // }else{
-      //   type = id
-      //   area = this.idsarea
-      // }
+      let type
+      let city
+      let area
+      if(index==0){
+        id=''
+        this.cityid=''
+        this.idsarea=''
+      }else{
+       type = id
+       city = this.cityid
+       area = this.idsarea
+      }
       this.currentIndex2 = index
       this.typehousename = title
       this.houseId = id
       this.toshowtype = false
       this.toshowicon2 = false
-      let type = id
-      let city = this.cityid
-      let area = this.idsarea
+    
 
       let data = { type, city, area }
       interfaces.getListhouseAll(data).then((res) => {
@@ -330,18 +290,9 @@ export default {
     },
     // 获取城市数据
     getcitys() {
-      // alert('获取所有城市数据')
       interfaces.getcity().then((res) => {
-        console.log('获取所有城市数据');
-        console.log(res)
         this.cityAll = res
-        // if (this.cityName === 'All' || this.cityName === '全部') {
-        //   this.cityName = this.$i18n.t('m.hotel5')
-        // }
-
-        // if (this.cityName !== this.$i18n.t('m.hotel1')) {
-
-        // }
+        this.alllistss = res[this.currentIndex].area
       })
     },
     toloadMore() {
@@ -380,9 +331,6 @@ export default {
     // 获取即将开业图片
     getHotalListImage() {
       interfaces.getHotalListImage().then((res) => {
-        console.log('图片')
-        console.log(res);
-        console.log(res.data.pic)
         this.topImage = res.data.pic
       })
     }
@@ -415,7 +363,6 @@ export default {
   },
 
   mounted: function () {
-
     window.addEventListener('scroll', this.handleScroll);
     $eventbus.$on("changeLang", (res) => {
       this.getcitys()
@@ -424,9 +371,11 @@ export default {
         this.typehousename = this.$i18n.t('m.hotel2'),
         this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
       let data = {}
-      this.city2(this.currentIndex, this.currentItem)
+       this.getcity(data)
+      //  this.city2(this.currentIndex,this.alllistss) 
+      //  this.alllistss
+      // this.city2(this.currentIndex, this.currentItem)
       this.getListhouses(data)
-
       this.gethouseTypes(this.cityid, this.idsarea)
       this.getHeight.minHeight = window.innerHeight + 'px'
     })
@@ -446,7 +395,7 @@ export default {
     aheaders,
     afooter,
     submitBtn
-  }
+  },
 }
 </script>
 

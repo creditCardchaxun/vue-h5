@@ -67,7 +67,7 @@ export const m = {
   house3: 'Name',
   house4: 'Phone',
   house5: 'Requirement',
-  house6: 'If you have any requirement,please write down here.',
+  house6: 'If you have any requirement, please write down here.',
   house7: 'Requirement',
   house8: 'Select an apartment',
   house9: 'Select date',
@@ -190,7 +190,7 @@ export const m = {
 
   show11: 'Please select an appointment time',
   show12: 'Please select the intention label or fill in the intention information',
-
+  show13:'About to enter ctrip!',
     // 时间插件
     date1:'confirm',
     date2:'cancel',

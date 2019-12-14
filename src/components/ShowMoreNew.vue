@@ -2,8 +2,8 @@
 <template>
   <div class="showmore">
     <!-- :class='{showonep:ishide&&shoumore}' -->
-    <div class='testhight' ref='en-US'>A<br>A<br>A<br>A<br></div>
-    <div class='testhight' ref='zh-CN'>啊<br>啊<br>啊<br>啊<br></div>
+    <!-- <div class='testhight' ref='en-US'>A<br>A<br>A<br>A<br></div>
+    <div class='testhight' ref='zh-CN'>啊<br>啊<br>啊<br>啊<br></div> -->
     <div
       v-if="typeof htmlstr === 'string'"
       :class="['text',moreType.className]"

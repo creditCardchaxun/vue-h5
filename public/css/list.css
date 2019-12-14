@@ -21,12 +21,13 @@
 }
 
 .van-tabs .van-tab--active {
-    /* color: #000; */
-    font-weight: 500;
+    color: #000;
+    /* font-weight: 500; */
 }
 .van-tabs .van-tab--active span{
-    /* color: #000; */
-    font-weight: bold;}
+    color: #000;
+    /* font-weight: bold; */
+}
 
 .scrolltop{
     width: 1rem;
@@ -145,9 +146,7 @@
     height: 2rem;
 }
 
-.custom-info {
 
-}
 div.info-bottom {
     height: 0px;
     width: 100%;

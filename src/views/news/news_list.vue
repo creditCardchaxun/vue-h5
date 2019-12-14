@@ -158,6 +158,7 @@ export default {
   width: 9.5rem;
   height: 6.78rem;
   overflow: hidden;
+  padding-top:0 !important;
 }
 .news_main .news_01 img {
   width: 100%;

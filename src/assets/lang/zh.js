@@ -193,10 +193,14 @@ export const m = {
 
   show11: '请选择预约时间',
   show12: '请选择意向标签或填写意向信息',
+  show13:'您即将跳转到携程!',
+
 
   // 时间插件
   date1:'确认',
   date2:'取消',
+
+
 
   // 国际区号
   selectCountry: {
