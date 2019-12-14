@@ -195,7 +195,7 @@
               :class="{brandimg2:showLoadMore}"
             />
           </div>-->
-          <div class="more-div" style='padding-left:0.2rem;'>
+          <div class="more-div" style="padding-left:0.2rem;">
             <showmorenew
               :pageType="'hotal-zbjt'"
               v-if="projectdetail.content"
@@ -336,19 +336,16 @@ export default {
   beforeRouteEnter(to, from, next) {
     let id = to.params.id;
     let status = to.params.status;
-    interfaces.getdetailhouse(id).then(function(res) {
+    interfaces.getdetailhouse(id).then(function (res) {
       to.meta[i18n.locale] = res.project_name;
       next(vm => {
         vm.projectdetail = res;
-
-        console.log('vm.projectdetail');
-        console.log(vm.projectdetail);
 
         vm.detailId = res.id;
         var div = vm.$refs.tab1;
         if (from.name == "myOrder") {
           if (div) {
-            setTimeout(function() {
+            setTimeout(function () {
               console.log($(div).offset().top);
               // $('html,body').scrollTop($(div).offset().top - 43);
               $("html, body").animate(
@@ -367,7 +364,7 @@ export default {
     let status = to.params.status;
     console.log(to);
     var that = this;
-    interfaces.getdetailhouse(id).then(function(res) {
+    interfaces.getdetailhouse(id).then(function (res) {
       to.meta[i18n.locale] = res.project_name;
       console.log(22222222);
       that.projectdetail = res;
@@ -375,7 +372,7 @@ export default {
       var div = that.$refs.tab1;
       if (from.name == "myOrder") {
         if (div) {
-          setTimeout(function() {
+          setTimeout(function () {
             console.log($(div).offset().top);
             // $('html,body').scrollTop($(div).offset().top - 43);
             $("html, body").animate(
@@ -387,17 +384,6 @@ export default {
       }
       next();
     });
-  },
-  watch: {
-    scroll: function(newVal, oldVal) {
-      console.log('newVal,oldVal');
-      console.log( newVal,oldVal );
-      if (newVal > oldVal) {
-        this.local = false;
-      } else {
-        this.local = true;
-      }
-    }
   },
   methods: {
     judgeHaveVR() {
@@ -477,10 +463,10 @@ export default {
     toAppraise() {
       this.$router.push({ name: "appraise", params: { id: this.detailId } });
     },
-    btn_pos: function(e) {
+    btn_pos: function (e) {
       this.setlocaltrue();
     },
-    setlocaltrue: _.debounce(function() {
+    setlocaltrue: _.debounce(function () {
       this.local = true;
     }, 1000),
     showStory() {
@@ -557,11 +543,11 @@ export default {
           //  console.log(this.projectdetail.house_type[0].pic.length)
         }
         // if (this.projectdetail.is_show_project_story) {
-          if (this.projectdetail.is_show_project_story == 2) {
-            this.showImgAll = true;
-          } else {
-            this.showImgAll = false;
-          }
+        if (this.projectdetail.is_show_project_story == 2) {
+          this.showImgAll = true;
+        } else {
+          this.showImgAll = false;
+        }
         // }
       });
     },
@@ -577,14 +563,14 @@ export default {
           let temp = "detailSwiper" + i;
           this.$refs[temp][0].swipeTo(0);
         }
-      } catch (e) {}
+      } catch (e) { }
       this.houseTypeLength = this.projectdetail.house_type[index].pic.length;
       this.current = 0;
       // this.projectdetail.house_type.forEach((item,index)=>{
       //      if(item.typename==title){
       //        this.houseTypeLength=item.pic.length
       //      }
-      //  })
+      // })
     },
     handleScroll() {
       this.scroll = $(window).height() + $(document).scrollTop();
@@ -656,9 +642,18 @@ export default {
     maps,
     showmorenew
   },
-  watch:{
-    projectdetail(newVal,oldVal) {
+  watch: {
+    projectdetail(newVal, oldVal) {
       this.judgeHaveVR()
+    },
+    scroll(newVal, oldVal) {
+      console.log('newVal,oldVal');
+      console.log(newVal, oldVal);
+      if (newVal > oldVal) {
+        this.local = false;
+      } else {
+        this.local = true;
+      }
     }
   }
 };
