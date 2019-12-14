@@ -195,11 +195,13 @@
               :class="{brandimg2:showLoadMore}"
             />
           </div>-->
-          <showmorenew
-            :pageType="'hotal-zbjt'"
-            v-if="projectdetail.content"
-            :htmlstr="projectdetail.content"
-          ></showmorenew>
+          <div class="more-div" style='padding-left:0.2rem;'>
+            <showmorenew
+              :pageType="'hotal-zbjt'"
+              v-if="projectdetail.content"
+              :htmlstr="projectdetail.content"
+            ></showmorenew>
+          </div>
         </div>
       </div>
       <div class="hot-hotel">
@@ -322,7 +324,6 @@ export default {
     };
   },
   created() {
-
     this.mobileLocal = JSON.parse(localStorage.getItem("userinfo")).mobile;
     let id = this.$route.params.id;
     this.getHeight.minHeight =
@@ -330,7 +331,6 @@ export default {
     this.getdetailhouses(id);
     this.storyImg(id);
     this.getLan();
-    
     $eventbus.$on("changeStyle", this.changeStyle);
   },
   beforeRouteEnter(to, from, next) {
@@ -399,8 +399,6 @@ export default {
   },
   methods: {
     judgeHaveVR() {
-      console.log(111111);
-      console.log(this.projectdetail);
       if (this.projectdetail.pic.VR.ar_pic) {
         this.toshowVR(1)
       }
@@ -412,7 +410,7 @@ export default {
       if (lanBase == 1) {
         this.lanBase = "EN";
       } else {
-        this.lanBase = "ZH";
+        this.lanBase = "中";
       }
 
       if (!lanBase) this.lanBase = "EN";
@@ -459,17 +457,7 @@ export default {
     tohideVideo() {
       this.video_url = !this.video_url;
     },
-    //  品牌故事第一次点击
-    //   showBrandImg(id){
-    //     interfaces.getbrandFirst(id).then((res)=>{
-    //       let storyId=res.is_show_project_story
-    //        if(storyId==1){
-    //          this.showImgAll=false;
-    //        }else{
-    //          this.showImgAll=true;
-    //        }
-    //    })
-    //  },
+
     //  加载品牌故事
     storyImg(id) {
       let projectlist = [];
@@ -566,13 +554,13 @@ export default {
           this.houseTypeLength = this.projectdetail.house_type[0].pic.length;
           //  console.log(this.projectdetail.house_type[0].pic.length)
         }
-        if (this.projectdetail.is_show_project_story) {
+        // if (this.projectdetail.is_show_project_story) {
           if (this.projectdetail.is_show_project_story == 2) {
             this.showImgAll = true;
           } else {
             this.showImgAll = false;
           }
-        }
+        // }
       });
     },
     onChange(index) {
@@ -596,7 +584,6 @@ export default {
       //      }
       //  })
     },
-
     handleScroll() {
       this.scroll = $(window).height() + $(document).scrollTop();
     },
@@ -1045,7 +1032,7 @@ export default {
 .hot-hotel h3 {
   font-size: 0.42rem;
   color: #060606;
-  margin: 0.75rem 5% 0.36rem;
+  margin: 0.75rem 0 0.36rem 0.67rem;
   font-weight: bold;
 }
 .hot-hotel .hotel-some {
@@ -1144,7 +1131,7 @@ export default {
   animation: bounce-down 1s linear infinite;
 }
 .bottomMessage {
-  width: 90%;
+  width: 100%;
   padding: 0 0.6rem;
   display: flex;
   align-items: center;

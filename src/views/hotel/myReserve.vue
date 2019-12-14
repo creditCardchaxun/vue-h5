@@ -285,18 +285,18 @@ export default {
                date2=date1[0]+date1[1]+date1[2]
             let data={projectid,name,user_id,in_time,out_time,mobile,sex}
              interfaces.bookSave2(data).then((res)=>{
-               console.log(res)
                   if(res.code==0){
+                    this.$toast(this.$i18n.t('m.show13'))
                    let xiecheng_id=res.data.xiecheng_id
                      if(this.lanBase==1){
                     setTimeout(()=>{
                     window.location.href = ('https://m.ctrip.com/webapp/hotel/hoteldetail/'+xiecheng_id+'.html?atime='+date2 +'&days='+this.DateDiff(this.value2, this.value3))
-                    },1000)
+                    },2000)
                    }else if(this.lanBase==4){
                     setTimeout(()=>{
                       // https://www.trip.com/m/hotels/shanghai-hotel-detail-483962/?checkin=2019-12-13&checkout=2019-12-23
                     window.location.href = (' https://www.trip.com/m/hotels/shanghai-hotel-detail-'+xiecheng_id+'/?checkin='+in_time +'&checkout='+out_time)
-                    },1000)
+                    },2000)
                    } 
                 
                      

@@ -18,7 +18,7 @@
           </li>
           <li>
             <img src="../assets/images/map.png" alt style="width:0.20rem;height:0.24rem" />
-            <span>{{contact.address}}</span>
+            <span style='padding-left:3px;'>{{contact.address}}</span>
           </li>
           <li>
             <img src="../assets/images/mail.png" alt style="width:0.24rem;height:0.20rem" />

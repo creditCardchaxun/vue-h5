@@ -361,9 +361,9 @@ export default {
   created() {
     //  this.getHomedata()
     // this.getallother(3362)
-     console.log(this.lang)
+
      let lanBase=localStorage.getItem('lanBase')
-     console.log(lanBase,'缓存语言')
+
      if(lanBase==1){
       this.lanBase='EN'
      }else if(lanBase==4){
