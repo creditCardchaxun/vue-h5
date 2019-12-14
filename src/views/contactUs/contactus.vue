@@ -462,7 +462,7 @@ export default {
 .about-01 {
   width: 90%;
   height: auto;
-  margin: 0.64rem auto 1rem;
+  margin: 0 auto 0;
   overflow: hidden;
 }
 .about-01 h2 {
