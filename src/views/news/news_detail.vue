@@ -132,7 +132,7 @@ export default {
   line-height: 1.5;
   font-size: 0.36rem !important;
   margin-bottom: 0.3rem;
-  color: #b97272;
+  color: rgb(54, 52, 51);
 }
 
 .left-text >>> p {
