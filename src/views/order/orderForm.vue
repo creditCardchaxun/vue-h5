@@ -126,6 +126,8 @@
         </div>
       </van-popup>
     </div>
+    <!-- 信息弹框  盛修改 -->
+    <div class="modelToast" v-show='successHref'>{{getTostat}}</div>  
     <afooter></afooter>
   </div>
 </template>
@@ -181,7 +183,12 @@ export default {
       checked: false,
       getHeight: {
         minHeight: ""
-      }
+      },
+      getTostat:'',
+      successHref:false
+
+
+
     };
   },
 
@@ -495,7 +502,12 @@ export default {
             this.$router.push({ path: "myOrder" });
           }, 2000);
         } else {
-          this.$toast(res.data);
+          this.successHref=true;
+          this.getTostat=res.data
+          setTimeout(()=>{
+            this.successHref=false;
+           },3000)
+          // this.$toast(res.data);
         }
       });
       console.log(data)
@@ -561,6 +573,20 @@ export default {
   background-color: transparent;
   opacity: 1;
 }
+
+.modelToast{   
+   width: 5rem;
+    height: auto;
+    position: fixed;
+    top: 40%;
+    left: 28%;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 0.35rem;
+    line-height: 0.6rem;
+    text-align: center;
+    padding: 0.5rem;}
 
 .names {
   position: relative;
