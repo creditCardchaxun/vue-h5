@@ -144,24 +144,24 @@
           <ul
             :class="{activeLi:showHeight}"
             ref="heightShow"
-            v-if="projectdetail.project_setting!=null"
+            v-if="projectdetail.project_setting!=null && lanBase === 'EN'"
           >
             <li v-for="(item,index) in projectdetail.project_setting" :key="index">
               <img :src="item.image" alt />
               <span>{{item.title}}</span>
             </li>
           </ul>
-          <!-- <ul
+          <ul
             class="ul2"
             :class="{activeLi2:showHeight}"
             ref="heightShow"
-            v-if="projectdetail.project_setting!=null && lanBase == '中'"
+            v-if="projectdetail.project_setting!=null && lanBase === '中'"
           >
             <li v-for="(item,index) in projectdetail.project_setting" :key="index">
               <img :src="item.image" alt />
               <span>{{item.title}}</span>
             </li>
-          </ul> -->
+          </ul>
           <div
             class="index-more"
             v-if="projectdetail.project_setting!=null&&projectdetail.project_setting.length>8"
