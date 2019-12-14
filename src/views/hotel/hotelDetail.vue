@@ -390,6 +390,8 @@ export default {
   },
   watch: {
     scroll: function(newVal, oldVal) {
+      console.log('newVal,oldVal');
+      console.log( newVal,oldVal );
       if (newVal > oldVal) {
         this.local = false;
       } else {

@@ -163,7 +163,8 @@ export default {
 <style scoped>
 .testhight{
   position: absolute;
-  top: 30rem;
+  top: 3rem;
+  visibility: hidden;
   /* display: none; */
   /* font-size:0.34rem;
   line-height: 0.68rem; */
