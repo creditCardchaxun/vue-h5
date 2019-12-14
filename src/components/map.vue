@@ -182,7 +182,7 @@ export default {
         zoom: 10, //地图显示的缩放级别
         lang: lang,//zh_cn：中文简体，en：英文，zh_en：中英文对照
         mapStyle: 'amap://styles/whitesmoke', //设置地图样式 远山黛.
-        zoomEnable: false,
+        zoomEnable: !_this.fullScreen,
         dragEnable: !_this.fullScreen,
       });
       var auto = new AMap.Autocomplete({
