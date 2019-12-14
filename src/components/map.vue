@@ -602,6 +602,7 @@ export default {
       // $("#firstdiv").show();
       $("#secondfirst").hide()
       this.selectProject = null
+      $(".recommend li").removeClass('current_li')
     },
     openapp() {
       // var _this = this
