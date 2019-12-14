@@ -144,14 +144,14 @@
           <ul
             :class="{activeLi:showHeight}"
             ref="heightShow"
-            v-if="projectdetail.project_setting!=null && lanBase == 'EN'"
+            v-if="projectdetail.project_setting!=null"
           >
             <li v-for="(item,index) in projectdetail.project_setting" :key="index">
               <img :src="item.image" alt />
               <span>{{item.title}}</span>
             </li>
           </ul>
-          <ul
+          <!-- <ul
             class="ul2"
             :class="{activeLi2:showHeight}"
             ref="heightShow"
@@ -161,7 +161,7 @@
               <img :src="item.image" alt />
               <span>{{item.title}}</span>
             </li>
-          </ul>
+          </ul> -->
           <div
             class="index-more"
             v-if="projectdetail.project_setting!=null&&projectdetail.project_setting.length>8"
