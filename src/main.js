@@ -120,6 +120,14 @@ if (ua.match(/MicroMessenger/i) == "micromessenger") {
 Vue.prototype.iswx = iswx
 window.$router = router
 router.beforeEach((from, to, next) => {
+
+  next()
+})
+
+router.afterEach((from, to) => {
+  // document.documentElement.scrollTop=0
+  
+  window.$(document).scrollTop(0)
   var mobile = navigator.userAgent.toLowerCase()
   if (/iphone|ipad|ipod/.test(mobile)) {
     var iframe = document.createElement('iframe')
@@ -136,12 +144,6 @@ router.beforeEach((from, to, next) => {
     iframe.addEventListener('load', iframeCallback)
     document.body.appendChild(iframe)
   }
-  next()
-})
-
-router.afterEach((from, to) => {
-  // document.documentElement.scrollTop=0
-  window.$(document).scrollTop(0)
 })
 new Vue({
   router,
