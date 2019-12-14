@@ -40,7 +40,8 @@ editForm(id){
 	.catch(function (error) {
 	return error
 	});
-  }, 
+  
+}, 
   
 //   取消订单
 deleteForms(data){

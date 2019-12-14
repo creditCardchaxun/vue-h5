@@ -801,7 +801,8 @@ export default {
   /* padding: 0 0.6rem; */
   margin-bottom: 0.38rem;
   position: relative;
-  width: 2.1rem;
+  // width: 2.1rem;
+  width:auto;
   margin-left: 0.6rem;
 }
 .map .alltag > span {

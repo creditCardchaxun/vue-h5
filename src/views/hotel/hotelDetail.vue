@@ -105,7 +105,7 @@
           style="margin-top: 0.1rem;"
           :class="{brandimg2:showMore}"
         />
-      </div>-->
+      </div> -->
       <showmorenew :pageType="'hotal-gypp'" v-if="projectdetail.desc" :htmlstr="projectdetail.desc"></showmorenew>
     </div>
     <div class="types">
@@ -183,7 +183,7 @@
           <!-- <img src="../../assets/images/map01.jpg" alt=""> -->
           <maps v-if="projectdetail.address" :dataArr="projectdetail"></maps>
           <h3>{{$t('m.hotelxq5')}}</h3>
-          <!-- <div class="map_mains" ref="jiaotong" :class="{jiaoActive:showLoadMore}">
+          <div class="map_mains" ref="jiaotong" :class="{jiaoActive:showLoadMore}">
             <p v-html="projectdetail.content">projectdetail.content</p>
           </div>
           <div class="index-more" v-if="showJiao" @click="toloadMoreJiao" style="margin:0.3rem 0;">
@@ -194,7 +194,7 @@
               style="margin-top: 0.1rem;"
               :class="{brandimg2:showLoadMore}"
             />
-          </div>-->
+          </div>
           <div class="more-div" style="padding-left:0.2rem;">
             <showmorenew
               :pageType="'hotal-zbjt'"
@@ -222,7 +222,7 @@
       </div>
     </div>
     <afooter></afooter>
-    <!-- <div class="empty" style='height:1.44rem;'></div> -->
+    
     <div
       class="bottomMessage"
       v-show="projectdetail.is_show_black==1"
@@ -236,7 +236,7 @@
       <img src="../../assets/images/warn_right.png" alt class="sai2" />
     </div>
     <div class="bottom-nav" v-if="local">
-      <div class="bottom-phone">
+      <div class="bottom-phone" @click="tocallphone">
         <van-icon name="phone-o" />
       </div>
       <button
@@ -328,7 +328,7 @@ export default {
     let id = this.$route.params.id;
     this.getHeight.minHeight =
       (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
-    this.getdetailhouses(id);
+    // this.getdetailhouses(id);  盛修改
     this.storyImg(id);
     this.getLan();
     $eventbus.$on("changeStyle", this.changeStyle);
@@ -390,6 +390,9 @@ export default {
       if (this.projectdetail.pic.VR.ar_pic) {
         this.toshowVR(1)
       }
+    },
+    tocallphone(){
+      window.location.href='tel://400 700 6608'
     },
     // 获取当前语言
     getLan() {
@@ -1076,6 +1079,7 @@ export default {
   left: 0;
   background-color: #fff;
   z-index: 100;
+  box-shadow: 2px 0px 5px 2px #ddd;
 }
 .bottom-nav i {
   font-size: 0.6rem;
