@@ -17,20 +17,21 @@
                 <img :src="item.onepic" alt />
               </router-link>
             </div>
-            <div class="right">
+            <div class="right" style='width:6.45rem'>
               <h3>
                 <router-link :to="{name:'orderDetail', params:{id:item.id}}">{{item.project_name}}</router-link>
               </h3>
               <p>{{$t('m.watch3')}}:&nbsp;{{item.book_time}}</p>
+              <div class="morder-t" style='width:100%;'>
               <em @click.stop.prevent="toMaps(item.projectid)">
                 <!-- <router-link :to="{name:'hotelDetail?#maps', params:{id:projectid}}"> -->
                 <span>{{$t('m.watch4')}}</span>
                 <!-- </router-link>  -->
               </em>
                 <button
-                    v-show="item.book_status==0"
-                    @click.stop.prevent="orderDetail(item.id)"
-                  >{{$t('m.watch6')}}</button>
+                    @click.stop.prevent="orderDetails(item.id,item.status)"
+                  >{{orderList[index].titleBtn}}</button>
+              </div>
             </div>
           </div>
         </div>
@@ -59,10 +60,14 @@
                   <em @click.stop.prevent="toMaps(item.projectid)">
                     <span style="padding-bottom:2px;">{{$t('m.watch4')}}</span>
                   </em>
-                  <button
+                  <!-- <button
                     v-show="item.is_pj==0"
                     @click.stop.prevent="toAppraise(item.id)"
-                  >{{$t('m.watch6')}}</button>
+                  >{{$t('m.watch6')}}</button> -->
+                    <button
+                     v-if='item.status'
+                    @click.stop.prevent="orderDetails2(item.id,item.status)"
+                   >{{orderList2[index].titleBtn2}}</button>
                 </div>
               </div>
             </router-link>
@@ -105,10 +110,15 @@ export default {
       },
       showBtn: false,
       hideModel:false,
-      status:''
+      status:'',
+      titleBtn:'',
+      titleBtn2:''
     };
   },
   computed: {
+      // titleBtn(){
+        
+      // }
     //  this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
     //       minHeight(){
     //   return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
@@ -143,10 +153,67 @@ export default {
     booklists() {
       interfaces.bookList().then(res => {
         if (res.not_finish != null || res.not_finish != "") {
-          this.orderList = res.not_finish; //即将开始
+           res.not_finish.forEach((item,index)=>{
+                 switch (item.status) {
+                       case '1':
+                        this.titleBtn = "查看详情";   
+                        break;
+                    case '2':
+                        this.titleBtn = "联系销售";
+                        break;
+                    case '3':
+                        this.titleBtn= "查看详情";
+                        break;
+                    case '4':
+                        this.titleBtn= "查看详情";
+                        break;
+                    case '5':
+                        this.titleBtn= "已取消";
+                        break;
+                    case '6':
+                        this.titleBtn= "立即评价";
+                        break;
+                    case '7':
+                        this.titleBtn= "已完成";
+                    case '8':
+                        this.titleBtn= "已完成";
+                    
+                   } 
+                     res.not_finish[index].titleBtn= this.titleBtn ;
+                     this.orderList = res.not_finish; //即将开始
+               })
+                       
+                   
         }
         if (res.finish != null || res.finish != "") {
-          this.orderList2 = res.finish; //已经看过
+            res.finish.forEach((item,index)=>{
+             switch (item.status) {
+                    case '1':
+                        this.titleBtn2 = "查看详情";   
+                        break;
+                    case '2':
+                        this.titleBtn2 = "联系销售";
+                        break;
+                    case '3':
+                        this.titleBtn2 = "查看详情";
+                        break;
+                    case '4':
+                        this.titleBtn2 = "查看详情";
+                        break;
+                    case '5':
+                        this.titleBtn2 = "已取消";
+                        break;
+                    case '6':
+                        this.titleBtn2 = "立即评价";
+                        break;
+                    case '7':
+                        this.titleBtn2 = "已完成";
+                    case '8':
+                        this.titleBtn2 = "已完成";
+                  }
+                  res.finish[index].titleBtn2= this.titleBtn2
+                 this.orderList2 = res.finish; //已经看过
+           })
         }
         if (
           (res.not_finish == null ||
@@ -158,6 +225,66 @@ export default {
         }
       });
     },
+    orderDetails(id,status){
+       switch(status){
+           case '1':
+            this.$router.push({ name: "orderDetail", params: { id: id } });
+            break;
+           case '2':
+              // window.location.href = 'tel://'+mobile
+             break; 
+           case '3':
+             this.$router.push({ name: "orderDetail", params: { id: id } });  
+             break;
+              case '4':
+             this.$router.push({ name: "orderDetail", params: { id: id } });  
+             break;
+                case '5':
+             this.$router.push({ name: "orderDetail", params: { id: id } });  
+             break;
+                 case '6':
+             this.$router.push({ name: "appraise", params: { id: id } });  
+             break;
+                 case '7':
+             this.$router.push({ name: "orderDetail", params: { id: id } });  
+             break;
+                 case '8':
+             this.$router.push({ name: "orderDetail", params: { id: id } });  
+             break;
+        }
+    },
+   
+       orderDetails2(id,status){
+       switch(status){
+           case '1':
+            this.$router.push({ name: "orderDetail", params: { id: id } });
+            break;
+           case '2':
+              // window.location.href = 'tel://'+mobile
+             break; 
+           case '3':
+             this.$router.push({ name: "orderDetail", params: { id: id } });  
+             break;
+              case '4':
+             this.$router.push({ name: "orderDetail", params: { id: id } });  
+             break;
+                case '5':
+             this.$router.push({ name: "orderDetail", params: { id: id } });  
+             break;
+                 case '6':
+             this.$router.push({ name: "appraise", params: { id: id } });  
+             break;
+                 case '7':
+             this.$router.push({ name: "orderDetail", params: { id: id } });  
+             break;
+                 case '8':
+             this.$router.push({ name: "orderDetail", params: { id: id } });  
+             break;
+        }
+    },
+
+
+
     todetailOrder(id) {
       this.$router.push({ name: "orderDetail", params: { id: id } });
     },

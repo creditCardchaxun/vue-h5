@@ -22,9 +22,21 @@ getuserInfo(){
 getbrandFirst(id){
 	return axios.get( domain + `index.php?m=api&c=project&a=show_project_story&id=${id}`)
 	.then(function (response) {
-		console.log(response,'我第一次点击')
 		return response.data.data
 	  
+	})
+	.catch(function (error) {
+	return error
+	});
+  },  
+
+//  客户修改表单信息
+
+editForm(id){
+	return axios.get( domain + `index.php?m=api&c=pagebook&a=edit_book&id=${id}`)
+	.then(function (response) {
+		console.log(response.data)
+		return response.data
 	})
 	.catch(function (error) {
 	return error
@@ -144,7 +156,6 @@ getbrandFirst(id){
 	  },
 
 	//   预约意向保存
-
 	bookSave(data){
 		return axios.post( domain + "index.php?m=api&c=pagebook&a=add",data)
 		.then(function (response) {
