@@ -152,6 +152,7 @@ export default {
     },
     getUserInfo() {
       interfaces.getuserInfo().then(res => {
+        console.log(res)
         this.userinfo = res
         localStorage.setItem('userinfo', JSON.stringify(res))
       });

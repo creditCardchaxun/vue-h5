@@ -135,7 +135,7 @@ export default {
     }
   },
   created() {
-    this.getUserInfo()
+    // this.getUserInfo()
     this.getHeight.minHeight = (window.outerHeight / window.outerWidth * 10.8 - 5.96) + 'rem'
   },
   computed: {

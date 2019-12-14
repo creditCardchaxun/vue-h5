@@ -19,10 +19,18 @@ Vue.use(rem);
 Vue.use(router);
 
 window.$eventbus = new Vue()
-// 动态改变页面标题
-import VueWechatTitle from 'vue-wechat-title'
-Vue.use(VueWechatTitle)
-
+// 动态改变页面标题  
+// import VueWechatTitle from 'vue-wechat-title' //ios 有卡死的bug
+// Vue.use(VueWechatTitle)
+Vue.directive('wechat-title', function (el, binding) {
+  var setWechatTitle = function (title, img) {
+    if (title === undefined || window.document.title === title) {
+      return
+    }
+    document.title = title
+  }
+  setWechatTitle(binding.value, el.getAttribute('img-set') || null)
+})
 
 import {
   Toast
@@ -112,6 +120,22 @@ if (ua.match(/MicroMessenger/i) == "micromessenger") {
 Vue.prototype.iswx = iswx
 window.$router = router
 router.beforeEach((from, to, next) => {
+  var mobile = navigator.userAgent.toLowerCase()
+  if (/iphone|ipad|ipod/.test(mobile)) {
+    var iframe = document.createElement('iframe')
+    iframe.style.display = 'none'
+    // 替换成站标favicon路径或者任意存在的较小的图片即可
+    iframe.setAttribute('src', 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')
+    var iframeCallback = function () {
+      setTimeout(function () {
+        iframe.removeEventListener('load', iframeCallback)
+        document.body.removeChild(iframe)
+        // next()
+      }, 0)
+    }
+    iframe.addEventListener('load', iframeCallback)
+    document.body.appendChild(iframe)
+  }
   next()
 })
 
