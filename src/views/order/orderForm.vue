@@ -39,7 +39,7 @@
             id="orderFormInput"
           />
           <van-radio-group v-model="radio">
-            <van-radio name="1">{{$t('m.woman')}}</van-radio>
+            <van-radio name="1" >{{$t('m.woman')}}</van-radio>
             <van-radio name="0">{{$t('m.man')}}</van-radio>
           </van-radio-group>
         </div>
