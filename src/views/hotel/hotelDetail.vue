@@ -1076,6 +1076,7 @@ export default {
   left: 0;
   background-color: #fff;
   z-index: 100;
+  box-shadow: 0px 0px  0.2rem #000;
 }
 .bottom-nav i {
   font-size: 0.6rem;
