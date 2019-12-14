@@ -25,7 +25,7 @@ import orderDetail from '@/views/order/myOrderDetail.vue'
 import appraise from '@/views/order/appraise.vue'
 
 Vue.use(VueRouter)
-console.log(Home)
+
 const routes = [
   {
     path: '/',
@@ -33,9 +33,9 @@ const routes = [
     component: Home,
     meta: {
       keepalive: false,// 组件是否需要被保存
-      title:'首页',
+      title:'base',
       'en-US': 'base',
-      'zh-CN': '首页',
+      'zh-CN': 'base',
     }
   },
 

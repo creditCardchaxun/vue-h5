@@ -17,7 +17,7 @@
           <option value="zh-CN">中文</option>
           <option value="en-US">英文</option>
         </select>-->
-        <span @click="changeLangEvent" :style="{opacity: showLan ? 1 : 1}">
+        <span @click="changeLangEvent" v-show="showLan">
           <!-- {{lang ==='zh-CN'?'EN':'ZH'}} -->
           {{lanBase}}
         </span>
@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <div class="empty" v-show="showEmpty" ></div>
+    <div class="empty" v-show="showEmpty"></div>
   </div>
 </template>
 <script>
@@ -46,7 +46,7 @@ export default {
       default: true,
       type: Boolean
     },
-    showEmpty:{
+    showEmpty: {
       default: true,
       type: Boolean
     }
@@ -91,7 +91,7 @@ export default {
       $eventbus.$emit("changeLang", this.lang);
       localStorage.setItem('lanBase', this.lang == 'zh-CN' ? 1 : 4)
       let lanBase = localStorage.getItem('lanBase')
-      
+
       if (lanBase == 1) {
         this.lanBase = 'EN'
       } else {
@@ -115,7 +115,7 @@ export default {
       this.lanBase = '中'
     }
 
-    if(!lanBase) this.lanBase = 'EN'
+    if (!lanBase) this.lanBase = 'EN'
   }
 
 }
@@ -165,9 +165,9 @@ export default {
 .header .logo {
   width: 1.54rem;
   height: 0.9rem;
-  
+
   /* margin-top: 10px; */
-  img{
+  img {
     width: auto;
     height: 100%;
   }
