@@ -798,7 +798,7 @@ export default {
   background: rgba(0, 0, 0, 0.1);
 }
 .hotel-some .swiper-slide {
-  width: 47%;
+  width: 49%;
 }
 .main-content {
   width: 100%;
@@ -1039,7 +1039,8 @@ export default {
 .hot-hotel .hotel-some {
   width: auto;
   height: auto;
-  padding-left: 0.3rem;
+  // padding-left: 0.3rem;
+  margin-left: 0.67rem;
 }
 .hot-hotel .hotel-some .hotel-item {
   width: 4.63rem;
@@ -1063,7 +1064,7 @@ export default {
   font-size: 0.32rem;
   color: #212121;
   line-height: 0.42rem;
-  height: 0.42rem;
+  // height: 0.42rem;
   overflow: hidden;
 }
 .van-swipe-item {
