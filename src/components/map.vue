@@ -856,6 +856,7 @@ export default {
     bottom: 0.3rem;
     left: 50%;
     transform: translate(-50%, 0);
+    white-space: nowrap;
   }
 
   li {
