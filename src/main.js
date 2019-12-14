@@ -18,7 +18,6 @@ Vue.use(Vant);
 Vue.use(rem);
 Vue.use(router);
 
-
 window.$eventbus = new Vue()
 // 动态改变页面标题  
 // import VueWechatTitle from 'vue-wechat-title' //ios 有卡死的bug
