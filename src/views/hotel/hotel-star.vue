@@ -204,11 +204,8 @@ export default {
         // this.toshowCity = !this.toshowCity
         city = ''
         area = ''
-        type = ''
+        type = this.houseId
       }
-
-      console.log('this.alllistss');
-      console.log(this.alllistss);
       
       this.currentIndex = index
       this.currentItem = item
