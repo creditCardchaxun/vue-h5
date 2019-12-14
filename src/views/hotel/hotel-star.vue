@@ -216,8 +216,8 @@ export default {
       this.alllistss = item.area
 
       // console.log(this.$store.state.lang );
-      this.cityName = this.$store.state.lang === 'en-US' ? item.name_en : item.name
-      // this.cityName = item.name
+      // this.cityName = this.$store.state.lang === 'en-US' ? item.name_en : item.name
+      this.cityName = item.name
 
       this.currentIndex3 = -1
       this.cityid = item.linkageid
