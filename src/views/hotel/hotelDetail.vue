@@ -155,7 +155,7 @@
             class="ul2"
             :class="{activeLi2:showHeight}"
             ref="heightShow"
-            v-if="projectdetail.project_setting!=null && lanBase == 'ZH'"
+            v-if="projectdetail.project_setting!=null && lanBase == '中'"
           >
             <li v-for="(item,index) in projectdetail.project_setting" :key="index">
               <img :src="item.image" alt />

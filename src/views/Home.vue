@@ -270,7 +270,7 @@ export default {
       if(lanBase == 1){
         this.lanBase='EN'
       }else if(this.lang == 4){
-        this.lanBase='ZH'
+        this.lanBase='中'
       }
 
       $eventbus.$emit("changeStyle", this.lanBase);
@@ -367,7 +367,7 @@ export default {
      if(lanBase==1){
       this.lanBase='EN'
      }else if(lanBase==4){
-       this.lanBase='ZH'
+       this.lanBase='中'
      }
      this.getAllmap()
      this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile

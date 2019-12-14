@@ -2,8 +2,8 @@
 <template>
   <div class="showmore">
     <!-- :class='{showonep:ishide&&shoumore}' -->
-    <div class='testhight' ref='en-US'>A<br>A<br>A<br>A<br></div>
-    <div class='testhight' ref='zh-CN'>啊<br>啊<br>啊<br>啊<br></div>
+    <div class='testhight' :style="testhightstyle" ref='en-US'>A<br>A<br>A<br>A<br></div>
+    <div class='testhight' :style="testhightstyle" ref='zh-CN'>啊<br>啊<br>啊<br>啊<br></div>
     <div
       v-if="typeof htmlstr === 'string'"
       :class="['text',moreType.className]"
@@ -65,6 +65,13 @@ export default {
     this.init()
   },
   computed: {
+    testhightstyle(){
+      if(this.pageType=='shouye')return 'font-size:0.34rem;line-height: 0.68rem;'
+      if(this.pageType=='lianxi')return 'font-size:0.34rem;line-height: 0.81rem;'
+      if(this.pageType=='hotal-gypp')return 'font-size:0.34rem;line-height: 0.6rem;'
+      if(this.pageType=='hotal-zbjt')return 'font-size:0.34rem;line-height: 0.6rem;'
+      return 'font-size:0.34rem;line-height: 0.68rem;'
+    },
     moreType() {
       var obj = {}
       switch (this.pageType) {
@@ -157,6 +164,8 @@ export default {
 .testhight{
   position: absolute;
   left: 30rem;
+  /* font-size:0.34rem;
+  line-height: 0.68rem; */
 }
 .text {
   width: 90%;
