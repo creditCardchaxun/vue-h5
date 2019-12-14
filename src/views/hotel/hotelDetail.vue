@@ -222,7 +222,7 @@
       </div>
     </div>
     <afooter></afooter>
-    
+
     <div
       class="bottomMessage"
       v-show="projectdetail.is_show_black==1"
@@ -745,14 +745,14 @@ export default {
 .banner-img .banner_top {
   width: 2.56rem;
   height: 0.56rem;
-  background: rgba(57, 58, 59);
+  background: rgba(0, 0, 0,0);
   color: #fff;
   position: absolute;
   top: 0rem;
   left: 50%;
   transform: translate(-50%, 0);
-  z-index: 99;
-  z-index: 999;
+  z-index: 98;
+  // z-index: 999;
   border-bottom-left-radius: 0.1rem;
   border-bottom-right-radius: 0.1rem;
 }
@@ -1142,7 +1142,7 @@ export default {
   position: fixed;
   bottom: 1.4rem;
   left: 0;
-  z-index: 100;
+  z-index: 101;
 }
 .bottomMessage .leftMessage {
   display: flex;
