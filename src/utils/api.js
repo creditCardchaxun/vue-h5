@@ -35,13 +35,23 @@ getbrandFirst(id){
 editForm(id){
 	return axios.get( domain + `index.php?m=api&c=pagebook&a=edit_book&id=${id}`)
 	.then(function (response) {
-		console.log(response.data)
 		return response.data
 	})
 	.catch(function (error) {
 	return error
 	});
-  },  
+  }, 
+  
+//   取消订单
+deleteForms(data){
+	return axios.post( domain + `index.php?m=api&c=pagebook&a=cancel_book`,data)
+	.then(function (response) {
+	  return response.data
+	})
+	.catch(function (error) {
+	return error
+	});
+  }, 
 
 
 //   首页数据

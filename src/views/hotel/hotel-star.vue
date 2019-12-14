@@ -331,8 +331,6 @@ export default {
     getcitys() {
       // alert('获取所有城市数据')
       interfaces.getcity().then((res) => {
-        console.log('获取所有城市数据');
-        console.log(res)
         this.cityAll = res
         // if (this.cityName === 'All' || this.cityName === '全部') {
         //   this.cityName = this.$i18n.t('m.hotel5')
@@ -379,9 +377,6 @@ export default {
     // 获取即将开业图片
     getHotalListImage() {
       interfaces.getHotalListImage().then((res) => {
-        console.log('图片')
-        console.log(res);
-        console.log(res.data.pic)
         this.topImage = res.data.pic
       })
     }

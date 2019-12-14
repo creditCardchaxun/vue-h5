@@ -39,7 +39,7 @@
             id="orderFormInput"
           />
           <van-radio-group v-model="radio">
-            <van-radio name="1" >{{$t('m.woman')}}</van-radio>
+            <van-radio name="1">{{$t('m.woman')}}</van-radio>
             <van-radio name="0">{{$t('m.man')}}</van-radio>
           </van-radio-group>
         </div>
@@ -206,7 +206,7 @@ export default {
       this.ids = this.$route.params.id;
       this.value = this.$route.params.name;
       let mobile = this.$route.params.mobile;
-
+      this.orderid=this.$route.params.orderid;
       if (mobile) {
         this.phone = mobile;
       } else {
@@ -217,6 +217,9 @@ export default {
         this.getdetailhouses(this.ids)
         this.bookTag(this.ids);
       }
+        if(this.orderid){
+       this.editMain(this.orderid)
+     }
     });
   },
   // computed:{
@@ -270,9 +273,9 @@ export default {
   methods: {
     editMain(orderid){
       interfaces.editForm(orderid).then(res => {
-          this.ids = res.data.projectid;
           this.columns.forEach((item,index)=>{
              if(res.data.projectid==item.id){
+               this.ids = res.data.projectid;
                this.value = item.project_name;
              }
           })
