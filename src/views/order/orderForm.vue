@@ -229,7 +229,7 @@ export default {
     this.ids = this.$route.params.id;
     this.value = this.$route.params.name;
     let mobile = this.$route.params.mobile;
-    let orderid=this.$route.params.orderid;
+    this.orderid=this.$route.params.orderid;
     this.getHeight.minHeight =
       (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
     if (mobile) {
@@ -241,15 +241,14 @@ export default {
     if (this.ids) {
       this.bookTag(this.ids);
     }
-    if(orderid){
-       this.editMain(orderid)
+    if(this.orderid){
+       this.editMain(this.orderid)
     }
 
     // this.bookHouses();
   },
 
   beforeRouteEnter(to, from, next) {
-    console.log(from,'ddddd')
     let id = to.params.id;
     // let orderid = to.params.orderid;
     // 项目列表
@@ -267,10 +266,6 @@ export default {
     //     })
     //   });
 
-    // 修改
-    // if (from.name == "orderDetail") {
-    //    this.editMain(orderid)
-    // }
   },
   methods: {
     editMain(orderid){
@@ -290,7 +285,6 @@ export default {
     },
     getdetailhouses(id) {
       interfaces.getdetailhouse(id).then(res => {
-        console.log(88888888,res)
         this.value = res.project_name
       });
     },
@@ -467,6 +461,10 @@ export default {
       //   this.$toast(this.$i18n.t('m.show12'));
       //   return;
       // }
+      let id=''
+      if(this.orderid){
+        id=this.orderid
+      }
 
       let projectid = this.ids;
       let name = this.Personalname;
@@ -476,7 +474,8 @@ export default {
       let book_time = this.value2;
       let intention = inter2;
       let data = {
-        projectid,
+        id,     //订单id
+        projectid, //项目id
         name,
         sex,
         mobile,
@@ -496,6 +495,7 @@ export default {
           this.$toast(res.data);
         }
       });
+      console.log(data)
     }
   },
   components: {
