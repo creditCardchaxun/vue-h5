@@ -55,7 +55,7 @@ Vue.use(VueAwesomeSwiper, /* { default global options } */ )
 
 import VueI18n from 'vue-i18n'
 
-Vue.use(VueI18n) // 通过插件的形式挂载
+Vue.use(VueI18n) //通过插件的形式挂载
 store.commit('setDefaultLang')
 
 let lanBase = localStorage.getItem('lanBase')
