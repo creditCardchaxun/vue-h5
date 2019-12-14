@@ -129,10 +129,10 @@ export default {
 }
 
 .newsdatails >>> p {
-  line-height: 1.5;
+  line-height: 2;
   font-size: 0.36rem !important;
   margin-bottom: 0.3rem;
-  color: rgb(54, 52, 51);
+  color: #313131;
 }
 
 .left-text >>> p {
@@ -147,6 +147,11 @@ export default {
   width: 9.5rem;
   margin-top: 0.2rem;
 }
+
+.newsdatails >>> strong {
+  font-weight: bold !important;
+}
+
 .newsdatails >>> span {
   font-size: 0.34rem !important;
 }
@@ -195,4 +200,5 @@ export default {
   width: 100%;
   height: auto;
 }
+
 </style>
