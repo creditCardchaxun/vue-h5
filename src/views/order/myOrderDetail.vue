@@ -77,7 +77,7 @@
 
     <div class="connectUs" v-if='bookarr.status==1||bookarr.status==1||bookarr.status==4'>
       <button class='s1' @click='toFormEdit(bookarr.id)'>修改</button>
-      <button>取消</button>
+      <button @click='deleteForm(bookarr.id)'>取消</button>
      </div>
 
     <div class="kefu" @click="openServe">
@@ -136,6 +136,16 @@ export default {
     toFormEdit(id){
     this.$router.push({name:'orderForm',params:{orderid:id}})
     },
+    deleteForm(id){
+      //  let data={id:id}
+       interfaces.deleteForms({id:id}).then((res) => {
+          if(res.code==0){
+            this.$toast('取消成功')
+            // this.$router.push({name:'myOrder'})
+            this.bookdetails(id)
+          }
+       })
+     },
     toreplace() {
       this.$router.push({ name: 'myOrder' })
     },
