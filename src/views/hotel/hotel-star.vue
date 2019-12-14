@@ -207,12 +207,14 @@ export default {
         type = ''
       }
 
+      console.log('this.alllistss');
+      console.log(this.alllistss);
+      
       this.currentIndex = index
       this.currentItem = item
       // this.tochina = true;
       this.alllistss = item.area
-      console.log('this.alllistss');
-      console.log(this.alllistss);
+
       // console.log(this.$store.state.lang );
       this.cityName = this.$store.state.lang === 'en-US' ? item.name_en : item.name
       // this.cityName = item.name
@@ -424,7 +426,9 @@ export default {
         this.typehousename = this.$i18n.t('m.hotel2'),
         this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
       let data = {}
-      this.city2(this.currentIndex, this.currentItem)
+      if (this.currentItem) {
+        this.city2(this.currentIndex, this.currentItem)
+      }
       this.getListhouses(data)
 
       this.gethouseTypes(this.cityid, this.idsarea)
