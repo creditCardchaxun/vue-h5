@@ -307,8 +307,11 @@ getbrandFirst(id){
 	 
 	  
 	//  户型获取
-	gethouseType(){
-		return axios.get( domain + 'index.php?m=api&c=project&a=house_type')
+	gethouseType(city,area){
+		return axios.post( domain + 'index.php?m=api&c=project&a=house_type',{
+      city: city,
+      area: area
+    })
 		.then(function (response) {
 		  return response.data.data
 		 })
@@ -426,7 +429,15 @@ getbrandFirst(id){
 		return error
 		});  	
 	},
-
+  // 获取项目详情页上面的图片
+  getHotalListImage(){
+    return axios.get(domain + `index.php?m=api&c=project&a=getopening`).then(function (response) {
+		  return response.data
+		})
+		.catch(function (error) {
+		  return error
+		});  
+  }
 
 }
 

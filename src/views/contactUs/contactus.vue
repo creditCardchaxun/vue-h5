@@ -332,15 +332,17 @@ export default {
     //     that.showMoress = true;
     //   }
     // });
-
+    var _this = this
     $eventbus.$on("changeLang", res => {
-      this.contacts();
+      // this.contacts();
       // this.abouts()
-      this.active = this.$route.params.active;
-      if (this.active == 0) {
-        this.contacts();
+      // _this.active = _this.$route.params.active;
+      console.log(_this.active);
+      
+      if (_this.active == 0) {
+        _this.contacts();
       } else {
-        this.abouts()
+        _this.abouts()
       }
     });
   },

@@ -1,8 +1,10 @@
 <template>
   <div class="star">
-    <!-- <img src='../../assets/images/jp.png'/> -->
-    <aheaders status="2" :showLan='true'></aheaders>
-    <div class="top-hotel" style='display:none'>
+    <div class="img-wrap">
+      <img v-if="topImage" :src="topImage" />
+    </div>
+    <aheaders status="2" :showLan="true" :showEmpty="false"></aheaders>
+    <div class="top-hotel" style="display:none">
       <img src="../../assets/images/hotel-01.jpg" alt />
     </div>
 
@@ -28,18 +30,18 @@
           </div>
 
           <!-- 城市筛选 -->
-          <div class="s4" >
+          <div class="s4">
             <div class="left">
               <!-- <div class="city3" @click="togetAll" :class="{active:currentIndex==-1}">
                 <span>{{$t('m.show5')}}</span>
-              </div> -->
+              </div>-->
               <div
                 class="city3"
                 @click="city2(index,item)"
                 :class="{active:index==currentIndex}"
                 v-for="(item,index) in cityAll"
                 :key="index"
-                >
+              >
                 <span>{{item.name}}</span>
               </div>
               <!-- <span @click='getListhouses({})'> 全部</span>  -->
@@ -101,9 +103,9 @@
         class="nolist"
         style="margin:0.8rem 0;font-size:0.3rem;text-align:center;"
       >{{$t('m.others13')}}</div>
-      <div class="index-more" v-if="showMore" @click='toloadMore' >
+      <div class="index-more" v-if="showMore" @click="toloadMore">
         <span>more</span>
-        <img src="../../assets/images/more-icon.jpg" alt/>
+        <img src="../../assets/images/more-icon.jpg" alt />
       </div>
     </div>
     <afooter></afooter>
@@ -155,53 +157,66 @@ export default {
       toshowicon2: false,
       status: '',
       tochina: false,
-      showshengfen:true,
-       showMore:false,
-        page:1,
-        hideMore:true
-
+      showshengfen: true,
+      showMore: false,
+      page: 1,
+      hideMore: true,
+      currentItem: null,
+      topImage: null
     }
   },
   computed: {
     //  this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
     minHeight() {
       return (window.outerHeight / window.outerWidth * 10.8 - 5.96) + 'rem'
-     }
+    }
   },
   methods: {
     city() {
+      console.log('3333');
       this.toshowCity = !this.toshowCity
       this.toshowicon = !this.toshowicon
       this.toshowtype = false
     },
-    gethouseTypes() {
-      interfaces.gethouseType().then((res) => {
+    gethouseTypes(city, area) {
+      interfaces.gethouseType(city, area).then((res) => {
         this.getHouseType = res
       })
     },
     // 城市筛选
     city2(index, item) {
-       let city
-       let area
-       let type
-       if(index!=0){
-       this.tochina=true;
-       city = item.linkageid
-       area = this.idsarea
-       type = this.houseId
-        }else if(index==0){
-          this.tochina=false
-          this.showshengfen=false;
-          this.toshowicon = false;
-          this.toshowCity=!this.toshowCity
-          city = ''
-          area = ''
-          type = ''
-       }
+      // alert('城市筛选')
+      console.log('城市筛选');
+      console.log(index, item);
+
+      let city
+      let area
+      let type
+      if (index != 0) {
+        this.tochina = true;
+        city = item.linkageid
+        area = this.idsarea
+        type = this.houseId
+      } else if (index == 0) {
+        this.tochina = false
+        this.showshengfen = false;
+        this.toshowicon = false;
+        // this.toshowCity = !this.toshowCity
+        city = ''
+        area = ''
+        type = ''
+      }
+
+      this.currentIndex = index
+      this.currentItem = item
       // this.tochina = true;
       this.alllistss = item.area
-      this.cityName = item.name
-      this.currentIndex = index
+      console.log('this.alllistss');
+      console.log(this.alllistss);
+      // console.log(this.$store.state.lang );
+      this.cityName = this.$store.state.lang === 'en-US' ? item.name_en : item.name
+      // this.cityName = item.name
+
       this.currentIndex3 = -1
       this.cityid = item.linkageid
       // let city = item.linkageid
@@ -237,7 +252,6 @@ export default {
         console.log(res)
       })
     },
-
     // 城市获取全部
     // togetAll() {
     //   this.cityName = this.$i18n.t('m.show5')
@@ -248,7 +262,7 @@ export default {
     //   this.toshowCity = false
     //   this.toshowicon = false
     // },
-  //  房屋类型
+    //  房屋类型
     typeHouse() {
       this.toshowtype = !this.toshowtype
       this.toshowicon2 = !this.toshowicon2
@@ -256,40 +270,44 @@ export default {
     },
     // 点击地区进行筛选
     getname(name, id, index) {
+      // alert('sss')
       let area
-      if(index==0){
-         area =''
+      if (index == 0) {
+        area = ''
 
-      }else{
+      } else {
         area = id
       }
-      this.currentIndex3= index
+      this.currentIndex3 = index
       this.cityName = name,
         this.idsarea = id
       this.toshowCity = false
       this.toshowicon = false
+      this.typehousename = this.$i18n.t('m.hotel2')
       let city = this.cityid
-     
+
       let type = this.houseId
       let data = { city, area, type }
       //   this.getListhouses(data)
       interfaces.getListhouseAll(data).then((res) => {
         this.alllist = res
-        console.log(res)
       })
+
+      // this.gethouseTypes(this.city, this.idsarea)
+      this.gethouseTypes(this.cityid, this.idsarea)
     },
     // 点击户型进行筛选
     getName(id, title, index) {
-       console.log(index)
-        //  let type
-        //  let area
-        // if(index==-1){
-        //   type = ''
-        //   area = ''
-        // }else{
-        //   type = id
-        //   area = this.idsarea
-        // }
+      console.log(index)
+      //  let type
+      //  let area
+      // if(index==-1){
+      //   type = ''
+      //   area = ''
+      // }else{
+      //   type = id
+      //   area = this.idsarea
+      // }
       this.currentIndex2 = index
       this.typehousename = title
       this.houseId = id
@@ -298,7 +316,7 @@ export default {
       let type = id
       let city = this.cityid
       let area = this.idsarea
-    
+
       let data = { type, city, area }
       interfaces.getListhouseAll(data).then((res) => {
         this.alllist = res
@@ -312,24 +330,33 @@ export default {
     },
     // 获取城市数据
     getcitys() {
+      // alert('获取所有城市数据')
       interfaces.getcity().then((res) => {
-        this.cityAll = res
+        console.log('获取所有城市数据');
         console.log(res)
-       })
+        this.cityAll = res
+        // if (this.cityName === 'All' || this.cityName === '全部') {
+        //   this.cityName = this.$i18n.t('m.hotel5')
+        // }
+
+        // if (this.cityName !== this.$i18n.t('m.hotel1')) {
+
+        // }
+      })
     },
-    toloadMore(){
-       this.hideMore=!this.hideMore
-       this.page+=1;
-          interfaces.getListhouseAll({
-                    pagesize:this.page //请求页数
-                })
-                .then(res => {
-                    this.alllist = this.alllist.concat(res); //将请求回来的数据和上一次进行组合
-                })
-                // .catch(err => {
-                //     this.$toast.fail("系统开小差,请重试");
-                // });
-       },
+    toloadMore() {
+      this.hideMore = !this.hideMore
+      this.page += 1;
+      interfaces.getListhouseAll({
+        pagesize: this.page //请求页数
+      })
+        .then(res => {
+          this.alllist = this.alllist.concat(res); //将请求回来的数据和上一次进行组合
+        })
+      // .catch(err => {
+      //     this.$toast.fail("系统开小差,请重试");
+      // });
+    },
 
     tohideModel() {
       this.hideModel = false
@@ -349,6 +376,15 @@ export default {
     getAllCity() {
       let data = {}
       this.getListhouses(data)
+    },
+    // 获取即将开业图片
+    getHotalListImage() {
+      interfaces.getHotalListImage().then((res) => {
+        console.log('图片')
+        console.log(res);
+        console.log(res.data.pic)
+        this.topImage = res.data.pic
+      })
     }
   },
   created() {
@@ -358,6 +394,7 @@ export default {
     // this.getcitys()
     // this.gethouseTypes()
     // this.getHeight.minHeight=window.innerHeight+'px'
+    this.getHotalListImage()
   },
 
   beforeRouteEnter(to, from, next) {
@@ -366,26 +403,31 @@ export default {
     interfaces.getListhouseAll(data).then(function (res) {
       next(vm => {
         vm.alllist = res
-        console.log(res.length,'liebiao')
-         if(res.length>=8){
-           vm.showMore=true
-         }
+        console.log(res.length, 'liebiao')
+        if (res.length >= 8) {
+          vm.showMore = true
+        }
         vm.getcitys()
+
         vm.gethouseTypes()
       })
     })
   },
 
   mounted: function () {
+
     window.addEventListener('scroll', this.handleScroll);
     $eventbus.$on("changeLang", (res) => {
-        this.cityName=this.$i18n.t('m.hotel1'),
-      this.typehousename=this.$i18n.t('m.hotel2'),
-      this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
-      let data = {}
-      this.getListhouses(data)
       this.getcitys()
-      this.gethouseTypes()
+      this.getHotalListImage()
+      this.cityName = this.$i18n.t('m.hotel1'),
+        this.typehousename = this.$i18n.t('m.hotel2'),
+        this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
+      let data = {}
+      this.city2(this.currentIndex, this.currentItem)
+      this.getListhouses(data)
+
+      this.gethouseTypes(this.cityid, this.idsarea)
       this.getHeight.minHeight = window.innerHeight + 'px'
     })
   },
@@ -409,6 +451,13 @@ export default {
 </script>
 
 <style lang="less">
+.img-wrap {
+  padding-top: 1.6rem;
+  img {
+    width: 100%;
+  }
+}
+
 .star {
   width: 100%;
   margin: 0 auto;
@@ -421,7 +470,7 @@ export default {
   width: auto;
   height: auto;
   margin: 0 auto;
-  border-top:1px solid #f5f5f5;
+  border-top: 1px solid #f5f5f5;
 }
 .star .top-hotel {
   width: 100%;
@@ -622,7 +671,7 @@ export default {
 .s2 ul li {
   font-weight: bold;
   color: #0e0e0e;
-  font-weight:bold;
+  font-weight: bold;
   line-height: 0.85rem;
   text-align: center;
   font-size: 0.37rem;

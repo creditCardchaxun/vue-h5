@@ -1,8 +1,11 @@
 <template>
   <div ref="maps" :class="['maps', fullScreen? 'window-screen':'full-screen']">
     <div class="main-container">
-      <div :class="['button',fullScreen?'window-button':'full-button']" @click="changeFullScreen"></div>
-      <div id="container"></div>
+      <!-- <div :class="['button',fullScreen?'window-button':'full-button']" @click="changeFullScreen"></div> -->
+      <div v-show="fullScreen" :class="['button','window-button']" @click="changeFullScreen"></div>
+      <div v-show="!fullScreen" :class="['button','full-button']" @click="openapp"></div>
+      <aheaders v-if="!fullScreen" status="3" @toback="toreplace" :showNav="false" :showLan="true"></aheaders>
+      <div id="container" ref='mapbox'  :class="[$store.state.lang==='en-US'? 'blackwhite':'']"></div>
       <div class="map-info" v-show="!fullScreen">
         <div id="firstdiv">
           <div class="firstdiv-wrap">
@@ -52,7 +55,7 @@
           </div>
         </div>
         <div v-show="!fullScreen">
-          <div class="tip" @click="openapp">{{$t('m.map.open')}}</div>
+          <!-- <div class="tip" @click="openapp">{{$t('m.map.open')}}</div> -->
           <ul class="recommend">
             <li data-type="酒店">{{$t('m.map.jiudian')}}</li>
             <li data-type="美食">{{$t('m.map.meishi')}}</li>
@@ -68,6 +71,7 @@
 <script>
 import $ from 'jquery';
 import { WXsdk } from '../utils/wxShare';
+import aheaders from '../components/Header';
 
 export default {
   props: {
@@ -132,7 +136,7 @@ export default {
     }
   },
   mounted() {
-    this.init()
+    this.init(this.$store.state.lang==='en-US'?'en':'zh-cn')
   },
   methods: {
     changeFullScreen() {
@@ -148,16 +152,17 @@ export default {
         if (Object.prototype.toString.call(this.dataArr) !== '[object Array]') {
           this.selectProject = this.dataArr
         }
-        this.init()
+        this.init(this.$store.state.lang==='en-US'?'en':'zh-cn')
       }
     },
-    init() {
+    init(lang) {
       var _this = this
 
       this.destroyMap()
-
+      this.$refs.mapbox.innerHTML = ''
+      // debugger
       setTimeout(() => {
-        this.createMap();
+        this.createMap(lang);
 
         this.addAllmarker()
         // this.addmarker();
@@ -166,16 +171,16 @@ export default {
         // this.bindSearch()
         // 搜索周边
         this.searchArround()
-      });
+      },200);
 
     },
-    createMap() {
+    createMap(lang) {
       var _this = this
       _this.mapCase = new AMap.Map('container', {
         resizeEnable: true,
         center: _this.mapCenter, //初始化地图中心点 
         zoom: 10, //地图显示的缩放级别
-        lang: 'zh-cn',
+        lang: lang,//zh_cn：中文简体，en：英文，zh_en：中英文对照
         mapStyle: 'amap://styles/whitesmoke', //设置地图样式 远山黛.
         zoomEnable: false,
         dragEnable: !_this.fullScreen,
@@ -183,7 +188,12 @@ export default {
       var auto = new AMap.Autocomplete({
         input: "secondtxt"
       });
-      // this.lockMapBounds()
+
+      _this.mapCase.on('click', (e) => {
+        if (this.fullScreen) {
+          this.changeFullScreen()
+        }
+      })
     },
     lockMapBounds() {
       var bounds = this.mapCase.getBounds();
@@ -226,7 +236,7 @@ export default {
         } else {
           _this.fullScreen = false
           setTimeout(() => {
-            _this.init()
+            _this.init(_this.$store.state.lang==='en-US'?'en':'zh-cn')
           });
         }
       });
@@ -315,7 +325,6 @@ export default {
       });
     },
     shownav(text) {
-
       // alert(123)
       setTimeout(() => {
         var _this = this
@@ -591,6 +600,7 @@ export default {
       $("#secondtxt").val("");
       // $("#secondtxtend").val("");
       // $("#firstdiv").show();
+      $("#secondfirst").hide()
       this.selectProject = null
     },
     openapp() {
@@ -670,7 +680,11 @@ export default {
         console.log(1111111111111)
         e.preventDefault();
       })
-    }
+    },
+    toreplace() {
+      console.log(123);
+      this.changeFullScreen()
+    },
   },
   watch: {
     '$store.state.lang': function (newVal, oldVal) {
@@ -679,6 +693,7 @@ export default {
       } else {
         $('.info-button').text('Directions')
       }
+      this.init(this.$store.state.lang==='en-US'?'en':'zh-cn')
     },
     dataArr(newVal, oldVal) {
       if (JSON.stringify(newVal) !== JSON.stringify(oldVal)) {
@@ -686,11 +701,17 @@ export default {
         this.addAllmarker()
       }
     }
+  },
+  components: {
+    aheaders
   }
 }
 </script>
 
 <style lang="less">
+.blackwhite .amap-layer{
+  filter:grayscale();
+}
 .prevent {
   pointer-events: none;
 }
@@ -746,8 +767,8 @@ export default {
     height: 100%;
   }
   .button {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.2rem;
+    height: 1.2rem;
     position: absolute;
     right: 0.3rem;
     z-index: 80;
@@ -760,9 +781,10 @@ export default {
   }
 
   .full-button {
-    background: url("../assets/images/window.png") no-repeat;
+    // background: url("../assets/images/window.png") no-repeat;
+    background: url("../assets/images/window.jpg") no-repeat;
     background-size: 100% 100%;
-    bottom: 2.6rem;
+    bottom: 2.1rem;
   }
 }
 

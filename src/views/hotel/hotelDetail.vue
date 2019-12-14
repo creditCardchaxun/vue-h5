@@ -279,7 +279,6 @@ export default {
       hideVideo: false,
       hideVR: false,
       hideImg: true,
-
       current: 0,
       currentBanner: 0,
       scroll: 0,
@@ -323,6 +322,7 @@ export default {
     };
   },
   created() {
+
     this.mobileLocal = JSON.parse(localStorage.getItem("userinfo")).mobile;
     let id = this.$route.params.id;
     this.getHeight.minHeight =
@@ -330,7 +330,7 @@ export default {
     this.getdetailhouses(id);
     this.storyImg(id);
     this.getLan();
-
+    
     $eventbus.$on("changeStyle", this.changeStyle);
   },
   beforeRouteEnter(to, from, next) {
@@ -340,6 +340,10 @@ export default {
       to.meta[i18n.locale] = res.project_name;
       next(vm => {
         vm.projectdetail = res;
+
+        console.log('vm.projectdetail');
+        console.log(vm.projectdetail);
+
         vm.detailId = res.id;
         var div = vm.$refs.tab1;
         if (from.name == "myOrder") {
@@ -394,6 +398,13 @@ export default {
     }
   },
   methods: {
+    judgeHaveVR() {
+      console.log(111111);
+      console.log(this.projectdetail);
+      if (this.projectdetail.pic.VR.ar_pic) {
+        this.toshowVR(1)
+      }
+    },
     // 获取当前语言
     getLan() {
       let lanBase = localStorage.getItem("lanBase");
@@ -655,6 +666,11 @@ export default {
     submitBtn,
     maps,
     showmorenew
+  },
+  watch:{
+    projectdetail(newVal,oldVal) {
+      this.judgeHaveVR()
+    }
   }
 };
 </script>
