@@ -212,6 +212,8 @@ export default {
       this.currentIndex = index
       this.currentIndex0 = index
 
+      this.clearHuxing()
+
       this.currentItem = item
       // this.tochina = true;
       this.alllistss = this.cityAll[index].area
@@ -255,6 +257,15 @@ export default {
         console.log(8888, res)
       })
     },
+    clearHuxing() {
+      // 户型清零
+      this.currentIndex2 = 0
+      this.typehousename = this.$i18n.t('m.hotel2')
+      console.log('this.$i18n.t()');
+      console.log(this.$i18n.t('m.hotel2'));
+      console.log(this.typehousename);
+      this.getName(this.getHouseType.id, this.typehousename, 0)
+    },
     // 城市获取全部
     // togetAll() {
     //   this.cityName = this.$i18n.t('m.show5')
@@ -273,7 +284,6 @@ export default {
     },
     // 点击地区进行筛选
     getname(name, id, index) {
-      // alert('sss')
       let area
       if (index == 0) {
         area = ''
@@ -281,6 +291,8 @@ export default {
       } else {
         area = id
       }
+      this.clearHuxing()
+
       this.currentIndex3 = index
       this.cityName = name,
         this.idsarea = id
@@ -301,7 +313,8 @@ export default {
     },
     // 点击户型进行筛选
     getName(id, title, index) {
-      console.log(index)
+      console.log('id, title, index')
+      console.log(id, title, index)
       //  let type
       //  let area
       // if(index==-1){
