@@ -337,7 +337,7 @@ export default {
     let id = to.params.id;
     let status = to.params.status;
     interfaces.getdetailhouse(id).then(function (res) {
-      to.meta[i18n.locale] = res.project_name;
+      to.meta[i18n.locale] = '';
       next(vm => {
         vm.projectdetail = res;
 
@@ -365,7 +365,7 @@ export default {
     console.log(to);
     var that = this;
     interfaces.getdetailhouse(id).then(function (res) {
-      to.meta[i18n.locale] = res.project_name;
+      to.meta[i18n.locale] = '';
       console.log(22222222);
       that.projectdetail = res;
       that.detailId = res.id;
@@ -649,7 +649,11 @@ export default {
   },
   watch: {
     projectdetail(newVal, oldVal) {
+      
       this.judgeHaveVR()
+      if (JSON.stringify(newVal) !== JSON.stringify(oldVal)) {
+        $("title").html(newVal.project_name)
+      }
     },
     scroll(newVal, oldVal) {
       if (newVal > oldVal) {
