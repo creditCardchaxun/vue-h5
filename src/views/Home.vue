@@ -739,7 +739,7 @@ export default {
   font-size: 0.5rem;
 }
 .news {
-  padding-top: 1.48rem;
+  padding-top: 0.6rem;
   position: relative;
   width: 90%;
   margin: 0 auto;
@@ -790,7 +790,7 @@ export default {
   /* height: auto; */
   width: 100%;
   overflow: hidden;
-  padding-top: 1.51rem;
+  padding-top: 0.6rem;
   padding-bottom: 0 !important;
   // margin: 0 auto;
 }
