@@ -542,7 +542,7 @@ export default {
     rgba(0, 0, 0, 0.5),
     rgba(0, 0, 0, 0)
   );
-  width: 96%;
+  width: 100%;
   padding: 0.2rem;
 }
 .star .hotel_main ul li .hotel-title {
