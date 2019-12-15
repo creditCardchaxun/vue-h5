@@ -174,8 +174,10 @@ export default {
     }
   },
   methods: {
-    city() {
-      console.log('3333');
+    city(index) {
+      if (index === 0) {
+        this.toshowicon = true
+      }
       this.toshowCity = !this.toshowCity
       this.toshowicon = !this.toshowicon
       this.toshowtype = false
@@ -194,12 +196,12 @@ export default {
       let city
       let area
       let type
-      if (index != 0) {
+      if (index !== 0) {
         this.tochina = true;
         city = item.linkageid
         area = this.idsarea
         type = this.houseId
-      } else if (index == 0) {
+      } else if (index === 0) {
         this.tochina = false
         this.showshengfen = false;
         this.toshowicon = false;
@@ -207,6 +209,8 @@ export default {
         city = ''
         area = ''
         type = this.houseId
+        this.gethouseTypes()
+        this.city(index)
       }
 
       this.currentIndex = index
