@@ -180,6 +180,8 @@ export default {
     } else {
       //  this.abouts()
     }
+    this.abouts()
+    this.contacts();
   },
   beforeRouteEnter(to, from, next) {
     interfaces.contactus().then(function (res) {
