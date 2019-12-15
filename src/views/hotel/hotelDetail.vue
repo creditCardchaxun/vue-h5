@@ -183,7 +183,7 @@
           <!-- <img src="../../assets/images/map01.jpg" alt=""> -->
           <maps v-if="projectdetail.address" :dataArr="projectdetail"></maps>
           <h3>{{$t('m.hotelxq5')}}</h3>
-          <div class="map_mains" ref="jiaotong" :class="{jiaoActive:showLoadMore}">
+          <!-- <div class="map_mains" ref="jiaotong" :class="{jiaoActive:showLoadMore}">
             <p v-html="projectdetail.content">projectdetail.content</p>
           </div>
           <div class="index-more" v-if="showJiao" @click="toloadMoreJiao" style="margin:0.3rem 0;">
@@ -194,7 +194,7 @@
               style="margin-top: 0.1rem;"
               :class="{brandimg2:showLoadMore}"
             />
-          </div>
+          </div> -->
           <div class="more-div" style="padding-left:0.2rem;">
             <showmorenew
               :pageType="'hotal-zbjt'"
