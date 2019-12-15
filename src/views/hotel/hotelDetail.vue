@@ -746,7 +746,7 @@ export default {
 .banner-img .banner_top {
   width: 2.56rem;
   height: 0.56rem;
-  background: rgba(0, 0, 0, 0);
+  background: rgba(57, 58, 59);
   color: #fff;
   position: absolute;
   top: 0rem;
