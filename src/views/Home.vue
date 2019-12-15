@@ -826,7 +826,7 @@ export default {
   position: absolute;
   top: 24px;
   left: -11px;
-  width: 100%;
+  width: 18%;
   height: auto;
   z-index: 99;
   background-color: #fff;
