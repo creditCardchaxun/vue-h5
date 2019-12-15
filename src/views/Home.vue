@@ -45,18 +45,18 @@
         <div class="mas" v-show="toshows2" :class="{brandimg2:showMore}">
           <img src="../assets/images/more-icon.jpg" alt />
         </div>
-      </div> -->
-      <showmorenew v-if="story2&&story2.length" :pageType="'shouye'" :htmlstr="story2" ></showmorenew>
+      </div>-->
+      <showmorenew v-if="story2&&story2.length" :pageType="'shouye'" :htmlstr="story2"></showmorenew>
     </div>
     <!-- <div class="logo1"></div> -->
     <div :class="[showMore?'': 'yuyue']">
       <swiper :options="swiperOption">
         <swiper-slide v-for="(item,index) in project_list" :key="index">
-          <div class="yu-item" @click.stop.prevent='toHotelxq(item.id,item.project_name)'>
+          <div class="yu-item" @click.stop.prevent="toHotelxq(item.id,item.project_name)">
             <div class="yu-img">
               <!-- <router-link :to="{name:'hotelDetail', params:{id:item.id,name:item.project_name}}"> -->
-                <img :src="item.pic" alt />
-                <div class="yu-title">{{item.address}}</div>
+              <img :src="item.pic" alt />
+              <div class="yu-title">{{item.address}}</div>
               <!-- </router-link> -->
             </div>
             <div class="yu-name">
@@ -216,7 +216,7 @@ export default {
       Longid: '',
       LongName: '',
       status: '',
-      lanBase:'EN',
+      lanBase: 'EN',
       cityArr: null,
       showHome: false
     }
@@ -254,23 +254,23 @@ export default {
     changeLangEvent() {
       console.log(this.lang)
       if (this.lang == 'zh-CN') {
-          this.lang = 'en-US'
-          this.lanBase='中'
-      } else if(this.lang == 'en-US') {
+        this.lang = 'en-US'
+        this.lanBase = '中'
+      } else if (this.lang == 'en-US') {
         this.lang = 'zh-CN'
-        this.lanBase='EN'
+        this.lanBase = 'EN'
       }
       this.$i18n.locale = this.lang; //关键语句
 
       this.$store.commit("changeLang", this.lang);
       $eventbus.$emit("changeLang", this.lang);
       localStorage.setItem('lanBase', this.lang == 'zh-CN' ? 1 : 4)
-      let lanBase=localStorage.getItem('lanBase')
+      let lanBase = localStorage.getItem('lanBase')
 
-      if(lanBase == 1){
-        this.lanBase='EN'
-      }else if(this.lang == 4){
-        this.lanBase='中'
+      if (lanBase == 1) {
+        this.lanBase = 'EN'
+      } else if (this.lang == 4) {
+        this.lanBase = '中'
       }
 
       $eventbus.$emit("changeStyle", this.lanBase);
@@ -327,7 +327,7 @@ export default {
       })
     },
     // 项目详情
-    toHotelxq(id,name){
+    toHotelxq(id, name) {
       // this.tobrandImg(id)
       //      interfaces.getbrandFirst(id).then((res)=>{
       //      let ids=res.is_show_project_story
@@ -338,8 +338,8 @@ export default {
       //      }
       //  })
 
-      this.$router.push({name:'hotelDetail',params:{id:id,name:name}})
-      
+      this.$router.push({ name: 'hotelDetail', params: { id: id, name: name } })
+
     },
 
   },
@@ -362,15 +362,15 @@ export default {
     //  this.getHomedata()
     // this.getallother(3362)
 
-     let lanBase=localStorage.getItem('lanBase')
+    let lanBase = localStorage.getItem('lanBase')
 
-     if(lanBase==1){
-      this.lanBase='EN'
-     }else if(lanBase==4){
-       this.lanBase='中'
-     }
-     this.getAllmap()
-     this.mobileLocal=JSON.parse(localStorage.getItem('userinfo')).mobile
+    if (lanBase == 1) {
+      this.lanBase = 'EN'
+    } else if (lanBase == 4) {
+      this.lanBase = '中'
+    }
+    this.getAllmap()
+    this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
     //  this.couponSelected = this.allcityName[0].name;
   },
   mounted: function () {
@@ -415,13 +415,12 @@ export default {
 };
 </script>
 <style lang="less">
-.mint-indicator-wrapper{
+.mint-indicator-wrapper {
   z-index: 10;
 }
-.mint-indicator-mask{
+.mint-indicator-mask {
   background: #ffffff !important;
 }
-  
 </style>
 <style lang="less" scoped>
 /* .map h3 select{width:2rem;height:1rem;overflow: hidden;background-color: #fff;border:transparent;}
@@ -470,7 +469,7 @@ export default {
   width: 1.54rem;
   height: 0.9rem;
   /* margin-top: 10px; */
-  img{
+  img {
     width: auto;
     height: 100%;
   }
@@ -784,7 +783,6 @@ export default {
   height: auto;
 }
 
-
 .map {
   /* width: auto; */
   /* height: auto; */
@@ -802,7 +800,7 @@ export default {
   margin-bottom: 0.38rem;
   position: relative;
   // width: 2.1rem;
-  width:auto;
+  width: auto;
   margin-left: 0.6rem;
 }
 .map .alltag > span {
