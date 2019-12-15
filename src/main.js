@@ -19,6 +19,10 @@ Vue.use(rem);
 Vue.use(router);
 
 window.$eventbus = new Vue()
+
+import mixin from './mixins.js'
+Vue.mixin(mixin)
+
 // 动态改变页面标题  
 // import VueWechatTitle from 'vue-wechat-title' //ios 有卡死的bug
 // Vue.use(VueWechatTitle)
@@ -127,7 +131,7 @@ router.beforeEach((from, to, next) => {
 
 router.afterEach((from, to) => {
   // document.documentElement.scrollTop=0
-  
+
   window.$(document).scrollTop(0)
   var mobile = navigator.userAgent.toLowerCase()
   if (/iphone|ipad|ipod/.test(mobile)) {

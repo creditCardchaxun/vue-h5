@@ -1,11 +1,24 @@
 /* eslint-disable no-console */
-export const mixinsTest = {
-  methods: {
-    hello() {
-      console.log("hello");
+let MIXIN = {
+  data() {
+    return {
+      myMixin: 'mixin'
     }
   },
   created() {
-    this.hello()
+    
+  },
+  mounted() {},
+  methods: {
+    onBlurRepireIos() {
+      this.beforeSlide = document.body.scrollTop || document.documentElement.scrollTop;
+      // alert(this.beforeSlide)
+    },
+    //blur
+    onFocusRepireIos() {
+      window.scrollTo(0, this.beforeSlide);
+      // alert(this.beforeSlide)
+    },
   }
-}
+};
+export default MIXIN;

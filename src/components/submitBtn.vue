@@ -21,8 +21,8 @@
             :placeholder="$t('m.s5')"
             :disabled="iswrite"
             @input="$emit('input',$event.target.value)"
-            @blur="onBlur"
-            @focus="onFocus"
+            @blur="onBlurRepireIos"
+            @focus="onFocusRepireIos"
           />
         </div>
       </div>
@@ -34,8 +34,8 @@
             type="number"
             v-model="sms"
             :placeholder="$t('m.s6')"
-            @blur="onBlur"
-            @focus="onFocus"
+            @blur="onBlurRepireIos"
+            @focus="onFocusRepireIos"
           />
         </div>
         <button :disabled="disableds" @click="getVerifyCode" class="btnVerfity">{{btntitle}}</button>
@@ -123,15 +123,15 @@ export default {
 
   },
   methods: {
-    onFocus() {
-      this.beforeSlide = document.body.scrollTop || document.documentElement.scrollTop;
-      // alert(this.beforeSlide)
-    },
-    //blur
-    onBlur() {
-      window.scrollTo(0, this.beforeSlide);
-      // alert(this.beforeSlide)
-    },
+    // onBlurRepireIos() {
+    //   this.beforeSlide = document.body.scrollTop || document.documentElement.scrollTop;
+    //   // alert(this.beforeSlide)
+    // },
+    // //blur
+    // onFocusRepireIos() {
+    //   window.scrollTo(0, this.beforeSlide);
+    //   // alert(this.beforeSlide)
+    // },
     findArrIndex(arr, id) {
       console.log(arr, id);
       console.log(_)
