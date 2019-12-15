@@ -20,6 +20,8 @@
           right-icon="arrow-down"
           readonly
           @click="showPopup"
+          @blur="onBlurRepireIos"
+          @focus="onFocusRepireIos"
         />
         <van-field
           v-model="value2"
@@ -29,6 +31,8 @@
           right-icon="arrow-down"
           readonly
           @click="showPopup2"
+          @blur="onBlurRepireIos"
+          @focus="onFocusRepireIos"
         />
         <div class="names">
           <van-field
@@ -37,6 +41,8 @@
             :placeholder="$t('m.house10')"
             :label="$t('m.house3')"
             id="orderFormInput"
+            @blur="onBlurRepireIos"
+            @focus="onFocusRepireIos"
           />
           <van-radio-group v-model="radio">
             <van-radio name="1">{{$t('m.woman')}}</van-radio>
@@ -76,6 +82,8 @@
             cols="20"
             rows="2"
             :placeholder="$t('m.house6')"
+            @blur="onBlurRepireIos"
+            @focus="onFocusRepireIos"
           ></textarea>
         </div>
       </van-cell-group>
