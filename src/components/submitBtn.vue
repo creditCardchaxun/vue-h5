@@ -92,8 +92,9 @@ export default {
 
   computed:{
     numCode(){
-      var index = this.findArrIndex(this.$t('m.selectCountry.'+this.codeLettet),this.codeId)
-      var selectedObj = this.$t('m.selectCountry.'+this.codeLettet+'['+index+']')
+      // var index = this.findArrIndex(this.$t('m.selectCountry.'+this.codeLettet),this.codeId)
+      // var selectedObj = this.$t('m.selectCountry.'+this.codeLettet+'['+index+']')
+      var selectedObj = _.find(this.$t('m.selectCountry'),(item)=>{return item.id === this.codeId})
       return selectedObj.name + '/+'+selectedObj.tel
     },
     isClick() {
