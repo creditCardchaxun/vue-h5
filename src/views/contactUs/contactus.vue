@@ -462,7 +462,7 @@ export default {
 .about-01 {
   width: 90%;
   height: auto;
-  margin: 0.64rem auto 1rem;
+  margin: 0 auto 0;
   overflow: hidden;
 }
 .about-01 h2 {
@@ -479,24 +479,24 @@ export default {
   line-height: 0.81rem;
 }
 
-.about-01 .index-more {
+/* .about-01 .index-more {
   width: auto;
   height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0.3rem 0;
-}
-.about-01 .index-more span {
+} */
+/* .about-01 .index-more span {
   font-size: 0.35rem;
   margin-right: 0.1rem;
   color: #a5a5a5;
-}
-.about-01 .index-more img {
+} */
+/* .about-01 .index-more img {
   width: 0.2rem;
   height: 0.2rem;
   margin-top: 0.1rem;
-}
+} */
 
 .moreHeight {
   height: auto;

@@ -78,6 +78,9 @@
        <button class='btns-submit' type='submit' :disabled="isClick" @click='submitInfor'>{{$t('m.s4')}}</button>
      </div>
         <submitBtn v-if='hideModel' @tohideModel='tohideModel'></submitBtn>
+      
+      <div class="modelToast" v-show='successHref'>{{$t('m.show13')}}</div>
+
   <afooter></afooter> 
     </div>
   </div> 
@@ -127,7 +130,8 @@ export default {
               minHeight:''
          },
          goback:'',
-         lanBase:''
+         lanBase:'',
+         successHref:false
         }
     },
     //    computed(){
@@ -156,16 +160,22 @@ export default {
       mounted(){
            $eventbus.$on("changeLang", (res)=>{
               let id=this.$route.params.id
-              let name=this.$route.params.name
-              this.value=name
+              // let name=this.$route.params.name
+              // this.value=name
+              this.getdetailhouses(id)
               this.id=id
               this.getListhouses()
               console.log(res)
           })
        },
     methods:{
+        getdetailhouses(id) {
+          interfaces.getdetailhouse(id).then(res => {
+            this.value = res.project_name
+          });
+        },
          toreplace(){
-              Dialog.confirm({
+          Dialog.confirm({
             title: this.$i18n.t('m.other1'),
             message: this.$i18n.t('m.other2'),
             confirmButtonText:this.$i18n.t('m.other4'),
@@ -271,7 +281,7 @@ export default {
                this.$toast(this.$i18n.t('m.show10'))
                return;
               }
-
+               
               let projectid=this.id     //项目id
               let name=this.names            //订单人姓名
               let user_id=JSON.parse(localStorage.getItem('userinfo')).id   //订单人id
@@ -285,18 +295,25 @@ export default {
                date2=date1[0]+date1[1]+date1[2]
             let data={projectid,name,user_id,in_time,out_time,mobile,sex}
              interfaces.bookSave2(data).then((res)=>{
+               console.log(res)
                   if(res.code==0){
-                    this.$toast(this.$i18n.t('m.show13'))
+                //  此处自定义修改弹框  盛修改
+                      this.successHref=true
                    let xiecheng_id=res.data.xiecheng_id
-                     if(this.lanBase==1){
+                 if(this.lanBase==1){
+               
                     setTimeout(()=>{
+                      this.successHref=false
                     window.location.href = ('https://m.ctrip.com/webapp/hotel/hoteldetail/'+xiecheng_id+'.html?atime='+date2 +'&days='+this.DateDiff(this.value2, this.value3))
-                    },2000)
+                    },3000)
                    }else if(this.lanBase==4){
+                  
+                    
                     setTimeout(()=>{
+                       this.successHref=false
                       // https://www.trip.com/m/hotels/shanghai-hotel-detail-483962/?checkin=2019-12-13&checkout=2019-12-23
                     window.location.href = (' https://www.trip.com/m/hotels/shanghai-hotel-detail-'+xiecheng_id+'/?checkin='+in_time +'&checkout='+out_time)
-                    },2000)
+                    },3000)
                    } 
                 
                      
@@ -357,6 +374,19 @@ export default {
 .myReserve >>> textarea::-webkit-input-placeholder {
     color: #333;
 } */
+.modelToast{   
+   width: 5rem;
+    height: auto;
+    position: fixed;
+    top: 40%;
+    left: 28%;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 0.35rem;
+    line-height: 0.6rem;
+    text-align: center;
+    padding: 0.5rem;}
 
 .myReserve{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
 .names{position:relative;border: 1px solid #f5f5f5;}

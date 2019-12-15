@@ -111,10 +111,10 @@ export const m = {
 
 
   // 精品旅舍
-  hotel1: 'Area City ',
-  hotel2: 'District',
-  hotel3: 'city',
-  hotel4: 'area',
+  hotel1: 'Area',
+  hotel2: 'Type',
+  hotel3: 'City',
+  hotel4: 'District',
   hotel5: 'All',
 
   // 精品旅社详情

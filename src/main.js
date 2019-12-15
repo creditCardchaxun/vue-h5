@@ -55,7 +55,7 @@ Vue.use(VueAwesomeSwiper, /* { default global options } */ )
 
 import VueI18n from 'vue-i18n'
 
-Vue.use(VueI18n) // 通过插件的形式挂载
+Vue.use(VueI18n) //通过插件的形式挂载
 store.commit('setDefaultLang')
 
 let lanBase = localStorage.getItem('lanBase')
@@ -69,6 +69,7 @@ window.i18n = new VueI18n({
     'en-US': require('./assets/lang/en') // 英文语言包
   }
 })
+
 
 /* 
  *公共库引用
@@ -87,7 +88,7 @@ window.$axios = axios
 // // 微信授权
 if (process.env.NODE_ENV === 'development' && !process.env.VUE_APP_BUILD_TYPE) {
   // 调试开发，替换这里token
-  let testToken = 'Mkz2Y2TM8g5JftnXx8XSSYMH8LjFnBvavCiskRVj'
+  let testToken = 'IkwNffyjRtwG1Efflsqo7YtKeMl25AxGfaGbjyXr'
   // let userinfo={"id":"2","nickname":"","realname":"","avater":"","sex":"0","mobile":'18911793350',"type":"0","openid":"","siteid":"1"}
   axios.defaults.headers.common['systype'] = 1
   axios.defaults.headers.common['accesstoken'] = testToken

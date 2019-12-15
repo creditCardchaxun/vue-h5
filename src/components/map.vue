@@ -182,7 +182,7 @@ export default {
         zoom: 10, //地图显示的缩放级别
         lang: lang,//zh_cn：中文简体，en：英文，zh_en：中英文对照
         mapStyle: 'amap://styles/whitesmoke', //设置地图样式 远山黛.
-        zoomEnable: false,
+        zoomEnable: !_this.fullScreen,
         dragEnable: !_this.fullScreen,
       });
       var auto = new AMap.Autocomplete({
@@ -602,6 +602,7 @@ export default {
       // $("#firstdiv").show();
       $("#secondfirst").hide()
       this.selectProject = null
+      $(".recommend li").removeClass('current_li')
     },
     openapp() {
       // var _this = this
@@ -855,6 +856,7 @@ export default {
     bottom: 0.3rem;
     left: 50%;
     transform: translate(-50%, 0);
+    white-space: nowrap;
   }
 
   li {
@@ -1098,8 +1100,8 @@ export default {
       // border-top: 1px #ccc solid;
       height: 0.8rem;
       line-height: 0.8rem;
-      padding-bottom: 0.2rem;
-      padding-top: 0.2rem;
+      margin-bottom: 0.2rem;
+      margin-top: 0.2rem;
       // margin-top: 5px;
       display: flex;
       flex-direction: row;

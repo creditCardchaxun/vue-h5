@@ -11,7 +11,8 @@ class _WXsdk {
       "onMenuShareTimeline",
       "onMenuShareAppMessage",
       "getLocation",
-      "openLocation"
+      "openLocation",
+      "hideMenuItems"
     ]
   }
 
@@ -131,11 +132,11 @@ class _WXsdk {
     console.log('精度韦德');
     console.log(latitude);
     console.log(typeof latitude);
-    
+
     this._init().then(() => {
       window.wx.ready(() => {
         window.wx.openLocation({
-          latitude:  latitude, // 纬度，浮点数，范围为90 ~ -90
+          latitude: latitude, // 纬度，浮点数，范围为90 ~ -90
           longitude: longitude, // 经度，浮点数，范围为180 ~ -180。
           name: locationName || '', // 位置名
           address: locationName || '', // 地址详情说明
@@ -152,9 +153,22 @@ class _WXsdk {
       })
     })
   }
+
+  // 至显示发送到盆友圈，和朋友
+  jinzhi() {
+    this._init().then(() => {
+      console.log('隐藏代码')
+      window.wx.ready(() => {
+        window.wx.hideMenuItems({
+          menuList: ['menuItem:share:qq', 'menuItem:share:weiboApp', 'menuItem:favorite', 'menuItem:share:facebook', 'menuItem:share:QZone', 'menuItem:copyUrl', 'menuItem:openWithQQBrowser', 'menuItem:openWithSafari']
+        })
+      })
+    })
+  }
 }
 
 let WXsdk = new _WXsdk()
+WXsdk.jinzhi()
 
 export {
   WXsdk

@@ -161,10 +161,12 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
+@import './assets/font/font.less';
 html,
 body {
   height: 100%;
+  font-family: 'GOTHIC';
 }
 
 #app {
@@ -183,10 +185,10 @@ body {
 }
 .goodAppraise {
   width: 9.05rem;
-  height: 6.72rem;
+  height: auto;
   background-color: #e5e5e5;
   margin: 0 auto;
-  padding: 0.25rem 0.25rem 0;
+  padding: 0.25rem 0.25rem 0.3rem;
   position: relative;
   top: 30%;
   left: 0;

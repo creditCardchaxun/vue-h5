@@ -125,7 +125,7 @@ export default {
 .footer {
   height: 5.96rem;
   position: absolute;
-  bottom: 0;
+  bottom: -0.02rem;
   width: 100%;
 }
 .foot-nav {
@@ -145,12 +145,13 @@ export default {
 .foot-nav .foot a {
   color: #fff;
   font-size: 0.34rem;
-  padding: 0 0.35rem;
+  padding: 0 0.32rem;
 }
 .foot_01 {
   width: auto;
   height: auto;
-  margin: 0 1.05rem;
+  /* margin: 0 1.05rem; */
+  margin: 0 0.9rem;
 }
 .foot_01 ul {
   display: flex;
