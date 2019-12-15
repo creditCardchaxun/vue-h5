@@ -416,8 +416,8 @@ export default {
       this.getcitys()
       this.getHotalListImage()
       this.cityName = this.$i18n.t('m.hotel1'),
-        this.typehousename = this.$i18n.t('m.hotel2'),
-        this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
+      this.typehousename = this.$i18n.t('m.hotel2'),
+      this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
       let data = {}
       if (this.currentItem) {
         this.city2(this.currentIndex, this.currentItem)

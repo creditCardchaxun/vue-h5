@@ -105,7 +105,7 @@
           style="margin-top: 0.1rem;"
           :class="{brandimg2:showMore}"
         />
-      </div> -->
+      </div>-->
       <showmorenew :pageType="'hotal-gypp'" v-if="projectdetail.desc" :htmlstr="projectdetail.desc"></showmorenew>
     </div>
     <div class="types">
@@ -391,8 +391,9 @@ export default {
         this.toshowVR(1)
       }
     },
-    tocallphone(){
-      window.location.href='tel://400 700 6608'
+    tocallphone() {
+      window.location.href = this.projectdetail.tel ? `tel:${this.projectdetail.tel}` : 'tel:400 700 6608'
+      // window.location.href = 'tel://400 700 6608'
     },
     // 获取当前语言
     getLan() {
@@ -540,7 +541,7 @@ export default {
     getdetailhouses(id) {
       interfaces.getdetailhouse(id).then(res => {
         this.projectdetail = res;
-        console.log(8989898989,res)
+        console.log(8989898989, res)
         this.detailId = res.id;
         if (this.projectdetail.house_type) {
           this.houseTypeLength = this.projectdetail.house_type[0].pic.length;
@@ -745,7 +746,7 @@ export default {
 .banner-img .banner_top {
   width: 2.56rem;
   height: 0.56rem;
-  background: rgba(0, 0, 0,0);
+  background: rgba(0, 0, 0, 0);
   color: #fff;
   position: absolute;
   top: 0rem;
