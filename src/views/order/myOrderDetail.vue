@@ -75,19 +75,16 @@
       </p>
     </div>
 
-    <div class="connectUs" v-if='bookarr.status==1||bookarr.status==1||bookarr.status==4'>
-      <button class='s1' @click='toFormEdit(bookarr.id)'>修改</button>
-      <button @click='deleteForm(bookarr.id)'>取消</button>
+    <div class="connectUs" v-if='bookarr.status==1||bookarr.status==3||bookarr.status==4||bookarr.status==5'>
+      <button class='s1' @click='toFormEdit(bookarr.id)'>{{$t('m.bookdetail4')}}</button>
+      <button @click='deleteForm(bookarr.id)'>{{$t('m.bookdetail5')}}</button>
      </div>
 
     <div class="kefu" @click="openServe">
       <img src="../../assets/images/kefu2.png" alt />
       <span>{{$t('m.bookdetail3')}}</span>
     </div>
-     
-
     
-
     <afooter></afooter>
   </div>
 </template>

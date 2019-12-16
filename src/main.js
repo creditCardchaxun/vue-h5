@@ -72,6 +72,8 @@ window.i18n = new VueI18n({
     'zh-CN': require('./assets/lang/zh'), // 中文语言包
     'en-US': require('./assets/lang/en') // 英文语言包
   }
+
+
 })
 
 
