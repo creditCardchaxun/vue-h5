@@ -29,7 +29,7 @@
                 <!-- </router-link>  -->
               </em>
                 <button
-                    @click.stop.prevent="orderDetails(item.id,item.status)"
+                    @click.stop.prevent="orderDetails(item.id,item.status,item.mobile)"
                   >{{orderList[index].titleBtn}}</button>
               </div>
             </div>
@@ -66,7 +66,7 @@
                   >{{$t('m.watch6')}}</button> -->
                     <button
                      v-if='item.status'
-                    @click.stop.prevent="orderDetails2(item.id,item.status)"
+                    @click.stop.prevent="orderDetails2(item.id,item.status,item.mobile)"
                    >{{orderList2[index].titleBtn2}}</button>
                 </div>
               </div>
@@ -225,13 +225,13 @@ export default {
         }
       });
     },
-    orderDetails(id,status){
+    orderDetails(id,status,mobile){
        switch(status){
            case '1':
             this.$router.push({ name: "orderDetail", params: { id: id } });
             break;
            case '2':
-              // window.location.href = 'tel://'+mobile
+              window.location.href = 'tel://'+mobile
              break; 
            case '3':
              this.$router.push({ name: "orderDetail", params: { id: id } });  
@@ -254,13 +254,13 @@ export default {
         }
     },
    
-       orderDetails2(id,status){
+       orderDetails2(id,status,mobile){
        switch(status){
            case '1':
             this.$router.push({ name: "orderDetail", params: { id: id } });
             break;
            case '2':
-              // window.location.href = 'tel://'+mobile
+               window.location.href = 'tel://'+mobile
              break; 
            case '3':
              this.$router.push({ name: "orderDetail", params: { id: id } });  

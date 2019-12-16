@@ -75,7 +75,7 @@
       </p>
     </div>
 
-    <div class="connectUs" v-if='bookarr.status==1||bookarr.status==1||bookarr.status==4'>
+    <div class="connectUs" v-if='bookarr.status==1||bookarr.status==3||bookarr.status==4||bookarr.status==5'>
       <button class='s1' @click='toFormEdit(bookarr.id)'>修改</button>
       <button @click='deleteForm(bookarr.id)'>取消</button>
      </div>
