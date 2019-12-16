@@ -8,7 +8,7 @@
 
       <van-tabs @click="onClick" line-width="7%" :border="false" v-model="active">
         <van-tab :title="$t('m.home5')">
-          <div class="contact">
+          <div class="contact" style="padding:0">
             <div class="foot_01s">
               <h3 style="font-weight:bold;">{{contact.title}}</h3>
               <!-- <p v-html='contact.content' style='font-size:0.35rem;line-height:0.75rem;'>{{contact.content}}</p> -->
@@ -50,8 +50,8 @@
           </div>
         </van-tab>
       </van-tabs>
-      <afooters></afooters>
     </div>
+    <afooters></afooters>
   </div>
 </template>
 
@@ -235,10 +235,10 @@ export default {
 
     onClick(name, title) {
       console.log('name,title');
-      console.log( name , title);
-      if (title === "联系我们" || title ==="Contact us") {
+      console.log(name, title);
+      if (title === "联系我们" || title === "Contact us") {
         this.contacts();
-      } else if (title === "关于我们" || title ==="About base") {
+      } else if (title === "关于我们" || title === "About base") {
         // this.$router.push({ name: "contact", params: { active: 1 } });
         this.abouts()
       }
@@ -282,15 +282,15 @@ export default {
       // this.abouts()
       // _this.active = _this.$route.params.active;
       console.log(_this.active);
-      
-     
+
+
 
       if (_this.active == 0) {
         _this.abouts()
         _this.contacts();
 
       } else {
-        
+
         _this.contacts();
         _this.abouts()
       }
@@ -333,7 +333,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 .brandimg1 {
   transform: rotate(180deg);
 }
@@ -347,7 +347,7 @@ export default {
   width: 100%;
   margin: 0 auto;
   min-height: 100%;
-  /* padding-bottom: 5.96rem; */
+  padding-bottom: 5.96rem;
   box-sizing: border-box;
   position: relative;
   background-color: #fff;
