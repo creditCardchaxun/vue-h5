@@ -18,6 +18,7 @@
 .van-tabs .van-tab span {
     font-size: 13px;
     color:#bfbfbf;
+    white-space: nowrap;
 }
 
 .van-tabs .van-tab--active {
