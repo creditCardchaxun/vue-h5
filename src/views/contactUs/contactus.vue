@@ -38,6 +38,7 @@
         </van-tab>
         <van-tab :title="$t('m.home4')">
           <!-- <showmore v-if='showmoretextdemo' :htmlstr='showmoretextdemo'></showmore> -->
+          <div></div>
           <div
             class="about-01"
             :ref="'brandHeight'+index"
@@ -45,69 +46,8 @@
             :key="index"
           >
             <h2 style="font-weight:bold;">{{item.title}}</h2>
-            <showmorenew v-if="item.content" :htmlstr="item.content"></showmorenew>
-            <!-- <div class="brand-01" :class="{activeHeight:about[index].showMore1}">
-              
-              <h2 style="font-weight:bold;">{{item.title}}</h2>
-              <p v-html="item.content">{{item.content}}</p>
-
-          <div class="about-01" :ref="'brandHeight'+index" v-for='(item,index) in about' :key='index'>
-            <div class="brand-01" :class='{activeHeight:about[index].showMore1}'>
-              <h2 style='font-weight:bold;'>{{item.title}}</h2>
-              <p v-html='item.content'>{{item.content}}</p>
-            </div>
-          <div class="index-more" v-show="'showMoress'+index" @click='moreLoad(index)' ><span v-if='IconMore1'>more</span> <img src="../../assets/images/more-icon.jpg" alt=""></div>
-            -->
+            <showmorenew v-if="item.content&&active==1" :htmlstr="item.content"></showmorenew>
           </div>
-
-          <!-- <div class="about-01">
-            <div class="brand-01" ref="brandHeight" :class="{activeHeight:showMore1}">
-              <h2 style="font-weight:bold;">品牌背景</h2>
-              <div>
-                <p>base是盛煦存量地产 (Shanghai NOVA Real Estate Co., Ltd)旗下的一个创意地产品牌。盛煦存量地产成立于2014年，是一家专业性存量地产投资及资产管理公司。2016年，盛煦存量地产对存量地产改造及增值服务运营商翌成创意的股权进行收购，成为其控股股东，并共同发展旗下品牌base。</p>
-                <p>base秉承着国际化的视角和前瞻性的创新发展理念，专注于投资、开发及运营一体化经营的领域。而我们所做的，远不止于此，我们始终相信，建筑物并非盈盈独立的个体，而是灵感的聚集地，城市社群的据点，以此交织成城市的脉搏。对于生活在其中的人们，我们希望他们可以彼此联结，相互启发，发现无处不在的灵感。</p>
-                <p>目前base旗下所运营及改造中的项目已接近40个，总投资规模近120亿人民币，项目面积约达400,000平方米，覆盖上海、北京等一线城市。旗下运营品牌有base佰舍和Waterline盛溪，着力打造品牌联盟，以满足不同业态定位需求。我们的版图仍在不断扩大，我们将会把创新的理念带去更多的地方。</p>
-              </div>
-            </div>
-            <div class="index-more" v-if="showMoress" @click="moreLoad">
-              <span v-if="IconMore1">more</span>
-              <img src="../../assets/images/more-icon.jpg" alt :class="{brandimg1:showMore1}" />
-            </div>
-          </div>
-
-          <div class="about-01">
-            <div
-              class="brand-01"
-              id="brandImg"
-              ref="brandHeight2"
-              :class="{activeHeight:showMore2}"
-            >
-              <h2 style="font-weight:bold;">品牌精神</h2>
-              <p>我们始于生活, 着眼未来，让人们在有形的空间中彼此联结，在交流中获得启发、突破创新，</p>
-              <p>—— 这是base的品牌精神。</p>
-            </div>
-            <div class="index-more" v-if="showMoress2" @click="moreLoad2">
-              <span v-if="IconMore2">more</span>
-              <img src="../../assets/images/more-icon.jpg" alt :class="{brandimg2:showMore2}" />
-            </div>
-          </div>
-
-          <div class="about-01">
-            <div class="brand-01" ref="brandHeight3" :class="{activeHeight:showMore3}">
-              <h2 style="font-weight:bold;">品牌故事</h2>
-              <p>base 源于2012年，但我们的故事和上海的老旧社区生活有着难解情缘。</p>
-              <p>老旧社区见证着上海的发展进程，为每一位居民构筑出属于自己的生活天地，也凝聚了这座都市悠久的人文情怀。</p>
-              <p>眼下，“破旧立新”的住行方式，被视为是城市发展必经的阶段，却忽略了凝聚在老旧社区原有的情怀与记忆。</p>
-              <p>人与人之间互相联结居住的生态，才让建筑和生活散发出由内而外的美。那些老式的建筑、废弃的房屋，保存着我们无法割舍的闪光点。</p>
-              <p>老旧社区，对久居者来说是儿时的回忆；对异乡旅人而言，它是探寻一座城市的起点。反之，房客是旧社区焕发新生的源泉，书写新篇章的开始。</p>
-              <p>“以旧创新”，正是base的灵魂所在。</p>
-              <p>我们以老旧社区与人的关系为灵感，主张在废旧建筑开放式的格局基础上，以现代空间美学理念为其重新赋予新生活力，重新连接人与人之间的亲密关系，营造焕然一新的社群生活。</p>
-            </div>
-            <div class="index-more" v-if="showMoress3" @click="moreLoad3">
-              <span v-if="IconMore3">more</span>
-              <img src="../../assets/images/more-icon.jpg" alt :class="{brandimg3:showMore3}" />
-            </div>
-          </div>-->
         </van-tab>
       </van-tabs>
       <afooters></afooters>
@@ -294,11 +234,13 @@ export default {
     },
 
     onClick(name, title) {
-      if (title == "联系我们") {
+      console.log('name,title');
+      console.log( name , title);
+      if (title === "联系我们" || title ==="Contact us") {
         this.contacts();
-      } else if (title == "关于我们") {
+      } else if (title === "关于我们" || title ==="About base") {
         // this.$router.push({ name: "contact", params: { active: 1 } });
-        // this.abouts()
+        this.abouts()
       }
     },
     handleScroll() {
@@ -341,9 +283,15 @@ export default {
       // _this.active = _this.$route.params.active;
       console.log(_this.active);
       
+     
+
       if (_this.active == 0) {
+        _this.abouts()
         _this.contacts();
+
       } else {
+        
+        _this.contacts();
         _this.abouts()
       }
     });

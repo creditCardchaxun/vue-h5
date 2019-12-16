@@ -194,7 +194,7 @@
               style="margin-top: 0.1rem;"
               :class="{brandimg2:showLoadMore}"
             />
-          </div> -->
+          </div>-->
           <div class="more-div" style="padding-left:0.2rem;">
             <showmorenew
               :pageType="'hotal-zbjt'"
@@ -649,7 +649,7 @@ export default {
   },
   watch: {
     projectdetail(newVal, oldVal) {
-      
+
       this.judgeHaveVR()
       if (JSON.stringify(newVal) !== JSON.stringify(oldVal)) {
         $("title").html(newVal.project_name)
@@ -665,7 +665,18 @@ export default {
   }
 };
 </script>
+
+<style >
+.hotel-detail >>> .van-tabs .van-tab {
+  flex: 1 0 auto;
+}
+</style>
 <style lang="less" scoped>
+.hotel-detail .van-tab {
+  margin-left: 0.2rem !important;
+  margin-right: 0.2rem !important;
+}
+
 .video-model {
   width: 100%;
   height: 100%;

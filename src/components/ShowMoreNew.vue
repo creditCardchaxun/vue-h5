@@ -114,15 +114,18 @@ export default {
   },
   watch:{
     htmlstr:function(){
+        console.log(111111);
         this.textlang = this.$store.state.lang
         if(this.cnH!==123&&this.textlang==='zh-CN'){
           this.shoumore = !!this.cnH
           return
         }
+        console.log(222222222);
         if(this.enH !== 123&&this.textlang==='en-US'){
           this.shoumore = !!this.enH
           return
         }
+        console.log(333333333);
         this.shoumore = false
         setTimeout(()=>{
           this.init()

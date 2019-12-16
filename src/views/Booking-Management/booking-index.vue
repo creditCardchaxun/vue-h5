@@ -579,7 +579,7 @@ export default {
   font-size: 0.4rem;
 }
 
-.van-tabs .van-tab {
+.bookings .van-tabs .van-tab {
   flex: 1;
 }
 .date_03 {
