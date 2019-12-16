@@ -5,7 +5,8 @@
       <div v-show="fullScreen" :class="['button','window-button']" @click="changeFullScreen"></div>
       <div v-show="!fullScreen" :class="['button','full-button']" @click="openapp"></div>
       <aheaders v-if="!fullScreen" status="3" @toback="toreplace" :showNav="false" :showLan="true"></aheaders>
-      <div id="container" ref='mapbox'  :class="[$store.state.lang==='en-US'? 'blackwhite':'']"></div>
+      <!-- <div id="container" ref='mapbox'  :class="[$store.state.lang==='en-US'? 'blackwhite':'']"></div> -->
+      <div id="container" ref='mapbox'  class="blackwhite"></div>
       <div class="map-info" v-show="!fullScreen">
         <div id="firstdiv">
           <div class="firstdiv-wrap">
@@ -181,7 +182,7 @@ export default {
         center: _this.mapCenter, //初始化地图中心点 
         zoom: 10, //地图显示的缩放级别
         lang: lang,//zh_cn：中文简体，en：英文，zh_en：中英文对照
-        mapStyle: 'amap://styles/whitesmoke', //设置地图样式 远山黛.
+        // mapStyle: 'amap://styles/whitesmoke', //设置地图样式 远山黛.
         zoomEnable: !_this.fullScreen,
         dragEnable: !_this.fullScreen,
       });
