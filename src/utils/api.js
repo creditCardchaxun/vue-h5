@@ -1,7 +1,8 @@
-//开发版
-// const domain = "http://shengxi.iyunfish.com/";
 //测试版
-const domain = "http://shengxi-test.iyunfish.com/";
+import configCommon from '@/config/config.js'
+const domain =  configCommon.BASEURL
+
+
 
 import axios from 'axios'
 const interfaces = {

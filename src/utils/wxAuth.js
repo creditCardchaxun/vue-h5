@@ -1,6 +1,7 @@
 // import config from '@/config/config.js'
 import $ from 'jquery'
 import axios from 'axios'
+import configCommon from '@/config/config.js'
 
 // 初始化微信用户授权  （获取token）fffxiugai
 // var sysType = 1
@@ -14,9 +15,9 @@ import axios from 'axios'
 
 // 测试版
 
-var wxinfoApi = 'http://shengxi-test.iyunfish.com/index.php?m=api&c=weixin&a=getAppidSecret'
-var getAccessTokenByCodeApi = 'http://shengxi-test.iyunfish.com/index.php?m=api&c=weixin&a=callBack&code='
-// var useidApi='http://shengxi-test.iyunfish.com/index.php?m=api&c=pagehome&a=getwx_user'
+var wxinfoApi = configCommon.BASEURL + 'index.php?m=api&c=weixin&a=getAppidSecret'
+var getAccessTokenByCodeApi = configCommon.BASEURL + 'index.php?m=api&c=weixin&a=callBack&code='
+// var useidApi= configCommon.BASEURL + 'index.php?m=api&c=pagehome&a=getwx_user'
 
 var accessToken
 var userinfo

@@ -8,7 +8,7 @@ import 'mint-ui/lib/style.css';
 import { Indicator } from 'mint-ui';
 Vue.use(MintUI);
 
-var wxinfoApi = 'http://shengxi-test.iyunfish.com/index.php?m=api&c=weixin&a=getAppidSecret'
+var wxinfoApi = configCommon.BASEURL + 'index.php?m=api&c=weixin&a=getAppidSecret'
 
 // import Vue from 'vue'
 // import { Toast } from 'vant';
