@@ -18,6 +18,8 @@
 .van-tabs .van-tab span {
     font-size: 13px;
     color:#bfbfbf;
+    white-space: pre;
+    /* word-break: keep-all;  */
 }
 
 .van-tabs .van-tab--active {

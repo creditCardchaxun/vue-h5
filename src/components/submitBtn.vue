@@ -277,7 +277,7 @@ export default {
   components: {
     selectcountry
   }
-};
+};}}
 </script>
 
 <style scoped>

@@ -641,6 +641,7 @@ export default {
   font-size: 0.4rem;
   color: #000;
   margin: 0.7rem 0;
+  margin-bottom: 0.1rem;
 }
 .yixiang .all-p {
   width: 100%;

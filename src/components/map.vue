@@ -5,7 +5,7 @@
       <div v-show="fullScreen" :class="['button','window-button']" @click="changeFullScreen"></div>
       <div v-show="!fullScreen" :class="['button','full-button']" @click="openapp"></div>
       <aheaders v-if="!fullScreen" status="3" @toback="toreplace" :showNav="false" :showLan="true"></aheaders>
-      <!-- <div id="container" ref='mapbox'  :class="[$store.state.lang==='en-US'? 'blackwhite':'']"></div> -->
+      <!-- <div id="container" ref="mapbox" :class="[$store.state.lang==='en-US'? 'blackwhite':'']"></div> -->
       <div id="container" ref='mapbox'  class="blackwhite"></div>
       <div class="map-info" v-show="!fullScreen">
         <div id="firstdiv">
@@ -727,7 +727,19 @@ export default {
 </script>
 
 <style lang="less">
+.amap-copyright {
+  display: none !important;
+}
+
+.amap-logo{
+  display: none !important;
+}
+
 .blackwhite .amap-layer {
+  filter: grayscale();
+}
+
+.blackwhite canvas {
   filter: grayscale();
 }
 .prevent {
