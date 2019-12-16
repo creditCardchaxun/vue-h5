@@ -666,6 +666,11 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.hotel-detail .van-tab{
+  margin-left: 0.2rem !important;
+  margin-right: 0.2rem !important;
+}
+
 .video-model {
   width: 100%;
   height: 100%;
