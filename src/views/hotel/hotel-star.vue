@@ -142,7 +142,7 @@ export default {
       currentIndex0: -1,
       currentIndex: 0,
       currentIndex2: 0,
-      currentIndex3: -1,
+      currentIndex3: 0,
       alllistss: [],
       cityName: this.$i18n.t('m.hotel1'),
       typehousename: this.$i18n.t('m.hotel2'),
@@ -196,11 +196,12 @@ export default {
       let city
       let area
       let type
+      this.houseId = ''
+      type = this.houseId
       if (index !== 0) {
         this.tochina = true;
         city = item.linkageid
         area = this.idsarea
-        type = this.houseId
       } else if (index === 0) {
         this.tochina = false
         this.showshengfen = false;
@@ -208,78 +209,39 @@ export default {
         // this.toshowCity = !this.toshowCity
         city = ''
         area = ''
-        type = this.houseId
+        this.idsarea = ''
         this.gethouseTypes()
         this.city(index)
       }
-
       this.currentIndex = index
       this.currentIndex0 = index
-
       this.clearHuxing()
-
       this.currentItem = item
       // this.tochina = true;
       this.alllistss = this.cityAll[index].area
-
       this.cityName = item.name
-
-
-
-      this.currentIndex3 = -1
+      this.currentIndex3 = 0
       this.cityid = item.linkageid
       // let city = item.linkageid
       // let area = this.idsarea
       // let type = this.houseId
       let data = { city, area, type }
+      console.log("第一个的数据", data);
       this.getcity(data)
     },
-    // city3(title,index) {
-    //   // let city = ''
-    //   // let area = ''
-    //   // let type = ''
-    // console.log(this.cityid,'全部1')
-    // console.log(this.idsarea,'全部2')
-    // console.log(this.houseId,'全部3')
-    //    if(this.idsarea!=''){
-    //      this.idsarea=''
-    //    }
-    //    this.cityName = title
-    //    this.currentIndex=index
-    //   this.toshowCity = false
-    //   this.toshowicon = false
-    //   let city = this.cityid
-    //   let area = this.idsarea
-    //   let type = this.houseId
-    //   let data = { city, area, type }
-    //   this.getcity(data)
-    // },
     // 获取地区
     getcity(data) {
       interfaces.getListhouseAll(data).then((res) => {
+        console.log('第一个', res)
         this.alllist = res
-        console.log(8888, res)
       })
     },
     clearHuxing() {
       // 户型清零
       this.currentIndex2 = 0
       this.typehousename = this.$i18n.t('m.hotel2')
-      console.log('this.$i18n.t()');
-      console.log(this.$i18n.t('m.hotel2'));
-      console.log(this.typehousename);
-      this.getName(this.getHouseType.id, this.typehousename, 0)
+      // this.getName(this.getHouseType.id, this.typehousename, 0)
     },
-    // 城市获取全部
-    // togetAll() {
-    //   this.cityName = this.$i18n.t('m.show5')
-    //   this.currentIndex = -1
-    //   this.tochina = false
-    //   let data = {};
-    //   this.getListhouses(data)
-    //   this.toshowCity = false
-    //   this.toshowicon = false
-    // },
     //  房屋类型
     typeHouse() {
       this.toshowtype = !this.toshowtype
@@ -288,8 +250,10 @@ export default {
     },
     // 点击地区进行筛选
     getname(name, id, index) {
+      console.log('点击区域触发 name id index');
+      console.log(name, id, index);
       let area
-      if (index == 0) {
+      if (index === 0) {
         area = ''
 
       } else {
@@ -298,17 +262,26 @@ export default {
       this.clearHuxing()
 
       this.currentIndex3 = index
-      this.cityName = name,
-        this.idsarea = id
+      if(name ==='全部'|| name === 'ALL'){
+
+      }else{
+        this.cityName = name
+      }
+      
+
+      this.idsarea = id
       this.toshowCity = false
       this.toshowicon = false
       this.typehousename = this.$i18n.t('m.hotel2')
       let city = this.cityid
-
-      let type = this.houseId
+      // let type = this.houseId
+      this.houseId = ''
+      var type = this.houseId
       let data = { city, area, type }
       //   this.getListhouses(data)
+      console.log('第二个的参数', data);
       interfaces.getListhouseAll(data).then((res) => {
+        console.log('第二个', res)
         this.alllist = res
       })
 
@@ -317,17 +290,10 @@ export default {
     },
     // 点击户型进行筛选
     getName(id, title, index) {
+      console.log('户型筛选触发');
       console.log('id, title, index')
       console.log(id, title, index)
-      //  let type
-      //  let area
-      // if(index==-1){
-      //   type = ''
-      //   area = ''
-      // }else{
-      //   type = id
-      //   area = this.idsarea
-      // }
+
       this.currentIndex2 = index
       this.typehousename = title
       this.houseId = id
@@ -338,13 +304,16 @@ export default {
       let area = this.idsarea
 
       let data = { type, city, area }
+      console.log('第三个的数据', data);
       interfaces.getListhouseAll(data).then((res) => {
+        console.log('第三个点击户 型进行筛选触发', res)
         this.alllist = res
       })
     },
     // 获取房屋数据
     getListhouses(data) {
       interfaces.getListhouseAll(data).then((res) => {
+        console.log('第四个');
         this.alllist = res
       })
     },
@@ -369,6 +338,7 @@ export default {
         pagesize: this.page //请求页数
       })
         .then(res => {
+          console.log('第五个');
           this.alllist = this.alllist.concat(res); //将请求回来的数据和上一次进行组合
         })
       // .catch(err => {
@@ -417,6 +387,7 @@ export default {
     let data = {}
     interfaces.getListhouseAll(data).then(function (res) {
       next(vm => {
+        console.log('第六次');
         vm.alllist = res
         console.log(res.length, 'liebiao')
         if (res.length >= 8) {
