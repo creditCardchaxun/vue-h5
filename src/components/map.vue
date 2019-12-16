@@ -738,6 +738,10 @@ export default {
 .blackwhite .amap-layer {
   filter: grayscale();
 }
+
+.blackwhite canvas {
+  filter: grayscale();
+}
 .prevent {
   pointer-events: none;
 }
