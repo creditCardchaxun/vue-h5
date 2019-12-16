@@ -131,7 +131,7 @@
     </div>
 
     <div class="map">
-      <div class="alltag" @click="toopencity">
+      <!-- <div class="alltag" @click="toopencity">
         <span>{{$t('m.map.defaultName')}}</span>
         <div class="alltags" v-show="opens1">
           <span
@@ -141,7 +141,7 @@
           >{{item.name}}</span>
         </div>
         <img src="../assets/images/bottom.jpg" alt />
-      </div>
+      </div> -->
       <maps v-if="alllongitude" :dataArr="alllongitude"></maps>
     </div>
     <footers></footers>
