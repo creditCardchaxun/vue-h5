@@ -340,8 +340,18 @@ export default {
       to.meta[i18n.locale] = '';
       next(vm => {
         vm.projectdetail = res;
-
         vm.detailId = res.id;
+        if (vm.projectdetail.house_type) {
+          vm.houseTypeLength = vm.projectdetail.house_type[0].pic.length;
+        }
+        if (vm.projectdetail.is_show_project_story) {
+        if (vm.projectdetail.is_show_project_story == 2) {
+           vm.showImgAll = true;
+        } else {
+           vm.showImgAll = false;
+         }
+        }
+
         var div = vm.$refs.tab1;
         if (from.name == "myOrder") {
           if (div) {
@@ -369,6 +379,16 @@ export default {
       console.log(22222222);
       that.projectdetail = res;
       that.detailId = res.id;
+     if (vm.projectdetail.house_type) {
+       vm.houseTypeLength = vm.projectdetail.house_type[0].pic.length;
+      }
+      if (vm.projectdetail.is_show_project_story) {
+      if (vm.projectdetail.is_show_project_story == 2) {
+         vm.showImgAll = true;
+       } else {
+        vm.showImgAll = false;
+      }
+    }
       var div = that.$refs.tab1;
       if (from.name == "myOrder") {
         if (div) {
@@ -541,19 +561,17 @@ export default {
     getdetailhouses(id) {
       interfaces.getdetailhouse(id).then(res => {
         this.projectdetail = res;
-        console.log(8989898989, res)
         this.detailId = res.id;
         if (this.projectdetail.house_type) {
           this.houseTypeLength = this.projectdetail.house_type[0].pic.length;
-          //  console.log(this.projectdetail.house_type[0].pic.length)
         }
-        // if (this.projectdetail.is_show_project_story) {
+        if (this.projectdetail.is_show_project_story) {
         if (this.projectdetail.is_show_project_story == 2) {
-          this.showImgAll = true;
-        } else {
           this.showImgAll = false;
+        } else {
+          this.showImgAll = true;
         }
-        // }
+        }
       });
     },
     onChange(index) {
