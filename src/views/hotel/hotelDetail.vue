@@ -349,7 +349,7 @@ export default {
           vm.houseTypeLength = vm.projectdetail.house_type[0].pic.length;
         }
         if (vm.projectdetail.is_show_project_story) {
-          if (vm.projectdetail.is_show_project_story == 2) {
+          if (Number(vm.projectdetail.is_show_project_story) === 2) {
             vm.showImgAll = true;
           } else {
             vm.showImgAll = false;
@@ -387,7 +387,7 @@ export default {
         vm.houseTypeLength = vm.projectdetail.house_type[0].pic.length;
       }
       if (vm.projectdetail.is_show_project_story) {
-        if (vm.projectdetail.is_show_project_story == 2) {
+        if (Number(vm.projectdetail.is_show_project_story) === 2) {
           vm.showImgAll = true;
         } else {
           vm.showImgAll = false;
@@ -558,8 +558,6 @@ export default {
       }
     },
     toDetailxq(id) {
-      // this.showHeight=false
-      //  this.getdetailhouses(id)
       this.$router.push({ name: "hotelDetail", params: { id: id } });
     },
     getdetailhouses(id) {
@@ -570,10 +568,10 @@ export default {
           this.houseTypeLength = this.projectdetail.house_type[0].pic.length;
         }
         if (this.projectdetail.is_show_project_story) {
-          if (this.projectdetail.is_show_project_story == 2) {
-            this.showImgAll = false;
-          } else {
+          if (Number(this.projectdetail.is_show_project_story) === 2) {
             this.showImgAll = true;
+          } else {
+            this.showImgAll = false;
           }
         }
       });

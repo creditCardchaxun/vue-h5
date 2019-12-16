@@ -8,18 +8,18 @@
           <div class="pro-item">
             <div class="pro-items">
               <img
-                 v-if="item.fileurl"
-                 :src="item.fileurl"
-                 alt
-                 class="big-img"
-                 style="width:100%;height:100%;position:absolute;top:0;left:0;z-index:-1"
-                 v-lazy:background-image="item.fileurl"
+                v-if="item.fileurl"
+                :src="item.fileurl"
+                alt
+                class="big-img"
+                style="width:100%;height:100%;position:absolute;top:0;left:0;z-index:-1"
+                v-lazy:background-image="item.fileurl"
               />
               <!-- <img v-if='item.video_pic' :src="item.video_pic" alt="" class='big-img' style='width:100%;height:100%;position:absolute;top:0;left:0;z-index:-1'  v-lazy="image"> -->
               <div class="project-img">
                 <!-- 视频添加 -->
                 <!-- <video v-if='item.video_url'  src="item.video_url" width=100%></video>   -->
-                <div class="pro-img" v-if='item.logo'>
+                <div class="pro-img" v-if="item.logo">
                   <img :src="item.logo" alt />
                 </div>
                 <div class="main-other">
@@ -64,7 +64,7 @@ export default {
   props: {
     showImgAll: Boolean,
     idss: String,
-    imgAll:Array
+    imgAll: Array
   },
   data() {
     return {
