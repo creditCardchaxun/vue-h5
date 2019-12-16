@@ -125,7 +125,11 @@
                   <img :src="i.fileurl" alt class="hotel-msg" />
                 </van-swipe-item>
                 <!-- <van-swipe-item><img src="../../assets/images/hotel-02.jpg" alt="" class='hotel-msg'></van-swipe-item> -->
-                <div class="custom-indicator" slot="indicator">{{ current + 1 }}/{{houseTypeLength}}</div>
+                <div
+                  class="custom-indicator"
+                  v-if="projectdetail.project_name"
+                  slot="indicator"
+                >{{ current + 1 }}/{{houseTypeLength}}</div>
               </van-swipe>
               <div class="types-mianji">
                 <div class="yiju">{{$t('m.hotelxq10')}}:{{item.room_size}}㎡</div>
@@ -345,11 +349,11 @@ export default {
           vm.houseTypeLength = vm.projectdetail.house_type[0].pic.length;
         }
         if (vm.projectdetail.is_show_project_story) {
-        if (vm.projectdetail.is_show_project_story == 2) {
-           vm.showImgAll = true;
-        } else {
-           vm.showImgAll = false;
-         }
+          if (vm.projectdetail.is_show_project_story == 2) {
+            vm.showImgAll = true;
+          } else {
+            vm.showImgAll = false;
+          }
         }
 
         var div = vm.$refs.tab1;
@@ -379,16 +383,16 @@ export default {
       console.log(22222222);
       that.projectdetail = res;
       that.detailId = res.id;
-     if (vm.projectdetail.house_type) {
-       vm.houseTypeLength = vm.projectdetail.house_type[0].pic.length;
+      if (vm.projectdetail.house_type) {
+        vm.houseTypeLength = vm.projectdetail.house_type[0].pic.length;
       }
       if (vm.projectdetail.is_show_project_story) {
-      if (vm.projectdetail.is_show_project_story == 2) {
-         vm.showImgAll = true;
-       } else {
-        vm.showImgAll = false;
+        if (vm.projectdetail.is_show_project_story == 2) {
+          vm.showImgAll = true;
+        } else {
+          vm.showImgAll = false;
+        }
       }
-    }
       var div = that.$refs.tab1;
       if (from.name == "myOrder") {
         if (div) {
@@ -566,11 +570,11 @@ export default {
           this.houseTypeLength = this.projectdetail.house_type[0].pic.length;
         }
         if (this.projectdetail.is_show_project_story) {
-        if (this.projectdetail.is_show_project_story == 2) {
-          this.showImgAll = false;
-        } else {
-          this.showImgAll = true;
-        }
+          if (this.projectdetail.is_show_project_story == 2) {
+            this.showImgAll = false;
+          } else {
+            this.showImgAll = true;
+          }
         }
       });
     },
