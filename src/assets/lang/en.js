@@ -45,6 +45,8 @@ export const m = {
   bookdetail1: 'Thanks for coming.',
   bookdetail2: 'Review',
   bookdetail3: 'Customer services',
+  bookdetail4: 'modify',
+  bookdetail5: 'cancel',
 
   // 客户评价
   appraise1: 'Are you satisfied with this visit',

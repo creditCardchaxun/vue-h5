@@ -47,6 +47,8 @@ export const m = {
   bookdetail1: '感谢光临',
   bookdetail2: '您的评价',
   bookdetail3: '联系客服',
+  bookdetail4: '修改',
+  bookdetail5: '取消',
 
   // 客户评价
   appraise1: '您对本次看房满意吗',
