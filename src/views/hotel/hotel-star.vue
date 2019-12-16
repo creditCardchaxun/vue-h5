@@ -263,7 +263,9 @@ export default {
 
       this.currentIndex3 = index
       if(name ==='全部'|| name === 'ALL'){
-
+        if (this.currentItem.name) {
+          this.cityName = this.currentItem.name
+        }
       }else{
         this.cityName = name
       }
