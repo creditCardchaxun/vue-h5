@@ -185,8 +185,8 @@ export default {
 }
 
 .lianxi >>> p {
-  line-height: 0.81rem;
-  font-size: 0.36rem;
+  line-height: 0.81rem !important;
+  font-size: 0.36rem !important;
 }
 
 .hotal-zbjt {
@@ -194,13 +194,13 @@ export default {
 }
 
 .hotal-zbjt >>> p {
-  line-height: 0.6rem;
-  font-size: 0.34rem;
+  line-height: 0.6rem !important;
+  font-size: 0.34rem !important;
 }
 
 .hotal-gypp >>> p {
-  line-height: 0.6rem;
-  font-size: 0.34rem;
+  line-height: 0.6rem !important;
+  font-size: 0.34rem !important;
 }
 .hotal-gypp {
   width: 100%;
@@ -214,10 +214,10 @@ export default {
   font-size: 0.36rem;
 } */
 .showonep.text >>> p {
-  display: none;
+  display: none !important;
 }
 .showonep.text >>> p:nth-child(1) {
-  display: block;
+  display: block !important;
 }
 
 .shouye {
