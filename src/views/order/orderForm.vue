@@ -217,6 +217,7 @@ export default {
   },
   mounted() {
     $eventbus.$on("changeLang", res => {
+      this.tags = []
       this.bookHouses();
       this.ids = this.$route.params.id;
       this.value = this.$route.params.name;
