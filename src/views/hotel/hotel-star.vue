@@ -48,10 +48,10 @@
               <!-- <span @click='getListhouses({})'> 全部</span>  -->
             </div>
             <div class="right" :class="{active:currentIndex!=-1}" v-show="tochina">
-              <ul class="nihao">
+              <ul class="nihao" v-if="cityAll[currentIndex]">
                 <!-- <li @click="city3('全部',-1)">{{$t('m.show5')}}</li> -->
                 <li
-                  v-for="(i,ins) in alllistss"
+                  v-for="(i,ins) in cityAll[currentIndex].area"
                   :class="{active:ins===currentIndex3}"
                   :key="ins"
                   @click="getname(i.name,i.linkageid,ins)"
@@ -139,6 +139,7 @@ export default {
       toshowCity: false,
       toshowtype: false,
       cityAll: [],
+      currentIndex0: -1,
       currentIndex: 0,
       currentIndex2: 0,
       currentIndex3: -1,
@@ -173,8 +174,10 @@ export default {
     }
   },
   methods: {
-    city() {
-      console.log('3333');
+    city(index) {
+      if (index === 0) {
+        this.toshowicon = true
+      }
       this.toshowCity = !this.toshowCity
       this.toshowicon = !this.toshowicon
       this.toshowtype = false
@@ -187,18 +190,18 @@ export default {
     // 城市筛选
     city2(index, item) {
       // alert('城市筛选')
-      console.log('城市筛选');
+      console.log('城市筛选方法');
       console.log(index, item);
 
       let city
       let area
       let type
-      if (index != 0) {
+      if (index !== 0) {
         this.tochina = true;
         city = item.linkageid
         area = this.idsarea
         type = this.houseId
-      } else if (index == 0) {
+      } else if (index === 0) {
         this.tochina = false
         this.showshengfen = false;
         this.toshowicon = false;
@@ -206,16 +209,22 @@ export default {
         city = ''
         area = ''
         type = this.houseId
+        this.gethouseTypes()
+        this.city(index)
       }
 
       this.currentIndex = index
+      this.currentIndex0 = index
+
+      this.clearHuxing()
+
       this.currentItem = item
       // this.tochina = true;
-      this.alllistss = item.area
+      this.alllistss = this.cityAll[index].area
 
-      // console.log(this.$store.state.lang );
-      // this.cityName = this.$store.state.lang === 'en-US' ? item.name_en : item.name
       this.cityName = item.name
+
+
 
       this.currentIndex3 = -1
       this.cityid = item.linkageid
@@ -252,6 +261,15 @@ export default {
         console.log(8888, res)
       })
     },
+    clearHuxing() {
+      // 户型清零
+      this.currentIndex2 = 0
+      this.typehousename = this.$i18n.t('m.hotel2')
+      console.log('this.$i18n.t()');
+      console.log(this.$i18n.t('m.hotel2'));
+      console.log(this.typehousename);
+      this.getName(this.getHouseType.id, this.typehousename, 0)
+    },
     // 城市获取全部
     // togetAll() {
     //   this.cityName = this.$i18n.t('m.show5')
@@ -270,7 +288,6 @@ export default {
     },
     // 点击地区进行筛选
     getname(name, id, index) {
-      // alert('sss')
       let area
       if (index == 0) {
         area = ''
@@ -278,6 +295,8 @@ export default {
       } else {
         area = id
       }
+      this.clearHuxing()
+
       this.currentIndex3 = index
       this.cityName = name,
         this.idsarea = id
@@ -298,7 +317,8 @@ export default {
     },
     // 点击户型进行筛选
     getName(id, title, index) {
-      console.log(index)
+      console.log('id, title, index')
+      console.log(id, title, index)
       //  let type
       //  let area
       // if(index==-1){
@@ -419,7 +439,7 @@ export default {
         this.typehousename = this.$i18n.t('m.hotel2'),
         this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
       let data = {}
-      if (this.currentItem) {
+      if (this.cityid) {
         this.city2(this.currentIndex, this.currentItem)
       }
       this.getListhouses(data)
@@ -443,6 +463,25 @@ export default {
     aheaders,
     afooter,
     submitBtn
+  },
+  watch: {
+    '$store.state.lang': function (newVal, oldVal) {
+      console.log(newVal);
+    },
+    cityAll(newVal, oldVal) {
+      console.log('newVal');
+      console.log(newVal);
+      console.log(this.$i18n.t('m.hotel1'));
+
+      if (JSON.stringify(newVal) !== JSON.stringify(oldVal)) {
+        if (newVal[this.currentIndex0]) {
+          this.cityName = newVal[this.currentIndex0].name
+        } else {
+          this.cityName = this.$i18n.t('m.hotel1')
+        }
+
+      }
+    }
   }
 }
 </script>
@@ -542,7 +581,7 @@ export default {
     rgba(0, 0, 0, 0.5),
     rgba(0, 0, 0, 0)
   );
-  width: 96%;
+  width: 100%;
   padding: 0.2rem;
 }
 .star .hotel_main ul li .hotel-title {

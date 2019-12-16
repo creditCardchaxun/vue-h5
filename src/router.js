@@ -189,9 +189,9 @@ const routes = [
     component: hotelDetail,
     meta: {
       keepalive: false, // 组件是否需要被保存
-      title: '精品居舍详情',
-      'en-US': 'hotelDetail',
-      'zh-CN': '精品居舍详情',
+      title: '',
+      'en-US': '',
+      'zh-CN': '',
       // this.$i18n.t('m.news11')
     }
   },

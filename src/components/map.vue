@@ -11,7 +11,14 @@
         <div id="firstdiv">
           <div class="firstdiv-wrap">
             <div @click="cleartxt" class="img1"></div>
-            <input type="text" class="text" id="txt" placeholder="请输入起点" />
+            <input
+              type="text"
+              class="text"
+              id="txt"
+              placeholder="请输入起点"
+              @blur="onBlurRepireIos"
+              @focus="onFocusRepireIos"
+            />
             <div class="img2" @click="shownav"></div>
           </div>
         </div>
@@ -24,7 +31,14 @@
               <div class="input-box">
                 <div class="flex-row">
                   <div class="red-ball"></div>
-                  <input type="text" class="text border-b" id="secondtxt" placeholder="请输入起点" />
+                  <input
+                    type="text"
+                    class="text border-b"
+                    id="secondtxt"
+                    placeholder="请输入起点"
+                    @blur="onBlurRepireIos"
+                    @focus="onFocusRepireIos"
+                  />
                 </div>
                 <div class="flex-row">
                   <div class="green-ball"></div>
@@ -34,6 +48,8 @@
                     class="text"
                     id="secondtxtend"
                     placeholder="请输入终点"
+                    @blur="onBlurRepireIos"
+                    @focus="onFocusRepireIos"
                   />
                 </div>
               </div>
@@ -137,7 +153,7 @@ export default {
     }
   },
   mounted() {
-    this.init(this.$store.state.lang==='en-US'?'en':'zh-cn')
+    this.init(this.$store.state.lang === 'en-US' ? 'en' : 'zh-cn')
   },
   methods: {
     changeFullScreen() {
@@ -153,7 +169,7 @@ export default {
         if (Object.prototype.toString.call(this.dataArr) !== '[object Array]') {
           this.selectProject = this.dataArr
         }
-        this.init(this.$store.state.lang==='en-US'?'en':'zh-cn')
+        this.init(this.$store.state.lang === 'en-US' ? 'en' : 'zh-cn')
       }
     },
     init(lang) {
@@ -172,7 +188,7 @@ export default {
         // this.bindSearch()
         // 搜索周边
         this.searchArround()
-      },200);
+      }, 200);
 
     },
     createMap(lang) {
@@ -237,7 +253,7 @@ export default {
         } else {
           _this.fullScreen = false
           setTimeout(() => {
-            _this.init(_this.$store.state.lang==='en-US'?'en':'zh-cn')
+            _this.init(_this.$store.state.lang === 'en-US' ? 'en' : 'zh-cn')
           });
         }
       });
@@ -695,11 +711,11 @@ export default {
       } else {
         $('.info-button').text('Directions')
       }
-      this.init(this.$store.state.lang==='en-US'?'en':'zh-cn')
+      this.init(this.$store.state.lang === 'en-US' ? 'en' : 'zh-cn')
     },
     dataArr(newVal, oldVal) {
       if (JSON.stringify(newVal) !== JSON.stringify(oldVal)) {
-        this.mapCase&&this.mapCase.clearMap()
+        this.mapCase && this.mapCase.clearMap()
         this.addAllmarker()
       }
     }
@@ -711,8 +727,8 @@ export default {
 </script>
 
 <style lang="less">
-.blackwhite .amap-layer{
-  filter:grayscale();
+.blackwhite .amap-layer {
+  filter: grayscale();
 }
 .prevent {
   pointer-events: none;

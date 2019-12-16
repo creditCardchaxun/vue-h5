@@ -105,7 +105,7 @@
           style="margin-top: 0.1rem;"
           :class="{brandimg2:showMore}"
         />
-      </div> -->
+      </div>-->
       <showmorenew :pageType="'hotal-gypp'" v-if="projectdetail.desc" :htmlstr="projectdetail.desc"></showmorenew>
     </div>
     <div class="types">
@@ -183,7 +183,7 @@
           <!-- <img src="../../assets/images/map01.jpg" alt=""> -->
           <maps v-if="projectdetail.address" :dataArr="projectdetail"></maps>
           <h3>{{$t('m.hotelxq5')}}</h3>
-          <div class="map_mains" ref="jiaotong" :class="{jiaoActive:showLoadMore}">
+          <!-- <div class="map_mains" ref="jiaotong" :class="{jiaoActive:showLoadMore}">
             <p v-html="projectdetail.content">projectdetail.content</p>
           </div>
           <div class="index-more" v-if="showJiao" @click="toloadMoreJiao" style="margin:0.3rem 0;">
@@ -194,7 +194,7 @@
               style="margin-top: 0.1rem;"
               :class="{brandimg2:showLoadMore}"
             />
-          </div>
+          </div> -->
           <div class="more-div" style="padding-left:0.2rem;">
             <showmorenew
               :pageType="'hotal-zbjt'"
@@ -222,7 +222,7 @@
       </div>
     </div>
     <afooter></afooter>
-    
+
     <div
       class="bottomMessage"
       v-show="projectdetail.is_show_black==1"
@@ -337,7 +337,7 @@ export default {
     let id = to.params.id;
     let status = to.params.status;
     interfaces.getdetailhouse(id).then(function (res) {
-      to.meta[i18n.locale] = res.project_name;
+      to.meta[i18n.locale] = '';
       next(vm => {
         vm.projectdetail = res;
 
@@ -365,7 +365,7 @@ export default {
     console.log(to);
     var that = this;
     interfaces.getdetailhouse(id).then(function (res) {
-      to.meta[i18n.locale] = res.project_name;
+      to.meta[i18n.locale] = '';
       console.log(22222222);
       that.projectdetail = res;
       that.detailId = res.id;
@@ -391,8 +391,9 @@ export default {
         this.toshowVR(1)
       }
     },
-    tocallphone(){
-      window.location.href='tel://400 700 6608'
+    tocallphone() {
+      window.location.href = this.projectdetail.tel ? `tel:${this.projectdetail.tel}` : 'tel:400 700 6608'
+      // window.location.href = 'tel://400 700 6608'
     },
     // 获取当前语言
     getLan() {
@@ -540,7 +541,7 @@ export default {
     getdetailhouses(id) {
       interfaces.getdetailhouse(id).then(res => {
         this.projectdetail = res;
-        console.log(8989898989,res)
+        console.log(8989898989, res)
         this.detailId = res.id;
         if (this.projectdetail.house_type) {
           this.houseTypeLength = this.projectdetail.house_type[0].pic.length;
@@ -648,7 +649,11 @@ export default {
   },
   watch: {
     projectdetail(newVal, oldVal) {
+      
       this.judgeHaveVR()
+      if (JSON.stringify(newVal) !== JSON.stringify(oldVal)) {
+        $("title").html(newVal.project_name)
+      }
     },
     scroll(newVal, oldVal) {
       if (newVal > oldVal) {
@@ -751,8 +756,8 @@ export default {
   top: 0rem;
   left: 50%;
   transform: translate(-50%, 0);
-  z-index: 99;
-  z-index: 999;
+  z-index: 98;
+  // z-index: 999;
   border-bottom-left-radius: 0.1rem;
   border-bottom-right-radius: 0.1rem;
 }
@@ -1142,7 +1147,7 @@ export default {
   position: fixed;
   bottom: 1.4rem;
   left: 0;
-  z-index: 100;
+  z-index: 101;
 }
 .bottomMessage .leftMessage {
   display: flex;

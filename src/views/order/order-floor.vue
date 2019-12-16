@@ -171,7 +171,7 @@ export default {
     },
     callPhone() {
       window.location.href = 'tel://400 700 6608'
-    },
+     },
     getShowModel() {
       this.hideModel = false
     },
