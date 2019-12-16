@@ -48,7 +48,6 @@ Vue.use(Popup);
 
 // Vue.use(Config);
 Vue.prototype.$axios = axios;
-axios.defaults.baseURL = 'http://shengxi.iyunfish.com/index.php?m=api'
 axios.defaults.timeout = 4000
 Vue.config.productionTip = false
 

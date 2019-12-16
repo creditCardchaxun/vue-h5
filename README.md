@@ -2,9 +2,9 @@
 
 ## 测试地址
 ```
-http://wanda-h5.bdideal.com/shengxi-test/index.html
+http://wanda-h5.bdideal.com/shengxu-test/index.html
 ```
 ## 正式地址
 ```
-http://wanda-h5.bdideal.com/shengxi/index.html
+http://wanda-h5.bdideal.com/shengxu/index.html
 ```

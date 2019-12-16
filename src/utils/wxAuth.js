@@ -6,11 +6,7 @@ import configCommon from '@/config/config.js'
 // 初始化微信用户授权  （获取token）fffxiugai
 // var sysType = 1
 // var wxinfoApi = config.BASEURL + '/weixin/info'
-// var getAccessTokenByCodeApi = config.BASEURL + '/weixin/callback?code='
-
-// var wxinfoApi = 'http://shengxi.iyunfish.com/index.php?m=api&c=weixin&a=getAppidSecret'
-// var getAccessTokenByCodeApi = 'http://shengxi.iyunfish.com/index.php?m=api&c=weixin&a=callBack&code='
-// var useidApi='http://shengxi.iyunfish.com/index.php?m=api&c=pagehome&a=getwx_user'
+// var getAccessTokenByCodeApi = config.BASEURL + '/weixin/callback?code=
 
 
 // 测试版

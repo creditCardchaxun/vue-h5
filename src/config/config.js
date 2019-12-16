@@ -2,8 +2,8 @@ var config
 
 let configTest = {
   BASEURL: 'http://shengxi-test.iyunfish.com/' || process.env.BASE_URL,
-  shareIcon: 'https://wanda-h5.bdideal.com/shengxi-test/icon/fx.png',
-  shareLink: 'http://wanda-h5.bdideal.com/shengxi-test/index.html',
+  shareIcon: 'https://wanda-h5.bdideal.com/shengxu-test/icon/fx.png',
+  shareLink: 'http://wanda-h5.bdideal.com/shengxu-test/index.html',
   shareTitle: 'baseLIVING精品居舍',
   shareContent:'为城市社群打造充满灵感的生活空间',
   sysType: 1
@@ -11,8 +11,8 @@ let configTest = {
 
 let configProduction = {
   BASEURL: 'http://web-api.base-china.com/' || process.env.BASE_URL,
-  shareIcon: 'https://wanda-h5.bdideal.com/shengxi/icon/fx.png',
-  shareLink: 'http://wanda-h5.bdideal.com/shengxi/index.html',
+  shareIcon: 'https://wanda-h5.bdideal.com/shengxu/icon/fx.png',
+  shareLink: 'http://wanda-h5.bdideal.com/shengxu/index.html',
   shareTitle: 'baseLIVING精品居舍',
   shareContent:'为城市社群打造充满灵感的生活空间',
   sysType: 1
