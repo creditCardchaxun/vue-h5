@@ -73,7 +73,7 @@ window.i18n = new VueI18n({
     'en-US': require('./assets/lang/en') // 英文语言包
   }
 
-  
+
 })
 
 
@@ -94,7 +94,7 @@ window.$axios = axios
 // // 微信授权
 if (process.env.NODE_ENV === 'development' && !process.env.VUE_APP_BUILD_TYPE) {
   // 调试开发，替换这里token
-  let testToken = 'IkwNffyjRtwG1Efflsqo7YtKeMl25AxGfaGbjyXr'
+  let testToken = 'PZpbmPWDgIBuf2CUy6gyL5kI2ZAdN5fujHIaNLte'
   // let userinfo={"id":"2","nickname":"","realname":"","avater":"","sex":"0","mobile":'18911793350',"type":"0","openid":"","siteid":"1"}
   axios.defaults.headers.common['systype'] = 1
   axios.defaults.headers.common['accesstoken'] = testToken

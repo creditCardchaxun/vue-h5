@@ -82,6 +82,7 @@
           <span>{{feedback.mobile}}</span>
           <img
             src="../../assets/images/dianhua.png"
+            @click.stop.prevent="tocallPhone(feedback.mobile)"
             alt
             style="width:0.6rem;height:0.6rem;position:absolute;right:20px;top:12px;"
           />
@@ -140,15 +141,15 @@ export default {
       endTime: new Date(), // 结束时间
       datePicker: "", // 用于判断哪个选择器的显示与隐藏
       isPopShow: false, // 弹出层隐藏与显示
-      statusIcon: '',
-      ids: '',
+      statusIcon: "",
+      ids: "",
       feedback: {},
-      msg: '',
-      moren: '',
+      msg: "",
+      moren: "",
       disabled: false,
-      date2: '',
+      date2: "",
       getHeight: {
-        minHeight: ''
+        minHeight: ""
       }
     };
   },
@@ -159,27 +160,32 @@ export default {
   computed: {
     isclicks() {
       if (!this.endTime || !this.statusIcon || !this.msg) {
-        return true
+        return true;
       } else {
-        return false
+        return false;
       }
-    },
+    }
   },
   created() {
-    this.getHeight.minHeight = (window.outerHeight / window.outerWidth * 10.8 - 5.96) + 'rem'
-    this.ids = this.$route.params.id
-    this.detailInfor(this.ids)
+    this.getHeight.minHeight =
+      (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
+    this.ids = this.$route.params.id;
+    this.detailInfor(this.ids);
     // this.endTime=this.confirmPicker(new Date())
   },
   mounted() {
-    $eventbus.$on("changeLang", (res) => {
-      this.ids = this.$route.params.id
-      this.detailInfor(this.ids)
-    })
+    $eventbus.$on("changeLang", res => {
+      this.ids = this.$route.params.id;
+      this.detailInfor(this.ids);
+    });
   },
   methods: {
+    // 添加电话拨打 盛修改
+    tocallPhone(mobile) {
+      window.location.href = "tel://" + mobile;
+    },
     toreplace() {
-      this.$router.go(-1)
+      this.$router.go(-1);
     },
     showDatePicker() {
       //弹出层并显示时间选择器
@@ -224,52 +230,51 @@ export default {
     // 提交表单
     showRight() {
       if (!this.endTime || !this.statusIcon || !this.msg) {
-        this.$toast(this.$i18n.t('m.show2'))
+        this.$toast(this.$i18n.t("m.show2"));
       } else {
         let bookid = this.ids;
         let sales_time = this.endTime;
         let sales_desc = this.msg;
-        let sales_content = this.statusIcon
-        let data = { bookid, sales_time, sales_desc, sales_content }
-        console.log(data)
-        interfaces.fankuiList(data).then((res) => {
+        let sales_content = this.statusIcon;
+        let data = { bookid, sales_time, sales_desc, sales_content };
+        console.log(data);
+        interfaces.fankuiList(data).then(res => {
           if (res == true) {
             // this.$toast('提交成功')
-            this.$router.replace({ name: "feedbackdetail", params: { id: this.ids } });
+            this.$router.replace({
+              name: "feedbackdetail",
+              params: { id: this.ids }
+            });
           }
-        })
+        });
         this.$router.push({ name: "feedbackdetail", params: { id: this.ids } });
       }
-
     },
 
     detailInfor(id) {
-      interfaces.fankuidetail(id).then((res) => {
-        this.feedback = res
-      })
+      interfaces.fankuidetail(id).then(res => {
+        this.feedback = res;
+      });
     },
 
-    copy: function () {
+    copy: function() {
       var _this = this;
       var clipboard = new Clipboard(".getcopy"); //单页面引用
       clipboard.on("success", e => {
-        this.$toast(this.$i18n.t('m.show3'))
+        this.$toast(this.$i18n.t("m.show3"));
         // 释放内存
         clipboard.destroy();
       });
       clipboard.on("error", e => {
         // 不支持复制
         Message({
-          message: this.$i18n.t('m.show4'),
+          message: this.$i18n.t("m.show4"),
           type: "warning"
         });
         // 释放内存
         clipboard.destroy();
       });
-    },
-
-
-
+    }
   }
 };
 </script>

@@ -471,7 +471,6 @@ export default {
       })
     },
     toCallPhone(mobile) {
-      console.log(mobile, '获取手机号')
       window.location.href = 'tel://' + mobile
     },
   },
