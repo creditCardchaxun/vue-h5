@@ -46,7 +46,7 @@
             :key="index"
           >
             <h2 style="font-weight:bold;">{{item.title}}</h2>
-            <showmorenew v-if="item.content" :htmlstr="item.content"></showmorenew>
+            <showmorenew v-if="item.content&&active==1" :htmlstr="item.content"></showmorenew>
           </div>
         </van-tab>
       </van-tabs>
@@ -282,14 +282,18 @@ export default {
       // this.abouts()
       // _this.active = _this.$route.params.active;
       console.log(_this.active);
-      _this.contacts();
-      _this.abouts()
+      
+     
 
-      // if (_this.active == 0) {
-      //   _this.contacts();
-      // } else {
-      //   _this.abouts()
-      // }
+      if (_this.active == 0) {
+        _this.abouts()
+        _this.contacts();
+
+      } else {
+        
+        _this.contacts();
+        _this.abouts()
+      }
     });
   },
 
