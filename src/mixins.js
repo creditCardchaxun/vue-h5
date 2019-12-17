@@ -1,4 +1,7 @@
 /* eslint-disable no-console */
+import {
+  WXsdk
+} from "@/utils/wxShare"
 let MIXIN = {
   data() {
     return {
@@ -6,7 +9,7 @@ let MIXIN = {
     }
   },
   created() {
-    
+
   },
   mounted() {},
   methods: {
@@ -23,17 +26,27 @@ let MIXIN = {
       if (localStorage.getItem('userinfo')) {
         var api = this.$store.state.serviceInfo
         info = JSON.parse(localStorage.getItem('userinfo'))
-        if(api){
-          api = api.replace(/appid/,info.appid)
-          api =  api.replace(/openid/,info.openid)
+        if (api) {
+          api = api.replace(/appid/, info.appid)
+          api = api.replace(/openid/, info.openid)
           console.log(api)
           window.location.href = api
-          setTimeout(()=>{
+          setTimeout(() => {
             // eslint-disable-next-line no-undef
             WeixinJSBridge.call('closeWindow')
           })
         }
       }
+    },
+    previewImg(img, imgArr) {
+      WXsdk.previewImg(img, imgArr)
+    },
+    objectToArr(arr,name){
+      var newArr = []
+      arr.forEach((ele)=>{
+        newArr.push(ele[name])
+      })
+      return newArr
     }
   }
 };

@@ -23,7 +23,7 @@
         <!-- 图片轮播 -->
         <template v-if="hideImg&&projectdetail.pic">
           <van-swipe-item v-for="(item,index) in projectdetail.pic.img" :key="index">
-            <img :src="item" alt />
+            <img :src="item" @click="previewImg(item,projectdetail.pic.img)" alt />
           </van-swipe-item>
         </template>
         <!-- VR轮播 -->
@@ -122,7 +122,12 @@
             <van-tab :title="item.typename">
               <van-swipe @change="onChange" :ref="'detailSwiper' + index">
                 <van-swipe-item v-for="(i,ins) in item.pic" :key="ins">
-                  <img :src="i.fileurl" alt class="hotel-msg" />
+                  <img
+                    :src="i.fileurl"
+                    @click="previewImg(i.fileurl,objectToArr(item.pic,'fileurl'))"
+                    alt
+                    class="hotel-msg"
+                  />
                 </van-swipe-item>
                 <!-- <van-swipe-item><img src="../../assets/images/hotel-02.jpg" alt="" class='hotel-msg'></van-swipe-item> -->
                 <div
@@ -134,7 +139,11 @@
               <div class="types-mianji">
                 <div class="yiju">{{$t('m.hotelxq10')}}:{{item.room_size}}㎡</div>
                 <div class="yiju-img">
-                  <img :src="item.house_type_pic" alt />
+                  <img
+                    :src="item.house_type_pic"
+                    @click="previewImg(item.house_type_pic,[item.house_type_pic])"
+                    alt
+                  />
                 </div>
               </div>
             </van-tab>
@@ -278,6 +287,8 @@ import submitBtn from "@/components/submitBtn";
 import afooter from "@/components/Footer";
 import projectImg from "@/components/projectImg";
 import interfaces from "@/utils/api.js";
+import { WXsdk } from "@/utils/wxShare"
+
 export default {
   name: "hotelDetail",
   data() {

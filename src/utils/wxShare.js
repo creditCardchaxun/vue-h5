@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios from 'axios'
 import configCommon from '@/config/config.js'
 
@@ -12,7 +13,8 @@ class _WXsdk {
       "onMenuShareAppMessage",
       "getLocation",
       "openLocation",
-      "hideMenuItems"
+      "hideMenuItems",
+      "previewImage"
     ]
   }
 
@@ -162,6 +164,18 @@ class _WXsdk {
         window.wx.hideMenuItems({
           menuList: ['menuItem:share:qq', 'menuItem:share:weiboApp', 'menuItem:favorite', 'menuItem:share:facebook', 'menuItem:share:QZone', 'menuItem:copyUrl', 'menuItem:openWithQQBrowser', 'menuItem:openWithSafari']
         })
+      })
+    })
+  }
+
+  // 预览图片
+  previewImg(img, imgArr) {
+    this._init().then(() => {
+      window.wx.ready(() => {
+        window.wx.previewImage({
+          current: img, // 当前显示图片的http链接
+          urls: imgArr || [] // 需要预览的图片http链接列表
+        });
       })
     })
   }
