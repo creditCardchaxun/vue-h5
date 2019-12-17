@@ -147,10 +147,10 @@ export default {
         let data = { id, status, desc }
         interfaces.jieshou(data).then(res => {
           this.$toast(res)
+          this.show = false;
           setTimeout(() => {
-            this.show = false;
             this.$router.go(-1);
-          });
+          },1000);
         }).catch((err) => {
           console.log(err);
           this.show = false;
