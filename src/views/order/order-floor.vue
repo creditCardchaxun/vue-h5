@@ -114,6 +114,9 @@ Vue.use(Icon);
 
 Vue.use(Field);
 Vue.use(NavBar);
+import { lock, unlock } from 'tua-body-scroll-lock'
+
+
 export default {
   name: 'order',
   data() {
@@ -158,6 +161,8 @@ export default {
     },
     tohideModel() {
       this.hideModel = true
+      var dom = document.getElementsByClassName('order')[0]
+      unlock(dom)
     },
     toshowModel() {
       //  let mobile=localStorage.getItem('mobile')
@@ -174,6 +179,8 @@ export default {
     },
     getShowModel() {
       this.hideModel = false
+      var dom = document.getElementsByClassName('order')[0]
+      lock(dom)
     },
     toback() {
       this.$router.push({ path: '/' })

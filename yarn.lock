@@ -7919,6 +7919,11 @@ tty-browserify@0.0.0:
   resolved "https://registry.npm.taobao.org/tty-browserify/download/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"
   integrity sha1-oVe6QC2iTpv5V/mqadUk7tQpAaY=
 
+tua-body-scroll-lock@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/tua-body-scroll-lock/download/tua-body-scroll-lock-1.0.0.tgz#77bfefa58846fe49f2ef03fe8eb39e15e5e93f45"
+  integrity sha1-d7/vpYhG/kny7wP+jrOeFeXpP0U=
+
 tunnel-agent@^0.6.0:
   version "0.6.0"
   resolved "https://registry.npm.taobao.org/tunnel-agent/download/tunnel-agent-0.6.0.tgz#27a5dea06b36b04a0a9966774b290868f0fc40fd"
