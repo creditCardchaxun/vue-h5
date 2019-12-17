@@ -231,6 +231,8 @@ export default {
         let data = { phone }
         console.log(data)
         interfaces.verifyCode(phone).then((res) => {
+          console.log('res');
+          console.log( res );
           if (res.code == 0) {
             this.$toast('已发送成功')
           }
