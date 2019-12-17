@@ -14,10 +14,17 @@ let MIXIN = {
   mounted() {},
   methods: {
     onBlurRepireIos() {
-      this.beforeSlide = document.body.scrollTop || document.documentElement.scrollTop;
+      console.log('触发Focus')
+      console.log(this.beforeSlide)
+      // window.scrollTo(0, this.beforeSlide);
+      window.scrollTo(0, this.beforeSlide);
     },
     onFocusRepireIos() {
-      window.scrollTo(0, this.beforeSlide);
+      console.log('触发blur')
+      console.log(this.beforeSlide)
+      this.beforeSlide = document.body.scrollTop || document.documentElement.scrollTop;
+      console.log('blur赋值之后')
+      console.log(this.beforeSlide)
     },
     openServe() {
       console.log('测试客服');
@@ -41,9 +48,9 @@ let MIXIN = {
     previewImg(img, imgArr) {
       WXsdk.previewImg(img, imgArr)
     },
-    objectToArr(arr,name){
+    objectToArr(arr, name) {
       var newArr = []
-      arr.forEach((ele)=>{
+      arr.forEach((ele) => {
         newArr.push(ele[name])
       })
       return newArr

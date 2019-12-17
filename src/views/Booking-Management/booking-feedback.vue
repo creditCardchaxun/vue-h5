@@ -41,8 +41,6 @@
                 v-model="statusIcon"
                 type="radio"
                 :value="item"
-                @blur="onBlurRepireIos"
-                @focus="onFocusRepireIos"
               />
               {{item}}
             </label>

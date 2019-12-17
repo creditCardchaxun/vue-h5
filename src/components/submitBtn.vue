@@ -21,8 +21,6 @@
             :placeholder="$t('m.s5')"
             :disabled="iswrite"
             @input="$emit('input',$event.target.value)"
-            @blur="onBlurRepireIos"
-            @focus="onFocusRepireIos"
           />
         </div>
       </div>
@@ -124,13 +122,16 @@ export default {
   },
   methods: {
     // onBlurRepireIos() {
-    //   this.beforeSlide = document.body.scrollTop || document.documentElement.scrollTop;
+    //   // this.beforeSlide = document.body.scrollTop || document.documentElement.scrollTop;
     //   // alert(this.beforeSlide)
+    //   $('.model-diag').css('position','fixed')
+    //   window.scrollTo(0, 1);
     // },
     // //blur
     // onFocusRepireIos() {
-    //   window.scrollTo(0, this.beforeSlide);
+    //   // window.scrollTo(0, this.beforeSlide);
     //   // alert(this.beforeSlide)
+    //   $('.model-diag').css('position','absolute')
     // },
     findArrIndex(arr, id) {
       console.log(arr, id);
@@ -293,14 +294,18 @@ export default {
   left: 0;
   z-index: 99;
   overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .model-diag .model_main {
   width: 90%;
   height: auto;
   margin: 0 auto;
-  top: 35%;
+  /* top: 35%;
   left: 5%;
-  position: absolute;
+  position: absolute; */
   border-radius: 10px;
   background-color: #fff;
   padding-bottom: 0.53rem;

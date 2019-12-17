@@ -171,7 +171,7 @@ export default {
     },
     callPhone() {
       window.location.href = 'tel://400 700 6608'
-     },
+    },
     getShowModel() {
       this.hideModel = false
     },
@@ -197,7 +197,7 @@ export default {
     this.mobileLocal = obj.mobile
 
     console.log('this.nickname');
-    console.log( this.nickname );
+    console.log(this.nickname);
     // this.mobileLocal=localStorage.getItem('mobile')
     if (this.mobileLocal) {
       this.ischeckPhone = false
@@ -218,6 +218,8 @@ export default {
 .order {
   width: 100%;
   height: auto;
+  overflow-y: scroll; /* 增加该属性，可以增加弹性 */
+  -webkit-overflow-scrolling: touch;
 }
 .order .van-nav-bar__text {
   color: #000;

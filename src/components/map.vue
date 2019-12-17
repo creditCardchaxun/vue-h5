@@ -16,8 +16,6 @@
               class="text"
               id="txt"
               placeholder="请输入起点"
-              @blur="onBlurRepireIos"
-              @focus="onFocusRepireIos"
             />
             <div class="img2" @click="shownav"></div>
           </div>
@@ -36,8 +34,6 @@
                     class="text border-b"
                     id="secondtxt"
                     placeholder="请输入起点"
-                    @blur="onBlurRepireIos"
-                    @focus="onFocusRepireIos"
                   />
                 </div>
                 <div class="flex-row">
@@ -48,8 +44,6 @@
                     class="text"
                     id="secondtxtend"
                     placeholder="请输入终点"
-                    @blur="onBlurRepireIos"
-                    @focus="onFocusRepireIos"
                   />
                 </div>
               </div>
