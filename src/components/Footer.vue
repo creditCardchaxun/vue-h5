@@ -51,6 +51,7 @@
 </template>
 <script>
 import interfaces from "@/utils/api.js";
+
 export default {
   name: 'footers',
   data() {
@@ -94,19 +95,6 @@ export default {
         }
       })
     },
-    openServe() {
-      console.log('测试客服');
-      // http://wxapi.itaojin.cn/weixin/action/toggle/transfer/${appId}/${userId}?checkToken=e8ae0f7dc2254090b618665340ec6dcd2ebf3d99d5ee4062a035e6c91003d0ef&flag=true
-      var info = null
-      if (localStorage.getItem('userinfo')) {
-        info = JSON.parse(localStorage.getItem('userinfo'))
-        console.log('info');
-        console.log(info);
-      }
-      if (info) {
-        window.location.href = `http://wxapi.itaojin.cn/weixin/action/toggle/transfer/${info.appid}/${info.openid}?checkToken=7242a2aad20743559ecc77d773c4ec314860ef4fd739414a9de606c742cd954b&flag=true`
-      }
-    }
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll, true);

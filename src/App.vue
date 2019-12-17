@@ -72,6 +72,7 @@ export default {
     // 通过url中是否含有shareId来判断是否是分享出去的详情页，再由路由推向对应详情页
 
     // this.judgeShare()
+    this.getServiceInfo()
   },
   computed: {
     settitle() {
@@ -157,6 +158,15 @@ export default {
         localStorage.setItem('userinfo', JSON.stringify(res))
       });
     },
+    getServiceInfo(){
+      interfaces.getCustomerServiceInfo().then((res) => {
+        // console.log('res111111111')
+        // console.log( res )
+        if (Number(res.data.code) === 0) {
+          this.$store.commit('setServiceInfo',res.data.data.video_url)
+        }
+      })
+    }
   }
 }
 </script>
