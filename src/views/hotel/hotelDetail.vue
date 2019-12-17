@@ -17,24 +17,24 @@
           @tohideList="tohideList"
         ></projectImg>
       </div>
-
-      <!--轮播图  -->
-      <van-swipe @change="onChanges" :show-indicators="true" :loop="true">
+      <!-- vant-swipe轮播插件 -->
+      <!-- 轮播图 -->
+       <van-swipe @change="onChanges" :show-indicators="true" >  
         <!-- 图片轮播 -->
-        <template v-if="hideImg&&projectdetail.pic">
+      <template v-if="hideImg&&projectdetail.pic">
           <van-swipe-item v-for="(item,index) in projectdetail.pic.img" :key="index">
             <img :src="item" alt />
           </van-swipe-item>
-        </template>
+        </template> 
         <!-- VR轮播 -->
-        <van-swipe-item v-if="hideVR&&projectdetail.pic">
+    <van-swipe-item v-if="hideVR&&projectdetail.pic">
           <div class="VR-img" @click="toVRurl(projectdetail.pic.VR.url)">
             <img :src="projectdetail.pic.VR.ar_pic" alt />
             <img src="../../assets/images/VR.png" alt class="VR" />
           </div>
-        </van-swipe-item>
+        </van-swipe-item> 
         <!-- 视频轮播 -->
-        <van-swipe-item v-if="hideVideo">
+       <van-swipe-item v-if="hideVideo">
           <div class="VR-img">
             <img
               :src="projectdetail.pic.video.video_pic"
@@ -50,7 +50,37 @@
           slot="indicator"
           v-if="projectdetail.pic"
         >{{ currentBanner + 1 }}/{{hideImg?projectdetail.pic.img.length:totalLength}}</div>
-      </van-swipe>
+      </van-swipe>  
+
+      <!-- 重新使用swiper进行渲染 轮播图-->
+       <!-- <swiper :options="swiperOption"  style='position:relative;'>
+         <template v-if="hideImg&&projectdetail.pic">
+            <swiper-slide v-for="(item,index) in projectdetail.pic.img" :key="index">
+                <img :src="item" alt />
+            </swiper-slide>
+         </template>  
+
+         <swiper-slide v-if="hideVR&&projectdetail.pic">
+          <div class="VR-img" @click="toVRurl(projectdetail.pic.VR.url)">
+            <img :src="projectdetail.pic.VR.ar_pic" alt />
+            <img src="../../assets/images/VR.png" alt class="VR" />
+          </div>
+        </swiper-slide> 
+
+        <swiper-slide v-if="hideVideo">
+          <div class="VR-img">
+            <img
+              :src="projectdetail.pic.video.video_pic"
+              v-if="projectdetail.pic.video.video_pic"
+              @click="showVideoplay"
+            />
+            <img src="../../assets/images/stop.png" alt class="VR" />
+          </div>
+        </swiper-slide>
+        
+       </swiper>    
+         <em class='iconNum'>{{ currentBanner+1}}/{{hideImg?projectdetail.pic.img.length:totalLength}}</em>    -->
+
       <p class="swiper-title">
         <span
           v-if="projectdetail.pic&&projectdetail.pic.VR.ar_pic"
@@ -293,8 +323,10 @@ export default {
         // spaceBetween: 10,
         pagination: {
           el: ".swiper-pagination",
-          clickable: true
+          clickable: true,
+          loop:true,
         }
+        
       },
       projectdetail: {},
       defaultheight: 200,
@@ -410,6 +442,7 @@ export default {
     });
   },
   methods: {
+
     judgeHaveVR() {
       if (this.projectdetail.pic.VR.ar_pic) {
         this.toshowVR(1)
@@ -442,6 +475,7 @@ export default {
         this.brandStory = res;
       });
     },
+ 
     toshowVR(length) {
       this.totalLength = length;
       this.hideVR = true;
@@ -580,6 +614,7 @@ export default {
       this.current = index;
     },
     onChanges(index) {
+      console.log(index,'index')
       this.currentBanner = index;
     },
     onchangeTab(index, title) {
@@ -692,6 +727,15 @@ export default {
 }
 </style>
 <style lang="less" scoped>
+.iconNum{position:absolute;bottom:0;right: 0;position: absolute;
+    bottom: 0;
+    right: 10px;
+    z-index: 99;
+    color: #fff;
+    font-size: 0.3rem;
+    padding:4px 8px;
+    background: rgba(0,0,0,0.5);}
+
 .hotel-detail .van-tab {
   margin-left: 0.2rem !important;
   margin-right: 0.2rem !important;
@@ -736,6 +780,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index:10
 }
 .swiper-title span {
   width: 1.45rem;
@@ -767,6 +812,7 @@ export default {
   padding-bottom: 5.96rem;
   box-sizing: border-box;
   position: relative;
+  background-color: #fff;
 }
 .banner-img {
   width: 100%;
@@ -1208,5 +1254,24 @@ export default {
 }
 .bottom-nav .otherClass {
   width: 7rem;
+}
+
+@media screen and (min-width: 640px) {
+  .hot-hotel .hotel-some .hotel-item{
+    width: 6.63rem;
+    height: auto;
+  }
+  .hot-hotel .hotel-some .hotel-item img{
+    width: 6.63rem;
+    height: auto;
+  }
+  .main-content h3{width:13.3rem;}
+  .main-icon{width:13.3rem;}
+  .main-loaction{width:13.3rem;}
+  .bottom-nav{
+        width: 750px;
+        left:50%;
+        transform: translate3d(-50%, -4px, 10px);
+  }
 }
 </style>

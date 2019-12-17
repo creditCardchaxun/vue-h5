@@ -424,4 +424,13 @@ export default {
   background-color: #dddddd;
   color: #333;
 }
+@media screen and (min-width: 640px) {
+   .model-diag .model_main {
+  width: 55%;
+  height: auto;
+  margin: 0 auto;
+  top: 25%;
+  left:23.5%;
+  }
+}
 </style>

@@ -705,4 +705,11 @@ export default {
   border: 1px solid #5975a9;
   font-size: 0.34rem;
 }
+.booking{width:100%;height:100%;background-color: #fff;}
+@media screen and (min-width: 640px) {
+  .date_03 .total-button{
+    position: absolute;
+    right: 0;
+  }
+}
 </style>

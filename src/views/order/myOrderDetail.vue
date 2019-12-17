@@ -233,6 +233,7 @@ export default {
   padding-bottom: 5.96rem;
   box-sizing: border-box;
   position: relative;
+  background-color: #fff;
 }
 .order-detail .order-detail01 {
   width: auto;

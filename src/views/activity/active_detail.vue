@@ -118,6 +118,7 @@ export default {
   padding-top: 0.6rem;
   padding-left: 0.6rem;
   padding-right: 0.6rem;
+  background-color: #fff;
 }
 
 .newsdatails >>> p {

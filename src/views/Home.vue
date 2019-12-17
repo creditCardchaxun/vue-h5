@@ -225,7 +225,7 @@ export default {
   computed: {
     nav() {
       if (this.iswx) return '';
-      return "width:660px;transform: translate3d(-50%, -4px, 10px);position:absolute;left:50%;margin:0;"
+      return "width:750px;transform: translate3d(-50%, -4px, 10px);position:absolute;left:50%;margin:0;"
     }
   },
 
