@@ -10,7 +10,7 @@
       </div>
       <div class="Project-imgs">
         <projectImg
-          v-if="showImgAll"
+          v-if="showImgAll&&imgAll.length"
           :imgAll="imgAll"
           :showImgAll="showImgAll"
           :idss="detailId"
