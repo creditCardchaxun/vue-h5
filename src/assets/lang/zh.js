@@ -37,7 +37,7 @@ export const m = {
   server: '在线客服',
 
   //  客户预约列表
-  watch3: '预约看房日期:',
+  watch3: '预约看房日期',
   watch4: '查看地图',
   watch5: '您还没预约订单,快去预约吧',
   watch6: '立即评价',

@@ -145,8 +145,11 @@ export default {
         let status = 3
         let desc = this.desc
         let data = { id, status, desc }
+        console.log(data);
         interfaces.jieshou(data).then(res => {
-          this.$toast(res)
+          // console.log('res');
+          // console.log( res );
+          // this.$toast(res)
           this.show = false;
           setTimeout(() => {
             this.$router.go(-1);
