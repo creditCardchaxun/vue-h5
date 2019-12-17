@@ -21,7 +21,7 @@
         </li>
         <li>
           <span class="detail-name">{{$t('m.feedback11')}}</span>
-          <span>{{listInfo.intention}}</span>
+          <span>{{listInfo.intention}}{{listInfo.comment?'，':''}}{{listInfo.comment}}</span>
         </li>
         <li class="detail-li">
           <span class="detail-name">{{$t('m.feedback12')}}</span>
@@ -229,6 +229,7 @@ export default {
   margin: 0 auto;
   display: flex;
   align-items: center;
+  box-sizing: content-box;
   /* justify-content: space-between; */
 }
 .detail ul li:nth-child(5) {
