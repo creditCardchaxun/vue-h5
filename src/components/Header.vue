@@ -1,6 +1,6 @@
 <template>
   <div class="header-nav">
-    <div class="header" :class="{showbgs:showbg}" :style="nav">
+    <div class="header" :class="{showbgs:showbg}">
       <!-- 2代表2级页面  3代表3级页面 -->
       <div class="logo" v-if="status==2">
         <router-link :to="{path:'/'}">
@@ -58,18 +58,18 @@ export default {
       lanBase: 'EN'
     }
   },
-  computed: {
-    nav() {
-      if (this.iswx) return '';
-      return "width: 750px;transform: translate3d(0%, -4px, 10px);left: 22.21%;margin: 0px auto;padding: 0 5%;box-sizing: border-box;"
-    }
-  },
-  computed: {
-    nav() {
-      if (this.iswx) return '';
-      return "width: 750px;transform: translate3d(0%, -4px, 10px);left: 22%;margin: 0px auto;padding: 0 5%;box-sizing: border-box;"
-    }
-  },
+  // computed: {
+  //   nav() {
+  //     if (this.iswx) return '';
+  //     return "width: 750px;transform: translate3d(0%, -4px, 10px);left: 22.21%;margin: 0px auto;padding: 0 5%;box-sizing: border-box;"
+  //   }
+  // },
+  // computed: {
+  //   nav() {
+  //     if (this.iswx) return '';
+  //     return "width: 750px;transform: translate3d(0%, -4px, 10px);left: 22%;margin: 0px auto;padding: 0 5%;box-sizing: border-box;"
+  //   }
+  // },
   methods: {
     toorder() {
       this.$router.push({ path: '/order' })
@@ -244,20 +244,32 @@ export default {
   display: block;
 }
 
-.showbgs {
-  width: 100%;
-  height: 1.63rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+// .showbgs {
+//   width: 100%;
+//   height: 1.63rem;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
 
-  position: fixed;
-  background: rgba(255, 255, 255, 0.8);
-  padding: 0 0.6rem;
-  box-sizing: border-box;
-  margin: 0;
-  z-index: 99;
-  top: 0;
-  left: 0;
+//   position: fixed;
+//   background: rgba(255, 255, 255, 0.8);
+//   padding: 0 0.6rem;
+//   box-sizing: border-box;
+//   margin: 0;
+//   z-index: 99;
+//   top: 0;
+//   left: 0;
+// }
+
+@media screen and (min-width: 640px) {
+  .header{
+   width: 750px;
+   height: 1.3rem;
+   margin:0 auto;
+   left:50%;
+   transform: translate3d(-50%, -4px, 10px);
+  }
+
+
 }
 </style>

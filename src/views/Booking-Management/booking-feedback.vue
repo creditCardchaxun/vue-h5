@@ -285,6 +285,7 @@ export default {
   padding-bottom: 5.96rem;
   box-sizing: border-box;
   position: relative;
+  background-color: #fff;
 }
 .isHouse {
   width: 100%;

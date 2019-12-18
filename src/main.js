@@ -112,21 +112,19 @@ if (ua.match(/MicroMessenger/i) == "micromessenger") {
   //ios终端
   let isiOS = !!web.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
   if (isAndroid || isiOS) {
-    console.log('手机展示')
+  //  手机展示
     iswx = true
   } else {
-    console.log('浏览器展示')
+//  浏览器展示
     iswx = false
   }
 } else {
-  // return false
-  iswx = true
+  iswx = false
   console.log('不是微信环境')
 }
 Vue.prototype.iswx = iswx
 window.$router = router
 router.beforeEach((from, to, next) => {
-
   next()
 })
 

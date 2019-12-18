@@ -137,6 +137,7 @@ export default {
 <style>
 .bookingfeedback{
 width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;
+background-color: #fff;
 }
 /* .bookingdetail {
 

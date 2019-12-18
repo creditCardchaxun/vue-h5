@@ -72,14 +72,7 @@ export default {
       getheights: {
         height: ""
       }
-      //    swiperOption: {
-      //   slidesPerView: "auto",
-      //   spaceBetween: 10,
-      //   pagination: {
-      //     el: ".swiper-pagination",
-      //     clickable: true
-      //   }
-      // },
+
     };
   },
   methods: {
@@ -231,5 +224,10 @@ export default {
 .topImgs {
   -webkit-animation: bounce-down 1s linear infinite;
   animation: bounce-down 1s linear infinite;
+}
+
+@media screen and (min-width: 640px) {
+    .projectImg{width:750px;margin:0 auto;}
+    /* .Project-imgs .van-popup{width:750px;margin:0 auto;} */
 }
 </style>
