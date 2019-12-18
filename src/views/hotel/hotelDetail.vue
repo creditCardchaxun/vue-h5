@@ -123,19 +123,6 @@
     </div>
     <div class="desc">
       <h3>{{$t('m.hotelxq2')}}</h3>
-      <!-- <div ref="desc" class="desc02" v-if="projectdetail.desc!=''"  :class="{brandStory:showMore}">
-        <p>{{projectdetail.desc}}</p>
-      </div>
-      <div class="nolist" v-else style="font-size:0.35rem;text-align:center;">{{$t('m.others13')}}</div>
-      <div class="index-more" v-show="showMore01" @click="toloadMore2" style="margin:0.3rem 0;">
-        <span v-show="hideIcon">more</span>
-        <img
-          src="../../assets/images/more-icon.jpg"
-          alt
-          style="margin-top: 0.1rem;"
-          :class="{brandimg2:showMore}"
-        />
-      </div>-->
       <showmorenew :pageType="'hotal-gypp'" v-if="projectdetail.desc" :htmlstr="projectdetail.desc"></showmorenew>
     </div>
     <div class="types">
@@ -219,25 +206,12 @@
             />
           </div>
         </div>
-        <!-- <div class="nolist" v-else style='font-size:0.35rem;text-align:center;margin:0.3rem 0;'>暂无公寓配置详细信息</div> -->
       </div>
       <div class="map">
         <div class="map01">
           <!-- <img src="../../assets/images/map01.jpg" alt=""> -->
           <maps v-if="projectdetail.address" :dataArr="projectdetail"></maps>
           <h3>{{$t('m.hotelxq5')}}</h3>
-          <!-- <div class="map_mains" ref="jiaotong" :class="{jiaoActive:showLoadMore}">
-            <p v-html="projectdetail.content">projectdetail.content</p>
-          </div>
-          <div class="index-more" v-if="showJiao" @click="toloadMoreJiao" style="margin:0.3rem 0;">
-            <span v-show="hideIcon">more</span>
-            <img
-              src="../../assets/images/more-icon.jpg"
-              alt
-              style="margin-top: 0.1rem;"
-              :class="{brandimg2:showLoadMore}"
-            />
-          </div>-->
           <div class="more-div" style="padding-left:0.2rem;">
             <showmorenew
               :pageType="'hotal-zbjt'"
@@ -575,7 +549,7 @@ export default {
         this.hideModel = true;
       }
     },
-    toMap(e) {
+    toMap() {
       document.getElementById("maps").scrollIntoView();
     },
     toloadMore() {

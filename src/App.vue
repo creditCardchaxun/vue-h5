@@ -1,30 +1,7 @@
 <template>
   <!-- <div><img src="../../" alt=""></div> -->
   <div id="app" :style="style">
-    <!-- <keep-alive>
-		    <router-view v-if="$route.meta.keepalive" v-wechat-title='$route.meta.title'></router-view>
-    </keep-alive> v-if="!$route.meta.keepalive"  :key='$route.fillPath'-->
     <router-view v-wechat-title="settitle"></router-view>
-
-    <!-- 评价弹框 -->
-
-    <!-- <mt-popup v-model="showModel" :close-on-click-overlay='false'>
-      <div class="goodAppraise">
-          <div class="app_01">
-              <div class="app-img"><img :src="appraiseModel.onepic" alt=""></div>
-               <div class="app-right">
-                 <h3>{{appraiseModel.project_name}}</h3>
-                 <p>预约看房时间:{{appraiseModel.book_time}}</p>
-               </div>
-          </div>
-          <div class="app_02">  
-            您已预约过了,请给我们留下宝贵的意见吧!
-          </div>
-           <button @click="toAppraise(appraiseModel.id)">立即评价</button>
-          <img src="@/assets/images/remove.png" alt="" class='img_remove'  @click="hideClose(appraiseModel.id)">
-      </div>
-    </mt-popup>-->
-
     <div class="goodStar" @touchmove="touchForbidden" v-show="showModel" v-if="appraiseModel!=null">
       <div class="goodAppraise">
         <div class="app_01">
@@ -51,7 +28,6 @@
 
 <script>
 import config from '@/config/config.js'
-import apitest from '@/config/apitest.js'
 import { WXsdk } from "@/utils/wxShare"
 import interfaces from "@/utils/api.js";
 
@@ -68,9 +44,7 @@ export default {
 
   created() {
     this.getUserInfo()  //获取个人信息
-    // apitest.te st() 
     // 通过url中是否含有shareId来判断是否是分享出去的详情页，再由路由推向对应详情页
-
     // this.judgeShare()
     this.getServiceInfo()
   },
@@ -85,14 +59,14 @@ export default {
 
   },
   mounted() {
-    console.log('NODE_ENV')
-    console.log(process.env.NODE_ENV)
-    console.log('VUE_APP_BUILD_TYPE')
-    console.log(process.env.VUE_APP_BUILD_TYPE)
-    console.log('config')
-    console.log(config)
-    console.log('accessToken')
-    console.log(localStorage.getItem('accessToken'))
+    // console.log('NODE_ENV')
+    // console.log(process.env.NODE_ENV)
+    // console.log('VUE_APP_BUILD_TYPE')
+    // console.log(process.env.VUE_APP_BUILD_TYPE)
+    // console.log('config')
+    // console.log(config)
+    // console.log('accessToken')
+    // console.log(localStorage.getItem('accessToken'))
     WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink)
 
     let accessToken = localStorage.getItem('accessToken')
@@ -158,12 +132,12 @@ export default {
         localStorage.setItem('userinfo', JSON.stringify(res))
       });
     },
-    getServiceInfo(){
+    getServiceInfo() {
       interfaces.getCustomerServiceInfo().then((res) => {
         // console.log('res111111111')
         // console.log( res )
         if (Number(res.data.code) === 0) {
-          this.$store.commit('setServiceInfo',res.data.data.video_url)
+          this.$store.commit('setServiceInfo', res.data.data.video_url)
         }
       })
     }
@@ -172,11 +146,11 @@ export default {
 </script>
 
 <style lang="less">
-@import './assets/font/font.less';
+@import "./assets/font/font.less";
 html,
 body {
   height: 100%;
-  font-family: 'GOTHIC';
+  font-family: "GOTHIC";
 }
 
 #app {
