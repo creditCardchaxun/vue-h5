@@ -22,6 +22,7 @@
                 <router-link :to="{name:'orderDetail', params:{id:item.id}}">{{item.project_name}}</router-link>
               </h3>
               <p>{{$t('m.watch3')}}:&nbsp;{{item.book_time}}</p>
+              <p>{{item.zhut}}</p>
               <div class="morder-t" style="width:100%;">
                 <em @click.stop.prevent="toMaps(item.projectid)">
                   <!-- <router-link :to="{name:'hotelDetail?#maps', params:{id:projectid}}"> -->
@@ -30,7 +31,7 @@
                 </em>
                 <button
                   @click.stop.prevent="orderDetails(item.id,item.status,item.mobile)"
-                >{{orderList[index].titleBtn}}</button>
+                >{{orderList[index].titleBtn2}}</button>
               </div>
             </div>
           </div>
@@ -56,6 +57,7 @@
               <div class="right">
                 <h3>{{item.project_name}}</h3>
                 <p>{{$t('m.watch3')}}:&nbsp;{{item.book_time}}</p>
+                <p>{{item.zhut}}</p>
                 <div class="morder-t">
                   <em @click.stop.prevent="toMaps(item.projectid)">
                     <span style="padding-bottom:2px;">{{$t('m.watch4')}}</span>
@@ -71,6 +73,42 @@
                 </div>
               </div>
             </router-link>
+          </div>
+        </div>
+        <!-- <div class="s1" v-else>{{$t('m.watch5')}}</div> -->
+      </div>
+
+      <div class="myorder-list" v-if="canceled.length > 0">
+        <h2>{{$t('m.watch33')}}</h2>
+        <div class="total">
+          <div
+            class="orderlist"
+            v-for="(item,index) in canceled"
+            :key="index"
+            @click.stop="todetailOrder(item.id)"
+          >
+            <div class="left">
+              <router-link :to="{name:'orderDetail', params:{id:item.id}}">
+                <img :src="item.onepic" alt />
+              </router-link>
+            </div>
+            <div class="right" style="width:6.45rem">
+              <h3>
+                <router-link :to="{name:'orderDetail', params:{id:item.id}}">{{item.project_name}}</router-link>
+              </h3>
+              <p>{{$t('m.watch3')}}:&nbsp;{{item.book_time}}</p>
+              <p>{{item.zhut}}</p>
+              <div class="morder-t" style="width:100%;">
+                <em @click.stop.prevent="toMaps(item.projectid)">
+                  <!-- <router-link :to="{name:'hotelDetail?#maps', params:{id:projectid}}"> -->
+                  <span>{{$t('m.watch4')}}</span>
+                  <!-- </router-link>  -->
+                </em>
+                <button
+                  @click.stop.prevent="orderDetails(item.id,item.status,item.mobile)"
+                >{{orderList[index].titleBtn2}}</button>
+              </div>
+            </div>
           </div>
         </div>
         <!-- <div class="s1" v-else>{{$t('m.watch5')}}</div> -->
@@ -100,7 +138,7 @@ export default {
     return {
       orderList: [],
       orderList2: [],
-      cancaled: [],
+      canceled: [],
       getHeight: {
         minHeight: ""
       },
@@ -112,7 +150,7 @@ export default {
     };
   },
   computed: {
-    
+
   },
   mounted() {
     // eslint-disable-next-line no-undef
@@ -143,80 +181,39 @@ export default {
     },
     booklists() {
       interfaces.bookList().then(res => {
-        console.log('res');
-        console.log( res );
-        if (res.not_finish != null || res.not_finish != "") {
-          res.not_finish.forEach((item, index) => {
-            switch (item.status) {
-              case '1':
-                this.titleBtn = "查看详情";
-                break;
-              case '2':
-                this.titleBtn = "联系销售";
-                break;
-              case '3':
-                this.titleBtn = "查看详情";
-                break;
-              case '4':
-                this.titleBtn = "查看详情";
-                break;
-              case '5':
-                this.titleBtn = "已取消";
-                break;
-              case '6':
-                this.titleBtn = "立即评价";
-                break;
-              case '7':
-                this.titleBtn = "已完成";
-                break;
-              case '8':
-                this.titleBtn = "已完成";
-                break;
-            }
-            res.not_finish[index].titleBtn = this.titleBtn;
-            this.orderList = res.not_finish; //即将开始
-          })
 
+        var allArr = [].concat(res.not_finish).concat(res.finish).concat(res.cancel)
 
-        }
-        if (res.finish != null || res.finish != "") {
-          res.finish.forEach((item, index) => {
-            switch (item.status) {
-              case '1':
-                this.titleBtn2 = "查看详情";
-                break;
-              case '2':
-                this.titleBtn2 = "联系销售";
-                break;
-              case '3':
-                this.titleBtn2 = "查看详情";
-                break;
-              case '4':
-                this.titleBtn2 = "查看详情";
-                break;
-              case '5':
-                this.titleBtn2 = "已取消";
-                break;
-              case '6':
-                this.titleBtn2 = "立即评价";
-                break;
-              case '7':
-                this.titleBtn2 = "已完成";
-                break;
-              case '8':
-                this.titleBtn2 = "已完成";
-                break;
-            }
-            res.finish[index].titleBtn2 = this.titleBtn2
-            this.orderList2 = res.finish; //已经看过
-          })
-        }
+        var orderList = allArr.filter((item) => {
+          return Number(item.status) === 1 || Number(item.status) === 2 || Number(item.status) === 3 || Number(item.status) === 4
+        })
 
-        this.cancaled = this.cancaled.concat(this.orderList).concat(this.orderList2).filter((item) => {
+        this.orderList = this.addBtnTitle(orderList)
+
+        var  orderList2 = allArr.filter((item) => {
+          return Number(item.status) === 6 || Number(item.status) === 7 
+        })
+
+        this.orderList2 = this.addBtnTitle(orderList2)
+
+        var canceled = allArr.filter((item) => {
           return Number(item.status) === 5
         })
-        console.log('this.cancaled');
-        console.log( this.cancaled );
+
+        this.canceled = this.addBtnTitle(canceled)
+
+        // if (res.not_finish.length !== 0) {
+        //   this.orderList = this.addBtnTitle(res.not_finish)
+        // }
+
+        // if (res.finish.length !== 0) {
+        //   this.orderList2 = this.addBtnTitle(res.finish)
+        // }
+
+        // if (res.cancel.length !== 0) {
+        //   this.canceled = this.addBtnTitle(res.cancel)
+        // }
+
 
         if (
           (res.not_finish == null ||
@@ -227,6 +224,50 @@ export default {
           this.showBtn = true;
         }
       });
+    },
+    addBtnTitle(arr) {
+      var titleBtn2 = ''
+      var zhut = ''
+      arr.forEach((item) => {
+        switch (item.status) {
+          case '1':
+            titleBtn2 = "查看详情";
+            zhut = '待接单'
+            break;
+          case '2':
+            titleBtn2 = "联系销售";
+            zhut = '销售已接单'
+            break;
+          case '3':
+            titleBtn2 = "查看详情";
+            zhut = '待接单'
+            break;
+          case '4':
+            titleBtn2 = "查看详情";
+            zhut = '待接单'
+            break;
+          case '5':
+            titleBtn2 = "已取消";
+            zhut = ''
+            break;
+          case '6':
+            titleBtn2 = "立即评价";
+            zhut = ''
+            break;
+          case '7':
+            titleBtn2 = "已完成";
+            zhut = ''
+            break;
+          case '8':
+            titleBtn2 = "已完成";
+            zhut = ''
+            break;
+        }
+        item.titleBtn2 = titleBtn2
+        item.zhut = zhut
+      })
+
+      return arr
     },
     orderDetails(id, status, mobile) {
       switch (status) {
@@ -417,7 +458,7 @@ export default {
   padding-top: 0.2rem;
 }
 .orderlist .right em {
-  margin-top: 0.4rem;
+  /* margin-top: 0.4rem; */
 }
 .orderlist .right span {
   font-size: 0.3rem;
@@ -433,7 +474,7 @@ export default {
   background-color: #5975a9;
   border: none;
   color: #fff;
-  margin: 0.88rem 0 0 auto;
+  margin: 0.68rem 0 0 auto;
   border-radius: 3px;
   white-space: nowrap;
 }

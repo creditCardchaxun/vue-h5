@@ -34,6 +34,7 @@ export const m = {
   orderhouse: '预约看房',
   watch: '即将开始',
   watch2: '您已看过',
+  watch33: '已取消',
   server: '在线客服',
 
   //  客户预约列表

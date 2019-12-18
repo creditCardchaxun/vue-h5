@@ -33,6 +33,7 @@ export const m = {
   orderhouse:'Book',
   watch:'Upcoming',
   watch2:'Completed',
+  watch33: 'Canceled',
   server:'Need help',
 
   //  客户预约列表
