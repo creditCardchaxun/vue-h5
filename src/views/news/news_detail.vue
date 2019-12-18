@@ -25,6 +25,10 @@
 import interfaces from "@/utils/api.js";
 import aheaders from "@/components/Header";
 import afooter from "@/components/Footer";
+
+import config from '@/config/config.js'
+import { WXsdk } from "@/utils/wxShare"
+
 export default {
   name: 'newsdetail',
   data() {
@@ -48,6 +52,7 @@ export default {
       to.meta[i18n.locale] = res.title
       next(vm => {
         vm.newsDetails = res
+        // WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink+`?shareId=${location.hash}`)
       })
     })
   },

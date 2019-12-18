@@ -291,6 +291,8 @@ import submitBtn from "@/components/submitBtn";
 import afooter from "@/components/Footer";
 import projectImg from "@/components/projectImg";
 import interfaces from "@/utils/api.js";
+
+import config from '@/config/config.js'
 import { WXsdk } from "@/utils/wxShare"
 
 export default {
@@ -356,7 +358,6 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     let id = to.params.id;
-    let status = to.params.status;
     interfaces.getdetailhouse(id).then(function (res) {
       to.meta[i18n.locale] = '';
       next(vm => {
@@ -388,12 +389,12 @@ export default {
         }
       });
     });
+
+    // WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink+`?shareId=${location.hash}`)
   },
   beforeRouteUpdate(to, from, next) {
-    console.log("beforeRouteUpdate");
+    WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink+`?shareId=${location.hash}`)
     let id = to.params.id;
-    let status = to.params.status;
-    console.log(to);
     var that = this;
     interfaces.getdetailhouse(id).then(function (res) {
       to.meta[i18n.locale] = '';

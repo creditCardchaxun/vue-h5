@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
+import config from '@/config/config.js'
 import {
   WXsdk
 } from "@/utils/wxShare"
@@ -55,6 +57,10 @@ let MIXIN = {
       })
       return newArr
     }
-  }
+  },
+  beforeRouteLeave (to, from, next) {
+    // WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink)
+    next()
+  },
 };
 export default MIXIN;

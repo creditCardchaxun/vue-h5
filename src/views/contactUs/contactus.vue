@@ -67,6 +67,10 @@ import interfaces from "@/utils/api.js";
 import aheaders from "@/components/Header";
 import afooters from "@/components/Footer";
 import showmorenew from "@/components/ShowMoreNew";
+
+import config from '@/config/config.js'
+import { WXsdk } from "@/utils/wxShare"
+
 export default {
   name: "contact",
   data() {
@@ -124,6 +128,8 @@ export default {
     this.contacts();
   },
   beforeRouteEnter(to, from, next) {
+
+    // WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink+`?shareId=${location.hash}`)
     interfaces.contactus().then(function (res) {
       next(vm => {
         if (res != undefined) {

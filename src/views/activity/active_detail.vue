@@ -23,6 +23,10 @@
 import interfaces from "@/utils/api.js";
 import aheaders from "@/components/Header";
 import afooter from "@/components/Footer";
+
+import config from '@/config/config.js'
+import { WXsdk } from "@/utils/wxShare"
+
 export default {
   name: 'activitydetail',
   data() {
@@ -60,6 +64,8 @@ export default {
     this.getHeight.minHeight = (window.outerHeight / window.outerWidth * 10.8 - 5.96) + 'rem'
   },
   beforeRouteEnter(to, from, next) {
+    // WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink+`?shareId=${location.hash}`)
+
     let id = to.params.id
     interfaces.activedetail(id).then(function (res) {
       to.meta[i18n.locale] = res.title

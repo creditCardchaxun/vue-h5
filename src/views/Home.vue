@@ -370,7 +370,10 @@ export default {
       this.lanBase = '中'
     }
     this.getAllmap()
-    this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
+    setTimeout(() => {
+      this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
+    }, 2000);
+    
     //  this.couponSelected = this.allcityName[0].name;
   },
   mounted: function () {

@@ -96,12 +96,11 @@ export default {
       e.preventDefault()
     },
     judgeShare() {
-      // if (location.href.includes("shareId")) {
-      //   // 用是否有shareId 来判断是不是分享出去的链接
-      //   var id = this.getshareId(location.href)
-      //   this.$router.replace({ path: "detail", query: { detailId: id } });
-      // } else {
-      // }
+      if (location.href.includes("shareId")) {
+        // 用是否有shareId 来判断是不是分享出去的链接
+        var id = this.getshareId(location.href)
+        this.$router.replace({ path: "detail", query: { detailId: id } });
+      } 
     },
     getshareId(str) {
       var arr = str.split("?");
@@ -127,7 +126,6 @@ export default {
     },
     getUserInfo() {
       interfaces.getuserInfo().then(res => {
-        console.log(res)
         this.userinfo = res
         localStorage.setItem('userinfo', JSON.stringify(res))
       });
