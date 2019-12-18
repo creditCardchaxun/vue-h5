@@ -140,6 +140,7 @@ export default {
   padding-bottom: 5.96rem;
   box-sizing: border-box;
   position: relative;
+  background-color: #fff;
 }
 .news_main {
   /* width: 90%; */
@@ -268,5 +269,21 @@ export default {
 .more-list img {
   width: 1.2rem;
   height: 0.3rem;
+}
+
+@media screen and (min-width: 640px) {
+  .news_main {
+    /* width: 90%; */
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    padding-top: 0.32rem;
+  }
+  .news_02{
+    justify-content: flex-start;
+  }
+  .news_main .img-wrap{
+    width:100%;
+  }
 }
 </style>

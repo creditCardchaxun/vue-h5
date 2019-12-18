@@ -153,7 +153,7 @@ export default {
           this.show = false;
           setTimeout(() => {
             this.$router.go(-1);
-          },1000);
+          }, 1000);
         }).catch((err) => {
           console.log(err);
           this.show = false;
@@ -188,6 +188,7 @@ export default {
   padding-bottom: 5.96rem;
   box-sizing: border-box;
   position: relative;
+  background-color: #fff;
 }
 
 .top {

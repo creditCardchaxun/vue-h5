@@ -340,7 +340,9 @@ export default {
   color: #000;
   font-weight: bold;
 }
-
+.order-list{
+  background-color: #fff;
+}
 .order-list .s1 {
   font-size: 0.35rem;
   color: #999;
@@ -442,4 +444,25 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
+
+@media screen and (min-width: 640px) {
+  .myorder-list{
+    width:690px;
+    margin:0 auto;
+  }
+   .myorder-list2{
+    width:690px;
+    margin:0 auto;
+  }
+  .orderlist{
+    position:relative;
+  }
+  .orderlist .right button{
+    position:absolute;
+    right:0;
+    margin-top:0.32rem;
+  }
+
+}
+
 </style>

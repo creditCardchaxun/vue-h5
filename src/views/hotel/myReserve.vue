@@ -388,7 +388,7 @@ export default {
     text-align: center;
     padding: 0.5rem;}
 
-.myReserve{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;}
+.myReserve{width:100%;margin:0 auto; min-height: 100%;padding-bottom:5.96rem;box-sizing: border-box;position:relative;background-color: #fff;}
 .names{position:relative;border: 1px solid #f5f5f5;}
 .names .van-radio-group{position:absolute;right: 14px;top:20px;display: flex;align-items: center;}
 .names .van-radio{margin-right:0.2rem;font-size:0.3rem;}

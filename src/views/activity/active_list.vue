@@ -264,4 +264,14 @@ export default {
   width: 1.2rem;
   height: 0.3rem;
 }
+
+@media screen and (min-width: 640px) {
+  .news_02{
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .news_main .img-wrap{
+    width: 100%;
+}
+}
 </style>

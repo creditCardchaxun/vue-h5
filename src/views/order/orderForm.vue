@@ -1,7 +1,7 @@
 <template>
   <!-- :style='getHeight' -->
   <div class="myReserve">
-    <div>
+    <div style='background-color:#fff;'>
       <aheaders status="3" @toback="toreplace" :showLan="true"></aheaders>
       <!-- <van-cell is-link @click="showPopup">项目</van-cell> -->
       <!-- <h1>{{name}}</h1> -->
