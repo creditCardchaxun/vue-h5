@@ -119,7 +119,7 @@ if (ua.match(/MicroMessenger/i) == "micromessenger") {
     iswx = false
   }
 } else {
-  iswx = false
+  iswx = true
   console.log('不是微信环境')
 }
 Vue.prototype.iswx = iswx

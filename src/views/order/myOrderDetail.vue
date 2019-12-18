@@ -37,7 +37,7 @@
         <span>{{$t('m.feedback11')}}</span>
         <em>{{bookarr.intention}}</em>
       </p>
-      <p v-if="feedbackarr.user_content&&feedbackarr.user_score" >
+      <p v-if="feedbackarr.user_content&&feedbackarr.user_score">
         <span>{{$t('m.feedback20')}}</span>
         <em>{{feedbackarr.user_content}}</em>
       </p>
@@ -75,16 +75,19 @@
       </p>
     </div>
 
-    <div class="connectUs" v-if='bookarr.status==1||bookarr.status==3||bookarr.status==4||bookarr.status==5'>
-      <button class='s1' @click='toFormEdit(bookarr.id)'>{{$t('m.bookdetail4')}}</button>
-      <button @click='deleteForm(bookarr.id)'>{{$t('m.bookdetail5')}}</button>
-     </div>
+    <div
+      class="connectUs"
+      v-if="bookarr.status==1||bookarr.status==3||bookarr.status==4||bookarr.status==5"
+    >
+      <button class="s1" @click="toFormEdit(bookarr.id)">{{$t('m.bookdetail4')}}</button>
+      <button @click="deleteForm(bookarr.id)">{{$t('m.bookdetail5')}}</button>
+    </div>
 
     <div class="kefu" @click="openServe">
       <img src="../../assets/images/kefu2.png" alt />
       <span>{{$t('m.bookdetail3')}}</span>
     </div>
-    
+
     <afooter></afooter>
   </div>
 </template>
@@ -130,19 +133,21 @@ export default {
     })
   },
   methods: {
-    toFormEdit(id){
-    this.$router.push({name:'orderForm',params:{orderid:id}})
+    toFormEdit(id) {
+      this.$router.push({ name: 'orderForm', params: { orderid: id } })
     },
-    deleteForm(id){
+    deleteForm(id) {
       //  let data={id:id}
-       interfaces.deleteForms({id:id}).then((res) => {
-          if(res.code==0){
-            this.$toast('取消成功')
-            // this.$router.push({name:'myOrder'})
-            this.bookdetails(id)
-          }
-       })
-     },
+      interfaces.deleteForms({ id: id }).then((res) => {
+        if (res.code == 0) {
+          this.$toast(this.$i18n.t('m.cancalSucess'))
+          this.bookdetails(id)
+          setTimeout(() => {
+            this.$router.push({name:'myOrder'})
+          }, 1000);
+        }
+      })
+    },
     toreplace() {
       this.$router.push({ name: 'myOrder' })
     },
@@ -190,29 +195,32 @@ export default {
 </script>
 
 <style scoped>
-.connectUs{
-     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content:space-around ;
-     height: 1.8rem;
-     /* border-bottom: 0.2rem solid #f5f5f5; */
-     border-top: 0.2rem solid #f5f5f5; 
+.connectUs {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 1.8rem;
+  /* border-bottom: 0.2rem solid #f5f5f5; */
+  border-top: 0.2rem solid #f5f5f5;
 }
-.connectUs button{
-    width: 3.9rem;
-    height: 0.98rem;
-    line-height: 0.98rem;
-    color: #fff;
-    font-size: 0.38rem;
-    border: 1px solid #5975a9;
-    background-color: #fff;
-    color: #5975a9;
-    padding: 0;
-    border-radius: 5px;
-    display: block;
+.connectUs button {
+  width: 3.9rem;
+  height: 0.98rem;
+  line-height: 0.98rem;
+  color: #fff;
+  font-size: 0.38rem;
+  border: 1px solid #5975a9;
+  background-color: #fff;
+  color: #5975a9;
+  padding: 0;
+  border-radius: 5px;
+  display: block;
 }
-.connectUs .s1{background-color: #5975a9;color:#fff;}
+.connectUs .s1 {
+  background-color: #5975a9;
+  color: #fff;
+}
 .order-detail {
   width: 100%;
   margin: 0 auto;
@@ -292,7 +300,7 @@ export default {
   display: flex;
   align-items: left;
   flex-direction: column;
-  width:5.5rem;
+  width: 5.5rem;
   margin-left: 1rem;
 }
 .yijiedan .yi_02 h3 {

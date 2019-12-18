@@ -1267,5 +1267,7 @@ export const m = {
     jingdian: 'Scenic ',
     gouwu: 'Shopping',
     defaultName: 'Shanghai'
-  }
+  },
+  // 预约详情
+  cancalSucess: 'Cancellation of success'
 }

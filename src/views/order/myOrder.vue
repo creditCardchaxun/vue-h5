@@ -1,7 +1,7 @@
 <template>
   <div class="myorder">
     <!-- <img src='../assets/images/about.png'/> -->
-    <aheaders status="2" :showLan='true'></aheaders>
+    <aheaders status="2" :showLan="true"></aheaders>
     <div class="order-list" :style="getHeight">
       <div class="myorder-list" v-if="orderList.length>0">
         <h2>{{$t('m.watch')}}</h2>
@@ -17,20 +17,20 @@
                 <img :src="item.onepic" alt />
               </router-link>
             </div>
-            <div class="right" style='width:6.45rem'>
+            <div class="right" style="width:6.45rem">
               <h3>
                 <router-link :to="{name:'orderDetail', params:{id:item.id}}">{{item.project_name}}</router-link>
               </h3>
               <p>{{$t('m.watch3')}}:&nbsp;{{item.book_time}}</p>
-              <div class="morder-t" style='width:100%;'>
-              <em @click.stop.prevent="toMaps(item.projectid)">
-                <!-- <router-link :to="{name:'hotelDetail?#maps', params:{id:projectid}}"> -->
-                <span>{{$t('m.watch4')}}</span>
-                <!-- </router-link>  -->
-              </em>
+              <div class="morder-t" style="width:100%;">
+                <em @click.stop.prevent="toMaps(item.projectid)">
+                  <!-- <router-link :to="{name:'hotelDetail?#maps', params:{id:projectid}}"> -->
+                  <span>{{$t('m.watch4')}}</span>
+                  <!-- </router-link>  -->
+                </em>
                 <button
-                    @click.stop.prevent="orderDetails(item.id,item.status,item.mobile)"
-                  >{{orderList[index].titleBtn}}</button>
+                  @click.stop.prevent="orderDetails(item.id,item.status,item.mobile)"
+                >{{orderList[index].titleBtn}}</button>
               </div>
             </div>
           </div>
@@ -63,11 +63,11 @@
                   <!-- <button
                     v-show="item.is_pj==0"
                     @click.stop.prevent="toAppraise(item.id)"
-                  >{{$t('m.watch6')}}</button> -->
-                    <button
-                     v-if='item.status'
+                  >{{$t('m.watch6')}}</button>-->
+                  <button
+                    v-if="item.status"
                     @click.stop.prevent="orderDetails2(item.id,item.status,item.mobile)"
-                   >{{orderList2[index].titleBtn2}}</button>
+                  >{{orderList2[index].titleBtn2}}</button>
                 </div>
               </div>
             </router-link>
@@ -82,13 +82,8 @@
       </div>
     </div>
 
-         <!-- 预约弹框 -->
-      <submitBtn
-        v-if="hideModel"
-        @tohideModel="tohideModel"
-        :status="status"
-        @update1="getPhones111"
-      ></submitBtn>
+    <!-- 预约弹框 -->
+    <submitBtn v-if="hideModel" @tohideModel="tohideModel" :status="status" @update1="getPhones111"></submitBtn>
 
     <afooter></afooter>
   </div>
@@ -105,45 +100,41 @@ export default {
     return {
       orderList: [],
       orderList2: [],
+      cancaled: [],
       getHeight: {
         minHeight: ""
       },
       showBtn: false,
-      hideModel:false,
-      status:'',
-      titleBtn:'',
-      titleBtn2:''
+      hideModel: false,
+      status: '',
+      titleBtn: '',
+      titleBtn2: ''
     };
   },
   computed: {
-      // titleBtn(){
-        
-      // }
-    //  this.getHeight.minHeight = (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
-    //       minHeight(){
-    //   return (window.outerHeight/window.outerWidth * 10.8 - 5.96)+'rem'
-    // }
+    
   },
   mounted() {
-    $eventbus.$on("changeLang", res => {
+    // eslint-disable-next-line no-undef
+    $eventbus.$on("changeLang", () => {
+      // eslint-disable-next-line no-unused-vars
       let id = JSON.parse(localStorage.getItem("userinfo")).id;
       this.booklists();
-     });
+    });
   },
   created() {
+    // eslint-disable-next-line no-unused-vars
     let id = JSON.parse(localStorage.getItem("userinfo")).id;
     this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
     this.booklists();
-    // this.getHeight.minHeight =
-    //   (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
-   },
+  },
   methods: {
-    tohideModel(){
-      this.hideModel=false
+    tohideModel() {
+      this.hideModel = false
     },
-     getPhones111(data) {
+    getPhones111(data) {
       this.phone = data;
-     },
+    },
     toMaps(id) {
       this.$router.push({
         name: "hotelDetail",
@@ -152,69 +143,81 @@ export default {
     },
     booklists() {
       interfaces.bookList().then(res => {
+        console.log('res');
+        console.log( res );
         if (res.not_finish != null || res.not_finish != "") {
-           res.not_finish.forEach((item,index)=>{
-                 switch (item.status) {
-                       case '1':
-                        this.titleBtn = "查看详情";   
-                        break;
-                    case '2':
-                        this.titleBtn = "联系销售";
-                        break;
-                    case '3':
-                        this.titleBtn= "查看详情";
-                        break;
-                    case '4':
-                        this.titleBtn= "查看详情";
-                        break;
-                    case '5':
-                        this.titleBtn= "已取消";
-                        break;
-                    case '6':
-                        this.titleBtn= "立即评价";
-                        break;
-                    case '7':
-                        this.titleBtn= "已完成";
-                    case '8':
-                        this.titleBtn= "已完成";
-                    
-                   } 
-                     res.not_finish[index].titleBtn= this.titleBtn ;
-                     this.orderList = res.not_finish; //即将开始
-               })
-                       
-                   
+          res.not_finish.forEach((item, index) => {
+            switch (item.status) {
+              case '1':
+                this.titleBtn = "查看详情";
+                break;
+              case '2':
+                this.titleBtn = "联系销售";
+                break;
+              case '3':
+                this.titleBtn = "查看详情";
+                break;
+              case '4':
+                this.titleBtn = "查看详情";
+                break;
+              case '5':
+                this.titleBtn = "已取消";
+                break;
+              case '6':
+                this.titleBtn = "立即评价";
+                break;
+              case '7':
+                this.titleBtn = "已完成";
+                break;
+              case '8':
+                this.titleBtn = "已完成";
+                break;
+            }
+            res.not_finish[index].titleBtn = this.titleBtn;
+            this.orderList = res.not_finish; //即将开始
+          })
+
+
         }
         if (res.finish != null || res.finish != "") {
-            res.finish.forEach((item,index)=>{
-             switch (item.status) {
-                    case '1':
-                        this.titleBtn2 = "查看详情";   
-                        break;
-                    case '2':
-                        this.titleBtn2 = "联系销售";
-                        break;
-                    case '3':
-                        this.titleBtn2 = "查看详情";
-                        break;
-                    case '4':
-                        this.titleBtn2 = "查看详情";
-                        break;
-                    case '5':
-                        this.titleBtn2 = "已取消";
-                        break;
-                    case '6':
-                        this.titleBtn2 = "立即评价";
-                        break;
-                    case '7':
-                        this.titleBtn2 = "已完成";
-                    case '8':
-                        this.titleBtn2 = "已完成";
-                  }
-                  res.finish[index].titleBtn2= this.titleBtn2
-                 this.orderList2 = res.finish; //已经看过
-           })
+          res.finish.forEach((item, index) => {
+            switch (item.status) {
+              case '1':
+                this.titleBtn2 = "查看详情";
+                break;
+              case '2':
+                this.titleBtn2 = "联系销售";
+                break;
+              case '3':
+                this.titleBtn2 = "查看详情";
+                break;
+              case '4':
+                this.titleBtn2 = "查看详情";
+                break;
+              case '5':
+                this.titleBtn2 = "已取消";
+                break;
+              case '6':
+                this.titleBtn2 = "立即评价";
+                break;
+              case '7':
+                this.titleBtn2 = "已完成";
+                break;
+              case '8':
+                this.titleBtn2 = "已完成";
+                break;
+            }
+            res.finish[index].titleBtn2 = this.titleBtn2
+            this.orderList2 = res.finish; //已经看过
+          })
         }
+
+        this.cancaled = this.cancaled.concat(this.orderList).concat(this.orderList2).filter((item) => {
+          return Number(item.status) === 5
+        })
+        console.log('this.cancaled');
+        console.log( this.cancaled );
+
         if (
           (res.not_finish == null ||
             res.not_finish == "" ||
@@ -225,66 +228,62 @@ export default {
         }
       });
     },
-    orderDetails(id,status,mobile){
-       switch(status){
-           case '1':
-            this.$router.push({ name: "orderDetail", params: { id: id } });
-            break;
-           case '2':
-              window.location.href = 'tel://'+mobile
-             break; 
-           case '3':
-             this.$router.push({ name: "orderDetail", params: { id: id } });  
-             break;
-              case '4':
-             this.$router.push({ name: "orderDetail", params: { id: id } });  
-             break;
-                case '5':
-             this.$router.push({ name: "orderDetail", params: { id: id } });  
-             break;
-                 case '6':
-             this.$router.push({ name: "appraise", params: { id: id } });  
-             break;
-                 case '7':
-             this.$router.push({ name: "orderDetail", params: { id: id } });  
-             break;
-                 case '8':
-             this.$router.push({ name: "orderDetail", params: { id: id } });  
-             break;
-        }
+    orderDetails(id, status, mobile) {
+      switch (status) {
+        case '1':
+          this.$router.push({ name: "orderDetail", params: { id: id } });
+          break;
+        case '2':
+          window.location.href = 'tel://' + mobile
+          break;
+        case '3':
+          this.$router.push({ name: "orderDetail", params: { id: id } });
+          break;
+        case '4':
+          this.$router.push({ name: "orderDetail", params: { id: id } });
+          break;
+        case '5':
+          this.$router.push({ name: "orderDetail", params: { id: id } });
+          break;
+        case '6':
+          this.$router.push({ name: "appraise", params: { id: id } });
+          break;
+        case '7':
+          this.$router.push({ name: "orderDetail", params: { id: id } });
+          break;
+        case '8':
+          this.$router.push({ name: "orderDetail", params: { id: id } });
+          break;
+      }
     },
-   
-       orderDetails2(id,status,mobile){
-       switch(status){
-           case '1':
-            this.$router.push({ name: "orderDetail", params: { id: id } });
-            break;
-           case '2':
-               window.location.href = 'tel://'+mobile
-             break; 
-           case '3':
-             this.$router.push({ name: "orderDetail", params: { id: id } });  
-             break;
-              case '4':
-             this.$router.push({ name: "orderDetail", params: { id: id } });  
-             break;
-                case '5':
-             this.$router.push({ name: "orderDetail", params: { id: id } });  
-             break;
-                 case '6':
-             this.$router.push({ name: "appraise", params: { id: id } });  
-             break;
-                 case '7':
-             this.$router.push({ name: "orderDetail", params: { id: id } });  
-             break;
-                 case '8':
-             this.$router.push({ name: "orderDetail", params: { id: id } });  
-             break;
-        }
+    orderDetails2(id, status, mobile) {
+      switch (status) {
+        case '1':
+          this.$router.push({ name: "orderDetail", params: { id: id } });
+          break;
+        case '2':
+          window.location.href = 'tel://' + mobile
+          break;
+        case '3':
+          this.$router.push({ name: "orderDetail", params: { id: id } });
+          break;
+        case '4':
+          this.$router.push({ name: "orderDetail", params: { id: id } });
+          break;
+        case '5':
+          this.$router.push({ name: "orderDetail", params: { id: id } });
+          break;
+        case '6':
+          this.$router.push({ name: "appraise", params: { id: id } });
+          break;
+        case '7':
+          this.$router.push({ name: "orderDetail", params: { id: id } });
+          break;
+        case '8':
+          this.$router.push({ name: "orderDetail", params: { id: id } });
+          break;
+      }
     },
-
-
-
     todetailOrder(id) {
       this.$router.push({ name: "orderDetail", params: { id: id } });
     },
@@ -296,7 +295,7 @@ export default {
     },
     toOrder() {
       // this.$router.push({ name: "orderForm" });
-     if (this.mobileLocal) {
+      if (this.mobileLocal) {
         this.hideModel = false
         this.$router.push({ name: 'orderForm', params: { mobile: this.mobileLocal } })
       } else {
@@ -321,6 +320,8 @@ export default {
   padding-bottom: 5.96rem;
   box-sizing: border-box;
   position: relative;
+  overflow-y: scroll; /* 增加该属性，可以增加弹性 */
+  -webkit-overflow-scrolling: touch;
 }
 .myorder-list {
   width: 9.69rem;
@@ -340,7 +341,7 @@ export default {
   color: #000;
   font-weight: bold;
 }
-.order-list{
+.order-list {
   background-color: #fff;
 }
 .order-list .s1 {
@@ -446,23 +447,21 @@ export default {
 }
 
 @media screen and (min-width: 640px) {
-  .myorder-list{
-    width:690px;
-    margin:0 auto;
+  .myorder-list {
+    width: 690px;
+    margin: 0 auto;
   }
-   .myorder-list2{
-    width:690px;
-    margin:0 auto;
+  .myorder-list2 {
+    width: 690px;
+    margin: 0 auto;
   }
-  .orderlist{
-    position:relative;
+  .orderlist {
+    position: relative;
   }
-  .orderlist .right button{
-    position:absolute;
-    right:0;
-    margin-top:0.32rem;
+  .orderlist .right button {
+    position: absolute;
+    right: 0;
+    margin-top: 0.32rem;
   }
-
 }
-
 </style>

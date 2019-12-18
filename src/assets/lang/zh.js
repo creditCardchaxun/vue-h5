@@ -1400,5 +1400,7 @@ export const m = {
     jingdian: '景点',
     gouwu: '购物',
     defaultName: '上海'
-  }
+  },
+  // 预约详情
+  cancalSucess: '取消成功'
 }
