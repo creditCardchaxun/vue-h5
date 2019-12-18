@@ -10,7 +10,7 @@ let configTest = {
 }
 
 let configProduction = {
-  BASEURL: 'http://web-api.base-china.com/' || process.env.BASE_URL,
+  BASEURL: 'https://web-api.base-china.com/' || process.env.BASE_URL,
   shareIcon: 'https://wanda-h5.bdideal.com/shengxu/icon/fx.png',
   shareLink: 'http://wanda-h5.bdideal.com/shengxu/index.html',
   shareTitle: 'baseLIVING精品居舍',

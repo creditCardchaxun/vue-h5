@@ -226,7 +226,7 @@ export default {
   width: 100%;
   height: auto;
   overflow-y: scroll; /* 增加该属性，可以增加弹性 */
-  -webkit-overflow-scrolling: touch;
+  // -webkit-overflow-scrolling: touch;
 }
 .order .van-nav-bar__text {
   color: #000;

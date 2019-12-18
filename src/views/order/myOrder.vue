@@ -369,7 +369,7 @@ export default {
   box-sizing: border-box;
   position: relative;
   overflow-y: scroll; /* 增加该属性，可以增加弹性 */
-  -webkit-overflow-scrolling: touch;
+  /* -webkit-overflow-scrolling: touch; */
 }
 .myorder-list {
   width: 9.69rem;
