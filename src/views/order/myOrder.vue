@@ -18,11 +18,13 @@
               </router-link>
             </div>
             <div class="right" style="width:6.45rem">
-              <h3>
-                <router-link :to="{name:'orderDetail', params:{id:item.id}}">{{item.project_name}}</router-link>
-              </h3>
-              <p>{{$t('m.watch3')}}:&nbsp;{{item.book_time}}</p>
-              <p>{{item.zhut}}</p>
+              <div>
+                <h3>
+                  <router-link :to="{name:'orderDetail', params:{id:item.id}}">{{item.project_name}}</router-link>
+                </h3>
+                <p>{{$t('m.watch3')}}:&nbsp;{{item.book_time}}</p>
+                <p>{{item.zhut?item.zhut:'&nbsp;'}}</p>
+              </div>
               <div class="morder-t" style="width:100%;">
                 <em @click.stop.prevent="toMaps(item.projectid)">
                   <!-- <router-link :to="{name:'hotelDetail?#maps', params:{id:projectid}}"> -->
@@ -55,9 +57,11 @@
             </router-link>
             <router-link :to="{name:'orderDetail',params:{id:item.id}}" style="width:6.45rem;">
               <div class="right">
-                <h3>{{item.project_name}}</h3>
-                <p>{{$t('m.watch3')}}:&nbsp;{{item.book_time}}</p>
-                <p>{{item.zhut}}</p>
+                <div>
+                  <h3>{{item.project_name}}</h3>
+                  <p>{{$t('m.watch3')}}:&nbsp;{{item.book_time}}</p>
+                  <p>{{item.zhut?item.zhut:'&nbsp;'}}</p>
+                </div>
                 <div class="morder-t">
                   <em @click.stop.prevent="toMaps(item.projectid)">
                     <span style="padding-bottom:2px;">{{$t('m.watch4')}}</span>
@@ -93,11 +97,14 @@
               </router-link>
             </div>
             <div class="right" style="width:6.45rem">
-              <h3>
-                <router-link :to="{name:'orderDetail', params:{id:item.id}}">{{item.project_name}}</router-link>
-              </h3>
-              <p>{{$t('m.watch3')}}:&nbsp;{{item.book_time}}</p>
-              <p>{{item.zhut}}</p>
+              <div>
+                <h3>
+                  <router-link :to="{name:'orderDetail', params:{id:item.id}}">{{item.project_name}}</router-link>
+                </h3>
+                <p>{{$t('m.watch3')}}:&nbsp;{{item.book_time}}</p>
+                <p>{{item.zhut?item.zhut:'&nbsp;'}}</p>
+              </div>
+
               <div class="morder-t" style="width:100%;">
                 <em @click.stop.prevent="toMaps(item.projectid)">
                   <!-- <router-link :to="{name:'hotelDetail?#maps', params:{id:projectid}}"> -->
@@ -190,8 +197,8 @@ export default {
 
         this.orderList = this.addBtnTitle(orderList)
 
-        var  orderList2 = allArr.filter((item) => {
-          return Number(item.status) === 6 || Number(item.status) === 7 
+        var orderList2 = allArr.filter((item) => {
+          return Number(item.status) === 6 || Number(item.status) === 7
         })
 
         this.orderList2 = this.addBtnTitle(orderList2)
@@ -437,8 +444,10 @@ export default {
   display: flex;
   align-items: left;
   flex-direction: column;
+  justify-content: space-between;
   padding-left: 0.4rem;
   overflow: hidden;
+  position: relative;
 }
 .orderlist .right h3 {
   font-size: 0.4rem;
@@ -461,6 +470,7 @@ export default {
   /* margin-top: 0.4rem; */
 }
 .orderlist .right span {
+  display: block;
   font-size: 0.3rem;
   color: #999;
   border-bottom: 1px solid #999;
@@ -474,7 +484,7 @@ export default {
   background-color: #5975a9;
   border: none;
   color: #fff;
-  margin: 0.68rem 0 0 auto;
+  /* margin: 0.68rem 0 0 auto; */
   border-radius: 3px;
   white-space: nowrap;
 }
@@ -484,7 +494,7 @@ export default {
 .orderlist .right .morder-t {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 }
 
 @media screen and (min-width: 640px) {
