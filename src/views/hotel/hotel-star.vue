@@ -482,6 +482,8 @@ export default {
   padding-bottom: 5.96rem;
   box-sizing: border-box;
   position: relative;
+  overflow-y: scroll; /* 增加该属性，可以增加弹性 */
+  -webkit-overflow-scrolling: touch;
 }
 .hotel {
   width: auto;

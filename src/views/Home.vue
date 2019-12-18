@@ -514,6 +514,8 @@ export default {
   box-sizing: border-box;
   position: relative;
   background-color: #fff;
+  overflow-y: scroll; /* 增加该属性，可以增加弹性 */
+  -webkit-overflow-scrolling: touch;
 }
 .home img {
   width: 100%;
