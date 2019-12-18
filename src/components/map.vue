@@ -799,7 +799,7 @@ export default {
   }
 
   .window-button {
-    background: url("../assets/images/full.png") no-repeat;
+    // background: url("../assets/images/full.png") no-repeat;
     background-size: 100% 100%;
     top: 0.3rem;
   }
