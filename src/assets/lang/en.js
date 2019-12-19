@@ -173,7 +173,7 @@ export const m = {
   feedback14: 'copy',
 
 
-  feedback15: 'Unable to accept this order',
+  feedback15: 'Refuse',
   feedback16: 'Please fill in the reason for refusing to accept this form',
   feedback17: "If you can't meet the needs of the guests, you can return this order to the headquarters",
 
