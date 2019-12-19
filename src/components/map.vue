@@ -839,8 +839,8 @@ export default {
 
     h1 {
       font-size: 0.5rem;
-      padding-top: 0.8rem;
-      padding-bottom: 0.6rem;
+      padding-top: 0.6rem;
+      padding-bottom: 0.5rem;
       font-weight: bold;
     }
 
@@ -849,6 +849,7 @@ export default {
       padding-left: 0.4rem;
       font-size: 0.4rem;
       background: url("../assets/images/dingwei3.png") no-repeat top left;
+      background-position: 0px 2px;
       background-size: 0.28rem auto;
       line-height: 1.2;
     }
