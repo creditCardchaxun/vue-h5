@@ -208,7 +208,7 @@ export const m = {
       PY: "ADEGHG",
     },
     {
-      short: "AE",
+      short: "UAE",
       name: "UnitedArabEmirates",
       id: "UnitedArabEmirates",
       tel: "971",
