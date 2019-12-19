@@ -76,6 +76,7 @@ export default {
   },
 
   mounted: function () {
+    WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink + `?shareId=${this.splicejing(location.hash)}`)
     window.addEventListener('scroll', this.handleScroll);
     $eventbus.$on("changeLang", (res) => {
       this.activedetails(this.id)
@@ -92,7 +93,10 @@ export default {
   deactivated() {
     window.removeEventListener('scroll', this.handleScroll);
   },
-
+  beforeRouteLeave(to, from, next) {
+    WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink + `?shareId=${location.hash}`)
+    next()
+  },
   components: {
     aheaders,
     afooter

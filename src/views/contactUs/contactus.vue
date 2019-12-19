@@ -269,6 +269,7 @@ export default {
 
   updated() { },
   mounted() {
+    WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink + `?shareId=${this.splicejing(location.hash)}`)
     // let that = this;
     // that.$nextTick(() => {
     //   // let height= window.getComputedStyle(this.$refs.heightShow).height
@@ -302,7 +303,10 @@ export default {
       }
     });
   },
-
+  beforeRouteLeave(to, from, next) {
+    WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink + `?shareId=${location.hash}`)
+    next()
+  },
   //第四步：当再次进入（前进或者后退）时，只触发activated（注：只有在keep-alive加载时调用）
   activated() {
     if (this.scroll > 0) {

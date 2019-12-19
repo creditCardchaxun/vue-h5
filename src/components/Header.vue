@@ -7,7 +7,7 @@
           <img src="@/assets/images/logo.png" alt />
         </router-link>
       </div>
-      <div class="left" v-if="status==3" @click="$emit('toback')">
+      <div class="left" v-if="status==3" @click="goBack">
         <van-icon name="arrow-left" />
       </div>
       <!-- toback(where) -->
@@ -35,6 +35,7 @@
 import Vue from 'vue';
 
 import store from '../store'
+import config from '@/config/config.js'
 
 export default {
   name: 'aheaders',
@@ -74,7 +75,14 @@ export default {
     toorder() {
       this.$router.push({ path: '/order' })
     },
-
+    goBack() {
+      if (location.href.includes("shareId")) {
+        location.href = config.shareLink
+      }else{
+        this.$emit('toback')
+      }
+      
+    },
     //  handleScrolls() {
     //        let scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
     //          scrolltop >55? (this.showbg = true) : (this.showbg = false);

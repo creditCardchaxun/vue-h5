@@ -45,7 +45,7 @@ export default {
   created() {
     this.getUserInfo()  //获取个人信息
     // 通过url中是否含有shareId来判断是否是分享出去的详情页，再由路由推向对应详情页
-    // this.judgeShare()
+    this.judgeShare()
     this.getServiceInfo()
   },
   computed: {
@@ -98,9 +98,11 @@ export default {
     judgeShare() {
       if (location.href.includes("shareId")) {
         // 用是否有shareId 来判断是不是分享出去的链接
-        var id = this.getshareId(location.href)
-        this.$router.replace({ path: "detail", query: { detailId: id } });
-      } 
+        // var id = this.getshareId(location.href)
+        var path = this.getQueryStringByName('shareId')
+        // this.$router.replace({ path: "detail", query: { detailId: id } });
+        this.$router.replace({ path: path });
+      }
     },
     getshareId(str) {
       var arr = str.split("?");

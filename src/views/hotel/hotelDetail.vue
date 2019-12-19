@@ -400,7 +400,11 @@ export default {
       });
     });
 
-    // WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink+`?shareId=${location.hash}`)
+
+  },
+  beforeRouteLeave(to, from, next) {
+    WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink + `?shareId=${location.hash}`)
+    next()
   },
   beforeRouteUpdate(to, from, next) {
     WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink + `?shareId=${location.hash}`)
@@ -639,6 +643,7 @@ export default {
     }
   },
   mounted() {
+    WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink + `?shareId=${this.splicejing(location.hash)}`)
     //  let id=this.$route.params.status
     // var hash = window.location.hash;
     // console.log(hash)

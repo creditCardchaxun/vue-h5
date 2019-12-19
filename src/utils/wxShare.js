@@ -182,7 +182,7 @@ class _WXsdk {
 }
 
 let WXsdk = new _WXsdk()
-WXsdk.jinzhi()
+// WXsdk.jinzhi()
 
 export {
   WXsdk

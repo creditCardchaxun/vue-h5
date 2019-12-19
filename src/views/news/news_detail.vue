@@ -52,7 +52,6 @@ export default {
       to.meta[i18n.locale] = res.title
       next(vm => {
         vm.newsDetails = res
-        // WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink+`?shareId=${location.hash}`)
       })
     })
   },
@@ -77,6 +76,7 @@ export default {
     //  this.newsDetail(this.newsId)
   },
   mounted: function () {
+    WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink + `?shareId=${this.splicejing(location.hash)}`)
     this.newsId = this.$route.params.id;
     window.addEventListener('scroll', this.handleScroll);
     $eventbus.$on("changeLang", (res) => {
@@ -94,7 +94,11 @@ export default {
   deactivated() {
     window.removeEventListener('scroll', this.handleScroll);
   },
+  beforeRouteLeave(to, from, next) {
+    WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink + `?shareId=${location.hash}`)
 
+    next()
+  }
   //   beforeRouteEnter(to, from, next) {
   //   // console.log(to.params.city + "test");
   //   console.log(to)
@@ -205,5 +209,4 @@ export default {
   width: 100%;
   height: auto;
 }
-
 </style>

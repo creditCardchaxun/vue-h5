@@ -56,9 +56,22 @@ let MIXIN = {
         newArr.push(ele[name])
       })
       return newArr
+    },
+    splicejing(str) {
+      var reg = /[^#]/g
+
+      var kl = str.match(reg).join('')
+      return kl
+    },
+    getQueryStringByName(name) {
+      var result = location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
+      if (result == null || result.length < 1) {
+        return "";
+      }
+      return result[1];
     }
   },
-  beforeRouteLeave (to, from, next) {
+  beforeRouteLeave(to, from, next) {
     // WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink)
     next()
   },
