@@ -72,7 +72,7 @@ const routes = [
     meta: {
       keepalive: false, // 组件是否需要被保存
       title: '活动列表',
-      'en-US': 'Event',
+      'en-US': 'Events',
       'zh-CN': '活动列表',
 
     }

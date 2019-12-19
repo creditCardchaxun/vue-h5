@@ -20,14 +20,14 @@ export const m = {
 
   // 首页
   home: 'Home',
-  ischeck: 'No phone verified',
+  ischeck: 'Verify phone number',
   changePhone: 'Edit',
 
   manage:'Management',
   myorder:'My Bookings',
   home1:'baseLIVING',
   home2:'News',
-  home3:'Event',
+  home3:'Events',
   home4:'About base',
   home5:'Contact us',
   orderhouse:'Book',
@@ -58,10 +58,10 @@ export const m = {
   // 底部
   homebottom: 'baseLIVING',
   homebottom2:'News',
-  homebottom3:'Event',
+  homebottom3:'Events',
   //  首页
   // news: 'news',
-  activity: 'Event',
+  activity: 'Events',
   models1: 'Appointment time',
 
   // 预约表单
@@ -105,12 +105,12 @@ export const m = {
 
   //  注册按钮
   s1: 'Phone',
-  s2: 'authentication code',
-  s3: 'get code',
+  s2: 'Code',
+  s3: 'Get',
   s4: 'Submit',
-  s5: 'enter number',
-  s6: 'enter code',
-  s7: 'countryCode',
+  s5: 'Phone number',
+  s6: 'Verification Code',
+  s7: 'Country',
 
 
   // 精品旅舍
