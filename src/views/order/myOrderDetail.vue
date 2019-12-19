@@ -77,7 +77,7 @@
 
     <div
       class="connectUs"
-      v-if="bookarr.status==1||bookarr.status==3||bookarr.status==4||bookarr.status==5"
+      v-if="bookarr.status==1||bookarr.status==3||bookarr.status==4"
     >
       <button class="s1" @click="toFormEdit(bookarr.id)">{{$t('m.bookdetail4')}}</button>
       <button @click="deleteForm(bookarr.id)">{{$t('m.bookdetail5')}}</button>

@@ -224,6 +224,12 @@ export default {
 
         this.canceled = this.addBtnTitle(canceled)
 
+        if (allArr.length) {
+          this.showBtn = false;
+        } else {
+          this.showBtn = true;
+        }
+
         // if (res.not_finish.length !== 0) {
         //   this.orderList = this.addBtnTitle(res.not_finish)
         // }
@@ -243,7 +249,7 @@ export default {
             res.not_finish.length == 0) &&
           (res.finish == null || res.finish == "" || res.finish.length == 0)
         ) {
-          this.showBtn = true;
+          // this.showBtn = true;
         }
       });
     },
