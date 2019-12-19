@@ -348,7 +348,7 @@ export const m = {
       PY: "BN",
     },
     {
-      short: "BL",
+      short: "PKA",
       name: "Palestine",
       id: "Palestine",
       tel: "970",
@@ -439,7 +439,7 @@ export const m = {
       PY: "GG",
     },
     {
-      short: "CH",
+      short: "SUI",
       name: "Switzerland",
       id: "Switzerland",
       tel: "41",
@@ -516,7 +516,7 @@ export const m = {
       PY: "JK",
     },
     {
-      short: "DE",
+      short: "GER",
       name: "Germany",
       id: "Germany",
       tel: "49",
@@ -544,7 +544,7 @@ export const m = {
       PY: "DMNJGHG",
     },
     {
-      short: "DZ",
+      short: "ALG",
       name: "Algeria",
       id: "Algeria",
       tel: "213",
@@ -572,7 +572,7 @@ export const m = {
       PY: "AJ",
     },
     {
-      short: "ES",
+      short: "SP",
       name: "Spain",
       id: "Spain",
       tel: "34",
@@ -614,7 +614,7 @@ export const m = {
       PY: "JP",
     },
     {
-      short: "GB",
+      short: "UK",
       name: "UnitedKiongdom",
       id: "UnitedKiongdom",
       tel: "44",
@@ -635,7 +635,7 @@ export const m = {
       PY: "GLJY",
     },
     {
-      short: "GF",
+      short: "FGUY",
       name: "FrenchGuiana",
       id: "FrenchGuiana",
       tel: "594",
@@ -831,7 +831,7 @@ export const m = {
       PY: "JPZ",
     },
     {
-      short: "KP",
+      short: "N.K",
       id: "NorthKorea",
       name: "NorthKorea",
       tel: "850",
@@ -880,7 +880,7 @@ export const m = {
       PY: "LBN",
     },
     {
-      short: "LC",
+      short: "SLC",
       id: "St.Lucia",
       name: "St.Lucia",
       tel: "1758",
@@ -894,7 +894,7 @@ export const m = {
       PY: "LZDSD",
     },
     {
-      short: "LK",
+      short: "SRI",
       id: "SriLanka",
       name: "SriLanka",
       tel: "94",
@@ -978,7 +978,7 @@ export const m = {
       PY: "ML",
     },
     {
-      short: "MM",
+      short: "BMYA",
       id: "Burma",
       name: "Burma",
       tel: "95",
@@ -1160,7 +1160,7 @@ export const m = {
       PY: "ML",
     },
     {
-      short: "PF",
+      short: "FPA",
       id: "FrenchPolynesia",
       name: "FrenchPolynesia",
       tel: "689",
@@ -1356,7 +1356,7 @@ export const m = {
       PY: "SDMHPLXB",
     },
     {
-      short: "SV",
+      short: "ESV",
       id: "EISalvador",
       name: "EISalvador",
       tel: "503",
@@ -1377,7 +1377,7 @@ export const m = {
       PY: "SWSL",
     },
     {
-      short: "TD",
+      short: "Cha",
       id: "Chad",
       name: "Chad",
       tel: "235",
@@ -1489,7 +1489,7 @@ export const m = {
       PY: "WZBKST",
     },
     {
-      short: "VC",
+      short: "SVC",
       id: "SaintVincent",
       name: "SaintVincent",
       tel: "1784",
@@ -1524,7 +1524,7 @@ export const m = {
       PY: "NSLF",
     },
     {
-      short: "ZA",
+      short: "SAL",
       id: "SouthAfrica",
       name: "SouthAfrica",
       tel: "27",
