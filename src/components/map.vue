@@ -3,7 +3,7 @@
     <div class="main-container">
       <!-- <div :class="['button',fullScreen?'window-button':'full-button']" @click="changeFullScreen"></div> -->
       <div v-show="fullScreen" :class="['button','window-button']" @click="changeFullScreen"></div>
-      <div v-show="!fullScreen" :class="['button','full-button']" @click="openapp"></div>
+      <div v-show="!fullScreen&&selectProject" :class="['button','full-button']" @click="openapp"></div>
       <aheaders v-if="!fullScreen" status="3" @toback="toreplace" :showNav="false" :showLan="true"></aheaders>
       <!-- <div id="container" ref="mapbox" :class="[$store.state.lang==='en-US'? 'blackwhite':'']"></div> -->
       <div id="container" ref='mapbox'  class="blackwhite"></div>
@@ -65,7 +65,7 @@
             <span @click="route(3)" class="span" id="foot">步行</span>
           </div>
         </div>
-        <div v-show="!fullScreen">
+        <div v-show="!fullScreen&&selectProject">
           <!-- <div class="tip" @click="openapp">{{$t('m.map.open')}}</div> -->
           <ul class="recommend">
             <li data-type="酒店">{{$t('m.map.jiudian')}}</li>
