@@ -1403,5 +1403,11 @@ export const m = {
     defaultName: '上海'
   },
   // 预约详情
-  cancalSucess: '取消成功'
+  cancalSucess: '取消成功',
+  // 我的预约,
+  djd: '待接单',
+  xsyjd: '销售已接单',
+  ckxq: '查看详情',
+  lxxs: '联系销售',
+  ljpj: '立即评价',
 }

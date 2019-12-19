@@ -35,8 +35,10 @@
                     <!-- </router-link>  -->
                   </em>
                   <button
+                    v-if="Number(item.status) === 1||Number(item.status) === 2||Number(item.status) === 3||Number(item.status) === 4||Number(item.status) === 6"
                     @click.stop.prevent="orderDetails(item.id,item.status,item.mobile)"
                   >{{orderList[index].titleBtn2}}</button>
+                  <div class="empty-box" v-else></div>
                 </div>
               </div>
             </div>
@@ -74,9 +76,10 @@
                     @click.stop.prevent="toAppraise(item.id)"
                     >{{$t('m.watch6')}}</button>-->
                     <button
-                      v-if="item.status"
+                      v-if="Number(item.status) === 1||Number(item.status) === 2||Number(item.status) === 3||Number(item.status) === 4||Number(item.status) === 6"
                       @click.stop.prevent="orderDetails2(item.id,item.status,item.mobile)"
                     >{{orderList2[index].titleBtn2}}</button>
+                    <div class="empty-box" v-else></div>
                   </div>
                 </div>
               </router-link>
@@ -117,8 +120,10 @@
                     <!-- </router-link>  -->
                   </em>
                   <button
+                    v-if="Number(item.status) === 1||Number(item.status) === 2||Number(item.status) === 3||Number(item.status) === 4||Number(item.status) === 6"
                     @click.stop.prevent="orderDetails(item.id,item.status,item.mobile)"
                   >{{orderList[index].titleBtn2}}</button>
+                  <div class="empty-box" v-else></div>
                 </div>
               </div>
             </div>
@@ -248,27 +253,27 @@ export default {
       arr.forEach((item) => {
         switch (item.status) {
           case '1':
-            titleBtn2 = "查看详情";
-            zhut = '待接单'
+            titleBtn2 = this.$i18n.t('m.ckxq');
+            zhut = this.$i18n.t('m.djd');
             break;
           case '2':
-            titleBtn2 = "联系销售";
-            zhut = '销售已接单'
+            titleBtn2 = this.$i18n.t('m.lxxs');
+            zhut = this.$i18n.t('m.xsyjd');
             break;
           case '3':
-            titleBtn2 = "查看详情";
-            zhut = '待接单'
+            titleBtn2 = this.$i18n.t('m.ckxq');
+            zhut = this.$i18n.t('m.djd');
             break;
           case '4':
-            titleBtn2 = "查看详情";
-            zhut = '待接单'
+            titleBtn2 = this.$i18n.t('m.ckxq');
+            zhut = this.$i18n.t('m.djd');
             break;
           case '5':
             titleBtn2 = "已取消";
             zhut = ''
             break;
           case '6':
-            titleBtn2 = "立即评价";
+            titleBtn2 = this.$i18n.t('m.ljpj');
             zhut = ''
             break;
           case '7':
@@ -371,6 +376,10 @@ export default {
 </script>
 
 <style scoped>
+.empty-box {
+  width: 0.5rem;
+}
+
 .myorder {
   width: 100%;
   margin: 0 auto;

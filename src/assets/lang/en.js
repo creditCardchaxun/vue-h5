@@ -23,18 +23,18 @@ export const m = {
   ischeck: 'Verify phone number',
   changePhone: 'Edit',
 
-  manage:'Management',
-  myorder:'My Bookings',
-  home1:'baseLIVING',
-  home2:'News',
-  home3:'Events',
-  home4:'About base',
-  home5:'Contact us',
-  orderhouse:'Book',
-  watch:'Upcoming',
-  watch2:'Completed',
+  manage: 'Management',
+  myorder: 'My Bookings',
+  home1: 'baseLIVING',
+  home2: 'News',
+  home3: 'Events',
+  home4: 'About base',
+  home5: 'Contact us',
+  orderhouse: 'Book',
+  watch: 'Upcoming',
+  watch2: 'Completed',
   watch33: 'Canceled',
-  server:'Need help',
+  server: 'Need help',
 
   //  客户预约列表
   watch3: 'Date ',
@@ -57,8 +57,8 @@ export const m = {
 
   // 底部
   homebottom: 'baseLIVING',
-  homebottom2:'News',
-  homebottom3:'Events',
+  homebottom2: 'News',
+  homebottom3: 'Events',
   //  首页
   // news: 'news',
   activity: 'Events',
@@ -129,8 +129,8 @@ export const m = {
   hotelxq6: 'Recommended apartment',
   hotelxq7: 'You have made an appointment, please tell us your feedback.',
   hotelxq8: 'Recommended apartment',
-  hotelxq9: 'Book a room ',  //点击预订
-  hotelxq12: 'Book a visit',  //点击预约
+  hotelxq9: 'Book a room ', //点击预订
+  hotelxq12: 'Book a visit', //点击预约
   hotelxq10: 'Apartment area',
   hotelxq11: 'area',
 
@@ -140,20 +140,20 @@ export const m = {
   bookName3: 'Date',
   bookName4: 'Name',
 
-    // 我的预定预定时间
-    startdate1:'start time',
-    startdate2:'end of time',
-    startdate3:'prev',
-    startdate4:'Next month',
-    startdate5:'years',
-    startdate6:'month',
-    startdate7:'Sun',
-    startdate8:'Mon',
-    startdate9:'Tue',
-    startdate10:'Wed',
-    startdate11:'Thu',
-    startdate12:'Fri',
-    startdate13:'Sat',
+  // 我的预定预定时间
+  startdate1: 'start time',
+  startdate2: 'end of time',
+  startdate3: 'prev',
+  startdate4: 'Next month',
+  startdate5: 'years',
+  startdate6: 'month',
+  startdate7: 'Sun',
+  startdate8: 'Mon',
+  startdate9: 'Tue',
+  startdate10: 'Wed',
+  startdate11: 'Thu',
+  startdate12: 'Fri',
+  startdate13: 'Sat',
 
   // 看房反馈  
   feedback1: 'Please fill in the feedback information of this visit',
@@ -193,10 +193,10 @@ export const m = {
 
   show11: 'Please select an appointment time',
   show12: 'Please select the intention label or fill in the intention information',
-  show13:'About to enter ctrip!',
-    // 时间插件
-    date1:'confirm',
-    date2:'cancel',
+  show13: 'About to enter ctrip!',
+  // 时间插件
+  date1: 'confirm',
+  date2: 'cancel',
 
   // 城市区号
   selectCountry: {
@@ -1270,5 +1270,11 @@ export const m = {
     defaultName: 'Shanghai'
   },
   // 预约详情
-  cancalSucess: 'Cancellation of success'
+  cancalSucess: 'Cancellation of success',
+  // 我的预约,
+  djd: 'Processing',
+  xsyjd: 'Accepted',
+  ckxq: 'Details',
+  lxxs: 'Contact',
+  ljpj: 'Feedback',
 }
