@@ -11,8 +11,9 @@ let configTest = {
 
 let configProduction = {
   BASEURL: 'https://web-api.base-china.com/' || process.env.BASE_URL,
-  shareIcon: 'https://wanda-h5.bdideal.com/shengxu/icon/fx.png',
-  shareLink: 'http://wanda-h5.bdideal.com/shengxu/index.html',
+  shareIcon: 'https://m.base-china.com/icon/fx.png',
+  // shareLink: 'http://wanda-h5.bdideal.com/shengxu/index.html',
+  shareLink: 'https://m.base-china.com/index.html',
   shareTitle: 'baseLIVING精品居舍',
   shareContent:'为城市社群打造充满灵感的生活空间',
   sysType: 1
