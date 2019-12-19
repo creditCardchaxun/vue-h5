@@ -122,9 +122,9 @@ export const m = {
 
   // 精品旅社详情
   hotelxq1: 'project story',
-  hotelxq2: 'Apartment features',
-  hotelxq3: 'Apartment display',
-  hotelxq4: 'Apartment allocation',
+  hotelxq2: 'About',
+  hotelxq3: 'Rooms',
+  hotelxq4: 'Facilities',
   hotelxq5: 'Surrounding and transportation services',
   hotelxq6: 'Recommended apartment',
   hotelxq7: 'You have made an appointment, please tell us your feedback.',
