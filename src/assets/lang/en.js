@@ -91,9 +91,9 @@ export const m = {
 
   //  销售预约管理
   others5: 'Unconfirmed',
-  others6: 'Room to be seen',
+  others6: 'Accepted',
   others7: 'Completed',
-  others8: 'Please input Phone number to find the record',
+  others8: 'Enter the phone number to find the record',
   others9: 'Contact',
   others10: 'Fill in feedback',
   others11: 'Accept appointment',
@@ -1564,7 +1564,7 @@ export const m = {
   // 预约详情
   cancalSucess: 'Cancellation of success',
   // 我的预约,
-  djd: 'Processing',
+  djd: ' Unconfirmed',
   xsyjd: 'Accepted',
   ckxq: 'Details',
   lxxs: 'Contact',
