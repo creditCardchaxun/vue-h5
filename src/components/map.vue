@@ -806,7 +806,7 @@ export default {
 
   .full-button {
     // background: url("../assets/images/window.png") no-repeat;
-    background: url("../assets/images/window.jpg") no-repeat;
+    background: url("../assets/images/window1.png") no-repeat;
     background-size: 100% 100%;
     bottom: 2.1rem;
   }
