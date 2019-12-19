@@ -39,9 +39,9 @@ export const m = {
   //  客户预约列表
   watch3: 'Date ',
   watch4: 'View Map',
-  watch5: "You haven't made an appointment yet. Please make an appointment",
+  watch5: "You have not book any apartment yet.",
   watch6: 'Star Rating',
-  watch7: 'Click to make an appointment',
+  watch7: 'Book',
   // 客户预约详情
   bookdetail1: 'Thanks for coming.',
   bookdetail2: 'Review',
