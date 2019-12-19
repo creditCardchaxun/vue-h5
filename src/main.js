@@ -128,6 +128,16 @@ router.beforeEach((from, to, next) => {
   next()
 })
 
+
+// 百度统计
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?15c3212aded94e92b6bbf263ed22c359";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
 router.afterEach((from, to) => {
   // document.documentElement.scrollTop=0
 

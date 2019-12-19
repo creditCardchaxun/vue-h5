@@ -9,7 +9,8 @@
           <!-- {{$t('m.selectCountry.'+codeLettet+'.'+findArrIndex('m.selectCountry.'+codeLettet,codeId))}}  -->
         </div>
         <div class="right">
-          <input class="numCode" readonly @click="toshowRegion" v-model="numCode" />
+          <!-- <input class="numCode" readonly @click="toshowRegion" v-model="numCode" /> -->
+          <div class="numCode" @click="toshowRegion">{{numCode}}</div>
         </div>
       </div>
       <div class="mains" :class="{'is-invalid':errors2}">
