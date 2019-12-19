@@ -1,59 +1,60 @@
 <template>
   <div class="hotel-detail">
-    <aheaders status="3" @toback="goHome" :showLan="true"></aheaders>
-    <div class="banner-img">
-      <div class="banner_top" @click="showStory" v-show="hideBannerTop">
-        <em>{{$t('m.hotelxq1')}}</em>
-        <!-- <div class="down">
+    <div>
+      <aheaders status="3" @toback="goHome" :showLan="true"></aheaders>
+      <div class="banner-img">
+        <div class="banner_top" @click="showStory" v-show="hideBannerTop">
+          <em>{{$t('m.hotelxq1')}}</em>
+          <!-- <div class="down">
           <img src="../../assets/images/more-icon01.jpg" alt style="width:0.2rem;height:0.2rem;" />
-        </div>-->
-      </div>
-      <div class="Project-imgs">
-        <projectImg
-          v-if="showImgAll&&imgAll.length"
-          :imgAll="imgAll"
-          :showImgAll="showImgAll"
-          :idss="detailId"
-          @tohideList="tohideList"
-        ></projectImg>
-      </div>
-      <!-- vant-swipe轮播插件 -->
-      <!-- 轮播图 -->
-      <van-swipe @change="onChanges" :show-indicators="true">
-        <!-- 图片轮播 -->
-        <template v-if="hideImg&&projectdetail.pic">
-          <van-swipe-item v-for="(item,index) in projectdetail.pic.img" :key="index">
-            <img :src="item" @click="previewImg(item,projectdetail.pic.img)" alt />
+          </div>-->
+        </div>
+        <div class="Project-imgs">
+          <projectImg
+            v-if="showImgAll&&imgAll.length"
+            :imgAll="imgAll"
+            :showImgAll="showImgAll"
+            :idss="detailId"
+            @tohideList="tohideList"
+          ></projectImg>
+        </div>
+        <!-- vant-swipe轮播插件 -->
+        <!-- 轮播图 -->
+        <van-swipe @change="onChanges" :show-indicators="true">
+          <!-- 图片轮播 -->
+          <template v-if="hideImg&&projectdetail.pic">
+            <van-swipe-item v-for="(item,index) in projectdetail.pic.img" :key="index">
+              <img :src="item" @click="previewImg(item,projectdetail.pic.img)" alt />
+            </van-swipe-item>
+          </template>
+          <!-- VR轮播 -->
+          <van-swipe-item v-if="hideVR&&projectdetail.pic">
+            <div class="VR-img" @click="toVRurl(projectdetail.pic.VR.url)">
+              <img :src="projectdetail.pic.VR.ar_pic" alt />
+              <img src="../../assets/images/VR.png" alt class="VR" />
+            </div>
           </van-swipe-item>
-        </template>
-        <!-- VR轮播 -->
-        <van-swipe-item v-if="hideVR&&projectdetail.pic">
-          <div class="VR-img" @click="toVRurl(projectdetail.pic.VR.url)">
-            <img :src="projectdetail.pic.VR.ar_pic" alt />
-            <img src="../../assets/images/VR.png" alt class="VR" />
-          </div>
-        </van-swipe-item>
-        <!-- 视频轮播 -->
-        <van-swipe-item v-if="hideVideo">
-          <div class="VR-img">
-            <img
-              :src="projectdetail.pic.video.video_pic"
-              v-if="projectdetail.pic.video.video_pic"
-              @click="showVideoplay"
-            />
-            <img src="../../assets/images/stop.png" alt class="VR" />
-          </div>
-        </van-swipe-item>
+          <!-- 视频轮播 -->
+          <van-swipe-item v-if="hideVideo">
+            <div class="VR-img">
+              <img
+                :src="projectdetail.pic.video.video_pic"
+                v-if="projectdetail.pic.video.video_pic"
+                @click="showVideoplay"
+              />
+              <img src="../../assets/images/stop.png" alt class="VR" />
+            </div>
+          </van-swipe-item>
 
-        <div
-          class="custom-indicator"
-          slot="indicator"
-          v-if="projectdetail.pic"
-        >{{ currentBanner + 1 }}/{{hideImg?projectdetail.pic.img.length:totalLength}}</div>
-      </van-swipe>
+          <div
+            class="custom-indicator"
+            slot="indicator"
+            v-if="projectdetail.pic"
+          >{{ currentBanner + 1 }}/{{hideImg?projectdetail.pic.img.length:totalLength}}</div>
+        </van-swipe>
 
-      <!-- 重新使用swiper进行渲染 轮播图-->
-      <!-- <swiper :options="swiperOption"  style='position:relative;'>
+        <!-- 重新使用swiper进行渲染 轮播图-->
+        <!-- <swiper :options="swiperOption"  style='position:relative;'>
         <template v-if="hideImg&&projectdetail.pic">
             <swiper-slide v-for="(item,index) in projectdetail.pic.img" :key="index">
                 <img :src="item" alt />
@@ -79,200 +80,209 @@
         </swiper-slide>
         
       </swiper>    
-      <em class='iconNum'>{{ currentBanner+1}}/{{hideImg?projectdetail.pic.img.length:totalLength}}</em>-->
+        <em class='iconNum'>{{ currentBanner+1}}/{{hideImg?projectdetail.pic.img.length:totalLength}}</em>-->
 
-      <p class="swiper-title">
-        <span
-          v-if="projectdetail.pic&&projectdetail.pic.VR.ar_pic"
-          @click="toshowVR(1)"
-          :class="{activeTitle:hideVR}"
-        >VR</span>
-        <span
-          v-if="projectdetail.pic&&projectdetail.pic.VR.ar_pic"
-          @click="toshowIMG(projectdetail.pic.img.length)"
-          :class="{activeTitle:hideImg}"
-        >图片</span>
-        <span
-          v-if="projectdetail.pic&&projectdetail.pic.video.video_pic"
-          @click="toshowVideo(1)"
-          :class="{activeTitle:hideVideo}"
-        >视频</span>
-      </p>
-    </div>
-    <!-- 视频播放 -->
-    <div class="video-model" v-if="video_url" @click="tohideVideo">
-      <video :src="projectdetail.pic.video.video_url" autoplay controls width="100%" height="400"></video>
-    </div>
-
-    <div class="main-content">
-      <h3>
-        <em>{{projectdetail.project_name}}</em>
-        <span>{{projectdetail.open_info}}</span>
-      </h3>
-      <div class="main-icon">
-        <span v-for="(item,index) in projectdetail.project_tags" :key="index">{{item}}</span>
-        <!-- <span>露天花园</span><span>露天花园</span><span>露天花园</span> -->
+        <p class="swiper-title">
+          <span
+            v-if="projectdetail.pic&&projectdetail.pic.VR.ar_pic"
+            @click="toshowVR(1)"
+            :class="{activeTitle:hideVR}"
+          >VR</span>
+          <span
+            v-if="projectdetail.pic&&projectdetail.pic.VR.ar_pic"
+            @click="toshowIMG(projectdetail.pic.img.length)"
+            :class="{activeTitle:hideImg}"
+          >图片</span>
+          <span
+            v-if="projectdetail.pic&&projectdetail.pic.video.video_pic"
+            @click="toshowVideo(1)"
+            :class="{activeTitle:hideVideo}"
+          >视频</span>
+        </p>
       </div>
-      <div class="main-loaction" @click="toMap">
-        <div class="location" ref="house">
-          <van-icon name="location-o" />
-          <span>{{projectdetail.address}}</span>
+      <!-- 视频播放 -->
+      <div class="video-model" v-if="video_url" @click="tohideVideo">
+        <video :src="projectdetail.pic.video.video_url" autoplay controls width="100%" height="400"></video>
+      </div>
+
+      <div class="main-content">
+        <h3>
+          <em>{{projectdetail.project_name}}</em>
+          <span>{{projectdetail.open_info}}</span>
+        </h3>
+        <div class="main-icon">
+          <span v-for="(item,index) in projectdetail.project_tags" :key="index">{{item}}</span>
+          <!-- <span>露天花园</span><span>露天花园</span><span>露天花园</span> -->
         </div>
-        <van-icon name="arrow" />
+        <div class="main-loaction" @click="toMap">
+          <div class="location" ref="house">
+            <van-icon name="location-o" />
+            <span>{{projectdetail.address}}</span>
+          </div>
+          <van-icon name="arrow" />
+        </div>
       </div>
-    </div>
-    <div class="desc">
-      <h3>{{$t('m.hotelxq2')}}</h3>
-      <showmorenew :pageType="'hotal-gypp'" v-if="projectdetail.desc" :htmlstr="projectdetail.desc"></showmorenew>
-    </div>
-    <div class="types">
-      <div class="types-nav">
-        <h3>{{$t('m.hotelxq3')}}</h3>
-        <van-tabs
-          line-width="6%"
-          :border="false"
-          :ellipsis="false"
-          v-if="projectdetail.house_type!=''"
-          @change="onchangeTab"
-        >
-          <div class="class" v-for="(item,index) in projectdetail.house_type" :key="index">
-            <van-tab :title="item.typename">
-              <van-swipe @change="onChange" :ref="'detailSwiper' + index">
-                <van-swipe-item v-for="(i,ins) in item.pic" :key="ins">
-                  <img
-                    :src="i.fileurl"
-                    @click="previewImg(i.fileurl,objectToArr(item.pic,'fileurl'))"
-                    alt
-                    class="hotel-msg"
-                  />
-                </van-swipe-item>
-                <!-- <van-swipe-item><img src="../../assets/images/hotel-02.jpg" alt="" class='hotel-msg'></van-swipe-item> -->
-                <div
-                  class="custom-indicator"
-                  v-if="projectdetail.project_name"
-                  slot="indicator"
-                >{{ current + 1 }}/{{houseTypeLength}}</div>
-              </van-swipe>
-              <div class="types-mianji">
-                <div class="yiju">{{$t('m.hotelxq10')}}:{{item.room_size}}㎡</div>
-                <div class="yiju-img">
-                  <img
-                    :src="item.house_type_pic"
-                    @click="previewImg(item.house_type_pic,[item.house_type_pic])"
-                    alt
-                  />
+      <div class="desc">
+        <h3>{{$t('m.hotelxq2')}}</h3>
+        <showmorenew
+          :pageType="'hotal-gypp'"
+          v-if="projectdetail.desc"
+          :htmlstr="projectdetail.desc"
+        ></showmorenew>
+      </div>
+      <div class="types">
+        <div class="types-nav">
+          <h3>{{$t('m.hotelxq3')}}</h3>
+          <van-tabs
+            line-width="6%"
+            :border="false"
+            :ellipsis="false"
+            v-if="projectdetail.house_type!=''"
+            @change="onchangeTab"
+          >
+            <div class="class" v-for="(item,index) in projectdetail.house_type" :key="index">
+              <van-tab :title="item.typename">
+                <van-swipe @change="onChange" :ref="'detailSwiper' + index">
+                  <van-swipe-item v-for="(i,ins) in item.pic" :key="ins">
+                    <img
+                      :src="i.fileurl"
+                      @click="previewImg(i.fileurl,objectToArr(item.pic,'fileurl'))"
+                      alt
+                      class="hotel-msg"
+                    />
+                  </van-swipe-item>
+                  <!-- <van-swipe-item><img src="../../assets/images/hotel-02.jpg" alt="" class='hotel-msg'></van-swipe-item> -->
+                  <div
+                    class="custom-indicator"
+                    v-if="projectdetail.project_name"
+                    slot="indicator"
+                  >{{ current + 1 }}/{{houseTypeLength}}</div>
+                </van-swipe>
+                <div class="types-mianji">
+                  <div class="yiju">{{$t('m.hotelxq10')}}:{{item.room_size}}㎡</div>
+                  <div class="yiju-img">
+                    <img
+                      :src="item.house_type_pic"
+                      @click="previewImg(item.house_type_pic,[item.house_type_pic])"
+                      alt
+                    />
+                  </div>
                 </div>
-              </div>
-            </van-tab>
+              </van-tab>
+            </div>
+            <!-- <van-tab title="二居"> <p style='font-size:0.3rem;margin:0.3rem 0;'>暂无详细信息</p>   </van-tab> -->
+          </van-tabs>
+        </div>
+        <div class="desc" id="maps" ref="tab1">
+          <h3 style="margin-top:1.2rem;">{{$t('m.hotelxq4')}}</h3>
+          <div class="toall-ul">
+            <ul
+              :class="{activeLi:showHeight}"
+              ref="heightShow"
+              v-if="projectdetail.project_setting!=null && lanBase === 'EN'"
+            >
+              <li v-for="(item,index) in projectdetail.project_setting" :key="index">
+                <img :src="item.image" alt />
+                <span>{{item.title}}</span>
+              </li>
+            </ul>
+            <ul
+              class="ul2"
+              :class="{activeLi2:showHeight}"
+              ref="heightShow"
+              v-if="projectdetail.project_setting!=null && lanBase === '中'"
+            >
+              <li v-for="(item,index) in projectdetail.project_setting" :key="index">
+                <img :src="item.image" alt />
+                <span>{{item.title}}</span>
+              </li>
+            </ul>
+            <div
+              class="index-more"
+              v-if="projectdetail.project_setting!=null&&projectdetail.project_setting.length>8"
+              @click="toloadMore"
+            >
+              <span v-show="hideIcon">more</span>
+              <img
+                src="../../assets/images/more-icon.jpg"
+                alt
+                style="margin-top: -0.02rem;"
+                :class="{brandimg2:showHeight}"
+              />
+            </div>
           </div>
-          <!-- <van-tab title="二居"> <p style='font-size:0.3rem;margin:0.3rem 0;'>暂无详细信息</p>   </van-tab> -->
-        </van-tabs>
-      </div>
-      <div class="desc" id="maps" ref="tab1">
-        <h3 style="margin-top:1.2rem;">{{$t('m.hotelxq4')}}</h3>
-        <div class="toall-ul">
-          <ul
-            :class="{activeLi:showHeight}"
-            ref="heightShow"
-            v-if="projectdetail.project_setting!=null && lanBase === 'EN'"
-          >
-            <li v-for="(item,index) in projectdetail.project_setting" :key="index">
-              <img :src="item.image" alt />
-              <span>{{item.title}}</span>
-            </li>
-          </ul>
-          <ul
-            class="ul2"
-            :class="{activeLi2:showHeight}"
-            ref="heightShow"
-            v-if="projectdetail.project_setting!=null && lanBase === '中'"
-          >
-            <li v-for="(item,index) in projectdetail.project_setting" :key="index">
-              <img :src="item.image" alt />
-              <span>{{item.title}}</span>
-            </li>
-          </ul>
+        </div>
+        <div class="map">
+          <div class="map01">
+            <!-- <img src="../../assets/images/map01.jpg" alt=""> -->
+            <maps v-if="projectdetail.address" :dataArr="projectdetail"></maps>
+            <h3>{{$t('m.hotelxq5')}}</h3>
+            <div class="more-div" style="padding-left:0.2rem;">
+              <showmorenew
+                :pageType="'hotal-zbjt'"
+                v-if="projectdetail.content"
+                :htmlstr="projectdetail.content"
+              ></showmorenew>
+            </div>
+          </div>
+        </div>
+        <div class="hot-hotel">
+          <h3>{{$t('m.hotelxq6')}}</h3>
+          <div class="hotel-some" v-if="projectdetail.recommend_list!=''">
+            <swiper :options="swiperOption">
+              <swiper-slide v-for="(item,index) in projectdetail.recommend_list" :key="index">
+                <div class="hotel-item" @click="toDetailxq(item.id)">
+                  <img :src="item.pic" alt />
+                  <div class="hotel-title">{{item.project_name}}</div>
+                  <!-- <p>{{item.area_str}}</p> -->
+                  <p>{{item.address}}</p>
+                </div>
+              </swiper-slide>
+            </swiper>
+          </div>
           <div
-            class="index-more"
-            v-if="projectdetail.project_setting!=null&&projectdetail.project_setting.length>8"
-            @click="toloadMore"
-          >
-            <span v-show="hideIcon">more</span>
-            <img
-              src="../../assets/images/more-icon.jpg"
-              alt
-              style="margin-top: -0.02rem;"
-              :class="{brandimg2:showHeight}"
-            />
-          </div>
+            class="nolist"
+            v-else
+            style="font-size:0.35rem;text-align:center;"
+          >{{$t('m.others13')}}</div>
         </div>
       </div>
-      <div class="map">
-        <div class="map01">
-          <!-- <img src="../../assets/images/map01.jpg" alt=""> -->
-          <maps v-if="projectdetail.address" :dataArr="projectdetail"></maps>
-          <h3>{{$t('m.hotelxq5')}}</h3>
-          <div class="more-div" style="padding-left:0.2rem;">
-            <showmorenew
-              :pageType="'hotal-zbjt'"
-              v-if="projectdetail.content"
-              :htmlstr="projectdetail.content"
-            ></showmorenew>
-          </div>
-        </div>
-      </div>
-      <div class="hot-hotel">
-        <h3>{{$t('m.hotelxq6')}}</h3>
-        <div class="hotel-some" v-if="projectdetail.recommend_list!=''">
-          <swiper :options="swiperOption">
-            <swiper-slide v-for="(item,index) in projectdetail.recommend_list" :key="index">
-              <div class="hotel-item" @click="toDetailxq(item.id)">
-                <img :src="item.pic" alt />
-                <div class="hotel-title">{{item.project_name}}</div>
-                <!-- <p>{{item.area_str}}</p> -->
-                <p>{{item.address}}</p>
-              </div>
-            </swiper-slide>
-          </swiper>
-        </div>
-        <div class="nolist" v-else style="font-size:0.35rem;text-align:center;">{{$t('m.others13')}}</div>
-      </div>
-    </div>
-    <afooter></afooter>
+      <afooter></afooter>
 
-    <div
-      class="bottomMessage"
-      v-show="projectdetail.is_show_black==1"
-      v-if="local"
-      @click="toAppraise"
-    >
-      <div class="leftMessage">
-        <img src="../../assets/images/warning.png" alt class="sai1" />
-        <p>{{$t('m.hotelxq7')}}</p>
+      <div
+        class="bottomMessage"
+        v-show="projectdetail.is_show_black==1"
+        v-if="local"
+        @click="toAppraise"
+      >
+        <div class="leftMessage">
+          <img src="../../assets/images/warning.png" alt class="sai1" />
+          <p>{{$t('m.hotelxq7')}}</p>
+        </div>
+        <img src="../../assets/images/warn_right.png" alt class="sai2" />
       </div>
-      <img src="../../assets/images/warn_right.png" alt class="sai2" />
-    </div>
-    <div class="bottom-nav" v-if="local">
-      <div class="bottom-phone" @click="tocallphone">
-        <van-icon name="phone-o" />
+      <div class="bottom-nav" v-if="local">
+        <div class="bottom-phone" @click="tocallphone">
+          <van-icon name="phone-o" />
+        </div>
+        <button
+          @click="toServe(projectdetail.id,projectdetail.project_name)"
+          v-if="projectdetail.xiecheng_id!=0 && projectdetail.xiecheng_id!=''"
+        >{{$t('m.hotelxq9')}}</button>
+        <button
+          class="s1"
+          :class="{otherClass:!projectdetail.xiecheng_id||projectdetail.xiecheng_id==0}"
+          @click="toshowModels(projectdetail.id,projectdetail.project_name)"
+        >{{$t('m.hotelxq12')}}</button>
       </div>
-      <button
-        @click="toServe(projectdetail.id,projectdetail.project_name)"
-        v-if="projectdetail.xiecheng_id!=0 && projectdetail.xiecheng_id!=''"
-      >{{$t('m.hotelxq9')}}</button>
-      <button
-        class="s1"
-        :class="{otherClass:!projectdetail.xiecheng_id||projectdetail.xiecheng_id==0}"
-        @click="toshowModels(projectdetail.id,projectdetail.project_name)"
-      >{{$t('m.hotelxq12')}}</button>
+      <submitBtn
+        v-if="hideModel"
+        :id="idss"
+        :name="names"
+        :status="status"
+        @tohideModel="tohideModel"
+      ></submitBtn>
     </div>
-    <submitBtn
-      v-if="hideModel"
-      :id="idss"
-      :name="names"
-      :status="status"
-      @tohideModel="tohideModel"
-    ></submitBtn>
   </div>
 </template>
 <script>
@@ -393,7 +403,7 @@ export default {
     // WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink+`?shareId=${location.hash}`)
   },
   beforeRouteUpdate(to, from, next) {
-    WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink+`?shareId=${location.hash}`)
+    WXsdk.getShare(config.shareTitle, config.shareContent, config.shareIcon, config.shareLink + `?shareId=${location.hash}`)
     let id = to.params.id;
     var that = this;
     interfaces.getdetailhouse(id).then(function (res) {
@@ -796,6 +806,11 @@ export default {
   overflow: visible;
   transition: 0.4s ease;
 }
+
+.inner {
+  min-height: calc(100% + 1px);
+}
+
 .hotel-detail {
   width: 100%;
   margin: 0 auto;

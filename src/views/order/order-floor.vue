@@ -1,6 +1,6 @@
 <template>
   <div class="order">
-    <div>
+    <div class="inner">
       <div class="person_01">
         <div class="person-arr" style="position:relative;">
           <div class="person-arr1" @click.stop="toback">
@@ -222,6 +222,10 @@ export default {
 </script>
 
 <style lang="less">
+.inner {
+  min-height: calc(100% + 1px);
+}
+
 .order {
   width: 100%;
   height: auto;

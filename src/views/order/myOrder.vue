@@ -1,136 +1,146 @@
 <template>
   <div class="myorder">
-    <!-- <img src='../assets/images/about.png'/> -->
-    <aheaders status="2" :showLan="true"></aheaders>
-    <div class="order-list" :style="getHeight">
-      <div class="myorder-list" v-if="orderList.length>0">
-        <h2>{{$t('m.watch')}}</h2>
-        <div class="total">
-          <div
-            class="orderlist"
-            v-for="(item,index) in orderList"
-            :key="index"
-            @click.stop="todetailOrder(item.id)"
-          >
-            <div class="left">
-              <router-link :to="{name:'orderDetail', params:{id:item.id}}">
-                <img :src="item.onepic" alt />
-              </router-link>
-            </div>
-            <div class="right" style="width:6.45rem">
-              <div>
-                <h3>
-                  <router-link :to="{name:'orderDetail', params:{id:item.id}}">{{item.project_name}}</router-link>
-                </h3>
-                <p>{{$t('m.watch3')}}:&nbsp;{{item.book_time}}</p>
-                <p>{{item.zhut?item.zhut:'&nbsp;'}}</p>
-              </div>
-              <div class="morder-t" style="width:100%;">
-                <em @click.stop.prevent="toMaps(item.projectid)">
-                  <!-- <router-link :to="{name:'hotelDetail?#maps', params:{id:projectid}}"> -->
-                  <span>{{$t('m.watch4')}}</span>
-                  <!-- </router-link>  -->
-                </em>
-                <button
-                  @click.stop.prevent="orderDetails(item.id,item.status,item.mobile)"
-                >{{orderList[index].titleBtn2}}</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- <div class="s1" v-else>{{$t('m.watch5')}}</div> -->
-      </div>
-
-      <div class="myorder-list2" v-if="orderList2.length>0">
-        <h2>{{$t('m.watch2')}}</h2>
-        <div class="total">
-          <div
-            class="orderlist"
-            v-for="(item,index) in orderList2"
-            :key="index"
-            @click.stop="todetailOrder2(item.id)"
-          >
-            <router-link :to="{name:'orderDetail',params:{id:item.id}}">
+    <div class="inner">
+      <!-- <img src='../assets/images/about.png'/> -->
+      <aheaders status="2" :showLan="true"></aheaders>
+      <div class="order-list" :style="getHeight">
+        <div class="myorder-list" v-if="orderList.length>0">
+          <h2>{{$t('m.watch')}}</h2>
+          <div class="total">
+            <div
+              class="orderlist"
+              v-for="(item,index) in orderList"
+              :key="index"
+              @click.stop="todetailOrder(item.id)"
+            >
               <div class="left">
-                <img :src="item.onepic" alt />
+                <router-link :to="{name:'orderDetail', params:{id:item.id}}">
+                  <img :src="item.onepic" alt />
+                </router-link>
               </div>
-            </router-link>
-            <router-link :to="{name:'orderDetail',params:{id:item.id}}" style="width:6.45rem;">
-              <div class="right">
+              <div class="right" style="width:6.45rem">
                 <div>
-                  <h3>{{item.project_name}}</h3>
+                  <h3>
+                    <router-link
+                      :to="{name:'orderDetail', params:{id:item.id}}"
+                    >{{item.project_name}}</router-link>
+                  </h3>
                   <p>{{$t('m.watch3')}}:&nbsp;{{item.book_time}}</p>
                   <p>{{item.zhut?item.zhut:'&nbsp;'}}</p>
                 </div>
-                <div class="morder-t">
+                <div class="morder-t" style="width:100%;">
                   <em @click.stop.prevent="toMaps(item.projectid)">
-                    <span style="padding-bottom:2px;">{{$t('m.watch4')}}</span>
+                    <!-- <router-link :to="{name:'hotelDetail?#maps', params:{id:projectid}}"> -->
+                    <span>{{$t('m.watch4')}}</span>
+                    <!-- </router-link>  -->
                   </em>
-                  <!-- <button
-                    v-show="item.is_pj==0"
-                    @click.stop.prevent="toAppraise(item.id)"
-                  >{{$t('m.watch6')}}</button>-->
                   <button
-                    v-if="item.status"
-                    @click.stop.prevent="orderDetails2(item.id,item.status,item.mobile)"
-                  >{{orderList2[index].titleBtn2}}</button>
+                    @click.stop.prevent="orderDetails(item.id,item.status,item.mobile)"
+                  >{{orderList[index].titleBtn2}}</button>
                 </div>
               </div>
-            </router-link>
+            </div>
           </div>
+          <!-- <div class="s1" v-else>{{$t('m.watch5')}}</div> -->
         </div>
-        <!-- <div class="s1" v-else>{{$t('m.watch5')}}</div> -->
-      </div>
 
-      <div class="myorder-list" v-if="canceled.length > 0">
-        <h2>{{$t('m.watch33')}}</h2>
-        <div class="total">
-          <div
-            class="orderlist"
-            v-for="(item,index) in canceled"
-            :key="index"
-            @click.stop="todetailOrder(item.id)"
-          >
-            <div class="left">
-              <router-link :to="{name:'orderDetail', params:{id:item.id}}">
-                <img :src="item.onepic" alt />
+        <div class="myorder-list2" v-if="orderList2.length>0">
+          <h2>{{$t('m.watch2')}}</h2>
+          <div class="total">
+            <div
+              class="orderlist"
+              v-for="(item,index) in orderList2"
+              :key="index"
+              @click.stop="todetailOrder2(item.id)"
+            >
+              <router-link :to="{name:'orderDetail',params:{id:item.id}}">
+                <div class="left">
+                  <img :src="item.onepic" alt />
+                </div>
+              </router-link>
+              <router-link :to="{name:'orderDetail',params:{id:item.id}}" style="width:6.45rem;">
+                <div class="right">
+                  <div>
+                    <h3>{{item.project_name}}</h3>
+                    <p>{{$t('m.watch3')}}:&nbsp;{{item.book_time}}</p>
+                    <p>{{item.zhut?item.zhut:'&nbsp;'}}</p>
+                  </div>
+                  <div class="morder-t">
+                    <em @click.stop.prevent="toMaps(item.projectid)">
+                      <span style="padding-bottom:2px;">{{$t('m.watch4')}}</span>
+                    </em>
+                    <!-- <button
+                    v-show="item.is_pj==0"
+                    @click.stop.prevent="toAppraise(item.id)"
+                    >{{$t('m.watch6')}}</button>-->
+                    <button
+                      v-if="item.status"
+                      @click.stop.prevent="orderDetails2(item.id,item.status,item.mobile)"
+                    >{{orderList2[index].titleBtn2}}</button>
+                  </div>
+                </div>
               </router-link>
             </div>
-            <div class="right" style="width:6.45rem">
-              <div>
-                <h3>
-                  <router-link :to="{name:'orderDetail', params:{id:item.id}}">{{item.project_name}}</router-link>
-                </h3>
-                <p>{{$t('m.watch3')}}:&nbsp;{{item.book_time}}</p>
-                <p>{{item.zhut?item.zhut:'&nbsp;'}}</p>
-              </div>
+          </div>
+          <!-- <div class="s1" v-else>{{$t('m.watch5')}}</div> -->
+        </div>
 
-              <div class="morder-t" style="width:100%;">
-                <em @click.stop.prevent="toMaps(item.projectid)">
-                  <!-- <router-link :to="{name:'hotelDetail?#maps', params:{id:projectid}}"> -->
-                  <span>{{$t('m.watch4')}}</span>
-                  <!-- </router-link>  -->
-                </em>
-                <button
-                  @click.stop.prevent="orderDetails(item.id,item.status,item.mobile)"
-                >{{orderList[index].titleBtn2}}</button>
+        <div class="myorder-list" v-if="canceled.length > 0">
+          <h2>{{$t('m.watch33')}}</h2>
+          <div class="total">
+            <div
+              class="orderlist"
+              v-for="(item,index) in canceled"
+              :key="index"
+              @click.stop="todetailOrder(item.id)"
+            >
+              <div class="left">
+                <router-link :to="{name:'orderDetail', params:{id:item.id}}">
+                  <img :src="item.onepic" alt />
+                </router-link>
+              </div>
+              <div class="right" style="width:6.45rem">
+                <div>
+                  <h3>
+                    <router-link
+                      :to="{name:'orderDetail', params:{id:item.id}}"
+                    >{{item.project_name}}</router-link>
+                  </h3>
+                  <p>{{$t('m.watch3')}}:&nbsp;{{item.book_time}}</p>
+                  <p>{{item.zhut?item.zhut:'&nbsp;'}}</p>
+                </div>
+
+                <div class="morder-t" style="width:100%;">
+                  <em @click.stop.prevent="toMaps(item.projectid)">
+                    <!-- <router-link :to="{name:'hotelDetail?#maps', params:{id:projectid}}"> -->
+                    <span>{{$t('m.watch4')}}</span>
+                    <!-- </router-link>  -->
+                  </em>
+                  <button
+                    @click.stop.prevent="orderDetails(item.id,item.status,item.mobile)"
+                  >{{orderList[index].titleBtn2}}</button>
+                </div>
               </div>
             </div>
           </div>
+          <!-- <div class="s1" v-else>{{$t('m.watch5')}}</div> -->
         </div>
-        <!-- <div class="s1" v-else>{{$t('m.watch5')}}</div> -->
+
+        <div class="s1" v-show="showBtn">
+          {{$t('m.watch5')}}
+          <button @click="toOrder">{{$t('m.watch7')}}</button>
+        </div>
       </div>
 
-      <div class="s1" v-show="showBtn">
-        {{$t('m.watch5')}}
-        <button @click="toOrder">{{$t('m.watch7')}}</button>
-      </div>
+      <!-- 预约弹框 -->
+      <submitBtn
+        v-if="hideModel"
+        @tohideModel="tohideModel"
+        :status="status"
+        @update1="getPhones111"
+      ></submitBtn>
+      <afooter></afooter>
     </div>
-
-    <!-- 预约弹框 -->
-    <submitBtn v-if="hideModel" @tohideModel="tohideModel" :status="status" @update1="getPhones111"></submitBtn>
-
-    <afooter></afooter>
   </div>
 </template>
 <script>
@@ -370,6 +380,9 @@ export default {
   position: relative;
   overflow-y: scroll; /* 增加该属性，可以增加弹性 */
   /* -webkit-overflow-scrolling: touch; */
+}
+.inner {
+  min-height: calc(100% + 1px);
 }
 .myorder-list {
   width: 9.69rem;

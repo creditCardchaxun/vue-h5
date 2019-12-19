@@ -1,37 +1,38 @@
 <template>
   <div class="home" v-show="showHome">
-    <van-swipe :autoplay="3000" indicator-color="white" class="swiperImg">
-      <van-swipe-item v-for="(item,index) in bannerImg" :key="index">
-        <img :src="item.thumb" alt />
-      </van-swipe-item>
-    </van-swipe>
+    <div class="inner">
+      <van-swipe :autoplay="3000" indicator-color="white" class="swiperImg">
+        <van-swipe-item v-for="(item,index) in bannerImg" :key="index">
+          <img :src="item.thumb" alt />
+        </van-swipe-item>
+      </van-swipe>
 
-    <div class="header" :class="{showbgs:showbg}" :style="nav">
-      <div class="logo">
-        <img src="@/assets/images/logo.png" alt />
-      </div>
-      <div class="nav-lan">
-        <span @click="changeLangEvent">
-          {{lanBase}}
-          <!-- {{lang ==='zh-CN'?'EN':'ZH'}} -->
-          <!-- {{lang==1?'EN':'ZH'}} -->
-        </span>
-        <!-- <input type="text" v-model="lang" value="lang" style='display:none'>  -->
-        <!-- <select id="sex" v-model="lang" @change="changeLangEvent">
+      <div class="header" :class="{showbgs:showbg}" :style="nav">
+        <div class="logo">
+          <img src="@/assets/images/logo.png" alt />
+        </div>
+        <div class="nav-lan">
+          <span @click="changeLangEvent">
+            {{lanBase}}
+            <!-- {{lang ==='zh-CN'?'EN':'ZH'}} -->
+            <!-- {{lang==1?'EN':'ZH'}} -->
+          </span>
+          <!-- <input type="text" v-model="lang" value="lang" style='display:none'>  -->
+          <!-- <select id="sex" v-model="lang" @change="changeLangEvent">
           <option value="zh-CN">中文</option>
           <option value="en-US">英文</option>
-        </select>-->
-        <div class="nav-menu">
-          <router-link :to="{path:'/order'}">
-            <img src="@/assets/images/right-menu.png" alt />
-          </router-link>
+          </select>-->
+          <div class="nav-menu">
+            <router-link :to="{path:'/order'}">
+              <img src="@/assets/images/right-menu.png" alt />
+            </router-link>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="brand-story">
-      <h3>{{story.catname}}</h3>
-      <!-- <div class="brand-all" ref="heightShow" :class="{brandStory:showMore}">
+      <div class="brand-story">
+        <h3>{{story.catname}}</h3>
+        <!-- <div class="brand-all" ref="heightShow" :class="{brandStory:showMore}">
         <p v-for="(item,index) in story2" :key="index">{{item}}</p>
         <div class="story-img" v-if="story.image">
           <img :src="story.image" alt />
@@ -45,93 +46,93 @@
         <div class="mas" v-show="toshows2" :class="{brandimg2:showMore}">
           <img src="../assets/images/more-icon.jpg" alt />
         </div>
-      </div>-->
-      <showmorenew v-if="story2&&story2.length" :pageType="'shouye'" :htmlstr="story2"></showmorenew>
-    </div>
-    <!-- <div class="logo1"></div> -->
-    <div :class="[showMore?'': 'yuyue']">
-      <swiper :options="swiperOption">
-        <swiper-slide v-for="(item,index) in project_list" :key="index">
-          <div class="yu-item" @click.stop.prevent="toHotelxq(item.id,item.project_name)">
-            <div class="yu-img">
-              <!-- <router-link :to="{name:'hotelDetail', params:{id:item.id,name:item.project_name}}"> -->
-              <img :src="item.pic" alt />
-              <div class="yu-title">{{item.address}}</div>
-              <!-- </router-link> -->
+        </div>-->
+        <showmorenew v-if="story2&&story2.length" :pageType="'shouye'" :htmlstr="story2"></showmorenew>
+      </div>
+      <!-- <div class="logo1"></div> -->
+      <div :class="[showMore?'': 'yuyue']">
+        <swiper :options="swiperOption">
+          <swiper-slide v-for="(item,index) in project_list" :key="index">
+            <div class="yu-item" @click.stop.prevent="toHotelxq(item.id,item.project_name)">
+              <div class="yu-img">
+                <!-- <router-link :to="{name:'hotelDetail', params:{id:item.id,name:item.project_name}}"> -->
+                <img :src="item.pic" alt />
+                <div class="yu-title">{{item.address}}</div>
+                <!-- </router-link> -->
+              </div>
+              <div class="yu-name">
+                <i>{{item.project_name}}</i>
+                <!-- <router-link :to="{path:'/orderForm'}"> -->
+                <van-button
+                  type="info"
+                  @click.stop.prevent="toOrderForm(item.id,item.project_name)"
+                >{{$t('m.orderhouse')}}</van-button>
+                <!-- </router-link> -->
+              </div>
             </div>
-            <div class="yu-name">
-              <i>{{item.project_name}}</i>
-              <!-- <router-link :to="{path:'/orderForm'}"> -->
-              <van-button
-                type="info"
-                @click.stop.prevent="toOrderForm(item.id,item.project_name)"
-              >{{$t('m.orderhouse')}}</van-button>
-              <!-- </router-link> -->
+          </swiper-slide>
+        </swiper>
+      </div>
+
+      <div class="news">
+        <van-tabs v-model="activeName" line-width="7%" :border="false" :ellipsis="false">
+          <van-tab :title="$t('m.news')">
+            <ul>
+              <li v-for="(item,index) in news_list" :key="index">
+                <router-link :to="{name:'newsdetail', params:{id:item.id}}">
+                  <div class="news-date">
+                    <h3 style="font-size:0.38rem;font-weight:bold;" v-if="index==0">{{item.title}}</h3>
+                    <h3 v-else>{{item.title}}</h3>
+                    <span
+                      style="font-size:0.4rem;font-weight:bold;"
+                      v-if="index==0"
+                    >{{item.inputtime}}</span>
+                    <span v-else>{{item.inputtime}}</span>
+                  </div>
+                  <div class="news-img" v-if="index==0&&item.thumb!=''">
+                    <img :src="item.thumb" alt />
+                  </div>
+                </router-link>
+              </li>
+            </ul>
+            <div class="news-more">
+              <router-link :to="{path:'/news'}">
+                <span style="color: #a5a5a5;">more</span>
+                <img src="../assets/images/right.png" alt />
+              </router-link>
             </div>
-          </div>
-        </swiper-slide>
-      </swiper>
-    </div>
-
-    <div class="news">
-      <van-tabs v-model="activeName" line-width="7%" :border="false" :ellipsis="false">
-        <van-tab :title="$t('m.news')">
-          <ul>
-            <li v-for="(item,index) in news_list" :key="index">
-              <router-link :to="{name:'newsdetail', params:{id:item.id}}">
-                <div class="news-date">
-                  <h3 style="font-size:0.38rem;font-weight:bold;" v-if="index==0">{{item.title}}</h3>
-                  <h3 v-else>{{item.title}}</h3>
-                  <span
-                    style="font-size:0.4rem;font-weight:bold;"
-                    v-if="index==0"
-                  >{{item.inputtime}}</span>
-                  <span v-else>{{item.inputtime}}</span>
-                </div>
-                <div class="news-img" v-if="index==0&&item.thumb!=''">
-                  <img :src="item.thumb" alt />
-                </div>
+          </van-tab>
+          <van-tab :title="$t('m.activity')">
+            <ul>
+              <li v-for="(item,index) in activity_list" :key="index">
+                <router-link :to="{name:'activitydetail', params:{id:item.id}}">
+                  <div class="news-date">
+                    <h3 style="font-size:0.38rem;font-weight:bold;" v-if="index==0">{{item.title}}</h3>
+                    <h3 v-else>{{item.title}}</h3>
+                    <span
+                      style="font-size:0.4rem;font-weight:bold;"
+                      v-if="index==0"
+                    >{{item.inputtime}}</span>
+                    <span v-else>{{item.inputtime}}</span>
+                  </div>
+                  <div class="news-img" v-if="index==0&&item.thumb!=''">
+                    <img :src="item.thumb" alt />
+                  </div>
+                </router-link>
+              </li>
+            </ul>
+            <div class="news-more">
+              <router-link :to="{path:'/activity'}">
+                <span style="color: #a5a5a5;">more</span>
+                <img src="../assets/images/right.png" alt />
               </router-link>
-            </li>
-          </ul>
-          <div class="news-more">
-            <router-link :to="{path:'/news'}">
-              <span style="color: #a5a5a5;">more</span>
-              <img src="../assets/images/right.png" alt />
-            </router-link>
-          </div>
-        </van-tab>
-        <van-tab :title="$t('m.activity')">
-          <ul>
-            <li v-for="(item,index) in activity_list" :key="index">
-              <router-link :to="{name:'activitydetail', params:{id:item.id}}">
-                <div class="news-date">
-                  <h3 style="font-size:0.38rem;font-weight:bold;" v-if="index==0">{{item.title}}</h3>
-                  <h3 v-else>{{item.title}}</h3>
-                  <span
-                    style="font-size:0.4rem;font-weight:bold;"
-                    v-if="index==0"
-                  >{{item.inputtime}}</span>
-                  <span v-else>{{item.inputtime}}</span>
-                </div>
-                <div class="news-img" v-if="index==0&&item.thumb!=''">
-                  <img :src="item.thumb" alt />
-                </div>
-              </router-link>
-            </li>
-          </ul>
-          <div class="news-more">
-            <router-link :to="{path:'/activity'}">
-              <span style="color: #a5a5a5;">more</span>
-              <img src="../assets/images/right.png" alt />
-            </router-link>
-          </div>
-        </van-tab>
-      </van-tabs>
-    </div>
+            </div>
+          </van-tab>
+        </van-tabs>
+      </div>
 
-    <div class="map">
-      <!-- <div class="alltag" @click="toopencity">
+      <div class="map">
+        <!-- <div class="alltag" @click="toopencity">
         <span>{{$t('m.map.defaultName')}}</span>
         <div class="alltags" v-show="opens1">
           <span
@@ -141,17 +142,18 @@
           >{{item.name}}</span>
         </div>
         <img src="../assets/images/bottom.jpg" alt />
-      </div> -->
-      <maps v-if="alllongitude" :dataArr="alllongitude"></maps>
+        </div>-->
+        <maps v-if="alllongitude" :dataArr="alllongitude"></maps>
+      </div>
+      <footers></footers>
+      <submitBtn
+        v-if="hideModel"
+        :name="names"
+        :id="idss"
+        @tohideModel="tohideModel"
+        :status="status"
+      ></submitBtn>
     </div>
-    <footers></footers>
-    <submitBtn
-      v-if="hideModel"
-      :name="names"
-      :id="idss"
-      @tohideModel="tohideModel"
-      :status="status"
-    ></submitBtn>
   </div>
 </template>
 
@@ -373,7 +375,7 @@ export default {
     setTimeout(() => {
       this.mobileLocal = JSON.parse(localStorage.getItem('userinfo')).mobile
     }, 2000);
-    
+
     //  this.couponSelected = this.allcityName[0].name;
   },
   mounted: function () {
@@ -509,6 +511,11 @@ export default {
 .swiper-slide {
   width: 90%;
 }
+
+.inner{
+  min-height: calc(100% + 1px);
+}
+
 .home {
   width: 100%;
   margin: 0 auto;

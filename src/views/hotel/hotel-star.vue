@@ -1,117 +1,118 @@
 <template>
   <div class="star">
-    <aheaders status="2" :showLan="true" :showEmpty="false"></aheaders>
-    <!-- <div class="top-hotel" style="display:none">
+    <div class="inner">
+      <aheaders status="2" :showLan="true" :showEmpty="false"></aheaders>
+      <!-- <div class="top-hotel" style="display:none">
       <img src="../../assets/images/hotel-01.jpg" alt />
-    </div>-->
-    <div class="img-wrap" v-if="topImage">
-      <img :src="topImage" />
-    </div>
-    <div v-else class="img-wrap-pol"></div>
-    <div class="hotel">
-      <div class="choose-hotel">
-        <div class="hotel-01">
-          <div class="s1" @click="city">
-            {{cityName}}
-            <van-icon name="arrow-down" v-show="!toshowicon" />
-            <van-icon name="arrow-up" v-show="toshowicon" />
+      </div>-->
+      <div class="img-wrap" v-if="topImage">
+        <img :src="topImage" />
+      </div>
+      <div v-else class="img-wrap-pol"></div>
+      <div class="hotel">
+        <div class="choose-hotel">
+          <div class="hotel-01">
+            <div class="s1" @click="city">
+              {{cityName}}
+              <van-icon name="arrow-down" v-show="!toshowicon" />
+              <van-icon name="arrow-up" v-show="toshowicon" />
+            </div>
+            <div class="s1" @click="typeHouse">
+              {{typehousename}}
+              <van-icon name="arrow-down" v-show="!toshowicon2" />
+              <van-icon name="arrow-up" v-show="toshowicon2" />
+            </div>
           </div>
-          <div class="s1" @click="typeHouse">
-            {{typehousename}}
-            <van-icon name="arrow-down" v-show="!toshowicon2" />
-            <van-icon name="arrow-up" v-show="toshowicon2" />
-          </div>
-        </div>
-        <!-- 市区标题 -->
-        <div class="s2" v-show="toshowCity">
-          <div class="s3">
-            <span style="border-right: 1px solid #ddd;">{{$t('m.hotel3')}}</span>
-            <span>{{$t('m.hotel4')}}</span>
+          <!-- 市区标题 -->
+          <div class="s2" v-show="toshowCity">
+            <div class="s3">
+              <span style="border-right: 1px solid #ddd;">{{$t('m.hotel3')}}</span>
+              <span>{{$t('m.hotel4')}}</span>
+            </div>
+
+            <!-- 城市筛选 -->
+            <div class="s4">
+              <div class="left">
+                <!-- <div class="city3" @click="togetAll" :class="{active:currentIndex==-1}">
+                <span>{{$t('m.show5')}}</span>
+                </div>-->
+                <div
+                  class="city3"
+                  @click="city2(index,item)"
+                  :class="{active:index==currentIndex}"
+                  v-for="(item,index) in cityAll"
+                  :key="index"
+                >
+                  <span>{{item.name}}</span>
+                </div>
+                <!-- <span @click='getListhouses({})'> 全部</span>  -->
+              </div>
+              <div class="right" :class="{active:currentIndex!=-1}" v-show="tochina">
+                <ul class="nihao" v-if="cityAll[currentIndex]">
+                  <!-- <li @click="city3('全部',-1)">{{$t('m.show5')}}</li> -->
+                  <li
+                    v-for="(i,ins) in cityAll[currentIndex].area"
+                    :class="{active:ins===currentIndex3}"
+                    :key="ins"
+                    @click="getname(i.name,i.linkageid,ins)"
+                  >{{i.name}}</li>
+                </ul>
+              </div>
+            </div>
           </div>
 
-          <!-- 城市筛选 -->
-          <div class="s4">
-            <div class="left">
-              <!-- <div class="city3" @click="togetAll" :class="{active:currentIndex==-1}">
-                <span>{{$t('m.show5')}}</span>
-              </div>-->
-              <div
-                class="city3"
-                @click="city2(index,item)"
-                :class="{active:index==currentIndex}"
-                v-for="(item,index) in cityAll"
-                :key="index"
-              >
-                <span>{{item.name}}</span>
-              </div>
-              <!-- <span @click='getListhouses({})'> 全部</span>  -->
-            </div>
-            <div class="right" :class="{active:currentIndex!=-1}" v-show="tochina">
-              <ul class="nihao" v-if="cityAll[currentIndex]">
-                <!-- <li @click="city3('全部',-1)">{{$t('m.show5')}}</li> -->
+          <!-- 户型标题 筛选 -->
+          <div class="s2" v-show="toshowtype">
+            <div class="right">
+              <ul>
+                <!-- <li :class="{active:currentIndex2==-1}" @click="getName('',$t('m.show5'),-1)">{{$t('m.show5')}}</li> -->
                 <li
-                  v-for="(i,ins) in cityAll[currentIndex].area"
-                  :class="{active:ins===currentIndex3}"
-                  :key="ins"
-                  @click="getname(i.name,i.linkageid,ins)"
-                >{{i.name}}</li>
+                  @click="getName(item.id,item.title,index)"
+                  v-for="(item,index) in getHouseType"
+                  :key="index"
+                  :class="{active:index==currentIndex2}"
+                >{{item.title}}</li>
               </ul>
             </div>
           </div>
         </div>
 
-        <!-- 户型标题 筛选 -->
-        <div class="s2" v-show="toshowtype">
-          <div class="right">
-            <ul>
-              <!-- <li :class="{active:currentIndex2==-1}" @click="getName('',$t('m.show5'),-1)">{{$t('m.show5')}}</li> -->
-              <li
-                @click="getName(item.id,item.title,index)"
-                v-for="(item,index) in getHouseType"
-                :key="index"
-                :class="{active:index==currentIndex2}"
-              >{{item.title}}</li>
-            </ul>
-          </div>
+        <!-- 项目列表数据 -->
+        <div class="hotel_main" v-if="alllist.length>0">
+          <ul>
+            <li v-for="(item,index) in alllist" :key="index">
+              <div class="hotel-img">
+                <router-link :to="{name:'hotelDetail',params:{id:item.id}}">
+                  <img :src="item.pic" alt />
+                </router-link>
+                <div class="location">{{item.address}}</div>
+              </div>
+              <div class="hotel-title">
+                <div class="title">{{item.project_name}}</div>
+                <button @click="toDetails(item.id,item.project_name)">
+                  <!-- <router-link :to="{name:'orderForm',params:{id:item.id,name:item.project_name}}">  -->
+                  {{$t('m.orderhouse')}}
+                  <!-- </router-link> -->
+                </button>
+              </div>
+            </li>
+          </ul>
+          <!-- <div class="more-list" v-show='pagemore' @click="addMore"><img src="../../assets/images/list-more.jpg" alt=""></div> -->
+        </div>
+        <div
+          v-else
+          class="nolist"
+          style="margin:0.8rem 0;font-size:0.3rem;text-align:center;"
+        >{{$t('m.others13')}}</div>
+        <div class="index-more" v-if="showMore" @click="toloadMore">
+          <span>more</span>
+          <img src="../../assets/images/more-icon.jpg" alt />
         </div>
       </div>
+      <afooter></afooter>
 
-      <!-- 项目列表数据 -->
-      <div class="hotel_main" v-if="alllist.length>0">
-        <ul>
-          <li v-for="(item,index) in alllist" :key="index">
-            <div class="hotel-img">
-              <router-link :to="{name:'hotelDetail',params:{id:item.id}}">
-                <img :src="item.pic" alt />
-              </router-link>
-              <div class="location">{{item.address}}</div>
-            </div>
-            <div class="hotel-title">
-              <div class="title">{{item.project_name}}</div>
-              <button @click="toDetails(item.id,item.project_name)">
-                <!-- <router-link :to="{name:'orderForm',params:{id:item.id,name:item.project_name}}">  -->
-                {{$t('m.orderhouse')}}
-                <!-- </router-link> -->
-              </button>
-            </div>
-          </li>
-        </ul>
-        <!-- <div class="more-list" v-show='pagemore' @click="addMore"><img src="../../assets/images/list-more.jpg" alt=""></div> -->
-      </div>
-      <div
-        v-else
-        class="nolist"
-        style="margin:0.8rem 0;font-size:0.3rem;text-align:center;"
-      >{{$t('m.others13')}}</div>
-      <div class="index-more" v-if="showMore" @click="toloadMore">
-        <span>more</span>
-        <img src="../../assets/images/more-icon.jpg" alt />
-      </div>
+      <submitBtn v-if="hideModel" @tohideModel="tohideModel" :status="status"></submitBtn>
     </div>
-    <afooter></afooter>
-
-    <submitBtn v-if="hideModel" @tohideModel="tohideModel" :status="status"></submitBtn>
-
     <!-- <router-view /> -->
   </div>
 </template>
@@ -387,7 +388,7 @@ export default {
   beforeRouteEnter(to, from, next) {
     console.log(to, from);
     let data = {};
-    interfaces.getListhouseAll(data).then(function(res) {
+    interfaces.getListhouseAll(data).then(function (res) {
       next(vm => {
         console.log("第六次");
         vm.alllist = res;
@@ -402,7 +403,7 @@ export default {
     });
   },
 
-  mounted: function() {
+  mounted: function () {
     window.addEventListener("scroll", this.handleScroll);
     $eventbus.$on("changeLang", res => {
       this.getcitys();
@@ -439,7 +440,7 @@ export default {
     submitBtn
   },
   watch: {
-    "$store.state.lang": function(newVal, oldVal) {
+    "$store.state.lang": function (newVal, oldVal) {
       console.log(newVal);
     },
     cityAll(newVal, oldVal) {
@@ -473,6 +474,10 @@ export default {
 
 .img-wrap-pol {
   padding-top: 1.6rem;
+}
+
+.inner {
+  min-height: calc(100% + 1px);
 }
 
 .star {
