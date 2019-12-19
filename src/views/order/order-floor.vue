@@ -101,6 +101,7 @@
         ></submitBtn>
       </div>
     </div>
+    <em @click="getShowModel">{{$t('m.changePhone')}}</em>
   </div>
 </template>
 
@@ -114,7 +115,7 @@ Vue.use(Icon);
 
 Vue.use(Field);
 Vue.use(NavBar);
-import { lock, unlock } from 'tua-body-scroll-lock'
+// import { lock, unlock } from 'tua-body-scroll-lock'
 
 
 export default {
@@ -162,7 +163,7 @@ export default {
     tohideModel() {
       this.hideModel = true
       var dom = document.getElementsByClassName('order')[0]
-      unlock(dom)
+      // unlock(dom)
     },
     toshowModel() {
       //  let mobile=localStorage.getItem('mobile')
@@ -180,7 +181,7 @@ export default {
     getShowModel() {
       this.hideModel = false
       var dom = document.getElementsByClassName('order')[0]
-      lock(dom)
+      // lock(dom)
     },
     toback() {
       this.$router.push({ path: '/' })
@@ -230,7 +231,7 @@ export default {
   width: 100%;
   height: auto;
   overflow-y: scroll; /* 增加该属性，可以增加弹性 */
-  // -webkit-overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch;
 }
 .order .van-nav-bar__text {
   color: #000;
