@@ -100,5 +100,10 @@ select {
   background: #fff;
   overflow: scroll;
 }
-.van-index-bar .van-cell__value{text-align: left;}
+.van-index-bar{
+  width:10.8rem;
+}
+.van-index-bar .van-cell__value{
+  text-align: left;
+  }
 </style>

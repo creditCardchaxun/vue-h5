@@ -85,7 +85,8 @@ export default {
       codeId: 'China',
       numName: '中国',
       codeLettet: 'optionsC',
-
+    }
+  },
   computed:{
     numCode(){
       // var index = this.findArrIndex(this.$t('m.selectCountry.'+this.codeLettet),this.codeId)
@@ -280,7 +281,7 @@ export default {
   components: {
     selectcountry
   }
-};}}
+};
 </script>
 
 <style scoped>
