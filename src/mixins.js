@@ -39,7 +39,8 @@ let MIXIN = {
           api = api.replace(/appid/, info.appid)
           api = api.replace(/openid/, info.openid)
           console.log(api)
-          window.location.href = api
+          // 暂时注释掉客服跳转
+          // window.location.href = api
           // setTimeout(() => {
             // eslint-disable-next-line no-undef
             WeixinJSBridge.call('closeWindow')
