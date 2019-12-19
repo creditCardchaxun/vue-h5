@@ -262,13 +262,15 @@ export default {
 }
 .bottom {
   width: auto;
-  height: 2rem;
-  line-height: 2rem;
+  /* height: 2rem; */
+  line-height: 0.8rem;
 }
 .bottom p {
+  margin-top: 0.3rem;
   font-size: 0.4rem;
   color: #929292;
   text-align: center;
+  word-break: keep-all;
 }
 .box {
   width: 9.6rem;

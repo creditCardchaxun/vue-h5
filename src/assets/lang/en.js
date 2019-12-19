@@ -121,12 +121,12 @@ export const m = {
   hotel5: 'All',
 
   // 精品旅社详情
-  hotelxq1: 'project story',
+  hotelxq1: 'Project story',
   hotelxq2: 'About',
   hotelxq3: 'Rooms',
   hotelxq4: 'Facilities',
   hotelxq5: 'Surrounding and transportation services',
-  hotelxq6: 'Recommended apartment',
+  hotelxq6: 'Recommended apartments',
   hotelxq7: 'You have made an appointment, please tell us your feedback.',
   hotelxq8: 'Recommended apartment',
   hotelxq9: 'Book a room ', //点击预订
@@ -136,7 +136,7 @@ export const m = {
 
   // 预定项目
   bookName: 'Project',
-  bookName2: 'choose project',
+  bookName2: 'Choose project',
   bookName3: 'Date',
   bookName4: 'Name',
 
@@ -157,12 +157,12 @@ export const m = {
 
   // 看房反馈  
   feedback1: 'Please fill in the feedback information of this visit',
-  feedback2: 'status',
+  feedback2: 'Status',
   feedback3: 'Feedback',
   feedback4: 'Please fill in the customer house information',
-  feedback5: 'Submit feedback',
+  feedback5: 'Submit',
   feedback6: 'Feedback submitted successfully',
-  feedback7: 'project',
+  feedback7: 'Project',
   feedback8: 'Name',
   feedback9: 'Phone',
   feedback10: 'Date',
@@ -175,7 +175,7 @@ export const m = {
 
   feedback15: 'Refuse',
   feedback16: 'Please fill in the reason for refusing to accept this form',
-  feedback17: "If you can't meet the needs of the guests, you can return this order to the headquarters",
+  feedback17: "If you can't deal with this order, please click 'Refuse', then the order will be sent to HQ",
 
   feedback18: 'Feedback on house visit',
   feedback19: "Any questions with this visit, please contact me at any time!",

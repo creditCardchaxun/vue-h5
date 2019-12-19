@@ -327,7 +327,7 @@ export default {
 
   width: 90%;
   /* height: 8.5rem; */
-  height: 11.7rem;
+  height: 12.2rem;
   padding: 0.95rem 0.58rem 0;
   border-bottom: 0.2rem solid #f1f1f1;
   border-top: 1px solid #ddd;
@@ -451,13 +451,13 @@ export default {
   color: #fff;
   text-align: center;
   background-color: #5975a9;
-  font-size: 0.3rem;
+  font-size: 0.4rem;
   border: none;
   /* margin-left: 10%; */
   border-radius: 0.1rem;
   /* margin: 1.2rem auto 1.64rem; */
   width: 86%;
-  margin: 0 0.6rem;
+  margin: 0 0.6rem 0.6rem;
 }
 .feedback .btns-submit[disabled] {
   background-color: #dddddd;
