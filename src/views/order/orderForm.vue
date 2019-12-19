@@ -1,7 +1,7 @@
 <template>
   <!-- :style='getHeight' -->
   <div class="myReserve">
-    <div style='background-color:#fff;'>
+    <div style="background-color:#fff;">
       <aheaders status="3" @toback="toreplace" :showLan="true"></aheaders>
       <!-- <van-cell is-link @click="showPopup">项目</van-cell> -->
       <!-- <h1>{{name}}</h1> -->
@@ -33,7 +33,7 @@
         <div class="names">
           <van-field
             type="text"
-             v-model="Personalname"
+            v-model="Personalname"
             :placeholder="$t('m.house10')"
             :label="$t('m.house3')"
             id="orderFormInput"
@@ -127,7 +127,7 @@
       </van-popup>
     </div>
     <!-- 信息弹框  盛修改 -->
-    <div class="modelToast" v-show='successHref'>{{getTostat}}</div>  
+    <div class="modelToast" v-show="successHref">{{getTostat}}</div>
     <afooter></afooter>
   </div>
 </template>
@@ -184,8 +184,8 @@ export default {
       getHeight: {
         minHeight: ""
       },
-      getTostat:'',
-      successHref:false
+      getTostat: '',
+      successHref: false
 
 
 
@@ -214,7 +214,7 @@ export default {
       this.ids = this.$route.params.id;
       this.value = this.$route.params.name;
       let mobile = this.$route.params.mobile;
-      this.orderid=this.$route.params.orderid;
+      this.orderid = this.$route.params.orderid;
       if (mobile) {
         this.phone = mobile;
       } else {
@@ -225,9 +225,9 @@ export default {
         this.getdetailhouses(this.ids)
         this.bookTag(this.ids);
       }
-        if(this.orderid){
-       this.editMain(this.orderid)
-     }
+      if (this.orderid) {
+        this.editMain(this.orderid)
+      }
     });
   },
   // computed:{
@@ -240,7 +240,7 @@ export default {
     this.ids = this.$route.params.id;
     this.value = this.$route.params.name;
     let mobile = this.$route.params.mobile;
-    this.orderid=this.$route.params.orderid;
+    this.orderid = this.$route.params.orderid;
     this.getHeight.minHeight =
       (window.outerHeight / window.outerWidth) * 10.8 - 5.96 + "rem";
     if (mobile) {
@@ -252,8 +252,8 @@ export default {
     if (this.ids) {
       this.bookTag(this.ids);
     }
-    if(this.orderid){
-       this.editMain(this.orderid)
+    if (this.orderid) {
+      this.editMain(this.orderid)
     }
 
     // this.bookHouses();
@@ -263,7 +263,7 @@ export default {
     let id = to.params.id;
     // let orderid = to.params.orderid;
     // 项目列表
-    interfaces.bookHouse().then(function(res) {
+    interfaces.bookHouse().then(function (res) {
       next(vm => {
         vm.columns = res;
       });
@@ -279,20 +279,20 @@ export default {
 
   },
   methods: {
-    editMain(orderid){
+    editMain(orderid) {
       interfaces.editForm(orderid).then(res => {
-          this.columns.forEach((item,index)=>{
-             if(res.data.projectid==item.id){
-               this.ids = res.data.projectid;
-               this.value = item.project_name;
-             }
-          })
-          this.Personalname = res.data.name;
-          this.radio = res.data.sex;
-          this.phone = res.data.mobile;
-          this.message = res.data.intention;
-          this.value2 = res.data.book_time;
-        });
+        this.columns.forEach((item, index) => {
+          if (res.data.projectid == item.id) {
+            this.ids = res.data.projectid;
+            this.value = item.project_name;
+          }
+        })
+        this.Personalname = res.data.name;
+        this.radio = res.data.sex;
+        this.phone = res.data.mobile;
+        this.message = res.data.intention;
+        this.value2 = res.data.book_time;
+      });
     },
     getdetailhouses(id) {
       interfaces.getdetailhouse(id).then(res => {
@@ -472,9 +472,9 @@ export default {
       //   this.$toast(this.$i18n.t('m.show12'));
       //   return;
       // }
-      let id=''
-      if(this.orderid){
-        id=this.orderid
+      let id = ''
+      if (this.orderid) {
+        id = this.orderid
       }
 
       let projectid = this.ids;
@@ -503,11 +503,11 @@ export default {
             this.$router.push({ path: "myOrder" });
           }, 2000);
         } else {
-          this.successHref=true;
-          this.getTostat=res.data
-          setTimeout(()=>{
-            this.successHref=false;
-           },3000)
+          this.successHref = true;
+          this.getTostat = res.data
+          setTimeout(() => {
+            this.successHref = false;
+          }, 3000)
           // this.$toast(res.data);
         }
       });
@@ -530,6 +530,8 @@ export default {
   padding-bottom: 5.96rem;
   box-sizing: border-box;
   position: relative;
+  overflow-y: scroll; /* 增加该属性，可以增加弹性 */
+  -webkit-overflow-scrolling: touch;
 }
 .myReserve >>> #orderFormInput::input-placeholder {
   color: #999;
@@ -575,19 +577,20 @@ export default {
   opacity: 1;
 }
 
-.modelToast{   
-   width: 5rem;
-    height: auto;
-    position: fixed;
-    top: 40%;
-    left: 28%;
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    border-radius: 4px;
-    font-size: 0.35rem;
-    line-height: 0.6rem;
-    text-align: center;
-    padding: 0.5rem;}
+.modelToast {
+  width: 5rem;
+  height: auto;
+  position: fixed;
+  top: 40%;
+  left: 28%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.35rem;
+  line-height: 0.6rem;
+  text-align: center;
+  padding: 0.5rem;
+}
 
 .names {
   position: relative;

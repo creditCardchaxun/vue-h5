@@ -106,7 +106,7 @@ select {
   position: relative;
   background: #fff;
   overflow: scroll;
-  /* -webkit-overflow-scrolling: touch; */
+  -webkit-overflow-scrolling: touch;
 }
 .van-index-bar {
   width: 10.8rem;
