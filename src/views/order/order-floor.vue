@@ -101,7 +101,6 @@
         ></submitBtn>
       </div>
     </div>
-    <em @click="getShowModel">{{$t('m.changePhone')}}</em>
   </div>
 </template>
 
