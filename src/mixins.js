@@ -40,10 +40,10 @@ let MIXIN = {
           api = api.replace(/openid/, info.openid)
           console.log(api)
           window.location.href = api
-          setTimeout(() => {
+          // setTimeout(() => {
             // eslint-disable-next-line no-undef
             WeixinJSBridge.call('closeWindow')
-          })
+          // })
         }
       }
     },
