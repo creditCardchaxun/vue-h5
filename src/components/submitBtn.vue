@@ -86,13 +86,12 @@ export default {
       numName: '中国',
       codeLettet: 'optionsC',
 
-    }
-  },
-  computed: {
-    numCode() {
-      var index = this.findArrIndex(this.$t('m.selectCountry.' + this.codeLettet), this.codeId)
-      var selectedObj = this.$t('m.selectCountry.' + this.codeLettet + '[' + index + ']')
-      return selectedObj.name + '/+' + selectedObj.tel
+  computed:{
+    numCode(){
+      // var index = this.findArrIndex(this.$t('m.selectCountry.'+this.codeLettet),this.codeId)
+      // var selectedObj = this.$t('m.selectCountry.'+this.codeLettet+'['+index+']')
+      var selectedObj = _.find(this.$t('m.selectCountry'),(item)=>{return item.id === this.codeId})
+      return selectedObj.name + '/+'+selectedObj.tel
     },
     isClick() {
       if (!this.phone || !this.sms) return true;
@@ -281,7 +280,7 @@ export default {
   components: {
     selectcountry
   }
-};
+};}}
 </script>
 
 <style scoped>
