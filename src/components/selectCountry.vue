@@ -102,6 +102,7 @@ select {
 }
 .van-index-bar{
   width:10.8rem;
+  min-height: 25rem;
 }
 .van-index-bar .van-cell__value{
   text-align: left;
