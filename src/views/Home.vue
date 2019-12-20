@@ -538,7 +538,7 @@ export default {
 }
 .swiperImg img {
   width: 100%;
-  height: 12rem;
+  min-height: 12rem;
 }
 
 .brand-story {
@@ -729,7 +729,7 @@ export default {
 .news-img {
   /* margin: 0.4rem 0; */
   margin: 0.2rem 0;
-  height: 6.4rem;
+  min-height: 6.4rem;
   overflow: hidden;
   img {
     width: 100%;

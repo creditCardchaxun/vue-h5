@@ -4,7 +4,7 @@
     <!-- 关于我们 联系我们 -->
     <aheaders status="2" :showLan="true"></aheaders>
     <div class="about">
-      <img src="../../assets/images/about-banner.jpg" alt style="width:100%;height:6.08rem" />
+      <img src="../../assets/images/about-banner.jpg" alt style="width:100%;min-height:6.08rem" />
 
       <van-tabs @click="onClick" line-width="7%" :border="false" v-model="active">
         <van-tab :title="$t('m.home5')">

@@ -1057,7 +1057,7 @@ export default {
   font-size: 0.38rem;
 }
 .types .hotel-msg {
-  height: 6.2rem;
+  min-height: 6.2rem;
   width: 100%;
 }
 .types-mianji .yiju {
@@ -1074,7 +1074,7 @@ export default {
 }
 .yiju-img img {
   width: 100%;
-  height: 6.1rem;
+  min-height: 6.1rem;
 }
 .index-more {
   width: auto;
