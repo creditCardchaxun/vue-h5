@@ -334,7 +334,6 @@ export default {
       idss: "",
       names: "",
       status: "",
-      scroll: null,
       showImgAll: false,
       local: true,
       scroller: "",

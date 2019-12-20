@@ -112,10 +112,10 @@ if (ua.match(/MicroMessenger/i) == "micromessenger") {
   //ios终端
   let isiOS = !!web.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
   if (isAndroid || isiOS) {
-  //  手机展示
+    //  手机展示
     iswx = true
   } else {
-//  浏览器展示
+    //  浏览器展示
     iswx = false
   }
 } else {
@@ -131,10 +131,10 @@ router.beforeEach((from, to, next) => {
 
 // 百度统计
 var _hmt = _hmt || [];
-(function() {
+(function () {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?15c3212aded94e92b6bbf263ed22c359";
-  var s = document.getElementsByTagName("script")[0]; 
+  var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(hm, s);
 })();
 

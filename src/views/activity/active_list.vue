@@ -153,7 +153,8 @@ export default {
   width: 9.5rem;
   height: 6.78rem;
   overflow: hidden;
-   padding-top:0 !important;
+  padding-top:0 !important;
+  margin: 0 auto;
 }
 
 .news_main .news_01 img {

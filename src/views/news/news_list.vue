@@ -160,6 +160,7 @@ export default {
   height: 6.78rem;
   overflow: hidden;
   padding-top:0 !important;
+  margin: 0 auto;
 }
 .news_main .news_01 img {
   width: 100%;
@@ -170,8 +171,7 @@ export default {
   font-size: 0.44rem;
   color: #000;
   margin-top: 0.64rem;
-  line-height: 0.5rem;
-  height: 1rem;
+  line-height: 0.44rem;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
