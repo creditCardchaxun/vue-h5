@@ -176,7 +176,6 @@ export default {
   font-size: 0.3rem;
   color: #1b1b1b;
   line-height: 0.5rem;
-  padding-bottom: 0.5rem;
   overflow: hidden;
   margin-top: 0.43rem;
   display: -webkit-box;
