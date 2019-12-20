@@ -1034,7 +1034,7 @@ export default {
   width: 100%;
   height: auto;
   background-color: #fff;
-  padding-top: 1rem;
+  // padding-top: 1rem;
 }
 .types .types-nav h3 {
   font-size: 0.42rem;
@@ -1087,7 +1087,7 @@ export default {
 .map {
   width: 100%;
   height: auto;
-  padding-bottom: 0.9rem;
+  // padding-bottom: 0.9rem;
   border-bottom: 1px solid #e5e5e5;
 }
 .map .map01 {
