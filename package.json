@@ -16,7 +16,7 @@
     "clipboard": "^2.0.4",
     "core-js": "^2.6.5",
     "html2canvas": "^1.0.0-rc.5",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mint-ui": "^2.2.13",
     "normalize.css": "^8.0.1",
     "preloadjs": "^1.0.1",
